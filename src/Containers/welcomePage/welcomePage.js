@@ -20,7 +20,7 @@ class welcomePage extends Component{
 	      		   		<h3> Millions of songs. No credit card needed.</h3>
 	      		   		<a href="/signup" id="button-sign" className="btn btn-success rounded-pill text-center d-flex justify-content-center" >
 							 Get Spotify Free
-                </a> 
+                		</a> 
 	   				</div>
 	 			</div>
 			</div>
