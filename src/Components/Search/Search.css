@@ -1,0 +1,113 @@
+.Search{
+    padding-left: 250px;
+    width: 100%;
+    background-color: rgb(18,18,18);
+    min-height: 100vh;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+}
+.Search .component-content{
+    padding-left: 16px;
+    margin-top: 35px;
+}
+.Search .previous{
+    font-size: 30px;
+    color: #b3b3b3;
+    margin-right: 35px;
+}
+.Search .next{
+    font-size: 30px;
+    color: #b3b3b3;
+}
+.Search .previous:hover,.Search .next:hover{
+    text-decoration: none;
+}
+.search-search-icon{
+    z-index: 12;
+    float: left;
+    font-size: 150%;
+    font-weight: 100;
+    position: absolute;
+    margin-left: -148px;
+    color: rgb(99, 97, 97);
+}
+
+.Search .Search-content{
+    margin-top: 3px;
+    margin-left: 37px;
+}
+
+.Search .Search-bar{
+    width: 320px;
+    height: 35px;
+    border-radius: 25px;
+    border: none;
+    padding-left: 45px;
+}
+
+.Search .Search-bar::placeholder{
+   
+    font-size: 14px;
+}
+
+.Search .signup{
+    font: 700 13.3333px Arial;
+    color: #e0e0e0; 
+    padding: 10px 45px;
+}
+.Search .signup:hover{
+    color:white; 
+   
+}
+
+.Search .login{
+    font: 700 13.3333px Arial;
+    margin-left: 5px;
+    margin-right: 25px;
+    padding: 10px 40px;
+}
+
+.Search .browse{
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -.04em;
+    text-transform: none;
+}
+
+.Search .BrowseItem {
+    padding: 0 15px;
+    padding-top: 5px;
+    float: left;
+    height: 170px;
+    width: 195px;
+    margin: 12px;
+    
+    margin-right: 0px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+
+.Search .BrowseItem .img-style {
+    right: 0;
+    -webkit-transform: rotate(25deg) translate(18%,-2%);
+    transform: rotate(25deg) translate(18%,-2%);
+    box-sizing: border-box;
+    vertical-align: baseline;
+
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
+.Search .BrowseItem .head-style{
+  color:white;
+  font-size: 25px;
+  font-weight: 700;
+  text-shadow: rgb(54, 54, 54);
+}
