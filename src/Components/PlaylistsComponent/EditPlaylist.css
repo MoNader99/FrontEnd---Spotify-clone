@@ -1,0 +1,103 @@
+.edit-playlist .modal-dialog
+{
+  padding: 18% 0;
+  min-height: 100vh;
+  z-index: 50;
+}
+.edit-playlist #edit
+{
+  position: absolute;
+  width:100%;
+ 
+  background-color:rgba(0, 0, 0, 0.8);
+  color:white;
+}
+.edit-playlist .modal{
+  filter: brightness(1);
+}
+
+.edit-playlist
+{
+  font-weight: 900;
+}
+
+.edit-playlist h2
+{
+  font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.edit-playlist .close-button
+{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    color:white;
+    font-size: 40px;
+    cursor: pointer;
+}
+.edit-playlist .close-button:hover{
+  color:white;
+}
+.edit-playlist .form-group{
+  background-color: #282828;
+  height: 145px;
+  padding-top: 17px;
+}
+
+.edit-playlist .close-button:focus {
+  box-shadow: none;
+}
+.edit-playlist .modal-content{
+  background-color: transparent !important ;
+  margin-top: 8%;
+}
+
+.edit-playlist .input_P
+{
+  background-color: #282828;
+  color: aliceblue;
+  padding: 1.5% 1.5%;
+}
+
+.edit-playlist .form-control-lg {
+  height: 65px;
+  background-color: #282828;
+  font-size: 50px;
+  padding:0 0;
+  line-height: 0;
+  border:none;
+}
+
+.edit-playlist input[type="text"]
+{
+    background: transparent;
+    color:white;
+    caret-color: #1ed760;
+}
+
+.edit-playlist input::placeholder
+{
+  color:#b3b3b3;
+  font-size: 45px;
+  
+}
+.edit-playlist input:focus::placeholder
+{
+ color: #282828;
+}
+
+.edit-playlist input[type="text"]:focus {   
+  border-color: #282828;
+  box-shadow: none;
+  outline: 0 none;
+
+}
+.edit-playlist .modal-dialog{
+  max-width: 100% !important;
+  margin:  0 0 !important;
+  padding: 8% 2% !important;
+}
+

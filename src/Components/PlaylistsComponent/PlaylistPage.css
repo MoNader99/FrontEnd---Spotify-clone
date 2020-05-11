@@ -1,0 +1,245 @@
+.playlist-page
+{
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 100%);
+  color:white;
+  overflow:hidden;
+  min-height: 100vh;
+  padding-left: 250px;
+}
+
+.playlist-page .content-spacing {
+  padding: 0 32px;
+  margin: 0;
+  width: 100%;
+  margin-top: 70px;
+  margin-bottom: 90px;
+  padding-top: 2em;
+}
+
+.playlist-page h3,h5{
+  cursor: default;
+}
+
+
+.playlist-page .centered-content li{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.playlist-page #like-song
+{
+  font-size: 30px;
+  margin-right: 55px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #b3b3b3;
+  float: left;
+  outline: none;
+}
+.playlist-page #like-song:hover{
+  color:white;
+}
+
+.playlist-page .table
+{
+  color:white;
+}
+.playlist-page .music-sign:after
+{
+  content: "\266A" ; 
+  font-size: 25px;
+  color:#b3b3b3;
+  cursor: default;
+}
+.playlist-page  .songs:hover .music-sign:after{
+  content: "\25B8" ; 
+  font-size: 30px;
+  color:white;
+  cursor: default;
+  
+}
+.playlist-page .song-content
+{
+  width:800px;
+  padding: 3px;
+}
+
+
+.playlist-page .song-info a
+{
+  color:#b3b3b3;
+  font-size:12px;
+  text-decoration: none;
+}
+.playlist-page .song-info a:hover
+{
+  color:white;
+  
+  text-decoration: underline;
+}
+.playlist-page .songs:hover{
+  background-color: rgba(70, 66, 69,0.4);
+}
+
+.playlist-page .Menu{
+  cursor: pointer;
+  visibility: hidden;
+  vertical-align: middle;
+}
+
+.playlist-page  .songs:hover .Menu{
+  visibility: visible;
+  vertical-align: middle;
+}
+
+
+/* ////////////////// DropDpwn //////////////////////// */
+
+.playlist-page .dropdown  {
+  position: absolute;
+  display: inline-flex;
+  margin-left: 30px;
+  color:white;
+  text-decoration: none;
+}
+.playlist-page .dropdown a{
+  color:white;
+  text-decoration: none;
+}
+/*//////////////// DropMenuCard ///////////////////*/
+
+.playlist-page .card-menu{
+  
+  font-size: 26px;
+  cursor: pointer;
+}
+.playlist-page .card-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+  
+}
+
+.playlist-page .card-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.playlist-page .card-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(53, 53, 53);
+  cursor:default;
+}
+.playlist-page .dropdown-menu.card-dropdown-content.show {
+  padding: 0;
+}
+
+/*//////////////// DropMenuSong ///////////////////*/
+
+.playlist-page .dropdown-menu.song-dropdown-content.show {
+  padding: 0;
+}
+
+.playlist-page .song-dropdown-content {
+  display: none;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+}
+
+.playlist-page .song-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.playlist-page .song-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(53, 53, 53);
+  cursor:default;
+}
+
+.playlist-page .show {
+  display: block;
+}
+
+/* //////////////////////// Page responsive ////////////////////////////////*/
+@media (max-width: 768px) {
+  .playlist-page .song-content{
+  width:280px;
+ }
+  }
+  
+  @media (min-width: 768px) and (max-width: 992px){
+    .playlist-page .song-content{
+      width:400px;
+   }
+  }
+
+  @media (min-width: 992px) and (max-width: 1200px){
+    .playlist-page .song-content{
+      width:580px;
+   }
+  }
+  
+  @media (min-width: 1200px) and (max-width: 1500px){
+    .playlist-page .song-content{
+      width:600px;
+   }
+  }
+   @media (min-width: 1500px){
+    .playlist-page .song-content{
+      width:800px;
+   }
+  }
+
+  .playlist-page .snack
+  {
+    background-color: blue;
+  }
+
+  .playlist-page .fa-headphones:before {
+    content: "\f025";
+    font-size: 50px;
+  }
+
+  .playlist-page .Suggested{
+    
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    margin-left: 13px;
+  }
+
+  .playlist-page .Suggested-text{
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    font-size: 13px;
+    margin-left: 15px;
+    color: #b3b3b3;
+  }
+
+  .playlist-page .btn-outline-dark:hover{
+    background-color: black !important ;
+    padding: 0.6rem 3.2rem !important;
+  }
+  .playlist-page .add-button{
+    height: 45px;   
+  }
+  .playlist-page .add-button:hover{
+    padding: 0.6rem 1.6rem !important;
+  }

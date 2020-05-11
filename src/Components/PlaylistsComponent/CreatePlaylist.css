@@ -1,0 +1,103 @@
+.create-playlist .modal-dialog
+{
+  padding: 18% 0;
+  min-height: 100vh;
+  z-index: 50;
+}
+.create-playlist #create-new-playist
+{
+  width:100%;
+ 
+  background-color:rgba(0, 0, 0, 0.8);
+  color:white;
+}
+.create-playlist .modal{
+  filter: brightness(1);
+}
+
+.create-playlist
+{
+  font-weight: 900;
+}
+
+.create-playlist h2
+{
+  font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.create-playlist .close-button
+{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    color:white;
+    font-size: 40px;
+    cursor: pointer;
+}
+.create-playlist .close-button:hover{
+  color:white;
+}
+.create-playlist .form-group{
+  background-color: #282828;
+  height: 145px;
+  width: 101%;
+  padding-top: 17px;
+}
+
+.create-playlist .close-button:focus {
+  box-shadow: none;
+}
+.create-playlist .modal-content{
+  background-color: transparent !important ;
+  margin-top: 5%;
+}
+
+.create-playlist .input_P
+{
+  background-color: #282828;
+  color: aliceblue;
+  padding: 1.5% 1.5%;
+}
+
+.create-playlist .form-control-lg {
+  height: 65px;
+  background-color: #282828;
+  font-size: 50px;
+  padding:0 0;
+  line-height: 0;
+  border:none;
+}
+
+.create-playlist input[type="text"]
+{
+    background: transparent;
+    color:white;
+    caret-color: #1ed760;
+}
+
+.create-playlist input::placeholder
+{
+  color:#b3b3b3;
+  font-size: 45px;
+  
+}
+.create-playlist input:focus::placeholder
+{
+ color: #282828;
+}
+
+.create-playlist input[type="text"]:focus {   
+  border-color: #282828;
+  box-shadow: none;
+  outline: 0 none;
+
+}
+.create-playlist .modal-dialog{
+  max-width: 100% !important;
+  margin:  0 0 !important;
+  padding: 8% 0 !important;
+}
+

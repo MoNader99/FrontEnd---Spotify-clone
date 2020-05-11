@@ -1,0 +1,176 @@
+.liked-songs-page
+{
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(32,15,60,1) 100%);
+  color:white;
+  overflow: hidden;
+  min-height: 100vh;
+  padding-left: 250px;
+}
+
+.liked-songs-page .content-spacing {
+  padding: 0 32px;
+  max-width: 1955px;
+  margin-top: 70px;
+  margin-bottom: 90px;
+  padding-top: 2em;
+}
+.liked-songs-page h3{
+  cursor: default;
+}
+
+.liked-songs-page .centered-content li{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.liked-songs-page #like-song
+{
+  font-size: 30px;
+  margin-top: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #b3b3b3;
+  float: left;
+  outline: none;
+}
+.liked-songs-page #like-song:hover{
+  color:white;
+}
+
+
+.liked-songs-page .music-sign:after
+{
+  content: "\266A" ; 
+  font-size: 25px;
+  color:#b3b3b3;
+  cursor: default;
+}
+.liked-songs-page  .songs:hover .music-sign:after{
+  content: "\25B8" ; 
+  font-size: 30px;
+  color:white;
+  cursor: default;
+  
+}
+.liked-songs-page .song-content
+{
+  width:800px;
+  padding: 3px;
+}
+
+.liked-songs-page .song-info a
+{
+  color:#b3b3b3;
+  font-size:12px;
+  text-decoration: none;
+}
+.liked-songs-page .song-info a:hover
+{
+  color:white;
+  
+  text-decoration: underline;
+}
+.liked-songs-page .songs:hover{
+  background-color: rgba(70, 66, 69,0.4);
+}
+.table td, .table th {
+  padding: 3px;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.liked-songs-page .Menu{
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.liked-songs-page  .songs:hover .Menu{
+  visibility: visible;
+}
+
+
+/* ////////////////// DropDpwn //////////////////////// */
+
+.liked-songs-page .dropdown  {
+  position: absolute;
+  display: inline-flex;
+  
+  color:white;
+  text-decoration: none;
+}
+.liked-songs-page .dropdown a{
+  color:white;
+  text-decoration: none;
+}
+
+/*//////////////// DropMenuSong ///////////////////*/
+
+.liked-songs-page .dropdown-menu.song-dropdown-content.show {
+  padding: 0;
+}
+
+.liked-songs-page .song-dropdown-content {
+  display: none;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+}
+
+.liked-songs-page .song-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.liked-songs-page .song-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(53, 53, 53);
+  cursor:default;
+}
+
+.liked-songs-page .show {
+  display: block;
+}
+
+/* //////////////////////// Page responsive ////////////////////////////////*/
+@media (max-width: 768px) {
+  .liked-songs-page .song-content{
+  width:280px;
+ }
+  }
+  
+  @media (min-width: 768px) and (max-width: 992px){
+    .liked-songs-page .song-content{
+      width:400px;
+   }
+  }
+
+  @media (min-width: 992px) and (max-width: 1200px){
+    .liked-songs-page .song-content{
+      width:580px;
+   }
+  }
+  
+  @media (min-width: 1200px) and (max-width: 1500px){
+    .liked-songs-page .song-content{
+      width:600px;
+   }
+  }
+   @media (min-width: 1500px){
+    .liked-songs-page .song-content{
+      width:800px;
+   }
+  }
+
+  .liked-songs-page .fa-headphones:before {
+    content: "\f025";
+    font-size: 50px;
+  }
