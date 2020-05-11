@@ -1,0 +1,156 @@
+.login-page
+{
+  font-family: Arial "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 26.4px;
+  background: white;
+}
+
+.login-page .login-logo
+{
+    padding: 40px 0;
+    font-size: 45px;
+    font-weight: bold;
+   
+}
+.login-page .image{
+	background: url(../../images/logo.png)no-repeat center;
+	background-size: contain;
+	display: block;
+	padding: 35px 35px;
+	cursor: pointer;
+}
+
+.login-page .login-logo .spotify-login
+{
+  text-decoration: none;
+  color: black;
+ 
+}
+.login-page .login-logo .fa-spotify
+{
+  font-size: 55px;
+
+}
+
+.login-page .login-content
+{
+  margin: 0 auto;
+  max-width: 450px;
+
+}
+
+.login-page #facebook-button
+{
+    color: #fff;
+    background-color: #3b5998;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 2px;
+    width: 100%;
+    height: 50px;
+    padding:30px auto;
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.login-page .border-divider
+{
+  border-top: 1px solid #d9dadc;
+    display: block;
+    line-height: 1px;
+    margin: 25px 0;
+    position: relative;
+    text-align: center;
+}
+
+.login-page .or-login
+{
+    background: #fff;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 0 20px;
+    text-transform: uppercase;
+}
+.login-page #input-email
+{
+  margin-bottom: 15px;
+}
+
+.login-page .login-button
+{
+  background-color: #1DB954;
+  color: #fff;
+  width: 50%;
+	height: 50px;
+  margin-left: 90px;
+  padding:30px auto;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bolder;
+  letter-spacing: 3px;
+}
+.login-page .login-button:hover
+{
+  background-color: rgb(33, 219, 98);
+
+}
+
+.login-page .check-log
+{
+  margin-top: 30px;
+}
+
+.login-page .form-check-input {
+  position: absolute;
+  margin-top: 17px;
+  margin-left: -1.25rem;
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.login-page .form-check-label
+{
+  color: #919496;
+}
+
+.login-page .forget-pass
+{
+  color:rgb(44, 180, 91);
+  margin-top: 15px;
+  text-decoration: none;
+}
+.login-page .forget-pass:hover
+{
+  cursor: pointer;
+  color: rgb(33, 219, 98);
+}
+
+.login-page h5
+{
+  font-weight: bold;
+}
+
+.login-page .signup-button
+{
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: white;
+  color:#616467;
+  box-shadow: inset 0 0 0 2px #616467;
+  width: 100%;
+  height: 50px;
+  margin-top:15px ;
+  letter-spacing: 3px;
+}
+
+.login-page .signup-button:hover
+{
+  color:#fff;
+  background-color: #616467;
+
+}
