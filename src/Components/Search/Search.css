@@ -1,8 +1,9 @@
 .Search{
     padding-left: 250px;
     width: 100%;
-    background-color: rgb(18,18,18);
-    min-height: 100vh;
+    height: 100%;
+    background-color: rgb(24, 24, 24);
+    min-height: 200vh;
     font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
 }
 .Search .component-content{
@@ -73,6 +74,16 @@
     line-height: 28px;
     letter-spacing: -.04em;
     text-transform: none;
+    text-align: start;
+    
+}
+.Search .top{
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -.04em;
+    text-transform: none;
 }
 
 .Search .BrowseItem {
@@ -90,6 +101,9 @@
     display: block;
 }
 
+.Search .BrowseItem:hover {
+   text-decoration: none;
+}
 
 .Search .BrowseItem .img-style {
     right: 0;
@@ -106,6 +120,45 @@
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
 .Search .BrowseItem .head-style{
+  color:white;
+  font-size: 25px;
+  font-weight: 700;
+  text-shadow: rgb(54, 54, 54);
+}
+
+
+.Search .top-geners {
+    padding: 0 15px;
+    padding-top: 5px;
+    float: left;
+    height: 200px;
+    width: 375px;
+    margin: 12px;
+    margin-right: 0px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.Search .top-geners:hover {
+   text-decoration: none;
+}
+
+.Search .top-geners .img-style {
+    right: 0;
+    -webkit-transform: rotate(25deg) translate(18%,-2%);
+    transform: rotate(25deg) translate(18%,-2%);
+    box-sizing: border-box;
+    vertical-align: baseline;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
+.Search .top-geners .head-style{
   color:white;
   font-size: 25px;
   font-weight: 700;
