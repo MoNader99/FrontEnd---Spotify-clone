@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./Bottom.css";
 
+/** Class Bottom 
+ * @category Bottom
+ * @extends Component
+ */
 class Bottom extends Component {
   render(){
 		return(
@@ -18,7 +22,7 @@ class Bottom extends Component {
 						<a href="/help" className="links-hover"> Help </a>
 					  </li>
 					  <li>
-						<a href="/account" className="links-hover"> Web Player</a>
+						<a href="/webplayer" className="links-hover"> Web Player</a>
 					  </li>
 					</ul>
 				</div>

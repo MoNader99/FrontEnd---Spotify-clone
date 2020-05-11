@@ -1,22 +1,32 @@
 import React, { Component } from "react";
 import './MainNavbar.css'
 import {Link } from "react-router-dom";
+import {connect} from 'react-redux';
+import * as actionTypes from "../../Store/actions";
+// import {BASEURL} from "../../Constants/baseURL";
 
-
-
-
+/** Class MainNavbar 
+ * @category MainNavbar
+ * @extends Component
+ */
 export class MainNavbar extends Component {
   constructor(props){
     super(props); 
     this.state=
     {
-    
+    /** profile image
+   * @memberof MainNavbar
+   * @type {string}
+   */
       image:"",
      
     }
   }
 
-  
+  // /**Function that is called when the component renders
+  //  * @memberof MainNavbar
+  //  * @func componentDidMount
+  //  */
   // componentDidMount(){
 
   //   if(this.props.logging){
@@ -78,7 +88,8 @@ export class MainNavbar extends Component {
                   <ul id="profile" className={this.props.logging == true ? 'list-unstyled' : ' d-none'}>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="/account" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img className="user-img" alt=".." src="../../src/images/user.png" />
+                        {/* <img className="user-img" alt=".." src={ BASEURL + "Images/" +this.state.image} /> */}
+                        <img className="user-img" alt={this.state.image} />
                          Profile
                         </a>
                     
@@ -97,7 +108,7 @@ export class MainNavbar extends Component {
                   </ul>
                   <ul className={this.props.logging == true ? 'd-none' : 'list-unstyled'}>
                     <li className="nav-item">
-                        <Link to="/logIn" className="nav-link " > Log in </Link>
+                        <Link to="/login" className="nav-link" > Log in </Link>
                     </li>
                   </ul>
           </ul>
@@ -109,4 +120,26 @@ export class MainNavbar extends Component {
 }
 }
 
-export default MainNavbar;
+/** A function connecting component to redux store
+ * @memberof MainNavbar
+ * @param {*} state 
+ */
+const mapStateToProps = state =>{
+  return{
+    logging: state.loggenIn,
+    userToken: state.userToken
+
+  };
+};
+
+
+/** A function connecting component to redux store
+ * @memberof MainNavbar
+ * @param {*} dispatch 
+ */
+const mapDispatchToProps = dispatch => {
+  return {
+    onSignOut : () => dispatch ({type: actionTypes.ON_SIGNOUT}),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(MainNavbar);
