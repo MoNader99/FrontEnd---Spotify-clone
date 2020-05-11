@@ -8,6 +8,7 @@ import {BrowserRouter as Router,
 
 import welcomePage from "./Containers/welcomePage/welcomePage";
 import SignUp from "./Components/SignUp/SignUp";
+import Search from './Components/Search/Search';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
 
           <Route exact path="/" component={welcomePage}/>
           <Route  exact path="/signup/" component={SignUp}/>
-
+          <Route  exact path="/search/" component={Search}/>
           {/* TODO: add routes to the other pages */}
         </Switch>
       </Router>
