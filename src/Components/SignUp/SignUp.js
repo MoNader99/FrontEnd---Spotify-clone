@@ -13,7 +13,8 @@ export class SignUp extends Component{
           </div>
 
           <div className="mb-3">
-          <a className="sign-with-facebook btn rounded-pill text-center">SIGN UP WITH FACEBOOK</a>
+          <button id="facebook-button" className="btn rounded-pill text-center " >
+                    <i className="fab fa-facebook"></i> continue with facebook </button> 
           </div>
 
           <p className="or">or</p>
