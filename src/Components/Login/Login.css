@@ -76,10 +76,6 @@
     padding: 0 20px;
     text-transform: uppercase;
 }
-.login-page #input-email
-{
-  margin-bottom: 15px;
-}
 
 .login-page .login-button
 {
@@ -153,4 +149,25 @@
   color:#fff;
   background-color: #616467;
 
+}
+
+.login-page .error-validate
+{
+  color:red;
+  font-size: 12px;
+  text-align: left;
+}
+.login-page .form-control:focus 
+{
+  box-shadow: none;
+}
+
+.login-page .incorrect
+{
+  background-color: #e22134;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 15px;
+  min-height: 40px;
+  padding:10px;
 }
