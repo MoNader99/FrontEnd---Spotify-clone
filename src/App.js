@@ -13,6 +13,10 @@ import Login from './Components/Login/Login';
 import PlaylistPage from './Components/PlaylistsComponent/PlaylistPage'
 import { AlbumPage } from './Components/AlbumComponent/AlbumPage';
 import LikedSongs from './Components/LikedSongs/LikedSongs';
+import AccountSettings from './Components/Profile/AccountSettings.js'
+import EditProfile from './Components/Profile/EditProfile.js'
+import NotificationsSettings from './Components/Profile/NotificationSettings.js';
+import ChangePasswrod from './Components/Profile/ChangePassword';
 
 function App() {
   return (
@@ -20,7 +24,10 @@ function App() {
       <Router>
 
         <Switch>
-
+          <Route path="/account-overview" component={AccountSettings}/>
+          <Route path="/edit-profile" component={EditProfile}/>
+          <Route path="/notification-settings" component={NotificationsSettings}/>
+          <Route path="/change-password" component={ChangePasswrod}/>
           <Route exact path="/" component={welcomePage}/>
           <Route  exact path="/signup/" component={SignUp}/>
           <Route  exact path="/login/" component={Login}/>
