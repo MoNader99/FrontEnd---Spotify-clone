@@ -1,0 +1,46 @@
+
+@media screen and (max-width: 500px) {
+
+
+
+    .web-nav{
+
+        position: relative;
+
+    }
+
+    .playlist{
+
+    position: relative;
+    right:15rem;
+    }
+
+    .album{
+        position: relative;
+        right:15rem;
+
+    }
+
+
+}
+
+.web-nav{
+    margin-left: 230px;
+    /* background-color: #121212; */
+}
+#nav-btn{
+    background-color: #282828;
+    border-radius: 30px;
+    width: 141px;
+    height: 38px;
+}
+.nav-drop{
+    width:141px;
+    height: 30px;
+    border-radius: 20px;
+    padding: 0px;
+    background-color: black;
+}
+.nav-drop:hover{
+    background-color: #282828;
+}

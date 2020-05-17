@@ -1,0 +1,9 @@
+.web-frame{
+    margin-bottom: 15vh;
+    background-color:#121212 ;
+    min-height: 100vh;
+    max-height: fit-content;
+    width: auto;
+    min-width: fit-content;
+    margin-left: 230px;
+}

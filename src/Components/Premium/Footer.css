@@ -1,0 +1,19 @@
+Footer{
+    background-color: black;
+    height: 75px;
+    width: auto;
+}
+.l-ft{
+    text-align: left;
+}
+.r-ft{
+    text-align: right;
+    /*margin-left: auto;*/
+}
+a{
+    color: gray;
+}
+a:hover{
+    color: green;
+    text-decoration: none;
+}

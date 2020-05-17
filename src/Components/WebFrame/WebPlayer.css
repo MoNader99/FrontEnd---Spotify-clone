@@ -1,0 +1,29 @@
+.Player-Footer{
+    background-color: #282828;
+    height: 15vh;
+    display: grid;
+    grid-template-columns: 25% 50%;
+}
+.audio{
+   margin-left: auto;
+   margin-right: auto;
+
+}
+#band{
+    color: #b3b3bb;
+}
+
+@media (max-width:1000px){
+    /* .Player-Footer{
+        height: 0px;
+    } */
+    .desc{
+        font-size: 10px;
+    }
+}
+.song-img{
+    margin-top: 2vh;
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}

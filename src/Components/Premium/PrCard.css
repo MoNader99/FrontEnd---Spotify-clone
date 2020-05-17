@@ -1,0 +1,12 @@
+#pr-img{
+    width: 142px;
+    height: 142px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (max-width:500){
+    #pr-img{
+        width:50px;
+        height: 50px;
+    }
+}
