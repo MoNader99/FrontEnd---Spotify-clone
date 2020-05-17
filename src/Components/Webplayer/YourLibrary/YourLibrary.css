@@ -1,0 +1,120 @@
+#webplayer-library{
+    background-color: #121212;
+}
+
+#webplayer-library{
+    isolation: isolate;
+    padding-top: 90px;
+}
+#webplayer-library .section-title{
+    font-size: 28px;
+    line-height: 1.6;
+    font-weight: 600;
+    letter-spacing: -.36px;
+    display: inline;
+    white-space: nowrap;
+    color: #fff;
+    padding-left: 30px;
+}
+#webplayer-library .card {
+    padding: 20px;
+    text-align: center;
+    width: 150px;
+    height: 250px;
+    background-color: rgb(40, 40, 40);
+    border-radius: 10px;
+    margin: 10px;
+}
+#webplayer-library .likes {
+    padding: 20px,;
+    text-align: center;
+    max-width: 330px;
+    height: 250px;
+    background: linear-gradient(149.46deg,#450af5,#8e8ee5 99.16%);
+    border-radius: 10px;
+    margin: 10px;
+}
+#webplayer-library .card-group{
+    padding: 20px;
+}
+#webplayer-library .card-body {
+   padding: 10px 0;
+   text-align: left;
+}
+#webplayer-library .rounded-circle{
+    height: 110px;
+    width: 110px;
+}
+#webplayer-library .card-title {
+    color:white;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+}
+#webplayer-library #playlists-cards .card-text {
+    font-size: 12px;
+    line-height: 18px;
+    height: 70px;
+    color: #b3b3b3;
+    padding: 0;
+    margin-top: 4px;
+    overflow: hidden;
+}
+
+#webplayer-library #likes-card .card-text {
+    font-size: 12px;
+    line-height: 18px;
+    height: 70px;
+    color: white;
+    padding: 30px;
+    margin-top: 4px;
+    overflow: hidden;
+}
+
+#webplayer-library #likes-card .track-name {
+    display: inline;;
+}
+
+#webplayer-library .card-footer {
+    padding: 0; 
+    background-color: inherit;
+    border-top: 0;
+}
+
+#webplayer-library h3,#webplayer-library h6 {
+    text-align: left;
+    color: ivory;
+}
+
+#webplayer-library .play-btn, #webplayer-library .pause-btn {
+    position: absolute;
+    outline: none;
+    display:none;
+    text-align: center;
+    top:190px;
+    right:20px;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    background-color:rgb(29, 185, 84)!important;
+    border-color: rgb(29, 185, 84) !important;
+}
+#webplayer-library .card:hover .active-play{
+    display: block;
+}
+#webplayer-library .active-pause{
+    display: block;
+}
+#webplayer-library .fa-play {
+    color: white;
+}
+/*#webplayer-library .card:hover .play-button {
+    display: block;
+}*/
+#webplayer-library .play-btn:hover, #webplayer-library .pause-btn:hover {
+    transform: scale(1.1);
+}
+#webplayer-library .artist-albums-page{
+    height: auto;
+}

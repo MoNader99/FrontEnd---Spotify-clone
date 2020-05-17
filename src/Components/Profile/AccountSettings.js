@@ -5,7 +5,7 @@ import AccountOverview from './AccountOverview';
 import AccountHeading from './AccountHeading';
 import axios from 'axios'
 import './Profile.css';
-import { ConfigContext } from '../../Context/ConfigContext'
+//import { ConfigContext } from '../../Context/ConfigContext'
 /** Class of AccountSettings.
  * @extends Component
  */
@@ -13,7 +13,7 @@ class AccountSettings extends Component {
    /**Gets the baseURL from configrations context of the user
    * @memberof AccountSettings
    */
-    static contextType=ConfigContext;
+    //static contextType=ConfigContext;
     constructor(){
         super()
         this.state = {

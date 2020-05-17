@@ -1,0 +1,33 @@
+#artist-sidebar {
+    background-color: #222326;
+    padding:0;
+  }
+  #artist-sidebar ul {
+    list-style-type: none;
+  }
+  #artist-sidebar .list {
+    padding: 20px;
+      border-bottom: 1px solid grey;
+    border-left: 7px solid #222326;
+    color: white;
+  }
+  #artist-sidebar .list:hover {
+    border-left: 7px solid green;
+    cursor: pointer;
+  }
+  #artist-sidebar .icon {
+      padding: 10px;
+  }
+  #artist-sidebar .rounded-circle {
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 30px auto;
+    border-radius: 50%;
+  }
+  #artist-sidebar .first {
+    border-top: 1px solid grey;
+  }
+  #artist-sidebar .disabled{
+    cursor: default;
+  }

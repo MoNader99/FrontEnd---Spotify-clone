@@ -4,7 +4,7 @@ import SideBar from './SideBar';
 import axios from 'axios'
 import {Link} from 'react-router-dom';
 import './Profile.css';
-import { ConfigContext } from '../../Context/ConfigContext'
+//import { ConfigContext } from '../../Context/ConfigContext'
 /** Class of ChangePassword page in account settings.
  * @extends Component
  */
@@ -12,7 +12,7 @@ class ChangePassword extends Component {
     /**Gets the baseURL from configrations context of the user
    * @memberof ChangePassword
    */
-    static contextType=ConfigContext;
+    //static contextType=ConfigContext;
     constructor() {
         super()
         this.state = {

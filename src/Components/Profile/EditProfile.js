@@ -4,7 +4,7 @@ import SideBar from './SideBar';
 import axios from 'axios'
 import {Link} from 'react-router-dom';
 import './Profile.css';
-import { ConfigContext } from '../../Context/ConfigContext'
+//import { ConfigContext } from '../../Context/ConfigContext'
 /** Variable that contains the birthday date of the user
  * @type {Date}
  */
@@ -28,7 +28,7 @@ class EditProfile extends Component {
    /**Gets the baseURL from configrations context of the user
    * @memberof EditProfile
    */
-    static contextType=ConfigContext;
+    //static contextType=ConfigContext;
     constructor() {
         super()
         this.state = {

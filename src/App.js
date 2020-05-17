@@ -17,6 +17,8 @@ import AccountSettings from './Components/Profile/AccountSettings.js'
 import EditProfile from './Components/Profile/EditProfile.js'
 import NotificationsSettings from './Components/Profile/NotificationSettings.js';
 import ChangePasswrod from './Components/Profile/ChangePassword';
+import Home from './Components/Webplayer/Home/Home'
+import YourLibrary from './Components/Webplayer/YourLibrary/YourLibrary'
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path="/edit-profile" component={EditProfile}/>
           <Route path="/notification-settings" component={NotificationsSettings}/>
           <Route path="/change-password" component={ChangePasswrod}/>
+          <Route path="/webplayer" exact component={Home} />
+          <Route path="/webplayer/yourlibrary" exact component={YourLibrary} />
           <Route exact path="/" component={welcomePage}/>
           <Route  exact path="/signup/" component={SignUp}/>
           <Route  exact path="/login/" component={Login}/>
