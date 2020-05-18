@@ -19,7 +19,7 @@ import NotificationsSettings from './Components/Profile/NotificationSettings.js'
 import ChangePasswrod from './Components/Profile/ChangePassword';
 import Home from './Components/Webplayer/Home/Home'
 import YourLibrary from './Components/Webplayer/YourLibrary/YourLibrary'
-
+import Audience from './Components/Artist/ArtistProfile/Audience'
 function App() {
   return (
     <div className="App">
@@ -32,6 +32,7 @@ function App() {
           <Route path="/change-password" component={ChangePasswrod}/>
           <Route path="/webplayer" exact component={Home} />
           <Route path="/webplayer/yourlibrary" exact component={YourLibrary} />
+          <Route  exact path="/artist/audience" component={Audience}/>
           <Route exact path="/" component={welcomePage}/>
           <Route  exact path="/signup/" component={SignUp}/>
           <Route  exact path="/login/" component={Login}/>

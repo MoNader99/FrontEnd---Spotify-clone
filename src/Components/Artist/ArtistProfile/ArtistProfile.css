@@ -1,0 +1,44 @@
+.background-color {
+    background-image: linear-gradient(#212c39, #121e3d 50%, #000); 
+    background-repeat: no-repeat;
+}
+
+#artist-audience .statistics-section{
+    background: #F8F8F8;
+    padding:0;
+}
+
+#artist-audience .statistics-div{
+    padding: 40px;
+}
+
+#artist-audience .page-header {
+      font-size: 26px;
+      margin: .5em 0;
+      color: #1DB954;
+      font-weight: 400;
+      padding: 15px;
+      border-bottom: 1px solid#EFEFEF;
+}
+
+#artist-audience .statistics-info {
+    padding:40px;
+    background-color: #FFF;
+}
+
+#artist-audience select {
+    float: right;
+    margin-bottom: 50px;
+    background-color: rgba(29, 185, 84, 0.5);
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    width: 7rem;
+    height: 2rem;
+}
+
+#artist-audience .labels {
+    color: #919496;
+    margin: 8px 0;
+    font-size: 21px;
+}

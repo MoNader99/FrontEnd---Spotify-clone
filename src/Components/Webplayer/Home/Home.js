@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import HomeNavBar from './HomeNavBar'
-//import SideBar from '../../SideBar'
+//import {SideBar} from '../../WebFrame/SideBar'
 //import '../Bodies.css';
 import './WebplayerHome.css'
 import axios from 'axios'
@@ -31,7 +31,12 @@ class Home extends Component {
               * @memberof Home
               * @type {Array<playlists>}
               */
-             popularPlayLists:[],
+             popularPlayLists:[{"collaborative":false,"description":"Burn off that Baklava with the hottest Arabic tracks!","externalUrls":[{"type":"","url":"https://open.spotify.com/playlist/37i9dQZF1DWSwhptWKR0VT"}],"href":"https://api.spotify.com/v1/playlists/37i9dQZF1DWSwhptWKR0VT","id":"37i9dQZF1E39t91TrIJMsZ","images":["https://i.scdn.co/image/ab67706f000000027a9fcf372aee5f7dd2be2150"],"name":"Fitness Araby","owner":["https://api.spotify.com/v1/users/spotify"],"public":null,"snapshot_id":"MTU4NDUyNzg5OCwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl","tracks":{"href":"https://api.spotify.com/v1/playlists/37i9dQZF1DWSwhptWKR0VT/tracks","total":50},"type":"playlist","uri":"spotify:playlist:37i9dQZF1E39t91TrIJMsZ","popularity":1568,"noOfFollowers":9000,"category":"Playlist"},
+             {"collaborative":false,"description":"We've got you covered with these tunes to burn those calories!","externalUrls":[{"type":"","url":"https://open.spotify.com/playlist/37i9dQZF1DX1fzTwl8xjJf"}],"href":"https://api.spotify.com/v1/playlists/37i9dQZF1DX1fzTwl8xjJf","id":"37i9dQZF1E39t91TrIJMsZ","images":["https://i.scdn.co/image/ab67706f00000002e1a7b4fd587b872eab27bbd3"],"name":"Arabic Gym Essentials","owner":["https://api.spotify.com/v1/users/spotify"],"public":null,"snapshot_id":"MTU4NDUyNzg1MCwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl","tracks":{"href":"https://api.spotify.com/v1/playlists/37i9dQZF1DX1fzTwl8xjJf/tracks","total":40},"type":"playlist","uri":"spotify:playlist:37i9dQZF1E39t91TrIJMsZ","popularity":1568,"noOfFollowers":9000,"category":"Playlist"},
+             {"collaborative":false,"description":"Maghreb workout tunes.","externalUrls":[{"type":"","url":"https://open.spotify.com/playlist/37i9dQZF1DX2RVaHBVCYFD"}],"href":"https://api.spotify.com/v1/playlists/37i9dQZF1DX2RVaHBVCYFD","id":"37i9dQZF1E39t91TrIJMsZ","images":["https://i.scdn.co/image/ab67706f00000002ebf302d78ba22b9ae113513a"],"name":"Puissance Maghreb","owner":["https://api.spotify.com/v1/users/spotify"],"public":null,"snapshot_id":"MTU4NDUyNzg0MywwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl","tracks":{"href":"https://api.spotify.com/v1/playlists/37i9dQZF1DX2RVaHBVCYFD/tracks","total":50},"type":"playlist","uri":"spotify:playlist:37i9dQZF1E39t91TrIJMsZ","popularity":1568,"noOfFollowers":9000,"category":"Playlist"},            
+             {"collaborative":false,"description":"Fuel your powerwalk with these upbeat and uplifting tracks.","externalUrls":[{"type":"","url":"https://open.spotify.com/playlist/37i9dQZF1DX9BXb6GsGCLl"}],"href":"https://api.spotify.com/v1/playlists/37i9dQZF1DX9BXb6GsGCLl","id":"37i9dQZF1E39t91TrIJMsZ","images":["https://i.scdn.co/image/ab67706f00000002f977f638a1498cd5951f399f"],"name":"Powerwalk!","owner":["https://api.spotify.com/v1/users/spotify"],"public":null,"snapshot_id":"MTU4NDUyNzg0OCwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl","tracks":{"href":"https://api.spotify.com/v1/playlists/37i9dQZF1DX9BXb6GsGCLl/tracks","total":80},"type":"playlist","uri":"spotify:playlist:37i9dQZF1E39t91TrIJMsZ","popularity":1568,"noOfFollowers":9000,"category":"Playlist"},
+             {"collaborative":false,"description":"Powerful and rhythmic  metal for maximum power during your workout.","externalUrls":[{"type":"","url":"https://open.spotify.com/playlist/37i9dQZF1DWY3PJWG3ogmJ"}],"href":"https://api.spotify.com/v1/playlists/37i9dQZF1DWY3PJWG3ogmJ","id":"37i9dQZF1E39t91TrIJMsZ","images":["https://pl.scdn.co/images/pl/default/632797c8c92d317b274356b1cea14c365968961b"],"name":"Extreme Metal Workout","owner":["https://api.spotify.com/v1/users/spotify"],"snapshot_id":"MTU4NDUyNzg1NywwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl","tracks":{"href":"https://api.spotify.com/v1/playlists/37i9dQZF1DWY3PJWG3ogmJ/tracks","total":74},"type":"playlist","uri":"spotify:playlist:37i9dQZF1E39t91TrIJMsZ","popularity":1568,"noOfFollowers":9000,"category":"Playlist"}
+             ],
              /** Array of most recent playlists
               * @memberof Home
               * @type {Array<playlists>}
@@ -537,11 +542,12 @@ class Home extends Component {
                             <Item>Save To Library</Item>
                             <Item>Copy Playlist Link</Item>
                             <Item>Open in App</Item>
-                            </Menu>       */}                                 <img src={playList.imageUrl} className="card-img-top" alt="..."></img>
+                            </Menu>       */}                                 <img src={playList.images[0]} className="card-img-top" alt="..."></img>
+                            {console.log(playList.images[0])}
                                     <div className="card-body">
-                                        <h5 className="card-title">{playList.title}</h5>
+                                        <h5 className="card-title">{playList.name}</h5>
                                         <p className="card-text">{playList.description}</p>
-                                        <div id={playList.id}>
+                                        <div id={playList._id}>
                                             <button id={playList.id} className="btn btn-primary play-btn active-play" onClick={()=> this.togglePlayPause(playList.id)}><i className="fa fa-play"></i></button>
                                             <button id={playList.id} className="btn btn-primary pause-btn" onClick={()=> this.togglePlayPause(playList.id)}><i className="fa fa-pause"></i></button>
                                         </div>
