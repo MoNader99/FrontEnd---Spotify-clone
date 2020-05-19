@@ -113,7 +113,7 @@ class Audience extends Component {
             dummyState.data.datasets[0].label="Number of likes per day"
             dummyState.data.labels=["1", "2", "3", "4", "5", "6", "7", "8", "10", "11", "12"]
             dummyState.data.datasets[0].data=[2, 3, 1, 0, 3, 4, 2, 0, 1, 2, 1, 3]
-            this.setState({dummyState})
+            this.setState({likes: dummyState})
             myLineChartLikes.destroy();
             myLineChartLikes = new Chart(ctxLTwo, this.state.likes);
         }
@@ -122,7 +122,7 @@ class Audience extends Component {
             dummyState.data.datasets[0].label="Number of likes per year"
             dummyState.data.labels=["2016", "2017", "2018", "2019", "2020"]
             dummyState.data.datasets[0].data=[450, 502, 472, 453, 454]
-            this.setState({dummyState})
+            this.setState({likes: dummyState})
             myLineChartLikes.destroy();
             myLineChartLikes = new Chart(ctxLTwo, this.state.likes);
         }
@@ -131,7 +131,7 @@ class Audience extends Component {
             dummyState.data.datasets[0].label="Number of likes per month"
             dummyState.data.labels=["January", "February", "March", "April", "May", "June", "July", "September", "October", "Novmber", "December"]
             dummyState.data.datasets[0].data=[25, 24, 26, 19, 29, 28, 30, 27, 24, 22, 31, 28]
-            this.setState({dummyState})
+            this.setState({likes: dummyState})
             myLineChartLikes.destroy();
             myLineChartLikes = new Chart(ctxLTwo, this.state.likes);
         }
