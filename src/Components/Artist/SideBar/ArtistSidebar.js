@@ -15,10 +15,10 @@ function ArtistSidebar(props) {
             <div>
                     <img  src={props.img} className="rounded-circle" alt="Profile" ></img>
 					<ul className="sidelist">
-                        <li className="list first"><span className="fa fa-home icon"></span> Overview </li>
-						<li className="list"><i className="fa fa-pencil icon"></i> Manage Profile </li>
-                        <li className="list"><i className="fa fa-users icon"></i> Audience </li>
-                        <Link to="/artist"><li className="list"><i className="fa fa-music icon"></i> My Music </li></Link>
+                        {/*<li className="list first"><span className="fa fa-home icon"></span> Overview </li>
+						<li className="list"><i className="fa fa-pencil icon"></i> Manage Profile </li>*/}
+                        <Link to="/artist/audience"><li className="list first"><i className="fa fa-users icon"></i> Audience </li></Link>
+                        <Link to="/artist/addalbum"><li className="list"><i className="fa fa-music icon"></i> My Albums </li></Link>
 					</ul>
 			    </div>
         </div>        
