@@ -95,10 +95,12 @@ class Search extends Component {
                         <p className=" browse">Your Top Geners</p>
                         <div className="row">
                             { this.state.geners.map((Card,index)=>(
-                                <a href="/webplayer/playlist" class="top-geners" style={Card.style} key={index}>
+                                <div className="col-xl-3 col-lg-4" key={index}>
+                                <a href="/webplayer/playlist" class="top-geners" style={Card.style} >
                                     <h3 class="head-style">{Card.Card_name}</h3>
                                     <img src={Card.image_URL} class="img-style" alt=""></img>
                                 </a>
+                                </div>
                             ))}
                         </div>     
                 </div>
@@ -196,28 +198,28 @@ class Search extends Component {
                             <div className="row">
                             <div className="col-xl-1 artist-card ">
                                 <a href="/webplayer/playlist" class="artist-card"  >
-                                    <img src="https://vanyaland.com/wp-content/uploads/2017/07/KendrickLamar_PublicityImage.jpg" class="img-style" alt=""></img>
+                                    <div className="image-padding"> <img src="https://vanyaland.com/wp-content/uploads/2017/07/KendrickLamar_PublicityImage.jpg" class="img-style" alt=""></img></div>
                                     <h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">Artist Name</h3>
                                     <h5 className=" text-white d-flex align-items-start" >artist</h5>
                                 </a>
                             </div>
                             <div className="col-xl-1 artist-card ">
                                 <a href="/webplayer/playlist" class="artist-card"  >
-                                    <img src="https://www.grammy.com/sites/com/files/styles/news_detail_header/public/katy_perry_020419.jpg?itok=1eyJ68SB" class="img-style" alt=""></img>
+                                    <div className="image-padding"><img src="https://www.grammy.com/sites/com/files/styles/news_detail_header/public/katy_perry_020419.jpg?itok=1eyJ68SB" class="img-style" alt=""></img> </div>
                                     <h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">Artist Name</h3>
                                     <h5 className=" text-white d-flex align-items-start" >artist</h5>
                                 </a>
                             </div>
                             <div className="col-xl-1 artist-card ">
                                 <a href="/webplayer/playlist" class="artist-card"  >
-                                    <img src="https://etbilarabi.com/sites/default/files/styles/article_landing/public/2020-03/BAFBDC61-35D2-4A4E-A9F6-4C41F1B47403.jpeg?itok=zNDV0gxy" class="img-style" alt=""></img>
+                                    <div className="image-padding"> <img src="https://etbilarabi.com/sites/default/files/styles/article_landing/public/2020-03/BAFBDC61-35D2-4A4E-A9F6-4C41F1B47403.jpeg?itok=zNDV0gxy" class="img-style" alt=""></img></div>
                                     <h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">Artist Name</h3>
                                     <h5 className=" text-white d-flex align-items-start" >artist</h5>
                                 </a>
                             </div>
                             <div className="col-xl-1 artist-card ">
                                 <a href="/webplayer/playlist" class="artist-card"  >
-                                    <img src="https://www.nme.com/wp-content/uploads/2017/05/lana_del_rey_new_song_coachella_2017_1000-696x442.jpg" class="img-style" alt=""></img>
+                                    <div className="image-padding"><img src="https://www.nme.com/wp-content/uploads/2017/05/lana_del_rey_new_song_coachella_2017_1000-696x442.jpg" class="img-style" alt=""></img></div>
                                     <h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">Artist Name</h3>
                                     <h5 className=" text-white d-flex align-items-start" >artist</h5>
                                 </a>
@@ -287,25 +289,25 @@ class Search extends Component {
                             <div className="row">
                             <div className="col-xl-1 artist-card ">
                                 <a href="/webplayer/playlist" class="artist-card"  >
-                                    <img src="https://res.cloudinary.com/dtbudl0yx/image/fetch/w_2000,f_auto,q_auto,c_fit/https://adamtheautomator.com/content/images/size/w2000/2019/10/user-1633249_1280.png" class="img-style" alt=""></img>
+                                    <div className="image-padding"><img src="https://res.cloudinary.com/dtbudl0yx/image/fetch/w_2000,f_auto,q_auto,c_fit/https://adamtheautomator.com/content/images/size/w2000/2019/10/user-1633249_1280.png" class="img-style" alt=""></img></div>
                                     <h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">User Name</h3>
                                 </a>
                             </div>
                             <div className="col-xl-1 artist-card ">
                                 <a href="/webplayer/playlist" class="artist-card"  >
-                                    <img src="https://res.cloudinary.com/dtbudl0yx/image/fetch/w_2000,f_auto,q_auto,c_fit/https://adamtheautomator.com/content/images/size/w2000/2019/10/user-1633249_1280.png" class="img-style" alt=""></img>
+                                    <div className="image-padding"><img src="https://res.cloudinary.com/dtbudl0yx/image/fetch/w_2000,f_auto,q_auto,c_fit/https://adamtheautomator.com/content/images/size/w2000/2019/10/user-1633249_1280.png" class="img-style" alt=""></img></div>
                                     <h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">User Name</h3>
                                 </a>
                             </div>
                             <div className="col-xl-1 artist-card ">
                                 <a href="/webplayer/playlist" class="artist-card"  >
-                                    <img src="https://res.cloudinary.com/dtbudl0yx/image/fetch/w_2000,f_auto,q_auto,c_fit/https://adamtheautomator.com/content/images/size/w2000/2019/10/user-1633249_1280.png" class="img-style" alt=""></img>
+                                    <div className="image-padding"><img src="https://res.cloudinary.com/dtbudl0yx/image/fetch/w_2000,f_auto,q_auto,c_fit/https://adamtheautomator.com/content/images/size/w2000/2019/10/user-1633249_1280.png" class="img-style" alt=""></img></div>
                                     <h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">User Name</h3>
                                 </a>
                             </div>
                             <div className="col-xl-1 artist-card ">
                                 <a href="/webplayer/playlist" class="artist-card"  >
-                                    <img src="https://res.cloudinary.com/dtbudl0yx/image/fetch/w_2000,f_auto,q_auto,c_fit/https://adamtheautomator.com/content/images/size/w2000/2019/10/user-1633249_1280.png" class="img-style" alt=""></img>
+                                    <div className="image-padding"><img src="https://res.cloudinary.com/dtbudl0yx/image/fetch/w_2000,f_auto,q_auto,c_fit/https://adamtheautomator.com/content/images/size/w2000/2019/10/user-1633249_1280.png" class="img-style" alt=""></img></div>
                                     <h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">User Name</h3>
                                 </a>
                             </div>

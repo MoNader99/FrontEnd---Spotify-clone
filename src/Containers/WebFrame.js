@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
-import WebPlayer from '../Components/WebFrame/WebPlayer'
-import {SideBar} from '../Components/WebFrame/SideBar'
+import WebPlayer from '../../src/Components/WebFrame/WebPlayer'
+import {SideBar} from '../../src/Components/WebFrame/SideBar'
+import ArtistsLibrary from '../../src/Components/Webplayer/YourLibrary/ArtistsLibrary'
+import AlbumsLibrary from '../../src/Components/Webplayer/YourLibrary/AlbumsLibrary'
+import Home from '../../src/Components/Webplayer/Home/Home'
+import YourLibrary from '../../src/Components/Webplayer/YourLibrary/YourLibrary'
+import PlaylistPage from '../../src/Components/PlaylistsComponent/PlaylistPage'
+import AlbumPage from '../../src/Components/AlbumComponent/AlbumPage';
+import LikedSongs from '../../src/Components/LikedSongs/LikedSongs';
+import Search from '../../src/Components/Search/Search';
+
+
 import WebNav from '../Components/WebFrame/WebNav'
 // import PlaylistInsidePage from './PlaylistInsidePage'
 // import Albums from '../Containers/Albums'
@@ -99,37 +109,14 @@ export class WebFrame extends Component{
                             <div className='web-frame '>    {/*The Content of the page is placed here,,routing also will be here*/ }
                             {/* <WebNav></WebNav> */}
                             <Switch>
-                                {/* <Route  path='/WebFrame/Home'>
-                                    <WebPlayerHome></WebPlayerHome>
-                                </Route>
-                                <Route  path='/WebFrame/WebHomeInside_:id' component={WebHomeInside}>
-                                </Route>
-                                <Route  path='/WebFrame/LikedSongs'>
-                                    <LikedSongs></LikedSongs>
-                                </Route>
-                                <Route path='/WebFrame/Page_:id' component ={Pages}>
-                                </Route>
-                                <Route  path='/WebFrame/Search:id'>
-                                    <SearchPage></SearchPage>
-                                </Route> */}
-                                {/* <Route  path='/WebFrame/Library:id' >
-                                    {window.location.href=='http://localhost:3000/WebFrame/Library2'? this.UpdateCurrentPage():<div></div>}
-                                    <Playlist></Playlist>
-                                </Route> */}
-                                {/* <Route  path='/WebFrame/PlaylistInsidePage_:id' component={PlaylistInsidePage}>
-                                </Route>
-                                <Route  path='/WebFrame/AlbumInsidePage_:id' component={AlbumInsidePage} >
-                                </Route> */}
-                                {/* <Route  path='/WebFrame/FirstWebHome'>
-                                <FirstWebHome></FirstWebHome>
-                                </Route>
-                                <Route  path='/WebFrame/Album'>
-                                <Album></Album>
-                                </Route>
-                                <Route  path='/WebFrame/'>
-                                <WebPlayerHome></WebPlayerHome>
-                                </Route> */}
-                                
+                                <Route  exact path="/webplayer/search/" component={Search}/>
+                                <Route  exact path="/webplayer/playlist/" component={PlaylistPage}/>
+                                <Route  exact path="/webplayer/album/" component={AlbumPage}/>
+                                <Route  exact path="/webplayer/likedsongs/" component={LikedSongs}/>
+                                <Route path="/webplayer/home" exact component={Home} />
+                                <Route path="/webplayer/yourlibrary" exact component={YourLibrary} />
+                                <Route exact path="/webplayer/yourlibrary/artists" exact component={ArtistsLibrary} />
+                                <Route exact path="/webplayer/yourlibrary/albums" exact component={AlbumsLibrary} />  
                             </Switch>
 
                             </div>
