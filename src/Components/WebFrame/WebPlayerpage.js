@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import './WebPlayer.css'
-import Player from './Audio'
+import Audio_Player from './Audio'
 /**
  * the footer of the web frame 
  * it holds the name , image and link of the song  will be played
  */
-class WebPlayer extends Component{
+class Player extends Component{
     constructor(){
         super()
     }
@@ -22,10 +22,10 @@ class WebPlayer extends Component{
             {/* <audio controls className='audio mt2'>
                 <source src='' type='audio/mpeg'></source>
             </audio> */}
-            <Player></Player>
+            <Audio_Player></Audio_Player>
         </nav>
     )
     }
 }
 
-export default WebPlayer
+export default Player

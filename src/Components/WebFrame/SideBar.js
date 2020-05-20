@@ -51,11 +51,11 @@ export class SideBar extends Component{
                 </div>
                 <div className='mt3'>
                     <img className='dib mb1' width='24' height='20' src='https://www.pngkit.com/png/full/22-228161_free-icons-png-search-button-png-white.png'></img>
-                    <Link to='../webplayer/Search'><div className='dib  ml3 fw-900'>Search</div></Link>
+                    <Link to='/webplayer/Search'><div className='dib  ml3 fw-900'>Search</div></Link>
                 </div>
                 <div className='mt3'>
                     <img className='dib mb1' width='24' height='24' src={Library}></img>
-                    <Link  to='../webplayer/Library2'><div className='dib  ml3 fw-900'>Library</div></Link>
+                    <Link  to='/webplayer/yourlibrary'><div className='dib  ml3 fw-900'>Library</div></Link>
                 </div>
                 
             </div>

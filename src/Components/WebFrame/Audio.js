@@ -11,7 +11,7 @@ import './Audio.css'
 /**
  * the audio component which get the song clicked on by the user to be streamed
  */
-const Player = () => {
+const Audio_Player = () => {
 // const Song =useSelector(state=>state.stream.songs)
 // const state = useSelector(state=>
 //   state.stream
@@ -19,8 +19,7 @@ const Player = () => {
 // console.log("the state is ",state)
   return(
   <AudioPlayer
-    autoPlay
-    //onPlay={e => console.log("onPlay")}
+    src="https://www.mboxdrive.com/Imagine-Dragons-Believer_7wtfhZwyrcc.mp3"
     showJumpControls={false}
     layout='stacked-reverse'
     showSkipControls
@@ -30,4 +29,4 @@ const Player = () => {
   )
 };
 
-export default Player
+export default Audio_Player

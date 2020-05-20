@@ -16,7 +16,7 @@ import ChangePasswrod from './Components/Profile/ChangePassword';
 import Premium from './Containers/Premium'
 import Audience from './Components/Artist/ArtistProfile/Audience'
 import AddAlbum from './Components/Artist/ArtistProfile/AddAlbum'
-import {WebFrame} from './Containers/WebFrame'
+import WebPlayerPage from './Containers/WebPlayer/WebPlayer';
 import AddSong from './Components/Artist/ArtistProfile/AddSong'
 
 function App() {
@@ -25,23 +25,18 @@ function App() {
       <Router>
 
         <Switch>
+          <Route exact path="/" component={welcomePage}/>
           <Route path="/account-overview" component={AccountSettings}/>
           <Route path="/edit-profile" component={EditProfile}/>
           <Route path="/notification-settings" component={NotificationsSettings}/>
           <Route path="/change-password" component={ChangePasswrod}/>
+          <Route  exact path="/signup/" component={SignUp}/>
+          <Route  exact path="/login/" component={Login}/>
+          <Route exact path="/premium/" component={Premium}/>
+          <Route  path="/webplayer/" component={WebPlayerPage}/>
           <Route  exact path="/artist/audience" component={Audience}/>
           <Route  exact path="/artist/addalbum" component={AddAlbum}/>
           <Route  exact path="/artist/addsong" component={AddSong}/>
-          <Route exact path="/" component={welcomePage}/>
-          <Route  exact path="/signup/" component={SignUp}/>
-          <Route  exact path="/login/" component={Login}/>
-
-          <Route exact path="/premium/" component={Premium}></Route>
-          {/* <Route exact path="/frame/" component={WebFrame}></Route> */}
-          <Route exact path='/webplayer'>
-              <WebFrame></WebFrame>
-          </Route>
-
           {/* TODO: add routes to the other pages */}
         </Switch>
       </Router>
