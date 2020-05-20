@@ -32,6 +32,27 @@ class LikedSongs extends Component
       TracksID: [],
       LikedTracks:[]
   }
+
+  componentDidMount(){
+  
+    var url = "http://spotify-clone.mocklab.io/get-tracks"; 
+  
+    const requestOptions = {
+      method: 'GET',
+    };
+    fetch(url,requestOptions)
+      .then((response) => { return response.json()})
+      .then((data) => {
+        // console.log(data)
+        this.setState({ 
+          SongInfo:data.tracks,
+          songsNumber:data.tracks.length
+        });
+      })
+      .catch((error)=>{console.log(error);
+  
+      })
+    }
   
   playButton = e => {
     const {id} = e.target;
@@ -66,7 +87,7 @@ show = e => {
               <CardMedia image={this.state.LikedSongsImage}/>
 					  <li> <h3> Liked Songs </h3> </li>
             <li> <a href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playLikedSongs}</a> </li>
-            <li > <div> {this.state.songsNumber}</div> </li>
+            <li > <div> {this.state.songsNumber} Songs</div> </li>
 					</ul>
           </div>
 
@@ -98,7 +119,7 @@ show = e => {
                <div className="col-xl-8 col-md-6 col-sm-6 col-6 mt-3 d-flex align-items-start">
                <ul className="list-unstyled">
                    <li className="d-flex align-items-start">{song.SongName}</li>
-                   <li className="song-info"><a href='/webplayer/artistprofile/'>{song.Singer} </a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>{song.AlbumName} </a></li>
+                   <li className="song-info"><a href='/webplayer/artistprofile/'>{song.Artist} </a> <span className="font-weight-bold"> . </span> <a href='/webplayer/album'> {song.AlbumName} </a></li>
                 </ul>
                </div>
                <div className="col-xl-1 col-md-2 col-sm-2 col-2">

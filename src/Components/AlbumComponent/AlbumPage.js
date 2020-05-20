@@ -101,92 +101,27 @@ export class AlbumPage extends Component
 //    * @memberof AlbumPage
 //    * @func componentDidMount
 //    */
-// componentDidMount(){
-//    /** variable of url and requestOptions
-//    * @memberof AlbumPage
-//    * @type {string}
-//    */
-//   var url = BASEURL+ "album/" + this.props.AlbumID; 
-
-//   const requestOptions = {
-//     method: 'GET',
-//     headers: { 'x-auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThjNzg1ZTE0NGQ5NDA0MzliNDU4NGEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MjgwMDExfQ.R3gD5zX1j6A9KS2uYGzjZExCc7FDgsoiPEdVlxKy24Q',
-//      'Content-Type': 'application/json' },
-//   };
-//   fetch(url,requestOptions)
-//     .then((response) => { return response.json()})
-//     .then((data) => {
-//       // console.log(data)
-//       this.setState({ 
-//         AlbumInfo: data.album,
-//        AlbumImage:"http://52.14.190.202:8000/images/"+data.album.imagePath,
-//       songsNumber:data.album.tracks.length});
-//       // console.log(this.state.AlbumInfo);
-//       this.gettracks()
-//     })
-//     .catch((error)=>{console.log(error);
-
-//     })
-//   }
-//    /**Function to get tracks
-//    * @memberof AlbumPage
-//    * @func gettracks
-//    */
-//   gettracks () {
-//   /**variable of url and requestOptions
-//    * @memberof AlbumPage
-//    * @type {string}
-//    */
-//     var url =BASEURL+ "tracks"; 
-//     const requestOptions = {
-//       method:"POST",
-//       headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
-//       'Content-Type': 'application/json'},
-//       body: JSON.stringify({id: this.state.AlbumInfo.tracks})
-//   };
-//     fetch(url,requestOptions)
-//       .then((response) => {
-//         return response.json();
-//       })
-//       .then((data) =>{ 
-//         this.setState({SongInfo:data.tracks})
-//         console.log(this.state.SongInfo)
-//         this.getArtistName()
-//       })
-//       .catch((err)=>console.log(err))
-//   }
-//   /**Function to get Artist name
-//    * @memberof AlbumPage
-//    * @func getArtistName
-//    */
-//   getArtistName()
-//   {
-//   /** variable of url
-//    * @memberof AlbumPage
-//    * @type {string}
-//    */
-//     var url =BASEURL+ "Artists/"+this.state.AlbumInfo.artistId; 
-//     const requestOptions = {
-//       method:"GET",
-//     headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
-
-//     }
-//     fetch(url,requestOptions)
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .then((data) => {    
-//      this.setState({Artist:data.artist.artistName})
-//     })
-//     .catch((error)=>{
-//       console.log(error);
-//     })  
-//    }
+componentDidMount(){
   
-     /**Function toggle add to playlist
-   * @memberof AlbumPage
-   * @func toggle_add_to_playlist
-   */
+  var url = "http://spotify-clone.mocklab.io/get-tracks"; 
+
+  const requestOptions = {
+    method: 'GET',
+  };
+  fetch(url,requestOptions)
+    .then((response) => { return response.json()})
+    .then((data) => {
+      // console.log(data)
+      this.setState({ 
+        SongInfo:data.tracks
+      });
+
+    })
+    .catch((error)=>{console.log(error);
+
+    })
+  }
+
   toggle_add_to_playlist()
  {
     /** variable blur add to playlist
@@ -351,7 +286,7 @@ else if (check=="SAVE"){
               <div className="col-xl-8 col-md-6 col-sm-6 col-6 mt-3 d-flex align-items-start">
               <ul className="list-unstyled">
                   <li className="d-flex align-items-start">{song.SongName}</li>
-                  <li className="d-flex align-items-start song-info"><a href='/webplayer/artistprofile/'>{song.Singer}</a></li>
+                  <li className="d-flex align-items-start song-info"><a href='/webplayer/artistprofile/'>{song.Artist}</a></li>
               </ul>
               </div>
               <div className="col-xl-1 col-md-2 col-sm-2 col-2">
