@@ -3,19 +3,28 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
 import SideBar from '../SideBar/ArtistSidebar';
 import './ArtistProfile.css'
+import $ from 'jquery';
+import 'bootstrap';
+ 
 
 class AddAlbum extends Component {
     constructor() {
         super()
         this.state = {
-          nowPlaying: {id: -1},
+          albumToDelete: -1,
           popularAlbums:[],
+          addAlbum: true,
         }
+        this.formSubmit=this.formSubmit.bind(this)
+        this.deleteAlbum=this.deleteAlbum.bind(this)
+        this.deleteAlbumModal=this.deleteAlbumModal.bind(this)
+        this.resetDeleteAlbumState=this.resetDeleteAlbumState.bind(this)
+        this.editAlbum=this.editAlbum.bind(this)
     }
     componentDidMount(){
         axios.get("http://spotify.mocklab.io"+"/albums/top",{
             headers: {
-                'authorization': "Bearer "+localStorage.getItem("token"),
+                'authorization': "Bearer "
             },
             params: {
                 limit: 9,
@@ -29,29 +38,83 @@ class AddAlbum extends Component {
                         popularAlbums: res.data.data.albums.map( album => ({
                             id:album._id,
                             title:album.name,
+                            albumGenre:album.genre,
+                            albumType:album.type,
                             imageUrl:album.image,
-                            artist:album.artists[0].name
+                            artist:album.label
                         }))
                     })
                 }
                 else if(res.status === 401)
                 {
-                    localStorage.removeItem("loginType");
+                    /*localStorage.removeItem("loginType");
                     localStorage.removeItem("isLoggedIn");
                     localStorage.removeItem("token");
-                    localStorage.removeItem("userID");
+                    localStorage.removeItem("userID");*/
                 }
             }) 
     }
 
     showAddAlbum() {
-            const addDiv = document.querySelector('.add-new-album');
-            addDiv.classList.toggle("show");
+        var form = document.getElementById("add-album-form");
+        form.reset();
+        this.setState({addAlbum: true})
+        const addDiv = document.querySelector('.add-new-album');
+        addDiv.classList.add("show");
+    }
+
+    showEditAlbum() {
+        const addDiv = document.querySelector('.add-new-album');
+        addDiv.classList.add("show");
+    }
+
+    deleteAlbumModal(albumId) {
+        $('#delete-modal').modal('show');
+        this.setState({albumToDelete: albumId})
+    }
+
+    deleteAlbum() {
+        const addDiv = document.querySelector('.add-new-album');
+        addDiv.classList.remove("show");
+        $('#delete-modal').modal('hide');
+        //delete request
+        this.setState({albumToDelete: -1})
+    }
+
+    resetDeleteAlbumState() {
+        this.setState({albumToDelete: -1})
+    }
+
+    formSubmit(event) {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append("name", document.getElementById("album-name").value);
+        formData.append("albumType", document.getElementById("album-type").value);
+        formData.append("genre", document.getElementById("album-genre").value);
+        formData.append("image", document.getElementById("custom-file").files[0]);
+        //add request
+        $('#done-modal').modal('show');
+        const addDiv = document.querySelector('.add-new-album');
+        addDiv.classList.remove("show");
+    }
+    
+    editAlbum(albumId) {
+        var form = document.getElementById("add-album-form");
+        form.reset();
+        this.setState({addAlbum: false})
+        var album = this.state.popularAlbums.find(obj => {
+            return obj.id === albumId
+        })
+        console.log(album)
+        document.getElementById("album-name").value = album.title;
+        document.getElementById("album-type").value = album.albumType;
+        document.getElementById("album-genre").value = album.albumGenre;
+        this.showEditAlbum();
     }
 
     render()
     {
-        {document.title ="Your Library - Spotify"}
+        {document.title ="Artist - Spotify"}
 
     return(
         <div className="background-color">
@@ -74,7 +137,8 @@ class AddAlbum extends Component {
                                                     <h5 className="card-title">{album.title}</h5>
                                                     <p className="card-text">{album.artist}</p>
                                                     <div id={album.id}>
-                                                        <button id={album.id} className="btn btn-danger delete-btn" ><i className="fa fa-close"></i></button>
+                                                        <button id={album.id} className="btn btn-danger delete-btn" onClick={()=>this.deleteAlbumModal(album.id)}><i className="fa fa-close"></i></button>
+                                                        <button id={album.id} className="btn btn-primary edit-btn" onClick={()=>this.editAlbum(album.id)}><i className="fa fa-pencil-square-o"></i></button>
                                                     </div>    
                                                 </div>  
                                             </div>
@@ -84,22 +148,61 @@ class AddAlbum extends Component {
                                     </div>
                                 </div>
                                 <div className="add-new-album">
-                                    <form className="container">
-                                        <div class="form-group">
-                                            <input type="text" className="form-control" id="label" placeholder="Album name" onChange=""/>
+                                    <form className="container" id="add-album-form" onSubmit={this.formSubmit}>
+                                        <div className="row">
+                                        <div class="form-group col">
+                                            <input type="text" className="form-control" id="album-name" placeholder="Album name" required/>
+                                            <small className="form-text text-muted">Album name.</small>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" className="form-control" placeholder="Album type" onChange=""/>
+                                        <div class="form-group col">
+                                            <input type="text" className="form-control" id="album-type" placeholder="Album type"required/>
+                                            <small className="form-text text-muted">Album type.</small>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" className="form-control" placeholder="Genre type" onChange=""/>
+                                        <div class="form-group col">
+                                            <input type="text" className="form-control" id="album-genre" placeholder="Album genre"required/>
+                                            <small className="form-text text-muted">Album genre.</small>
+                                        </div>
                                         </div>
                                         <div className="custom-file mb-4 ">
-                                            <input type="file" className="custom-file-input" id="customFile" onChange=""/>
+                                            <input type="file" className="custom-file-input" id="custom-file"/>
                                             <label className="custom-file-label" htmlFor="customFile"></label>
+                                            <small className="form-text text-muted">Upload your album cover photo.</small>
                                         </div>
-                                        <input type="submit" value="Add" className="btn btn-success btn-block mt-4"></input>
+                                        {this.state.addAlbum === true ? <input type="submit" value="Add" className="btn btn-success btn-block mt-4"></input> : <input type="submit" value="Edit" className="btn btn-success btn-block mt-4"></input>}
                                     </form>
+                                </div>
+                                <div className="modal" id="done-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        {this.state.addAlbum === true ? <div class="modal-body"> Album Added Successfully!!</div> : <div class="modal-body"> Album Edited Successfully!!</div>}
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="modal" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete this album?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-dark" data-dismiss="modal" onClick={this.resetDeleteAlbumState}>No</button>
+                                            <button type="button" class="btn btn-dark" onClick={this.deleteAlbum}>Yes</button>
+                                        </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>  

@@ -25,6 +25,7 @@ import ArtistsLibrary from './Components/Webplayer/YourLibrary/ArtistsLibrary'
 import AlbumsLibrary from './Components/Webplayer/YourLibrary/AlbumsLibrary'
 import AddAlbum from './Components/Artist/ArtistProfile/AddAlbum'
 import {WebFrame} from './Containers/WebFrame'
+import AddSong from './Components/Artist/ArtistProfile/AddSong'
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route exact path="/webplayer/yourlibrary/albums" exact component={AlbumsLibrary} />
           <Route  exact path="/artist/audience" component={Audience}/>
           <Route  exact path="/artist/addalbum" component={AddAlbum}/>
+          <Route  exact path="/artist/addsong" component={AddSong}/>
           <Route exact path="/" component={welcomePage}/>
           <Route  exact path="/signup/" component={SignUp}/>
           <Route  exact path="/login/" component={Login}/>

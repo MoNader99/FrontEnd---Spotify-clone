@@ -13,11 +13,16 @@
     padding:0;
 }
 
-#artist-audience .statistics-div, #artist-add-album .album-div{
+#artist-add-song .song-section {
+    background: #F8F8F8;
+    padding:0;
+}
+
+#artist-audience .statistics-div, #artist-add-album .album-div, #artist-add-song .song-div{
     padding: 40px;
 }
 
-#artist-audience .page-header, #artist-add-album .page-header {
+#artist-audience .page-header, #artist-add-album .page-header, #artist-add-song .page-header {
       font-size: 26px;
       margin: .5em 0;
       color: #1DB954;
@@ -33,6 +38,11 @@
 
 #artist-add-album .album-info { 
     background-color: #121212;
+}
+
+#artist-add-song .song-info { 
+    padding:40px;
+    background-color: #FFF;
 }
 
 #artist-audience select {
@@ -94,18 +104,30 @@
     outline: none;
     display: none;
     text-align: center;
-    top: 2px;
-    right: 2px;
+    top: 10px;
+    right: 15px;
     height: 40px;
     width: 40px;
     border-radius: 100%;
 }
 
-#artist-add-album .card:hover .delete-btn{
+#artist-add-album .edit-btn {
+    position: absolute;
+    outline: none;
+    display: none;
+    text-align: center;
+    top:195px;
+    right:15px;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+}
+
+#artist-add-album .card:hover .delete-btn, #artist-add-album .card:hover .edit-btn{
     display: block;
 }
 
-#artist-add-album .delete-btn:hover {
+#artist-add-album .delete-btn:hover, #artist-add-album .edit-btn:hover {
     transform: scale(1.1);
 }
 
@@ -118,13 +140,47 @@
     display: none;
 }
 
+#artist-add-album form, #artist-add-song form {
+    width: 80%;
+    margin-top: 5%;
+}
+
 #artist-add-album .show {
     display: block;
 }
 
-#artist-add-album form {
-    width: 50%;
+#done-modal .modal-content {
+    background-color: forestgreen;
 }
 
+#done-modal .modal-header {
+    border: none;
+}
 
+#done-modal .modal-body {
+    font-size: 130%;
+    padding-left: 8%;
+}
+
+#done-modal .modal-footer {
+    border: none;
+}
+
+#delete-modal .modal-content {
+    background-color: #dc3545;
+}
+
+#delete-modal .modal-header {
+    border: none;
+}
+
+#delete-modal .modal-body {
+    font-size: 130%;
+    padding-left: 8%;
+    color: white;
+}
+
+#delete-modal .modal-footer {
+    border: none;
+}
 
