@@ -10,12 +10,14 @@ import reducer from "./Store/reducer";
 import {loadState , saveState } from "./Store/localStorage";
 import Premium from './Containers/Premium'
 import 'tachyons'
-import WebFrame from './Containers/WebFrame'
+import {WebFrame} from './Containers/WebFrame'
+import FacebookLogin from './Components/Login/FacebookLogin'
+
 const persistedState = loadState();
 const store = createStore(reducer, persistedState );
 store.subscribe( () =>{
   saveState(store.getState());
 });
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><FacebookLogin /></Provider>, document.getElementById('root'));
 serviceWorker.unregister();

@@ -9,21 +9,19 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
-<<<<<<< HEAD
-    "react-bootstrap": "^1.0.0-beta.17",
-    "react-h5-audio-player": "^3.0.2",
-    "tachyons": "^4.11.1",
-=======
     "chart.js": "^2.9.3",
->>>>>>> a37860bdd327834461d97508ec454e8b26bfe1ef
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.13.1",
+    "react-facebook-login": "^4.1.1",
+    "react-h5-audio-player": "^3.0.2",
     "react-js-snackbar": "^1.0.4",
     "react-loader-spinner": "^3.1.14",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "tachyons": "^4.11.1"
   },
   "scripts": {
     "start": "react-scripts start",

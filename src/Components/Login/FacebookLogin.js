@@ -1,0 +1,24 @@
+import React from 'react';
+import FacebookLogin from 'react-facebook-login';
+
+const responseFacebook = (response) => {
+    console.log('login result',response);
+}
+
+const componentclicked = (data)=>{
+    console.warn(data)
+}
+
+const Login = ()=>{
+
+    return(
+        <FacebookLogin
+            appId="284237482611651"
+            autoLoad={true}
+            fields="name,email,picture"
+            onClick={componentclicked}
+            callback={responseFacebook} />
+    )
+}
+
+export default Login

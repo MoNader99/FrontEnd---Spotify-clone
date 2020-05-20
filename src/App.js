@@ -19,14 +19,13 @@ import NotificationsSettings from './Components/Profile/NotificationSettings.js'
 import ChangePasswrod from './Components/Profile/ChangePassword';
 import Home from './Components/Webplayer/Home/Home'
 import YourLibrary from './Components/Webplayer/YourLibrary/YourLibrary'
-<<<<<<< HEAD
 import Premium from './Containers/Premium'
-=======
 import Audience from './Components/Artist/ArtistProfile/Audience'
 import ArtistsLibrary from './Components/Webplayer/YourLibrary/ArtistsLibrary'
 import AlbumsLibrary from './Components/Webplayer/YourLibrary/AlbumsLibrary'
 import AddAlbum from './Components/Artist/ArtistProfile/AddAlbum'
->>>>>>> a37860bdd327834461d97508ec454e8b26bfe1ef
+import {WebFrame} from './Containers/WebFrame'
+
 function App() {
   return (
     <div className="App">
@@ -51,6 +50,11 @@ function App() {
           <Route  exact path="/webplayer/album/" component={AlbumPage}/>
           <Route  exact path="/webplayer/likedsongs/" component={LikedSongs}/>
           <Route exact path="/premium/" component={Premium}></Route>
+          {/* <Route exact path="/frame/" component={WebFrame}></Route> */}
+          <Route exact path='/frame/'>
+              <WebFrame></WebFrame>
+          </Route>
+
           {/* TODO: add routes to the other pages */}
         </Switch>
       </Router>

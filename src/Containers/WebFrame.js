@@ -82,11 +82,11 @@ export class WebFrame extends Component{
     
     render(){
     
-            if (this.state.loggedIn === false){
-                return(
-                    <Redirect to='../Login'></Redirect>
-                )
-            }
+            // if (this.state.loggedIn === false){
+            //     return(
+            //         <Redirect to='../Login'></Redirect>
+            //     )
+            // }
         
         return (
             
@@ -95,9 +95,9 @@ export class WebFrame extends Component{
                 <div className=''>
                     <SideBar ></SideBar>
                     <WebPlayer></WebPlayer>
-                    {/* <Router> */}
+                    <Router>
                             <div className='web-frame '>    {/*The Content of the page is placed here,,routing also will be here*/ }
-                            <WebNav></WebNav>
+                            {/* <WebNav></WebNav> */}
                             <Switch>
                                 {/* <Route  path='/WebFrame/Home'>
                                     <WebPlayerHome></WebPlayerHome>
@@ -133,7 +133,7 @@ export class WebFrame extends Component{
                             </Switch>
 
                             </div>
-                    {/* </Router> */}
+                    </Router>
                             
                 </div>
             </div>
