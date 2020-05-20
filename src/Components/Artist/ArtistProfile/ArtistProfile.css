@@ -1,0 +1,130 @@
+.background-color {
+    background-image: linear-gradient(#212c39, #121e3d 50%, #000); 
+    background-repeat: no-repeat;
+}
+
+#artist-audience .statistics-section {
+    background: #F8F8F8;
+    padding:0;
+}
+
+#artist-add-album .album-section {
+    background: #121212;
+    padding:0;
+}
+
+#artist-audience .statistics-div, #artist-add-album .album-div{
+    padding: 40px;
+}
+
+#artist-audience .page-header, #artist-add-album .page-header {
+      font-size: 26px;
+      margin: .5em 0;
+      color: #1DB954;
+      font-weight: 400;
+      padding: 15px;
+      border-bottom: 1px solid#EFEFEF;
+}
+
+#artist-audience .statistics-info {
+    padding:40px;
+    background-color: #FFF;
+}
+
+#artist-add-album .album-info { 
+    background-color: #121212;
+}
+
+#artist-audience select {
+    float: right;
+    margin-bottom: 50px;
+    background-color: rgba(29, 185, 84, 0.5);
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    width: 7rem;
+    height: 2rem;
+}
+
+#artist-audience .labels {
+    color: #919496;
+    margin: 8px 0;
+    font-size: 21px;
+}
+
+#artist-add-album .card {
+    padding: 20px;
+    text-align: center;
+    width: 150px;
+    height: 250px;
+    background-color: rgb(40, 40, 40);
+    border-radius: 10px;
+    margin: 10px;
+}
+#artist-add-album .card-group{
+    padding: 20px;
+}
+#artist-add-album .card-body {
+   padding: 10px 0;
+   text-align: left;
+}
+#artist-add-album .rounded-circle{
+    height: 110px;
+    width: 110px;
+}
+#artist-add-album .card-title {
+    color:white;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+}
+#artist-add-album .card-text {
+    font-size: 12px;
+    line-height: 18px;
+    height: 70px;
+    color: #b3b3b3;
+    padding: 0;
+    margin-top: 4px;
+    overflow: hidden;
+}
+
+#artist-add-album .delete-btn {
+    position: absolute;
+    outline: none;
+    display: none;
+    text-align: center;
+    top: 2px;
+    right: 2px;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+}
+
+#artist-add-album .card:hover .delete-btn{
+    display: block;
+}
+
+#artist-add-album .delete-btn:hover {
+    transform: scale(1.1);
+}
+
+#artist-add-album .add-album-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#artist-add-album .add-new-album {
+    display: none;
+}
+
+#artist-add-album .show {
+    display: block;
+}
+
+#artist-add-album form {
+    width: 50%;
+}
+
+
+

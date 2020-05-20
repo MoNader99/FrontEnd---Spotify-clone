@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import HomeNavBar from './HomeNavBar'
-//import SideBar from '../../SideBar'
+//import {SideBar} from '../../WebFrame/SideBar'
 //import '../Bodies.css';
 import './WebplayerHome.css'
 import axios from 'axios'
@@ -89,7 +89,7 @@ class Home extends Component {
             event.preventDefault() })
 
         //browse catagories
-        axios.get(this.context.baseURL+"/browse/categories", {
+        axios.get("http://spotify.mocklab.io"+"/browse/categories", {
             headers: {
                 'authorization': "Bearer "+localStorage.getItem("token"),
             },
@@ -108,7 +108,7 @@ class Home extends Component {
                         )
                     })
                     console.log(this.state.catagories)
-                    axios.get(this.context.baseURL+"/browse/categories/"+this.state.catagories[0].id+"/playlists", {
+                    axios.get("http://spotify.mocklab.io"+"/browse/categories/"+this.state.catagories[0].id+"/playlists", {
                         headers: {
                             'authorization': "Bearer "+localStorage.getItem("token"),
                             //category id as path??
@@ -138,7 +138,7 @@ class Home extends Component {
                             localStorage.removeItem("userID");
                         }
                     }) 
-                    axios.get(this.context.baseURL+"/browse/categories/"+this.state.catagories[1].id+"/playlists", {
+                    axios.get("http://spotify.mocklab.io"+"/browse/categories/"+this.state.catagories[1].id+"/playlists", {
                         headers: {
                             'authorization': "Bearer "+localStorage.getItem("token"),
                             //category id as path??
@@ -178,7 +178,7 @@ class Home extends Component {
             })
 
          //artists   
-         axios.get(this.context.baseURL+"/artists", {
+         axios.get("http://spotify.mocklab.io"+"/artists", {
             headers: {
                 'authorization': "Bearer "+localStorage.getItem("token"),
             }
@@ -207,7 +207,7 @@ class Home extends Component {
             })
 
         //recently played
-        axios.get(this.context.baseURL+"/me/player/recentlyPlayed", {
+        axios.get("http://spotify.mocklab.io"+"/me/player/recentlyPlayed", {
             headers: {
                 'authorization': "Bearer "+localStorage.getItem("token"),
             },
@@ -237,7 +237,7 @@ class Home extends Component {
             })
 
         //popular albums
-        axios.get(this.context.baseURL+"/albums/top",{
+        axios.get("http://spotify.mocklab.io"+"/albums/top",{
             headers: {
                 'authorization': "Bearer "+localStorage.getItem("token"),
             },
@@ -268,7 +268,7 @@ class Home extends Component {
             }) 
 
         //most recent albums
-        axios.get(this.context.baseURL+"/albums/top",{
+        axios.get("http://spotify.mocklab.io"+"/albums/top",{
             headers: {
                 'authorization': "Bearer "+localStorage.getItem("token"),
             },
@@ -299,7 +299,7 @@ class Home extends Component {
             }) 
 
         //popular playlists
-        axios.get(this.context.baseURL+"/playlists/top", {
+        axios.get("http://spotify.mocklab.io"+"/playlists/top", {
             headers: {
                 'authorization': "Bearer "+localStorage.getItem("token"),
             },
@@ -331,7 +331,7 @@ class Home extends Component {
             })
 
         //most recent playlists
-        axios.get(this.context.baseURL+"/playlists/top", {
+        axios.get("http://spotify.mocklab.io"+"/playlists/top", {
             headers: {
                 'authorization': "Bearer "+localStorage.getItem("token"),
             },
@@ -489,12 +489,6 @@ class Home extends Component {
                 <div className="card-group">
                     {this.state.mostRecentPlayLists.map( playList => (
                         <div>
-                            <Link to={{
-                                    pathname:"/playlist-webplayer",
-                                    state:{
-                                    myId :playList.id
-                                    }
-                                }}>
                                 <div className="card" id={playList.id}>
                              {/*   <MenuProvider id={playList.id} component="span" >
                             <Menu id={playList.id} theme={theme.dark} animation={animation.fade}>
@@ -513,7 +507,6 @@ class Home extends Component {
                                         </div>
                                     </div>{/**</MenuProvider>  */} 
                                 </div>
-                                </Link>
                         </div>
                     )
                     )}
@@ -524,12 +517,6 @@ class Home extends Component {
                 <div className="card-group">
                     {this.state.popularPlayLists.map( playList => (
                         <div>
-                            <Link to={{
-                                    pathname:"/playlist-webplayer",
-                                    state:{
-                                    myId :playList.id
-                                    }
-                                }}>
                             <div className="card" id={playList.id}>
                                
                                {/* <MenuProvider id={playList.id} >
@@ -541,13 +528,12 @@ class Home extends Component {
                                     <div className="card-body">
                                         <h5 className="card-title">{playList.title}</h5>
                                         <p className="card-text">{playList.description}</p>
-                                        <div id={playList.id}>
+                                        <div id={playList._id}>
                                             <button id={playList.id} className="btn btn-primary play-btn active-play" onClick={()=> this.togglePlayPause(playList.id)}><i className="fa fa-play"></i></button>
                                             <button id={playList.id} className="btn btn-primary pause-btn" onClick={()=> this.togglePlayPause(playList.id)}><i className="fa fa-pause"></i></button>
                                         </div>
                                     </div> 
                                 </div>
-                                </Link>
                         </div>
                     )
                     )}
@@ -558,12 +544,6 @@ class Home extends Component {
                 <div className="card-group">
                     {this.state.mostRecentAlbums.map( album => (
                         <div>
-                            <Link to={{
-                                    pathname:"/webplayer/album",
-                                    state:{
-                                    myId :album.id
-                                    }
-                                }}>
                             <div className="card" id={album.id}>
                                {/**  <MenuProvider id={album.id} component="span" >
                             <Menu id={album.id} theme={theme.dark} animation={animation.fade}>
@@ -581,7 +561,6 @@ class Home extends Component {
                                         </div>    
                                     </div> 
                                 </div>
-                                </Link>
                         </div>
                     )
                     )}  
@@ -592,12 +571,6 @@ class Home extends Component {
                 <div className="card-group">
                     {this.state.popularAlbums.map( album => (
                         <div>
-                            <Link to={{
-                                    pathname:"/webplayer/album",
-                                    state:{
-                                    myId :album.id
-                                    }
-                                }}>
                                 <div className="card" id={album.id}>
                                 {/*<MenuProvider id={album.id} component="span" >
                                     <Menu id={album.id} theme={theme.dark} animation={animation.fade}>
@@ -614,7 +587,6 @@ class Home extends Component {
                                         </div>    
                                     </div>  
                                 </div>
-                            </Link>
                         </div>
                     )
                     )}
@@ -629,12 +601,6 @@ class Home extends Component {
                 <div className="card-group">
                     {this.state.firstCategory.map( playlist => (
                         <div>
-                            <Link to={{
-                                    pathname:"/playlist-webplayer",
-                                    state:{
-                                    myId :playlist.id
-                                    }
-                                }}>
                                 <div className="card" id={playlist.id}>
                              {/**    <MenuProvider id={playlist.id} component="span" >
                                     <Menu id={playlist.id} theme={theme.dark} animation={animation.fade}>
@@ -651,7 +617,6 @@ class Home extends Component {
                                         </div>    
                                     </div> 
                                 </div>
-                            </Link>
                         </div>
                     )
                     )}
@@ -666,12 +631,6 @@ class Home extends Component {
                 <div className="card-group">
                     {this.state.secondCategory.map( playlist => (
                         <div>
-                            <Link to={{
-                                    pathname:"/playlist-webplayer",
-                                    state:{
-                                    myId :playlist.id
-                                    }
-                                }}>
                                 <div className="card" id={playlist.id}>
                             {/**    <MenuProvider id={playlist.id} component="span" >
                                     <Menu id={playlist.id} theme={theme.dark} animation={animation.fade}>
@@ -688,7 +647,6 @@ class Home extends Component {
                                         </div>    
                                     </div> 
                                 </div>
-                            </Link>
                         </div>
                     )
                     )}
@@ -699,12 +657,6 @@ class Home extends Component {
                 <div className="card-group">
                     {this.state.artists.map( artist => (
                         <div>
-                            <Link to={{
-                                    pathname:"/artist-webplayer",
-                                    state:{
-                                       myId :artist.id
-                                    }
-                                }}>
                                 <div className="card" id={artist.id}>
                             {/**       <MenuProvider id={artist.id} component="span" >
                                 <Menu id={artist.id} theme={theme.dark} animation={animation.fade}>
@@ -722,7 +674,6 @@ class Home extends Component {
                                             </div>
                                         </div>
                                 </div>
-                            </Link>
                         </div>
                     )
                     )}

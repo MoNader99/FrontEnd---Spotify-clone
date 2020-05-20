@@ -19,7 +19,14 @@ import NotificationsSettings from './Components/Profile/NotificationSettings.js'
 import ChangePasswrod from './Components/Profile/ChangePassword';
 import Home from './Components/Webplayer/Home/Home'
 import YourLibrary from './Components/Webplayer/YourLibrary/YourLibrary'
+<<<<<<< HEAD
 import Premium from './Containers/Premium'
+=======
+import Audience from './Components/Artist/ArtistProfile/Audience'
+import ArtistsLibrary from './Components/Webplayer/YourLibrary/ArtistsLibrary'
+import AlbumsLibrary from './Components/Webplayer/YourLibrary/AlbumsLibrary'
+import AddAlbum from './Components/Artist/ArtistProfile/AddAlbum'
+>>>>>>> a37860bdd327834461d97508ec454e8b26bfe1ef
 function App() {
   return (
     <div className="App">
@@ -32,6 +39,10 @@ function App() {
           <Route path="/change-password" component={ChangePasswrod}/>
           <Route path="/webplayer" exact component={Home} />
           <Route path="/webplayer/yourlibrary" exact component={YourLibrary} />
+          <Route exact path="/webplayer/yourlibrary/artists" exact component={ArtistsLibrary} />
+          <Route exact path="/webplayer/yourlibrary/albums" exact component={AlbumsLibrary} />
+          <Route  exact path="/artist/audience" component={Audience}/>
+          <Route  exact path="/artist/addalbum" component={AddAlbum}/>
           <Route exact path="/" component={welcomePage}/>
           <Route  exact path="/signup/" component={SignUp}/>
           <Route  exact path="/login/" component={Login}/>
