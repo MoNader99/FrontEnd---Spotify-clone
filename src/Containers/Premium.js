@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import Header from '../Components/Header'
+import Header from '../Components/Premium/Header'
 import './Premium.css'
 //import Card from './PrCard'
-import CardList from '../Components/PrCardList'
-import GoPremium from '../Components/GoPremium'
-import Footer from '../Components/Footer'
+import CardList from '../Components//Premium/PrCardList'
+import GoPremium from '../Components//Premium/GoPremium'
+import Footer from '../Components//Premium/Footer'
 
 /**
  * Class component for showing premium features of the user 

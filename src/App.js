@@ -19,7 +19,7 @@ import NotificationsSettings from './Components/Profile/NotificationSettings.js'
 import ChangePasswrod from './Components/Profile/ChangePassword';
 import Home from './Components/Webplayer/Home/Home'
 import YourLibrary from './Components/Webplayer/YourLibrary/YourLibrary'
-
+import Premium from './Containers/Premium'
 function App() {
   return (
     <div className="App">
@@ -39,6 +39,7 @@ function App() {
           <Route  exact path="/webplayer/playlist/" component={PlaylistPage}/>
           <Route  exact path="/webplayer/album/" component={AlbumPage}/>
           <Route  exact path="/webplayer/likedsongs/" component={LikedSongs}/>
+          <Route exact path="/premium/" component={Premium}></Route>
           {/* TODO: add routes to the other pages */}
         </Switch>
       </Router>
