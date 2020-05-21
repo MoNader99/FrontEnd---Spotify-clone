@@ -13,8 +13,6 @@ import EditPlaylist from './EditPlaylist';
 
 class PlaylistPage extends Component
 {
-  
-  
   state= 
   { 
     

@@ -4,6 +4,7 @@ import ReactSnackBar from "react-js-snackbar";
 import CardMedia from '../Media/CardMedia';
 import {connect} from 'react-redux';
 import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
+import * as actionTypes from "../../Store/actions";
   
 class LikedSongs extends Component
 {
@@ -74,7 +75,9 @@ show = e => {
   return; 
   }
 };
-
+stream=(song)=>{
+  this.props.SELECT_SONG(song);
+}
 
   render(){ 
   return(
@@ -111,7 +114,7 @@ show = e => {
           
             
             this.state.SongInfo.map((song,index)=>(
-             <div key={index} className="songs">
+             <div key={index} onClick={() =>this.stream(song)} className="songs">
              <div className="row">
                <div className="col-xl-1 col-md-1 col-1 col-2">
                 <div className="music-sign mt-2 mx-4 "> </div>
@@ -156,5 +159,11 @@ const mapStateToProps = state =>{
     userToken: state.userToken,
   };
 };
+const mapDispatchToProps = dispatch => {
 
-export default connect(mapStateToProps) (LikedSongs);
+  return {
+
+    SELECT_SONG : (song) => dispatch ({type: actionTypes.SELECT_SONG , value: song})
+  };
+};
+export default connect(mapStateToProps,mapDispatchToProps) (LikedSongs);

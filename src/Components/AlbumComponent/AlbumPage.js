@@ -1,13 +1,13 @@
 import React ,{ Component} from 'react';
 import './AlbumPage.css';
-import {Link} from "react-router-dom";
-import ReactDOM from "react-dom"
 import CardMedia from '../Media/CardMedia';
 import ReactSnackBar from "react-js-snackbar";
 // import HomePageNavbar from '../HomePage/HomePageNavbar';
 // import {BASEURL} from "../../Constants/baseURL";
 import {connect} from 'react-redux';
 import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
+import * as actionTypes from "../../Store/actions";
+import { PropTypes } from 'react'
 
 /** Class AlbumPage 
  * @category AlbumPage
@@ -15,9 +15,7 @@ import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
  */
 export class AlbumPage extends Component
 {
-  constructor(props){
-    super(props);
-  }
+  
   state= 
 { 
   /**Array of Song Info
@@ -236,7 +234,13 @@ else if (check=="SAVE"){
   }, 2000);
   return;  
 }
-};
+}
+stream=(song)=>{
+  this.props.SELECT_SONG(song)
+  console.log(song)
+}
+
+
 
   render(){
   return(
@@ -278,7 +282,7 @@ else if (check=="SAVE"){
             <tbody>
                                             {/* display songs */}
           {this.state.SongInfo.map((song,index)=>(
-            <div key={index} className="songs">
+            <div key={index} onClick={() =>this.stream(song)} className="songs">
             <div className="row">
               <div className="col-xl-1 col-md-1 col-1 col-2">
                <div className="music-sign mt-2 mx-4 "> </div>
@@ -336,5 +340,9 @@ const mapStateToProps = state =>{
     AlbumID: state.selectedAlbumID,
   };
 };
-
-export default connect(mapStateToProps) (AlbumPage);
+const mapDispatchToProps = dispatch =>{
+  return{
+    SELECT_SONG:(song)=>dispatch  ({type: actionTypes.SELECT_SONG , value: song})
+  }
+}
+export default connect(mapDispatchToProps,mapStateToProps) (AlbumPage);
