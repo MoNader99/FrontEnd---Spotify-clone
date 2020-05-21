@@ -100,6 +100,10 @@ else if (check=="REMOVE"){
 }
 };
 
+stream=(song)=>{
+  this.props.SELECT_SONG(song);
+}
+
   render()
   {
   return(
@@ -181,8 +185,8 @@ else if (check=="REMOVE"){
           : 
           
           this.state.SongInfo.map((song,index)=>(
-          <div key={index} className="songs">
-            <div className="row">
+          <div onClick={() =>this.stream(song)} key={index} className="songs">
+            <div  className="row">
               <div className="col-xl-1 col-md-1 col-1 col-2">
                <div className="music-sign mt-2 mx-4 "> </div>
               </div>
@@ -240,7 +244,7 @@ const mapDispatchToProps = dispatch => {
 
   return {
 
-    onTrackClicked : (songID) => dispatch ({type: actionTypes.SELECT_SONG , value: songID})
+    SELECT_SONG : (song) => dispatch ({type: actionTypes.SELECT_SONG , value: song})
   };
 };
 
