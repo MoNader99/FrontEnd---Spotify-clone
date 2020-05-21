@@ -4,12 +4,15 @@ const initialState = {
 
   selectedArtistID: null,
   selectedAlbumID: null,
-  selectedSongID: null,
   selectedPlaylistID: null,
   selectedProfileID: null,
   userID: null,
   userToken: null,
+
+  selectedSong: null,
   loggenIn: false,
+  userImg:null,
+  username:null,
 }
 
 const reducer = (state = initialState, action) => {
@@ -33,8 +36,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SELECT_SONG:
       return {
         ...state,
-        selectedSongID: action.value
-
+        selectedSong: action.value
       };
       break;
 
@@ -65,11 +67,11 @@ const reducer = (state = initialState, action) => {
       break;
       
     case actionTypes.ON_SIGNIN:
-      console.log(action.payload.id);
+      console.log(action.payload)
       return {
         ...state,
-        userID: action.payload.id,
-        userToken: action.payload.token,
+        userImg: action.payload.imgUrl,
+        username: action.payload.Username,
         loggenIn: true
       };
       break;

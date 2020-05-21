@@ -8,9 +8,10 @@ import {Provider} from "react-redux";
 import {createStore} from "redux";
 import reducer from "./Store/reducer";
 import {loadState , saveState } from "./Store/localStorage";
+import 'tachyons'
+
 
 const persistedState = loadState();
-
 const store = createStore(reducer, persistedState );
 store.subscribe( () =>{
   saveState(store.getState());

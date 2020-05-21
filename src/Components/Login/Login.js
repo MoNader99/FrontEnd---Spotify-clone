@@ -1,5 +1,7 @@
 import React ,{ Component} from 'react';
 import './Login.css'
+import {connect} from "react-redux";
+import * as actionTypes from "../../Store/actions";
 
 
 class Login extends Component{
@@ -11,9 +13,10 @@ class Login extends Component{
         PasswordText:"",
         emailError: "",
         passwordError: "",
-        checkEmail:"hodahossam257@gmail.com",
-        checkPassword:"123456",
+        checkEmail:[],
+        checkPassword:[],
         checkedCorrect: false,
+        users:[]
     }
     
 
@@ -49,18 +52,47 @@ class Login extends Component{
 
     handleLogIn = event => 
     {
-        //fetch
-        // catch error -> 401
-        if(this.state.PasswordText==this.state.checkPassword && this.state.EmailText==this.state.checkEmail) 
-        {
-            window.location.replace("/");
+
+        if(this.state.checkPassword.includes(this.state.PasswordText) && this.state.checkEmail.includes(this.state.EmailText)) 
+        { 
+            var id=this.state.checkEmail.indexOf(this.state.EmailText)
+            var user=this.state.users[id]
+            this.props.onSignIn(user.Username,user.ImgUrl);
+            this.setState({checkedCorrect:false})
+            window.location.replace("/account-overview");
         }
         else
         {
            this.setState({checkedCorrect:true})
         }
+      
+        
     }
 
+    componentDidMount(){
+        
+        var url = "http://spotify-clone.mocklab.io/get-users-login"; 
+        const requestOptions = {
+            method: 'GET',
+          };
+          fetch(url,requestOptions)
+            .then((response) => { return response.json()})
+            .then((data) => {
+              this.setState({ 
+                users:data.users,
+              });
+          
+              for (var x=0;x<this.state.users.length;x++){
+                  this.state.checkEmail.push(this.state.users[x].Email)
+                  this.state.checkPassword.push(this.state.users[x].Password)
+              }
+
+            })
+            
+            .catch((error)=>{console.log(error);
+          
+            })
+    }
    
     render(){
     return(
@@ -107,4 +139,10 @@ class Login extends Component{
     )
 }
 }
- export default Login
+const mapDispatchToProps = dispatch => {
+    return {
+      onSignIn : (username,userImg) => dispatch ({type: actionTypes.ON_SIGNIN, payload: {imgUrl:userImg, Username:username} }),
+    };
+  };
+  
+  export default connect(null, mapDispatchToProps)(Login);

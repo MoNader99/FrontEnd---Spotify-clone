@@ -1,152 +1,58 @@
 import React, { Component } from 'react'
-import WebPlayer from '../Components/WebPlayer'
-import {SideBar} from '../Components/SideBar'
-import WebNav from '../Components/WebNav'
-import PlaylistInsidePage from './PlaylistInsidePage'
-import Albums from '../Containers/Albums'
-import AlbumInsidePage from '../Containers/AlbumInsidePage'
+import Player from '../Components/WebFrame/WebPlayerpage'
+import {SideBar} from '../../src/Components/WebFrame/SideBar'
+import ArtistsLibrary from '../../src/Components/Webplayer/YourLibrary/ArtistsLibrary'
+import AlbumsLibrary from '../../src/Components/Webplayer/YourLibrary/AlbumsLibrary'
+import Home from '../../src/Components/Webplayer/Home/Home'
+import YourLibrary from '../../src/Components/Webplayer/YourLibrary/YourLibrary'
+import PlaylistPage from '../../src/Components/PlaylistsComponent/PlaylistPage'
+import AlbumPage from '../../src/Components/AlbumComponent/AlbumPage';
+import LikedSongs from '../../src/Components/LikedSongs/LikedSongs';
+import Search from '../../src/Components/Search/Search';
+
+
+import WebNav from '../Components/WebFrame/WebNav'
 import './WebFrame.css'
-import SearchPage from './SearchPage'
-import WebPlayerHome from './WebPlayerHome'
-import WebHomeInside from './WebHomeInside'
-import FirstWebHome from './FirstWebHome'
-import CreatePlaylist from '../Components/CreatePlaylist'
-import PlayList from '../Containers/Playlist'
-import LikedSongs from '../Components/LikedSongs'
-import {BrowserRouter as Router , Switch , Route , Link,Redirect} from 'react-router-dom'
-import Pages from './SearchPages'
-import Playlist from '../Containers/Playlist'
+import {BrowserRouter as Router,
+    Switch, 
+    Route, 
+   } from "react-router-dom";
+
 import {connect} from 'react-redux'
-import {GetPage} from '../Redux/Pages/PagesAction'
-import Album from '../Containers/Albums'
 
-/**
- * 
- * @param {object} state - holds the state of the Application
- */
 
-const MapStateToProps = (state) =>{
-    return {
-        LikedSong: state.like.song,
-        LikedAlbum: state.like.album,
-        LikedPlaylist: state.like.playlist
-    }
-}
-/**
- * 
- * @param {function} dispatch -to dispatch any action by redux
- */
-const MapDispatchToProps = (dispatch) =>{
-    return{
-        UpdateCurrPage: (page)=> dispatch(GetPage(page))
-    }
-}
-/**
- * class holds the sidebar , navbar, webplayer & the content of page in it 
- */
-
-export class WebFrame extends Component{
-    /**
-     * checks if the user is logged-in or skipped the login page 
-     * 
-     */
-    constructor(props){
-        super(props);
-        this.UpdateCurrentPage= this.UpdateCurrentPage.bind(this)
-        let loggedIn=true
-        let token=sessionStorage.getItem("token")
-        console.log("the token is  ",token)
-        if (token == null){
-            loggedIn=false
-        }
-
-        this.state ={
-            ShowPopUp: false,
-            loggedIn
-        }
-    }
-    /**
-     * function called to get the page that the user is opening now
-     * 
-     * it will get the name of the page as a string parameter
-     */
-    UpdateCurrentPage(){
-        this.props.UpdateCurrPage('library')
-    }
-    
-    /**
-     * either redirect the user to the login page if he is not authorized.
-     * 
-     * or show the web frame content
-     */
-    
+export class WebFrame extends Component{    
     render(){
-    
-            if (this.state.loggedIn === false){
-                return(
-                    <Redirect to='../Login'></Redirect>
-                )
-            }
-        
         return (
-            
 
-            <div>
-                <div className=''>
-                    <SideBar ></SideBar>
-                    <WebPlayer></WebPlayer>
-                    {/* <Router> */}
-                            <div className='web-frame '>    {/*The Content of the page is placed here,,routing also will be here*/ }
-                            <WebNav></WebNav>
+                  <div className ="web-player-class">
+                  <div className="row mx-0 no-gutters" >
+                  <Player></Player>
+                    
+                  <SideBar ></SideBar>
+          
+                    <div className="content-web-player">
+          
                             <Switch>
-                                <Route  path='/WebFrame/Home'>
-                                    <WebPlayerHome></WebPlayerHome>
-                                </Route>
-                                <Route  path='/WebFrame/WebHomeInside_:id' component={WebHomeInside}>
-                                </Route>
-                                <Route  path='/WebFrame/LikedSongs'>
-                                    <LikedSongs></LikedSongs>
-                                </Route>
-                                <Route path='/WebFrame/Page_:id' component ={Pages}>
-                                </Route>
-                                {/* <Route  path='/WebFrame/Pages'>
-                                    <Pages></Pages>
-                                </Route> */}
-                                <Route  path='/WebFrame/Search:id'>
-                                    <SearchPage></SearchPage>
-                                </Route>
-                                <Route  path='/WebFrame/Library:id' >
-                                    {window.location.href=='http://localhost:3000/WebFrame/Library2'? this.UpdateCurrentPage():<div></div>}
-                                    <Playlist></Playlist>
-                                </Route>
-                                <Route  path='/WebFrame/PlaylistInsidePage_:id' component={PlaylistInsidePage}>
-                                    {/* <PlaylistInsidePage></PlaylistInsidePage> */}
-                                </Route>
-                                <Route  path='/WebFrame/AlbumInsidePage_:id' component={AlbumInsidePage} >
-                                    {/* <AlbumInsidePage></AlbumInsidePage> */}
-                                </Route>
-                                <Route  path='/WebFrame/FirstWebHome'>
-                                <FirstWebHome></FirstWebHome>
-                                </Route>
-                                <Route  path='/WebFrame/Album'>
-                                <Album></Album>
-                                </Route>
-                                <Route  path='/WebFrame/'>
-                                <WebPlayerHome></WebPlayerHome>
-                                </Route>
-                                
+                                <Route  exact path="/webplayer/search/" component={Search}/>
+                                <Route  exact path="/webplayer/playlist/" component={PlaylistPage}/>
+                                <Route  exact path="/webplayer/album/" component={AlbumPage}/>
+                                <Route  exact path="/webplayer/likedsongs/" component={LikedSongs}/>
+                                <Route path="/webplayer/home"  component={Home} />
+                                <Route path="/webplayer/yourlibrary"  component={YourLibrary} />
+                                <Route exact path="/webplayer/yourlibrary/artists"  component={ArtistsLibrary} />
+                                <Route exact path="/webplayer/yourlibrary/albums"  component={AlbumsLibrary} />  
                             </Switch>
-
-                            </div>
-                    {/* </Router> */}
-                            
+                              </div>
+          
+          
+                  </div>
+          
                 </div>
-            </div>
         )
-
     }
 }
     
 
 
-connect(MapStateToProps,MapDispatchToProps)(WebFrame)
+// connect(MapStateToProps,MapDispatchToProps)(WebFrame)

@@ -13,13 +13,12 @@ import EditPlaylist from './EditPlaylist';
 
 class PlaylistPage extends Component
 {
-  
-  
   state= 
   { 
     
       playlistImage: "https://i.ibb.co/Q89hfcW/single-bar-note.jpg",
-      songsNumber: "",  
+      songsNumber: 0,
+      SongInfo:[],  
       ShowAdd: false,
       ShowingAdd: false,
       ShowRemove: false,
@@ -30,6 +29,26 @@ class PlaylistPage extends Component
       playlistTracks:[]
   }
   
+  componentDidMount(){
+  
+    var url = "http://spotify-clone.mocklab.io/get-tracks"; 
+  
+    const requestOptions = {
+      method: 'GET',
+    };
+    fetch(url,requestOptions)
+      .then((response) => { return response.json()})
+      .then((data) => {
+        // console.log(data)
+        this.setState({ 
+          SongInfo:data.tracks,
+          songsNumber:data.tracks.length
+        });
+      })
+      .catch((error)=>{console.log(error);
+  
+      })
+    }
     
   likeSong = e => {
      const {id} = e.target;
@@ -78,6 +97,10 @@ else if (check=="REMOVE"){
   return;  
 }
 };
+
+stream=(song)=>{
+  this.props.SELECT_SONG(song);
+}
 
   render()
   {
@@ -159,21 +182,21 @@ else if (check=="REMOVE"){
           
           : 
           
-          this.state.playlistTracks.map((song,index)=>(
-          <div key={index} className="songs">
-            <div className="row">
+          this.state.SongInfo.map((song,index)=>(
+          <div onClick={() =>this.stream(song)} key={index} className="songs">
+            <div  className="row">
               <div className="col-xl-1 col-md-1 col-1 col-2">
                <div className="music-sign mt-2 mx-4 "> </div>
               </div>
               <div className="col-xl-8 col-md-6 col-sm-6 col-6 mt-3 d-flex align-items-start">
               <ul className="list-unstyled">
-                  <li className="d-flex align-items-start">{song.trackName}</li>
-                  <li className="d-flex align-items-start song-info"><a href='/webplayer/artistprofile/'>{song.artistName}</a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>{song.albumName}</a></li>
+                  <li className="d-flex align-items-start">{song.SongName}</li>
+                  <li className="song-info"><a href='/webplayer/artistprofile/'>{song.Artist} </a> <span className="font-weight-bold"> . </span> <a href='/webplayer/album'> {song.AlbumName} </a></li>
               </ul>
               </div>
               <div className="col-xl-1 col-md-2 col-sm-2 col-2">
               <div className="dropdown d-flex align-items-center ">
-                <a className="song-menu Menu mt-4" href="/account" id="Dropdown" data-toggle="dropdown" onClick={this.props.onTrackClicked(song._id)}> ••• </a>
+                <a className="song-menu Menu mt-4" href="/account" id="Dropdown" data-toggle="dropdown" > ••• </a>
                   <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
                   <a className="dropdown-item drop-class" href="#" id="ADD" value="ShowAdd" onClick={(e) => {this.show(e); this.likeTrack();}}  >Add to your liked songs</a>
                   <a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist" href="#">Add to playlist</a>
@@ -183,7 +206,7 @@ else if (check=="REMOVE"){
                 </div>
               </div>
               <div className="col-xl-1 col-md-2 col-sm-2 col-2">
-                <div className="d-flex align-items-center duration mt-4">{song.duration/1000}</div>
+                <div className="d-flex align-items-center duration mt-4">{song.Duration}</div>
               </div>
             </div>
           </div>
@@ -219,7 +242,7 @@ const mapDispatchToProps = dispatch => {
 
   return {
 
-    onTrackClicked : (songID) => dispatch ({type: actionTypes.SELECT_SONG , value: songID})
+    SELECT_SONG : (song) => dispatch ({type: actionTypes.SELECT_SONG , value: song})
   };
 };
 

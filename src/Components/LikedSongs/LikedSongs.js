@@ -4,6 +4,7 @@ import ReactSnackBar from "react-js-snackbar";
 import CardMedia from '../Media/CardMedia';
 import {connect} from 'react-redux';
 import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
+import * as actionTypes from "../../Store/actions";
   
 class LikedSongs extends Component
 {
@@ -32,6 +33,27 @@ class LikedSongs extends Component
       TracksID: [],
       LikedTracks:[]
   }
+
+  componentDidMount(){
+  
+    var url = "http://spotify-clone.mocklab.io/get-tracks"; 
+  
+    const requestOptions = {
+      method: 'GET',
+    };
+    fetch(url,requestOptions)
+      .then((response) => { return response.json()})
+      .then((data) => {
+        // console.log(data)
+        this.setState({ 
+          SongInfo:data.tracks,
+          songsNumber:data.tracks.length
+        });
+      })
+      .catch((error)=>{console.log(error);
+  
+      })
+    }
   
   playButton = e => {
     const {id} = e.target;
@@ -53,7 +75,9 @@ show = e => {
   return; 
   }
 };
-
+stream=(song)=>{
+  this.props.SELECT_SONG(song);
+}
 
   render(){ 
   return(
@@ -66,7 +90,7 @@ show = e => {
               <CardMedia image={this.state.LikedSongsImage}/>
 					  <li> <h3> Liked Songs </h3> </li>
             <li> <a href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playLikedSongs}</a> </li>
-            <li > <div> {this.state.songsNumber}</div> </li>
+            <li > <div> {this.state.songsNumber} Songs</div> </li>
 					</ul>
           </div>
 
@@ -90,7 +114,7 @@ show = e => {
           
             
             this.state.SongInfo.map((song,index)=>(
-             <div key={index} className="songs">
+             <div key={index} onClick={() =>this.stream(song)} className="songs">
              <div className="row">
                <div className="col-xl-1 col-md-1 col-1 col-2">
                 <div className="music-sign mt-2 mx-4 "> </div>
@@ -98,7 +122,7 @@ show = e => {
                <div className="col-xl-8 col-md-6 col-sm-6 col-6 mt-3 d-flex align-items-start">
                <ul className="list-unstyled">
                    <li className="d-flex align-items-start">{song.SongName}</li>
-                   <li className="song-info"><a href='/webplayer/artistprofile/'>{song.Singer} </a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>{song.AlbumName} </a></li>
+                   <li className="song-info"><a href='/webplayer/artistprofile/'>{song.Artist} </a> <span className="font-weight-bold"> . </span> <a href='/webplayer/album'> {song.AlbumName} </a></li>
                 </ul>
                </div>
                <div className="col-xl-1 col-md-2 col-sm-2 col-2">
@@ -135,5 +159,11 @@ const mapStateToProps = state =>{
     userToken: state.userToken,
   };
 };
+const mapDispatchToProps = dispatch => {
 
-export default connect(mapStateToProps) (LikedSongs);
+  return {
+
+    SELECT_SONG : (song) => dispatch ({type: actionTypes.SELECT_SONG , value: song})
+  };
+};
+export default connect(mapStateToProps,mapDispatchToProps) (LikedSongs);
