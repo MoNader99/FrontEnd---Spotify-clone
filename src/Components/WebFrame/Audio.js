@@ -16,10 +16,13 @@ import {connect} from 'react-redux';
 class Audio_Player extends Component   
 { 
   render(){
-    console.log(this.props.songURL.songURL)
+    var song=""
+    if(this.props.songURL!=null){
+      song=this.props.songURL.songURL
+    }
   return(
   <AudioPlayer
-    src={this.props.songURL.songURL}
+    src={song}
     showJumpControls={false}
     layout='stacked-reverse'
     showSkipControls

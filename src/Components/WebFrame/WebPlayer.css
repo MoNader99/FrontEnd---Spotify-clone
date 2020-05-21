@@ -3,12 +3,12 @@
     display: grid;
     grid-template-columns: 25% 50%;
 }
-.audio{
+.Player-Footer .audio{
    margin-left: auto;
    margin-right: auto;
 
 }
-#band{
+.Player-Footer #band{
     color: #b3b3bb;
 }
 
@@ -16,13 +16,20 @@
     /* .Player-Footer{
         height: 0px;
     } */
-    .desc{
+    .Player-Footer .desc{
         font-size: 10px;
     }
 }
-.song-img{
-    margin-top: 2vh;
-    margin-left: 20px;
+.Player-Footer .song-img{
+    padding: 1vh;
     display: grid;
     grid-template-columns: 20% 80%;
+}
+.Player-Footer .img-style{
+    width: 80px;
+    height: 80px;
+}
+.Player-Footer .img-style .image{
+    width: 100%;
+    height: 100%;
 }
