@@ -2,12 +2,36 @@
     width: 100%;
     height: 100%;
     background-color: rgb(24, 24, 24);
-    min-height: 200vh;
+    /* min-height: 200vh; */
+    padding-bottom: 15px;
     font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+}
+
+.Search #profile .user-img{
+    width: 55px;
+    height: 45px;
+    margin: -20px 12px -20px 0;
+    border-radius: 50%; 
+    background-color:#1d1e1f;
+  }
+.Search #profile .drop-class:hover
+  {
+    color:#1ed760;
+    text-decoration: none;
+    background-color: white;
+  }
+.Search #profile .drop-class
+  {
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    font-weight: bold; 
 }
 .Search .component-content{
     padding: 16px;
-    margin-top: 35px;
+    margin-top: 10px;
 }
 .Search .previous{
     font-size: 30px;
@@ -125,7 +149,6 @@
   text-shadow: rgb(54, 54, 54);
 }
 
-
 .Search .top-geners {
     padding: 0 15px;
     padding-top: 5px;
@@ -138,6 +161,49 @@
     position: relative;
     overflow: hidden;
     display: block;
+}
+
+@media only screen and (max-width: 1768px){
+    .Search .top-geners {
+        width: 300px;
+    }
+}
+@media only screen and (max-width: 1464px){
+    .Search .top-geners {
+        width: 250px;
+    }
+}
+@media only screen and (max-width: 767px){
+    .Search .top-geners {
+        width: 325px;
+    }
+    .Search .Search-content {
+        margin-left: 10px;
+    }
+    .Search #profile{
+        margin-left: 50%;
+        margin-top: 10%;
+    }
+}
+@media only screen and (max-width: 847px){
+    .Search .previous{
+        display: none;
+    }
+    .Search .next{
+        display: none;
+    }
+}
+@media only screen and (max-width: 847px){
+    .Search .BrowseItem {
+        height: 150px;
+        width: 165px;
+    }
+    .Search .BrowseItem .head-style {
+        color: white;
+        font-size: 19px;
+        
+    }
+    
 }
 
 .Search .top-geners:hover {
@@ -230,7 +296,7 @@
 
   .Search .artist-card .artist-info-style{
       margin-top: 25px !important;
-    font-size: 16px; 
+    font-size: 13px; 
     font-weight: 700; 
     }
     .Search .artist-card a:hover{
@@ -267,3 +333,90 @@
     .Search .image-padding{
         padding: 0 18px;
     }
+
+    .Search .display-true{
+        padding-bottom: 70px;
+    }
+    .Search .display-false{
+        padding-bottom: 70px;
+        padding-left: 15px;
+    }
+
+    /* ////////////////// DropDpwn //////////////////////// */
+
+    .Search .dropdown  {
+    position: absolute;
+    display: block;
+    
+    color:white;
+    text-decoration: none;
+  }
+  .Search .dropdown a{
+    color:white;
+    text-decoration: none;
+  }
+  
+  /*//////////////// DropMenuSong ///////////////////*/
+  .Search  .songs:hover .Menu{
+    visibility: visible;
+  }
+  .Search .Menu{
+    cursor: pointer;
+    visibility: hidden;
+  }
+  
+  .Search .dropdown-menu.song-dropdown-content.show {
+    padding: 0;
+  }
+  
+  .Search .song-dropdown-content {
+    display: none;
+    background-color: #f1f1f1;
+    width: max-content;
+    box-shadow: none;
+    border-color: black;
+    z-index: 1;
+  }
+  
+  .Search .song-dropdown-content a {
+    color: #B3B3B3;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color:#282828;
+    
+  }
+  .Search .song-dropdown-content a:hover {
+    color:white;
+    background-color:rgb(53, 53, 53);
+    cursor:default;
+  }
+  
+  .Search .show {
+    display: block;
+  }
+
+  @media only screen and (max-width: 1200px){
+    .Search .top-result-card {
+        margin-bottom: 20px;
+        width: 500px;
+    }
+    .Search .songs {
+        color: white;
+        width: 550px;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .Search .top-result-card {
+        margin-bottom: 20px;
+        width: 350px;
+    }
+    .Search .songs {
+        color: white;
+        width: 325px;
+    }
+    .Search .artist-card {
+        min-width: 165px;
+    }
+}
