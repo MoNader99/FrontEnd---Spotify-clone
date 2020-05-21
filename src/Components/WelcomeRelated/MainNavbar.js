@@ -23,38 +23,7 @@ export class MainNavbar extends Component {
     }
   }
 
-  // /**Function that is called when the component renders
-  //  * @memberof MainNavbar
-  //  * @func componentDidMount
-  //  */
-  // componentDidMount(){
-
-  //   if(this.props.logging){
-
-  //     const url = BASEURL +"users/me";
-  //   const requestOptions = {
-  //     method: 'GET',
-  //     headers: { 'x-auth': this.props.userToken },
-  //   };
-  //     fetch(url,requestOptions)
-  //       .then((response) => {
-  //         return response.json();
-          
-  //       })
-  //       .then((data) => {
-  //         this.setState({image:data.imagePath})
-  //         console.log(data.imagePath);
-  //       })
-  //       .catch((error)=>{
-  //         console.log(error);
-
-  //       })
-
-
-
-
-  //   }
-  // }
+  
   
   render()
   {
@@ -88,8 +57,7 @@ export class MainNavbar extends Component {
                   <ul id="profile" className={this.props.logging == true ? 'list-unstyled' : ' d-none'}>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="/account" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {/* <img className="user-img" alt=".." src={ BASEURL + "Images/" +this.state.image} /> */}
-                        <img className="user-img" alt={this.state.image} />
+                        <img className="user-img" alt="." src={this.props.image} />
                          Profile
                         </a>
                     
@@ -127,7 +95,7 @@ export class MainNavbar extends Component {
 const mapStateToProps = state =>{
   return{
     logging: state.loggenIn,
-    userToken: state.userToken
+    image: state.userImg
 
   };
 };
