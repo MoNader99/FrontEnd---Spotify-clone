@@ -1,6 +1,5 @@
 .Player-Footer{
     background-color: #282828;
-    height: 15vh;
     display: grid;
     grid-template-columns: 25% 50%;
 }
