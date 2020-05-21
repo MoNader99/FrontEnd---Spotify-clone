@@ -8,10 +8,8 @@ import {Provider} from "react-redux";
 import {createStore} from "redux";
 import reducer from "./Store/reducer";
 import {loadState , saveState } from "./Store/localStorage";
-import Premium from './Containers/Premium'
 import 'tachyons'
-import {WebFrame} from './Containers/WebFrame'
-import FacebookLogin from './Components/Login/FacebookLogin'
+
 
 const persistedState = loadState();
 const store = createStore(reducer, persistedState );
