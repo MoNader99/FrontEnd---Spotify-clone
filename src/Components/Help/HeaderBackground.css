@@ -1,0 +1,64 @@
+
+.help-class{
+        color: white;
+        overflow: hidden;
+    }
+    
+    .help-header{
+    
+        background:  url(https://support.scdn.co/static/img/fw/search-mobile.png) top no-repeat #1c2963;
+        padding-top: 8%;
+       
+        
+    }
+    #search{
+
+        display: block;
+        margin: 0 auto;
+        padding-left: 15px;
+        height: 50px;
+        border-radius: 10px;
+        width: 70%;
+        margin-top: 3%;
+        margin-bottom: 6%;
+        border: none;
+    }
+    .help-header h1{
+    
+        display: block;
+        font-weight: 700;
+        font-size: 300%;
+        text-align: center;
+    }
+    .help-header h5{
+    
+    letter-spacing: -0.02rem;
+    display: block;
+    font-size: 105%;
+    margin-top: -0.6rem;
+    }
+    .help-header p{
+    color:rgb(194,218,220);
+    font-size: 90%;
+    
+    }
+    .side-text-help{
+        text-align: center;
+    }
+    .search-help-field{
+    
+        display: block;
+        margin: 0 auto;
+        padding-left: 15px;
+        height: 50px;
+        border-radius: 10px;
+        width: 70%;
+        margin-top: 3%;
+        margin-bottom: 6%;
+        border: none;
+    }
+    
+    
+    
+
+    

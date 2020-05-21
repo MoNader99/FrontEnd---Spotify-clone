@@ -1,0 +1,66 @@
+.get-spotify-sugg{
+
+    text-align: center;
+    padding-bottom: 5%;
+    padding-top: 7%;
+    background-color: rgb(239,239,239);
+    color: black;
+    min-width: 100%;
+  }
+
+  .get-spotify-sugg p{
+
+    margin-top: 5%;
+    margin-bottom: 4%;
+    color: rgb(34,35,38);
+    font-weight: 600;
+    font-size: 110%;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    word-break: break-all;
+    
+
+  }
+  .get-spotify-sugg h1{
+
+    color: rgb(34,35,38);
+
+    font-weight: 700;
+    font-size: 350%;
+
+
+  }
+  .get-spotify-sugg button{
+
+    display: block;
+    margin: 0 auto;
+    margin-top: 5%;
+    color: white;
+    font-weight: 500;
+    padding: 1.2% 5%;
+    border-radius: 40px;
+    border: none;
+    background-color: rgb(45,70,185);
+    outline: none;
+    letter-spacing: 0.1rem;
+}
+.get-spotify-sugg button:hover {
+    color: #fff;
+    background-color: #1e3264;
+}
+
+@media only screen and (max-width: 768px) {.get-spotify-sugg h1{
+
+    font-size: 230%;
+    min-width: 100%;
+
+
+  }
+  .get-spotify-sugg p{
+    font-size: 90%;
+  }
+
+}
