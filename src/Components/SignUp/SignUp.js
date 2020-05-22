@@ -3,6 +3,207 @@ import './SignUp.css';
 
 
 export class SignUp extends Component{
+  state = {
+    emailError:"",
+    comfirmEmailError:"",
+    passwordError:"",
+    usernameError:"",
+    yearError:"",
+    daysError:"",
+
+    checkedCorrect: false,
+
+    wrongStyleEmail:{},
+    wrongStyleConfirmEmail:{},
+    wrongStylePassword:{},
+    wrongStyleUsername:{},
+    wrongStyleYear:{},
+    wrongStyleDay:{},
+
+    EmailText:"",
+    CorrectEmail:false,
+    CorrectConfirmEmail:false,
+    CorrectPassword:false,
+    CorrectUsername:false,
+    CorrectDays:false,
+    Correctyears:false,
+    
+}
+
+validateEmail = (event) => {
+  let EmailText = event.target.value;
+
+  if (!EmailText.includes("@") || EmailText.includes(" "))
+  {
+    if (EmailText==""){
+      this.setState({
+        emailError: "You need to enter your email.",
+        wrongStyleEmail:{'border': '1px solid red'},
+        CorrectEmail:false,
+    })
+    }
+    else{
+      this.setState({
+        emailError: "This email is invalid. Make sure it's written like example@email.com",
+        wrongStyleEmail:{'border': '1px solid red'},
+        CorrectEmail:false,
+    })
+    }
+  }
+
+  else
+  {
+    if(EmailText=="@"){
+      this.setState({
+        emailError: "@ only is not enough",
+        wrongStyleEmail:{'border': '1px solid red'},
+        CorrectEmail:false,
+    })
+    }
+    else{
+      this.setState({
+        wrongStyleEmail:{},
+        emailError:null,
+        EmailText:EmailText,
+        CorrectEmail:true,
+      })
+    }
+  }
+}
+
+
+validateConfirmEmail = (event) => {
+  let ConfirmEmailText = event.target.value;
+  if(this.state.CorrectEmail){
+    if(ConfirmEmailText!=this.state.EmailText){
+      if(ConfirmEmailText==""){
+        this.setState({
+          comfirmEmailError: "You need to confirm your email.",
+          wrongStyleConfirmEmail:{'border': '1px solid red'},
+          CorrectConfirmEmail:false,
+      })
+      }
+      else{
+      this.setState({
+        comfirmEmailError: "The email addresses don't match.",
+        wrongStyleConfirmEmail:{'border': '1px solid red'},
+        CorrectConfirmEmail:false,
+    })
+    }
+
+    }
+    else{
+      this.setState({
+        comfirmEmailError: "",
+        wrongStyleConfirmEmail:{},
+        CorrectConfirmEmail:true,
+    })
+    }
+  }
+}
+
+validatePassword = (event) => {
+  let PasswordText = event.target.value;
+
+  if(PasswordText.length<=6 && PasswordText.length>=1){
+    this.setState({
+      passwordError: "Your password is too short.",
+      wrongStylePassword:{'border': '1px solid red'},
+      CorrectPassword:false,
+  })
+  }
+  else if (PasswordText==""){
+    this.setState({
+      passwordError: "You need to enter a password.",
+      wrongStylePassword:{'border': '1px solid red'},
+      CorrectPassword:false,
+  })
+  }
+  else {
+    this.setState({
+      passwordError: "",
+      wrongStylePassword:{},
+      CorrectPassword:true,
+  })
+  }
+}
+
+validateUsername=(event)=>{
+  let UsernameText = event.target.value;
+
+  if (UsernameText==""){
+    this.setState({
+      usernameError: "Enter a name for your profile.",
+      wrongStyleUsername:{'border': '1px solid red'},
+      CorrectUsername:false,
+  })
+  }
+  else{
+    this.setState({
+      usernameError: "",
+      wrongStyleUsername:{},
+      CorrectUsername:true,
+  })
+  }
+}
+
+validateDays=(event)=>{
+  let days= event.target.value;
+  days=Number(days)
+  if(days<=0 || days>31 || isNaN(days)){
+    this.setState({
+      daysError: "Enter a valid day of the month.",
+      wrongStyleDay:{'border': '1px solid red'},
+      CorrectDays:false,
+  })
+  }
+  else{
+    this.setState({
+      daysError: "",
+      wrongStyleDay:{},
+      CorrectDays:true,
+  })
+  }
+}
+
+validateYears=(event)=>{
+  let years= event.target.value;
+  years=Number(years)
+  if(years<1990 || years>2002 || isNaN(years)){
+    this.setState({
+      yearError: "Enter a valid year.",
+      wrongStyleYear:{'border': '1px solid red'},
+      Correctyears:false,
+  })
+  }
+  else{
+    this.setState({
+      yearError: "",
+      wrongStyleYear:{},
+      Correctyears:true,
+  })
+  }
+}
+
+handleSingUp=(event)=>{
+  if(this.state.CorrectEmail==true && 
+    this.state.CorrectConfirmEmail==true && 
+    this.state.CorrectPassword==true && 
+    this.state.CorrectUsername==true && 
+    this.state.Correctyears==true && 
+    this.state.CorrectDays==true)
+    
+    {
+    this.setState({checkedCorrect:false})
+    window.location.replace("/account-overview");
+    }
+    
+  else{
+    this.setState({checkedCorrect:true})
+  }
+}
+
+
   render() 
 	{
     return(
@@ -12,31 +213,41 @@ export class SignUp extends Component{
               <a href="/" className="Image container"></a> 
           </div>
 
-          <div className="mb-3">
+        
+          <div className="container ">
+          <div className="mb-3 d-flex justify-content-center">
           <button id="facebook-button" className="btn rounded-pill text-center " >
                     <i className="fab fa-facebook"></i> continue with facebook </button> 
           </div>
 
-          <p className="or">or</p>
-          <h2>Sign up with your email address</h2>
+          <div className="d-flex justify-content-center"><p className="or">or</p></div>
+          <div className="d-flex justify-content-center"><h2 >Sign up with your email address</h2></div>
 
-          <div className="container ">
+          {this.state.checkedCorrect == true ? <div className="d-flex justify-content-center" > <div className="incorrect ">Please fill all inputs in the correct way.</div> </div>:<div></div>}
             <form class="needs-validation" novalidate>
                 <div class="form-group d-flex justify-content-center">
-                  <input type="email" className="form-control" placeholder="Email"></input>
+                  <input type="email" style={this.state.wrongStyleEmail} className="form-control" onChange={this.validateEmail} placeholder="Email"></input>
                 </div>
-                <div class="form-group d-flex justify-content-center">
-                  <input type="email" className="form-control" placeholder="Confirm Email"></input>
-                </div>
-                <div class="form-group d-flex justify-content-center">
-                  <input type="password" className="form-control" placeholder="Password"></input>
-                </div>
-                <div class="form-group d-flex justify-content-center">
-                  <input type="text" className="form-control" placeholder="What should we call you ?"></input>
-                </div>
+                <div className="error-validate">{this.state.emailError}</div>
 
-                <div className="d-flex justify-content-center" >
-                <select class="custom-select months " placeholder="What should we call you ?">
+                <div class="form-group d-flex justify-content-center">
+                  <input type="email" style={this.state.wrongStyleConfirmEmail} className="form-control" onBlur={this.validateConfirmEmail} placeholder="Confirm Email"></input>
+                </div>
+                <div className="error-validate">{this.state.comfirmEmailError}</div>
+
+                <div class="form-group d-flex justify-content-center">
+                  <input type="password" style={this.state.wrongStylePassword} className="form-control" onChange={this.validatePassword} placeholder="Password"></input>
+                </div> 
+                <div className="error-validate">{this.state.passwordError}</div>
+
+                <div class="form-group d-flex justify-content-center">
+                  <input type="text" style={this.state.wrongStyleUsername} className="form-control" onChange={this.validateUsername} placeholder="What should we call you ?"></input>
+                </div>
+                <div className="error-validate">{this.state.usernameError}</div>
+
+
+                <div className="mb-3 d-flex justify-content-center" >
+                <select class="custom-select months " >
                       <option value=""> Month </option>
                       <option value="01"> January </option>
                       <option value="02"> February </option>
@@ -51,23 +262,18 @@ export class SignUp extends Component{
                       <option value="11"> November </option>
                       <option value="12"> December </option>
                 </select>
-                <input type="text" className="form-control days" placeholder="Day"></input>
-                <input type="text" className="form-control year" placeholder="year"></input>
+                <input type="text" style={this.state.wrongStyleDay} onChange={this.validateDays} className="form-control days" placeholder="Day"></input>
+                <input type="text" style={this.state.wrongStyleYear} onChange={this.validateYears} className="form-control year" placeholder="year"></input>
                 </div>
+                <div className="error-validate">{this.state.yearError}</div>
+                <div className="error-validate">{this.state.daysError}</div>
 
-                <div className="mt-3 ">
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input"></input>
-                    <label class="custom-control-label" for="customRadioInline1">Male</label>
-                  </div>
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input"></input>
-                    <label class="custom-control-label" for="customRadioInline2">Female</label>
-                  </div>
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input"></input>
-                    <label class="custom-control-label" for="customRadioInline3">Non-Binary</label>
-                  </div>
+                <div className="mt-3 d-flex justify-content-center">
+                <select class="custom-select months " >
+                      <option value="Male"> Male </option>
+                      <option value="Female"> Female </option>
+                      <option value="Non-Binary"> Non-binary </option>
+                </select>
                 </div>
 
                 <div className="terms-and-conditions mt-3 ">
@@ -75,8 +281,8 @@ export class SignUp extends Component{
                   <p className="mb-3">To learn more about how Spotify collects, uses, shares and protects your personal data please read Spotify's<a className="green" href=""> Privacy Policy</a>.</p>
                 </div>
 
-                <a type="submit" className="submit btn rounded-pill text-center mb-3">SIGN UP</a>
-                <p style={{'font-size' :'0.75em', 'font-weight': '400'}}>Already have an account? <a className="green" href="/logIn">Log in</a></p>
+                <div className="d-flex justify-content-center"><a onClick={this.handleSingUp} type="submit" className="submit btn rounded-pill text-center  mb-3">SIGN UP</a></div>
+                <p  style={{'font-size' :'0.75em', 'font-weight': '400'}}>Already have an account? <a className="green" href="/logIn">Log in</a></p>
             </form>
           </div>
 
