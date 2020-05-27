@@ -1,13 +1,13 @@
 import React,{Component} from 'react';
 import './WebPlayer.css';
-import Player from '../../Components/WebFrame/WebPlayerpage'
+import Player from '../../Components/WebFrame/Player'
 
 import ArtistsLibrary from '../../Components/Webplayer/YourLibrary/ArtistsLibrary'
 import AlbumsLibrary from '../../Components/Webplayer/YourLibrary/AlbumsLibrary'
 import Home from '../../Components/Webplayer/Home/Home'
 import YourLibrary from '../../Components/Webplayer/YourLibrary/YourLibrary'
 import PlaylistPage from '../../Components/PlaylistsComponent/PlaylistPage'
-import {AlbumPage} from '../../Components/AlbumComponent/AlbumPage';
+import AlbumPage from '../../Components/AlbumComponent/AlbumPage';
 import LikedSongs from '../../Components/LikedSongs/LikedSongs';
 import Search from '../../Components/Search/Search';
 import CreatePlaylist from '../../Components/PlaylistsComponent/CreatePlaylist';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './WebPlayer.css'
+import './Player.css'
 import Audio_Player from './Audio'
 import {connect} from 'react-redux';
 /**
@@ -26,9 +26,12 @@ class Player extends Component{
                 <div className='ml2'>
                     <p className='white mb0 desc'>{song.SongName}</p>
                     <p id='band' className='f7 lh-copy'>{song.Artist}</p>
+            <div><i class="fas fa-share"></i></div>
+
                 </div>
             </div>
             <Audio_Player></Audio_Player>
+
         </nav>
     )
     }
