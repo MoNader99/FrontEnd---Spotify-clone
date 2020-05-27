@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 import AddToPlaylist from './AddToPlaylist';
 import * as actionTypes from "../../Store/actions";
 import EditPlaylist from './EditPlaylist';
+import { ShareSong } from '../Share/ShareSong';
 
 class PlaylistPage extends Component
 {
@@ -198,9 +199,9 @@ stream=(song)=>{
               <div className="dropdown d-flex align-items-center ">
                 <a className="song-menu Menu mt-4" href="/account" id="Dropdown" data-toggle="dropdown" > ••• </a>
                   <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
-                  <a className="dropdown-item drop-class" href="#" id="ADD" value="ShowAdd" onClick={(e) => {this.show(e); this.likeTrack();}}  >Add to your liked songs</a>
+                  <a className="dropdown-item drop-class" href="#" id="ADD" value="ShowAdd" onClick={(e) => {this.show(e);}}  >Add to your liked songs</a>
                   <a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist" href="#">Add to playlist</a>
-                <a className="dropdown-item drop-class" href="#" id="REMOVE" value="ShowRemove" onClick={this.show}  >Remove from this playlist</a>
+                <a className="dropdown-item drop-class" data-toggle="modal" data-target="#share-song">Share Song</a>
 
                   </div>
                 </div>
@@ -224,6 +225,7 @@ stream=(song)=>{
       <DeletePlaylist delete={this.state.playlistInfo.playlistName} />
       <EditPlaylist/>
       <AddToPlaylist/>
+      <ShareSong share={this.props.songURL} />
     </div>
     
     </div>
@@ -235,6 +237,7 @@ const mapStateToProps = state =>{
   return{
     userToken: state.userToken,
     PlaylistID: state.selectedPlaylistID,
+    songURL: state.selectedSong
   };
 };
 

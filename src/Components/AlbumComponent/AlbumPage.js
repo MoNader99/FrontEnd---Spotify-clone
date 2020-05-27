@@ -2,20 +2,17 @@ import React ,{ Component} from 'react';
 import './AlbumPage.css';
 import CardMedia from '../Media/CardMedia';
 import ReactSnackBar from "react-js-snackbar";
-// import HomePageNavbar from '../HomePage/HomePageNavbar';
-// import {BASEURL} from "../../Constants/baseURL";
 import {connect} from 'react-redux';
 import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
 import * as actionTypes from "../../Store/actions";
-import { PropTypes } from 'react'
+import { ShareSong } from '../Share/ShareSong';
 
 /** Class AlbumPage 
  * @category AlbumPage
  * @extends Component
  */
-export class AlbumPage extends Component
+class AlbumPage extends Component
 {
-  
   state= 
 { 
   /**Array of Song Info
@@ -136,24 +133,6 @@ componentDidMount(){
    popup_add_to_playlist.classList.toggle('activate')
  }
   
-//  /**Function to get tracks
-//    * @memberof AlbumPage
-//    * @func DropMenuCard
-//    */ 
-//   DropMenuCard ()
-//   {
-//     document.getElementById("DropMenuCard").classList.toggle("show");
-//   }
-//    /**Function to get tracks
-//    * @memberof AlbumPage
-//    * @func DropMenuSong
-//    */
-//   DropMenuSong()
-//   {
-//     document.getElementById("DropMenuSong").classList.toggle("show");
-//   }
-
-
    /**Function to like playlist
    * @memberof AlbumPage
    * @func likeSong
@@ -235,12 +214,10 @@ else if (check=="SAVE"){
   return;  
 }
 }
+
 stream=(song)=>{
-  this.props.SELECT_SONG(song)
-  console.log(song)
+  this.props.SELECT_SONG(song);
 }
-
-
 
   render(){
   return(
@@ -278,8 +255,6 @@ stream=(song)=>{
                                               {/* Song Info */}
 
           <div className="col-xs-12  col-lg-7 col-xl-8 ">
-          <table className="table table-borderless">
-            <tbody>
                                             {/* display songs */}
           {this.state.SongInfo.map((song,index)=>(
             <div key={index} onClick={() =>this.stream(song)} className="songs">
@@ -300,7 +275,7 @@ stream=(song)=>{
                   <a className="dropdown-item drop-class" href="#" id="ADD" value="ShowAdd" onClick={(e) => {this.show(e);}}  >Add to your liked songs</a>
                   <a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist" href="#">Add to playlist</a>
                   <a className="dropdown-item drop-class" href="#" id="SAVE" value="ShowSave" onClick={this.show}>Save To Your Library</a>
-               
+                  <a className="dropdown-item drop-class" data-toggle="modal" data-target="#share-song">Share Song</a>
                   </div>
                 </div>
               </div>
@@ -311,8 +286,6 @@ stream=(song)=>{
           </div>
             ))} 
                                          
-            </tbody>
-          </table>
 
           <ReactSnackBar Icon={<span className="fab fa-spotify"></span>} Show={this.state.ShowAdd}>
                       Added To Your Liked Songs
@@ -325,6 +298,7 @@ stream=(song)=>{
           </div>
       </div>
       <AddToPlaylist/>
+      <ShareSong share={this.props.songURL}/>
     </div>
   )
 }
@@ -337,12 +311,14 @@ stream=(song)=>{
 const mapStateToProps = state =>{
   return{
     userToken: state.userToken,
-    AlbumID: state.selectedAlbumID,
+    songURL: state.selectedSong
   };
 };
-const mapDispatchToProps = dispatch =>{
-  return{
-    SELECT_SONG:(song)=>dispatch  ({type: actionTypes.SELECT_SONG , value: song})
-  }
-}
-export default connect(mapDispatchToProps,mapStateToProps) (AlbumPage);
+const mapDispatchToProps = dispatch => {
+
+  return {
+
+    SELECT_SONG : (song) => dispatch ({type: actionTypes.SELECT_SONG , value: song})
+  };
+};
+export default connect(mapStateToProps,mapDispatchToProps) (AlbumPage);

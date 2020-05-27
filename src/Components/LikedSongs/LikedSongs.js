@@ -5,6 +5,7 @@ import CardMedia from '../Media/CardMedia';
 import {connect} from 'react-redux';
 import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
 import * as actionTypes from "../../Store/actions";
+import { ShareSong } from '../Share/ShareSong';
   
 class LikedSongs extends Component
 {
@@ -131,6 +132,7 @@ stream=(song)=>{
                    <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
                      <a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Remove from your liked songs</a>
                      <a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist" href="#">Add to playlist</a>
+                     <a className="dropdown-item drop-class" data-toggle="modal" data-target="#share-song">Share Song</a>
                    </div>
                  </div>
                </div>
@@ -150,6 +152,7 @@ stream=(song)=>{
       </div>
       </div>
       <AddToPlaylist/>
+      <ShareSong share={this.props.songURL}/>
     </div>
   )
 }
@@ -157,6 +160,7 @@ stream=(song)=>{
 const mapStateToProps = state =>{
   return{
     userToken: state.userToken,
+    songURL: state.selectedSong
   };
 };
 const mapDispatchToProps = dispatch => {
