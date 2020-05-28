@@ -29,7 +29,7 @@ export class MainNavbar extends Component {
   {
 
     return(
-<section className="nav-bar1" style={{position:this.props.position}}>
+<section className="main-nav-bar" style={{position:this.props.position}}>
 
 <nav className="navbar navbar-expand-md navbar-dark ground" style={{ background: this.props.color}} >
   

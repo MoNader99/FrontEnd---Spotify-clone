@@ -16,7 +16,7 @@ import Footer from '../Components//Premium/Footer'
 class Premium extends Component{
     render(){
         return (
-            <div>
+            <div className="premium-page">
                 <Header></Header>
                 <h1 id='h1-pr' className="black tc mv5 ">Why go Premium?</h1>
                 <CardList></CardList>

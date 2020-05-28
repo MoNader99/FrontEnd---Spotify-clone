@@ -17,7 +17,8 @@ import Premium from './Containers/Premium'
 import Audience from './Components/Artist/ArtistProfile/Audience'
 import AddAlbum from './Components/Artist/ArtistProfile/AddAlbum'
 import WebPlayerPage from './Containers/WebPlayer/WebPlayer';
-import AddSong from './Components/Artist/ArtistProfile/AddSong'
+import AddSong from './Components/Artist/ArtistProfile/AddSong';
+import HelpPage from './Components/Help/HelpPage'
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route  exact path="/artist/audience" component={Audience}/>
           <Route  exact path="/artist/addalbum" component={AddAlbum}/>
           <Route  exact path="/artist/addsong" component={AddSong}/>
+          <Route exact path="/help/" component={HelpPage}/>
           {/* TODO: add routes to the other pages */}
         </Switch>
       </Router>

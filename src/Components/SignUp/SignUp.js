@@ -216,7 +216,7 @@ handleSingUp=(event)=>{
         
           <div className="container ">
           <div className="mb-3 d-flex justify-content-center">
-          <button id="facebook-button" className="btn rounded-pill text-center " >
+          <button id="login-facebook-button" className="btn rounded-pill text-center " >
                     <i className="fab fa-facebook"></i> continue with facebook </button> 
           </div>
 

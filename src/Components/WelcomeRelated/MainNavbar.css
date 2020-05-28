@@ -1,4 +1,4 @@
-.nav-bar1
+.main-nav-bar
 {
   position: fixed; 
   width: 100%;
@@ -6,22 +6,22 @@
   z-index: 999;
 }
 
-.nav-bar1 .ground
+.main-nav-bar .ground
 {
 	background: rgba(94, 61, 61, 0.9);
 	height:8%;	
 }
 
-.nav-bar1 .logo-top
+.main-nav-bar .logo-top
 {
 	color:#ffffff;
-	font-size:35px;	
+	font-size:30px;	
 	font-weight: bold;
 	margin-left: 2.5%;
 }
 
 
-.nav-bar1 .navbar-dark .navbar-nav .nav-link {
+.main-nav-bar .navbar-dark .navbar-nav .nav-link {
 	color: white;
 	font-weight: bold;
 	font-size: 16px;
@@ -32,7 +32,7 @@
 	
 }
 
-.nav-bar1 .navbar-dark .navbar-nav .nav-link:hover
+.main-nav-bar .navbar-dark .navbar-nav .nav-link:hover
 {
 	color: #1ed760;
 	text-decoration: none;
@@ -41,7 +41,7 @@
 
 @media (min-width: 75px) and (max-width: 767.98px)
  {
-	.nav-bar1 .navbar-dark {
+	.main-nav-bar .navbar-dark {
 	  background-color: black;
 	}
   }

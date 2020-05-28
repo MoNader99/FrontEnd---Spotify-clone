@@ -9,7 +9,7 @@ import './Header.css'
 
 const Header = ()=>{
     return(
-        <div>
+        <div className="header-premium">
             <div className='header ma0 pl5 '>
                 {/* <NavBar></NavBar> */}
                 <h1 id='h-tit' className='white mt6 mb0 f-subheadline lh-title '>Get Premium free for 1 month</h1>

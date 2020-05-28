@@ -9,7 +9,7 @@ const componentclicked = (data)=>{
     console.warn(data)
 }
 
-const Login = ()=>{
+const LoginFacebook = ()=>{
 
     return(
         <FacebookLogin
@@ -21,4 +21,4 @@ const Login = ()=>{
     )
 }
 
-export default Login
+export default LoginFacebook

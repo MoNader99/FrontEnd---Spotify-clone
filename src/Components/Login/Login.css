@@ -42,8 +42,12 @@
   max-width: 450px;
 
 }
+.login-page p
+{
+text-align: center;
+}
 
-.login-page #facebook-button
+.login-page #login-facebook-button
 {
     color: #fff;
     background-color: #3b5998;
@@ -84,15 +88,18 @@
   width: 50%;
 	height: 50px;
   margin-left: 90px;
-  padding:30px auto;
+  /* padding:30px auto !important; */
+  padding-top: 10px;
   text-align: center;
   text-transform: uppercase;
   font-weight: bolder;
   letter-spacing: 3px;
+ 
 }
 .login-page .login-button:hover
 {
   background-color: rgb(33, 219, 98);
+  color:black;
 }
 
 .login-page .check-log
@@ -128,6 +135,7 @@
 .login-page h5
 {
   font-weight: bold;
+  text-align: center;
 }
 
 .login-page .signup-button

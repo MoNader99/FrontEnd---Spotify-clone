@@ -6,7 +6,7 @@ import './Footer.css'
  */
 const Footer = ()=>{
     return (
-        <footer>
+        <footer className="footer-premium">
             <div className='l-ft f7 pt4  mt5'>
                 <a className='ml5 first' href=''>Legal</a>
                 <a className='ml5' href=''>Cookies</a>

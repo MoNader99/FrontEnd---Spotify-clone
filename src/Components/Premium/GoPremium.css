@@ -1,11 +1,11 @@
-#pr2-btn{
+.go-premium #pr2-btn{
     border-radius: 200px;
     background-color: green;
     border-color: green;
     width: 450px;
     height: 50px;
 }
-.container-fluid{
+.go-premium .container-fluid{
     display: flex;
     justify-content: center;
     max-width: 100vw;
@@ -15,7 +15,7 @@
 and (min-device-width: 320px) 
 and (max-device-width: 667px) 
 and (-webkit-min-device-pixel-ratio: 2) { 
-    #pr2-btn{
+    .go-premium #pr2-btn{
         width: 280px;
     }
     
@@ -24,10 +24,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
   and (min-device-width: 320px) 
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    #h-tit{
+    .go-premium #h-tit{
         font-size: 1.5em;
     }
-    #h-subtit{
+    .go-premium #h-subtit{
         font-size: 1em;
     }
 }

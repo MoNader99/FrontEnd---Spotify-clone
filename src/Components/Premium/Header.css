@@ -1,4 +1,4 @@
-.header{
+.header-premium .header{
     height: 80vh;
     width: auto;
     background: linear-gradient(to right,rgb(8,50,100),rgb(66,165,247),rgb(0,212,255));
@@ -9,23 +9,23 @@
 
 }
 @media only screen and (max-width:1200px) and (min-width:1000px){
-    #h-tit{
+    .header-premium #h-tit{
         font-size: 3.5em;
     }
 }
 @media only screen and (max-width:1000px) and (min-width:300px){
-    #h-tit{
+    .header-premium #h-tit{
         font-size: 2.2em;
         /*margin-top:var(--spacing-large)*/
    }
 }
-.NavBar{
+.header-premium .NavBar{
     float: left;
 } */
-h1{
+.header-premium h1{
     font-weight: 900;
 }
-#pr-btn{
+.header-premium #pr-btn{
     border-radius: 200px;
     background-color: green;
     border-color: green;
@@ -33,7 +33,7 @@ h1{
     height: 40px;
 }
 @media (min-width: 992px){
-    .header {
+    .header-premium .header {
         background:url(https://campaigns-test.scdn.co/images/premium_dancer.png) right bottom / 450px no-repeat rgb(80, 155, 245); 
     }
 } 

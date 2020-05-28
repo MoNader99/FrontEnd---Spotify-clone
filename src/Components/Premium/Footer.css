@@ -1,19 +1,19 @@
-Footer{
+.footer-premium Footer{
     background-color: black;
     height: 75px;
     width: auto;
 }
-.l-ft{
+.footer-premium .l-ft{
     text-align: left;
 }
-.r-ft{
+.footer-premium .r-ft{
     text-align: right;
     /*margin-left: auto;*/
 }
-a{
+.footer-premium a{
     color: gray;
 }
-a:hover{
+.footer-premium ya:hover{
     color: green;
     text-decoration: none;
 }

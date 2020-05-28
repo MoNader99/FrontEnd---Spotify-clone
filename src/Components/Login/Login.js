@@ -105,7 +105,8 @@ class Login extends Component{
            
                     <p> <strong> To continue, log in to Spotify.</strong> </p>
                     {this.state.checkedCorrect == true ? <div className="incorrect align-items-center">Incorrect email or password.</div>:<div></div>}
-                    <button id="facebook-button" className="btn rounded-pill text-center " >
+                   
+                    <button id="login-facebook-button" className="btn rounded-pill text-center " >
                     <i className="fab fa-facebook"></i> continue with facebook </button> 
                     <div className="border-divider">
                         <strong className="or-login">or</strong>

@@ -8,6 +8,7 @@ import './GoPremium.css'
 
 const GoPremium=()=>{
     return (
+        <div className="go-premium">
                 <div className='container-fluid'>
                     <div className='row justify-content-center dib shadow-2 br3 pa3 ma2  bw2 mt5 mb5'>
                             <h2>Spotify Premium</h2>
@@ -25,6 +26,7 @@ const GoPremium=()=>{
                             <div><button id='pr2-btn' className='white grow'>Get Premium</button></div>
                     </div>
                 </div>
+        </div>
     )
 }
 
