@@ -5,6 +5,8 @@ import AccountOverview from './AccountOverview';
 import AccountHeading from './AccountHeading';
 import axios from 'axios'
 import './Profile.css';
+import MainNavbar from '../WelcomeRelated/MainNavbar'
+import Bottom from '../WelcomeRelated/Bottom'
 //import { ConfigContext } from '../../Context/ConfigContext'
 /** Class of AccountSettings.
  * @extends Component
@@ -68,8 +70,10 @@ class AccountSettings extends Component {
         {document.title ="Account overview - Spotify"}
 
         return(
+            <div className="account-page">
+            <MainNavbar color="black"/> 
             <div className="bg-dark-clr">
-
+            
                 <AccountHeading />
                 <div className="container settings">
                     <div className="row">
@@ -78,6 +82,8 @@ class AccountSettings extends Component {
                     </div>
                 </div>
 
+            </div>
+            <Bottom/>
             </div>
         )
     }
