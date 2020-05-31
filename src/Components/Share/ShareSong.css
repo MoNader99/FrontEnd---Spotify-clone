@@ -73,3 +73,12 @@
     cursor: pointer;
 }
 
+@media (max-width: 991px){
+.share-song .modal-content {
+  border-radius: 5%;
+  background-color: rgb(34, 34, 34) !important;
+  width: 90%;
+  height: 50%;
+  left: 5%;
+}
+}
