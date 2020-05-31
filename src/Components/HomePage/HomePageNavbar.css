@@ -1,0 +1,147 @@
+.home-nav{
+    display: block;
+    width: 100%;
+    height: 60px;
+    background-color: rgb(18,18,18);
+    position: fixed;
+    z-index: 10;
+    padding: 10px;
+  }
+  
+  .home-nav .home-nav-nabar{
+    display: block;
+    float: left;
+    z-index: 15;
+    position: relative;
+    width: 100%;
+  }
+  
+  .home-nav .collapse-drop{
+    width: 100%;
+  }
+  
+  
+  .home-nav .drop-down{
+    display: inline-block;
+    z-index: 100;
+    position: absolute;
+    right:240px;
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (max-width: 800px) {
+  .home-nav .drop-down .name{
+    display: none;
+  }
+  
+  }
+  
+  @media only screen and (max-width: 600px) {
+  
+  .home-nav .drop-down .name{
+    display: none;
+  }
+  }
+  
+  .home-nav #ul-upgrade{
+   
+    list-style: none;
+  }
+  
+  
+  .home-nav #upgradebtn{
+    text-decoration: none;
+    background-color: transparent;
+    color: white;
+    
+    outline: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    border-radius: 500px;
+    line-height: 18px;
+    padding: 8px 34px;
+     
+  }
+  .home-nav #upgradebtn:hover{
+    padding: 10px 36px;
+  }
+  
+  
+  @media (max-width:580px)
+  {
+    .home-nav #upgradebtn{
+      margin-top: 2px;
+      padding: 5px 25px;
+      font-size: 10px;
+    }
+    .home-nav #upgradebtn:hover{
+      padding: 6px 27px;
+      font-size: 10px;
+    }
+  } 
+  
+   
+  @media (max-width: 500px)
+  {
+    .home-nav #upgradebtn{
+      display: none;
+    }
+    .home-nav .drop-down{
+      right: 10px;
+    }
+  }
+
+
+.home-nav .signup{
+    font: 700 13.3333px Arial;
+    color: #e0e0e0; 
+    padding: 10px 45px;
+}
+.home-nav .signup:hover{
+    color:white; 
+   
+}
+
+.home-nav .login{
+    font: 700 13.3333px Arial;
+    margin-left: 5px;
+    margin-right: 25px;
+    padding: 10px 40px;
+}
+
+  
+  
+.home-nav #profile .user-img{
+    width: 40px;
+    height: 40px;
+    margin: -20px 12px -20px 0;
+    border-radius: 50%; 
+    background-color:#1d1e1f;
+  }
+  .home-nav #profile .drop-class:hover
+  {
+    color:#1ed760;
+    text-decoration: none;
+    background-color: white;
+  }
+  .home-nav #profile .drop-class
+  {
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    font-weight: bold; 
+  }
+  .home-nav #profile
+  {
+    color:white;
+  }
+  .home-nav #profile:hover
+  {
+    color:#1ed760;
+  }
+
+  
+  
