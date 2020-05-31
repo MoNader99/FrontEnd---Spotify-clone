@@ -1,0 +1,113 @@
+.recent-activities-page 
+{
+  padding: 0 32px;
+  margin: 0;
+  width: 100%;
+  margin-bottom: 90px;
+  padding-top: 5rem;
+}
+.recent-activities-page .notif-title
+{
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    
+}
+.recent-activities-page .border-divider
+{
+    border-top: 1px solid #383838;
+    display: block;
+    line-height: 1px;
+    margin: 25px 0;
+    position: relative;
+    text-align: center;
+}
+
+.recent-activities-page .notifications
+{
+    padding: 10px;
+    border:1px solid #2a2a2a;
+    color:whitesmoke;
+    margin-bottom: 15px;
+}
+.recent-activities-page .notifications:hover
+{
+    background-color: rgb(53, 53, 53);
+}
+.recent-activities-page .follow
+{
+    color: #1ed760;
+    font-size: 55px;
+}
+.recent-activities-page .love
+{
+    color: rgb(219, 0, 0);
+    font-size: 55px;
+    margin-right: 18px;
+}
+
+.recent-activities-page .upload
+{
+    color: rgb(223, 223, 223);
+    font-size: 55px;
+    margin-right: 18px;
+}
+.recent-activities-page .recommend
+{
+    color: rgb(68, 81, 206);
+    font-size: 55px;
+    margin-right: 18px;
+}
+
+.recent-activities-page .notification-main-content
+{
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+.recent-activities-page .date
+{
+    color: rgb(100, 100, 100);
+    font-size: 16px;
+}
+
+.recent-activities-page .dropdown  {
+    position: absolute;
+    display: inline-flex;
+    margin-left: 30px;
+    color:white;
+    text-decoration: none;
+  }
+  
+  .recent-activities-page .dropdown a{
+    color:white;
+    text-decoration: none;
+  }
+
+  
+.recent-activities-page .notifi-dropdown-content {
+    display: none;
+    background-color: #f1f1f1;
+    width: max-content;
+    box-shadow: none;
+    border-color: black;
+    z-index: 1;
+    padding: 0;
+  }
+  
+  .recent-activities-page .notifi-dropdown-content a {
+    color: #B3B3B3;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color:#282828;
+    
+  }
+  .recent-activities-page .notifi-dropdown-content a:hover {
+    color:white;
+    background-color:rgb(53, 53, 53);
+    cursor:default;
+  }
+  
+  .recent-activities-page .show {
+    display: block;
+  }
