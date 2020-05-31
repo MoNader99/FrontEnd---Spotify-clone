@@ -16,6 +16,7 @@ import {BrowserRouter as Router,
     Route, 
    } from "react-router-dom";
 import { HomePageSidebar } from '../../Components/HomePage/HomePageSidebar';
+import RecentActivities from '../../Components/Notifications/RecentActivities';
 
 
 
@@ -40,10 +41,12 @@ class WebPlayerPage extends Component {
                 <Route  exact path="/webplayer/playlist/" component={PlaylistPage}/>
                 <Route  exact path="/webplayer/album/" component={AlbumPage}/>
                 <Route  exact path="/webplayer/likedsongs/" component={LikedSongs}/>
-                <Route path="/webplayer/" component={Home} />
+                <Route path="/webplayer/home" component={Home} />
                 <Route path="/webplayer/yourlibrary"  component={YourLibrary} />
                 <Route exact path="/webplayer/yourlibrary-artists"  component={ArtistsLibrary} />
-                <Route exact path="/webplayer/yourlibrary-albums"  component={AlbumsLibrary} />    
+                <Route exact path="/webplayer/yourlibrary-albums"  component={AlbumsLibrary} />
+                <Route exact path="/webplayer/notifications"  component={RecentActivities} />
+
           </Switch>
 
           </div>

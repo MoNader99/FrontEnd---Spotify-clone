@@ -26,7 +26,6 @@ class Player extends Component{
                 <div className='ml2'>
                     <p className='white mb0 desc'>{song.SongName}</p>
                     <p id='band' className='f7 lh-copy'>{song.Artist}</p>
-            <div><i class="fas fa-share"></i></div>
 
                 </div>
             </div>

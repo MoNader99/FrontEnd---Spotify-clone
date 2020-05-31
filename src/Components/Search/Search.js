@@ -4,6 +4,7 @@ import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
 import "./Search.css";
 import {connect} from 'react-redux';
 import * as actionTypes from "../../Store/actions";
+import {BASEURL} from '../../Constants/BaseURL'
 
 class Search extends Component {
     constructor( props ) {
@@ -62,7 +63,7 @@ class Search extends Component {
     }
 
     componentDidMount(){
-        var url = "http://spotify-clone.mocklab.io/get-tracks"; 
+        var url = BASEURL + "/get-tracks"; 
   
                 const requestOptions = {
                   method: 'GET',
@@ -77,7 +78,7 @@ class Search extends Component {
                   .catch((error)=>{console.log(error);
         })
 
-        url="http://spotify-clone.mocklab.io/get-playlists"
+        url=BASEURL + "/get-playlists"
         fetch(url,requestOptions)
                   .then((response) => { return response.json()})
                   .then((data) => {
@@ -88,7 +89,7 @@ class Search extends Component {
                   .catch((error)=>{console.log(error);
         })
 
-        url = "http://spotify-clone.mocklab.io/get-users-login"; 
+        url = BASEURL+ "/get-users-login"; 
           fetch(url,requestOptions)
             .then((response) => { return response.json()})
             .then((data) => {
@@ -98,7 +99,7 @@ class Search extends Component {
             })
             .catch((error)=>{console.log(error);
         })
-        url="http://spotify-clone.mocklab.io/get-albums"
+        url=BASEURL+ "/get-albums"
         fetch(url,requestOptions)
             .then((response) => { return response.json()})
             .then((data) => {
@@ -108,7 +109,7 @@ class Search extends Component {
             })
             .catch((error)=>{console.log(error);
         })
-        url="http://spotify-clone.mocklab.io/get-artists"
+        url=BASEURL + "/get-artists"
         fetch(url,requestOptions)
             .then((response) => { return response.json()})
             .then((data) => {
@@ -167,7 +168,7 @@ class Search extends Component {
                         </a>
                     
                         <div className="dropdown-menu dropdown-menu-right " aria-labelledby="navbar-dropdown">
-                            <a className="dropdown-item drop-class" href="/account">Account</a>
+                            <a className="dropdown-item drop-class" href="/account-overview">Account</a>
                             <a onClick={this.props.onSignOut} className="dropdown-item drop-class" href="/">Sign out</a>
                         </div>
                     </div>

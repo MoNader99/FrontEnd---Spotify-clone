@@ -22,7 +22,7 @@ class Bottom extends Component {
 						<a href="/help" className="links-hover"> Help </a>
 					  </li>
 					  <li>
-						<a href="/webplayer" className="links-hover"> Web Player</a>
+						<a href="/webplayer/home" className="links-hover"> Web Player</a>
 					  </li>
 					</ul>
 				</div>

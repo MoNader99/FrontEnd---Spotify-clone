@@ -9,7 +9,7 @@
 .main-nav-bar .ground
 {
 	background: rgba(94, 61, 61, 0.9);
-	height:8%;	
+	height:80px;	
 }
 
 .main-nav-bar .logo-top
@@ -48,20 +48,20 @@
 
 
 
-.nav-bar1 #profile .user-img{
+.main-nav-bar #profile .user-img{
   width: 40px;
   height: 40px;
   margin: -20px 12px -20px 0;
   border-radius: 50%; 
   background-color:#1d1e1f;
 }
-.nav-bar1 #profile .drop-class:hover
+.main-nav-bar #profile .drop-class:hover
 {
   color:#1ed760;
   text-decoration: none;
   background-color: white;
 }
-.nav-bar1 #profile .drop-class
+.main-nav-bar #profile .drop-class
 {
   text-align: center;
   font-size: 12px;

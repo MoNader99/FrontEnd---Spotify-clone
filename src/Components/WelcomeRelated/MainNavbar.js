@@ -3,7 +3,7 @@ import './MainNavbar.css'
 import {Link } from "react-router-dom";
 import {connect} from 'react-redux';
 import * as actionTypes from "../../Store/actions";
-// import {BASEURL} from "../../Constants/baseURL";
+
 
 /** Class MainNavbar 
  * @category MainNavbar
@@ -31,7 +31,7 @@ export class MainNavbar extends Component {
     return(
 <section className="main-nav-bar" style={{position:this.props.position}}>
 
-<nav className="navbar navbar-expand-md navbar-dark ground" style={{ background: this.props.color}} >
+<nav className="navbar navbar-expand-md navbar-dark ground" style={{background: this.props.color}} >
   
   <div className="container ">
         <Link to="/" className="navbar-brand logo-top" > <i className="fab fa-spotify"></i> Spotify </Link>
@@ -42,7 +42,7 @@ export class MainNavbar extends Component {
         <div className="collapse navbar-collapse " id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto justify-content-end  ">
                   <li className="nav-item ">
-                  <Link to="/webplayer" className="nav-link">Web player</Link>
+                  <Link to="/webplayer/home" className="nav-link">Web player</Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/premium" className="nav-link  " > Premium </Link>
@@ -56,13 +56,13 @@ export class MainNavbar extends Component {
 
                   <ul id="profile" className={this.props.logging == true ? 'list-unstyled' : ' d-none'}>
                     <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="/account" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a className="nav-link dropdown-toggle" href="/account-overview" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img className="user-img" alt="." src={this.props.image} />
                          Profile
                         </a>
                     
                         <div className="dropdown-menu dropdown-menu-right " aria-labelledby="navbar-dropdown">
-                        <a className="dropdown-item drop-class" href="/account">Account</a>
+                        <a className="dropdown-item drop-class" href="/account-overview">Account</a>
                         <a onClick={this.props.onSignOut} className="dropdown-item drop-class" href="/">Sign out</a>
                         </div>
     
