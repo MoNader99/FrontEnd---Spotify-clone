@@ -4,6 +4,8 @@ import SideBar from './SideBar';
 import axios from 'axios'
 import {Link} from 'react-router-dom';
 import './Profile.css';
+import MainNavbar from '../WelcomeRelated/MainNavbar'
+import Bottom from '../WelcomeRelated/Bottom';
 //import { ConfigContext } from '../../Context/ConfigContext'
 /** Variable that contains the birthday date of the user
  * @type {Date}
@@ -181,7 +183,9 @@ class EditProfile extends Component {
     {
         {document.title ="Edit profile - Spotify"}
 
-    return(                                                  
+    return(                
+        <div className="account-page">
+        <MainNavbar color="black"/>                                  
         <div className="bg-dark-clr">
         <div id="edit-profile"className="container editProfile">
             <div className="row">
@@ -366,6 +370,8 @@ class EditProfile extends Component {
             </div>
         </div>
         </div>
+        <Bottom/>
+        </div> 
                 )
     }
     

@@ -6,13 +6,14 @@
 .account-page
 {
   margin-top: 80px;
+  
 
 }
 
 .bg-dark-clr {
     background-image: linear-gradient(#212c39, #121e3d 50%, #000); 
     background-repeat: no-repeat;
-
+    min-height: 80vh;
 }
 
 #profile-account-heading .float-right {

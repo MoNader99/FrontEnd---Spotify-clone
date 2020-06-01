@@ -4,6 +4,8 @@ import SideBar from './SideBar';
 import axios from 'axios'
 import {Link} from 'react-router-dom';
 import './Profile.css';
+import Bottom from '../WelcomeRelated/Bottom';
+import { MainNavbar } from '../WelcomeRelated/MainNavbar';
 //import { ConfigContext } from '../../Context/ConfigContext'
 /** Class of ChangePassword page in account settings.
  * @extends Component
@@ -120,6 +122,8 @@ class ChangePassword extends Component {
         {document.title ="Edit profile - Spotify"}
 
     return(
+        <div className="account-page">
+            <MainNavbar color="black"/>
         <div className="bg-dark-clr">
             
         
@@ -157,6 +161,8 @@ class ChangePassword extends Component {
                 </div>
             </div>
         </div>
+        </div>
+        <Bottom/>
         </div>
     )
     }

@@ -3,6 +3,8 @@ import SideBar from './SideBar'
 import axios from 'axios'
 import {Link} from 'react-router-dom';
 import './Profile.css';
+import Bottom from '../WelcomeRelated/Bottom';
+import { MainNavbar } from '../WelcomeRelated/MainNavbar';
 
 
 class NotificationsSettings extends Component {
@@ -148,6 +150,8 @@ class NotificationsSettings extends Component {
         {document.title ="Notifications settings - Spotify"}
 
         return(
+            <div className="account-page">
+                <MainNavbar color="black"/>
             <div className="bg-dark-clr">
             <div id="notifications-settings">
                 <head>
@@ -224,6 +228,8 @@ class NotificationsSettings extends Component {
                     </div>
                 </div>
             </div>
+            </div>
+            <Bottom/>
             </div>
         )
     }
