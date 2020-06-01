@@ -57,7 +57,7 @@ class Login extends Component{
         { 
             var id=this.state.checkEmail.indexOf(this.state.EmailText)
             var user=this.state.users[id]
-            this.props.onSignIn(user.Username,user.ImgUrl);
+            this.props.onSignIn(user);
             this.setState({checkedCorrect:false})
             window.location.replace("/account-overview");
         }
@@ -71,7 +71,7 @@ class Login extends Component{
 
     componentDidMount(){
         
-        var url = "http://spotify-clone.mocklab.io/get-users-login"; 
+        var url = "http://spotify-clone1.mocklab.io/get-users-login"; 
         const requestOptions = {
             method: 'GET',
           };
@@ -142,8 +142,8 @@ class Login extends Component{
 }
 const mapDispatchToProps = dispatch => {
     return {
-      onSignIn : (username,userImg) => dispatch ({type: actionTypes.ON_SIGNIN, payload: {imgUrl:userImg, Username:username} }),
+      onSignIn : (user) => dispatch ({type: actionTypes.ON_SIGNIN, payload: {user:user} }),
     };
   };
   
-  export default connect(null, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

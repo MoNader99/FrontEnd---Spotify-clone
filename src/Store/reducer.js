@@ -11,8 +11,7 @@ const initialState = {
 
   selectedSong: null,
   loggenIn: false,
-  userImg:null,
-  username:null,
+  user:null,
 }
 
 const reducer = (state = initialState, action) => {
@@ -70,8 +69,7 @@ const reducer = (state = initialState, action) => {
       console.log(action.payload)
       return {
         ...state,
-        userImg: action.payload.imgUrl,
-        username: action.payload.Username,
+        user:action.payload.user,
         loggenIn: true
       };
       break;

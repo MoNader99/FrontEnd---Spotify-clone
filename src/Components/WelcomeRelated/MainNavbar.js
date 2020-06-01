@@ -57,7 +57,7 @@ export class MainNavbar extends Component {
                   <ul id="profile" className={this.props.logging == true ? 'list-unstyled' : ' d-none'}>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="/account-overview" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img className="user-img" alt="." src={this.props.image} />
+                        <img className="user-img" alt="." src={this.props.user.ImgUrl} />
                          Profile
                         </a>
                     
@@ -94,9 +94,8 @@ export class MainNavbar extends Component {
  */
 const mapStateToProps = state =>{
   return{
-    logging: state.loggenIn,
-    image: state.userImg
-
+    user:state.user,
+    logging:state.loggenIn
   };
 };
 
