@@ -151,7 +151,7 @@ class NotificationsSettings extends Component {
 
         return(
             <div className="account-page">
-                <MainNavbar color="black"/>
+                {/* <MainNavbar color="black"/> */}
             <div className="bg-dark-clr">
             <div id="notifications-settings">
                 <head>

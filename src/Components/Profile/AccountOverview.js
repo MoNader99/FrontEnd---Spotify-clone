@@ -1,14 +1,17 @@
-import React from 'react';
+import React,{ Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import './Profile.css';
+import {connect} from 'react-redux';
 /**
  * Function that make the account overview page that view email and date of birth
  * @class
  * @param {JSON} props object that contains logged in person info
  */
-function AccountOverview(props) {
+class AccountOverview extends Component {
 
+	render(){
+		console.log(this.props.user.Date)
     return(
         <div id="account-overview" className="col-lg-9 content-accountoverview">
 			    	<h1 className="overview">Account overview</h1>
@@ -18,11 +21,11 @@ function AccountOverview(props) {
 			    		<table className="col-lg-11 col-md-11 col-sm-11">
 						  <tr>
 							<th>Email</th> 
-							<td>{props.info.email}</td>
+							<td>{this.props.user.Email}</td>
 						  </tr>
 						  <tr>
 						    <th>Date of birth</th>
-							<td>{props.info.dateOfBirth}</td>
+							<td>{this.props.user.Date}</td>
 
 						  </tr>
 					    </table>
@@ -44,4 +47,10 @@ function AccountOverview(props) {
     
     )
 }
-export default AccountOverview;
+}
+const mapStateToProps = state =>{
+    return{
+      user:state.user,
+    };
+  };
+export default connect(mapStateToProps)(AccountOverview);
