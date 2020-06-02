@@ -5,6 +5,7 @@ import CreatePlaylist from '../PlaylistsComponent/CreatePlaylist';
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import * as actionTypes from "../../Store/actions";
+import { BASEURL } from '../../Constants/BaseURL';
  
 /** Class HomepageSidebar 
  * @category HomePage
@@ -49,45 +50,42 @@ export class HomePageSidebar extends Component{
    * @memberof HomePageSidebar
    * @func componentDidMount
    */
-  // componentDidMount() {
+  componentDidMount() {
     
-  //   const requestOptions = {
-  //     method:"GET",
-  //     headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
-  //   }
+    const requestOptions = {
+      method:"GET",
+      // headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
+    }
     
-  //   const url = "http://52.14.190.202:8000/playlists/me"; 
-  //   fetch(url,requestOptions)
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       console.log(data.playlist);
-  //       if(data.playlist)
-  //       {
+    const url = BASEURL+"/get-playlists"; 
+    fetch(url,requestOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if(data.playlists)
+        {
           
-  //       const list = data.playlist.map(item => {
-  //         return (
-  //           <li onClick={()=>{
-  //             this.props.history.push("/webplayer/playlist/" + item._id );
-  //             this.props.onPlaylistClicked(item._id);
-  //             window.location.reload(true);
-  //           }} className="List2">{item.playlistName}</li>
-  //         )
-  //       }
+        const list = data.playlists.map(item => {
+          return (
+            <li onClick={()=>{
+              window.location.replace("/webplayer/playlist");
+            }} className="List2">{item.playlistName}</li>
+          )
+        }
         
-  //       )
-  //       console.log(list);
-  //       this.setState({total:list});
-  //       console.log(this.state.total);
-  //     }
+        )
+        this.setState({total:list});
+      }
     
-  //     })
-  //     .catch((error)=>{
-  //       console.log(error);
-  //     })
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
       
-  //   }
+    }
+
+
 
 render() {
  return (

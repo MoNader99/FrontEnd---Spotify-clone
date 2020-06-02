@@ -48,15 +48,35 @@ export class HomePageNavbar extends Component{
               <div className="home-nav-nabar">
               
                 <div className="collapse-drop">
+                <div className="Collapse-drop-down">
+                  <div className="home-drop">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <Link className="no-underline" to="/webplayer/home/"><a class="dropdown-item" href="#"><i className="fas fa-home"></i> Home</a></Link>
+                          <Link to="/webplayer/search/"><a class="dropdown-item" href="#"><i className="fas fa-search" aria-hidden="true"></i> Search</a></Link>
+                          <NavLink to="/webplayer/yourlibrary/"><a class="dropdown-item" href="#"><i className="fas fa-bookmark" aria-hidden="true"></i> Your library</a></NavLink>
+                          <Link to="#"><a data-toggle="modal" data-target="#create-new-playist" class="dropdown-item" href="#"><i className="fas fa-plus-square" aria-hidden="true"></i> Create playlist</a></Link>
+                          <Link to="/webplayer/likedsongs"><a class="dropdown-item" href="#"><i className="fas fa-heart " aria-hidden="true"></i> Liked songs</a></Link>
+                          <Link to="/premium"><a class="dropdown-item" href="#">  <i class="fa fa-usd" aria-hidden="true"></i>  Upgrade</a></Link>
 
-                </div>
-                  
-                
-                  <div id="ul-upgrade" className={this.props.accountType == "premium" ? 'd-none' : ''}>
-                  <Link to="/premium"><button id="upgradebtn">UPGRADE</button></Link>
+                          </div>
+                    </div>
+                          
                   </div>
+                </div>
+                
                 
               </div>
+              {this.props.page == "library" ? 
+              <div>
+                  <Link to="/webplayer/yourlibrary" ><button id="upgradebtn">yourlibrary</button></Link>
+                  <Link to="/webplayer/yourlibrary/artists" ><button id="upgradebtn">Artists</button></Link>
+                  <Link to="/webplayer/yourlibrary/albums" ><button id="upgradebtn">Albums</button></Link>
+              </div>
+              :
+              null}
               
               <div className="drop-down">
                 { this.props.logged==false ?
