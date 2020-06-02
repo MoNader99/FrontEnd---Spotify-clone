@@ -11,7 +11,7 @@ import {connect} from 'react-redux';
 class AccountOverview extends Component {
 
 	render(){
-		console.log(this.props.user.Date)
+	
     return(
         <div id="account-overview" className="col-lg-9 content-accountoverview">
 			    	<h1 className="overview">Account overview</h1>
@@ -21,11 +21,11 @@ class AccountOverview extends Component {
 			    		<table className="col-lg-11 col-md-11 col-sm-11">
 						  <tr>
 							<th>Email</th> 
-							<td>{this.props.user.Email}</td>
+							<td>User Email</td>
 						  </tr>
 						  <tr>
 						    <th>Date of birth</th>
-							<td>{this.props.user.Date}</td>
+							<td>Date of birth</td>
 
 						  </tr>
 					    </table>
@@ -48,9 +48,5 @@ class AccountOverview extends Component {
     )
 }
 }
-const mapStateToProps = state =>{
-    return{
-      user:state.user,
-    };
-  };
-export default connect(mapStateToProps)(AccountOverview);
+
+export default (AccountOverview);

@@ -5,7 +5,8 @@ import SideBar from '../SideBar/ArtistSidebar';
 import './ArtistProfile.css'
 import $ from 'jquery';
 import 'bootstrap';
- 
+import MainNavbar from '../../WelcomeRelated/MainNavbar'
+import Bottom from '../../WelcomeRelated/Bottom';
 
 class AddAlbum extends Component {
     constructor() {
@@ -117,6 +118,8 @@ class AddAlbum extends Component {
         {document.title ="Artist - Spotify"}
 
     return(
+        <div className="artist-page">
+             <MainNavbar color="black"/>
         <div className="background-color">
                 <div id="artist-add-album" className="container"> 
                     <div className="row">
@@ -208,6 +211,8 @@ class AddAlbum extends Component {
                         </div>  
                     </div> 
                 </div>  
+            </div>
+            <Bottom/>
             </div>
     )
     }
