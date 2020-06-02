@@ -223,6 +223,7 @@ stream=(song)=>{
 
   render(){
     {document.title ="Spotify - Album"}
+    console.log(this.props.artist)
   return(
   <div className="album-page">
      <HomePageNavbar />
@@ -237,7 +238,7 @@ stream=(song)=>{
 
 					  <li> <h3> {this.state.AlbumInfo.albumName} </h3> </li>
 					  <li> <h5> {this.state.Artist} </h5> </li>
-            
+
             <li> <button id="play-button" href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playAlbum}</button> </li>
             <li >
               <button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> </button>
@@ -277,6 +278,15 @@ stream=(song)=>{
                   <a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist" href="#">Add to playlist</a>
                   <a className="dropdown-item drop-class" href="#" id="SAVE" value="ShowSave" onClick={this.show}>Save To Your Library</a>
                   <a className="dropdown-item drop-class" data-toggle="modal" data-target="#share-song">Share Song</a>
+                  
+                  {this.props.artist==true ?
+                  <a className="dropdown-item drop-class" href="/artist/addsong" >Edit</a>
+                  : null }
+
+                  {this.props.artist==true ?
+                  <a className="dropdown-item drop-class" href="/artist/addsong" >Delete</a>
+                  : null }
+
                   </div>
                 </div>
               </div>
@@ -311,8 +321,9 @@ stream=(song)=>{
  */
 const mapStateToProps = state =>{
   return{
+    artist:state.ArtistLogin,
     userToken: state.userToken,
-    songURL: state.selectedSong
+    songURL: state.selectedSong,
   };
 };
 const mapDispatchToProps = dispatch => {
