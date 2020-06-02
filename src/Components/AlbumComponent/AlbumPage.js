@@ -226,7 +226,10 @@ stream=(song)=>{
 					  <li> <h3> {this.state.AlbumInfo.albumName} </h3> </li>
 					  <li> <h5> {this.state.Artist} </h5> </li>
 
-            <li> <button id="play-button" href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playAlbum}</button> </li>
+            <li> <button id="play-button" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playAlbum}</button> </li>
+            {this.state.Artist==true ?
+            <li> <a href="/artist/addsong" className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> Add New Song </a> </li>
+            : null }
             <li >
               <button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> </button>
               <div className="dropdown ">
