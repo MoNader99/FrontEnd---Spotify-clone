@@ -96,10 +96,10 @@ render() {
       
       <div className="sidebar">
         
-        <Link to="/webplayer/HomePage"><img className="logo"  src="https://i.ya-webdesign.com/images/itunes-logo-white-png-1.png" alt="logo"/></Link>
+        <Link to="/"><img className="logo"  src="https://i.ya-webdesign.com/images/itunes-logo-white-png-1.png" alt="logo"/></Link>
         
           <ul>
-              <li><NavLink  className="List" to="/webplayer/HomePage/"><i className="fas fa-home"></i>Home</NavLink></li>
+              <li><NavLink  className="List" to="/webplayer/home/"><i className="fas fa-home"></i>Home</NavLink></li>
               <li><NavLink   className="List" to="/webplayer/search/"><i className="fas fa-search" aria-hidden="true"></i>Search</NavLink></li>
               <li><NavLink  className="List" to="/webplayer/yourlibrary/"><i className="fas fa-bookmark" aria-hidden="true"></i>Your library</NavLink></li>
               <p id="Playlist">Playlists</p>

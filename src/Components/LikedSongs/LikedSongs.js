@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
 import * as actionTypes from "../../Store/actions";
 import { ShareSong } from '../Share/ShareSong';
+import { BASEURL } from '../../Constants/BaseURL';
+import { HomePageNavbar } from '../HomePage/HomePageNavbar';
   
 class LikedSongs extends Component
 {
@@ -37,7 +39,7 @@ class LikedSongs extends Component
 
   componentDidMount(){
   
-    var url = "http://spotify-clone.mocklab.io/get-tracks"; 
+    var url = BASEURL+ "/get-tracks"; 
   
     const requestOptions = {
       method: 'GET',
@@ -80,10 +82,12 @@ stream=(song)=>{
   this.props.SELECT_SONG(song);
 }
 
-  render(){ 
+  render()
+  { {document.title ="Spotify - Liked Songs"}
   return(
     
   <div className="liked-songs-page">
+    <HomePageNavbar/>
       <div className="content-spacing">
         <div className="row" >
           <div className="col-xs-12  col-lg-5 col-xl-4 d-flex justify-content-center " style={{display:"table"}}>

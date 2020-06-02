@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import './WebplayerHome.css'
 import axios from 'axios'
 import {Link} from 'react-router-dom';
+import { HomePageNavbar } from '../../HomePage/HomePageNavbar';
 //import  './PlaylistContextMenu.css';
 //import { theme, animation } from 'react-contexify';
 //import { Menu, Item} from 'react-contexify';
@@ -474,6 +475,7 @@ class Home extends Component {
     return(
         
         <div id='webplayer-layout'className="container webplayer col-12">
+            <HomePageNavbar/>
         <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/></head>
         <div className="row webplayer-body m-0">
         

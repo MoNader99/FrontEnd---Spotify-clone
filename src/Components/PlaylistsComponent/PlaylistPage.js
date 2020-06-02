@@ -4,13 +4,13 @@ import DeletePlaylist from './DeletePlaylist';
 import CardMedia from '../Media/CardMedia';
 import ReactSnackBar from "react-js-snackbar";
 import './SnackBar.css';
-// import HomePageNavbar from '../HomePage/HomePageNavbar';
-// import {BASEURL} from "../../Constants/baseURL";
+import HomePageNavbar from '../HomePage/HomePageNavbar';
 import {connect} from 'react-redux';
 import AddToPlaylist from './AddToPlaylist';
 import * as actionTypes from "../../Store/actions";
 import EditPlaylist from './EditPlaylist';
 import { ShareSong } from '../Share/ShareSong';
+import { BASEURL } from '../../Constants/BaseURL';
 
 class PlaylistPage extends Component
 {
@@ -32,7 +32,7 @@ class PlaylistPage extends Component
   
   componentDidMount(){
   
-    var url = "http://spotify-clone.mocklab.io/get-tracks"; 
+    var url = BASEURL+ "/get-tracks"; 
   
     const requestOptions = {
       method: 'GET',
@@ -108,7 +108,7 @@ stream=(song)=>{
   return(
     <div>
   <div className="playlist-page">
-   
+   <HomePageNavbar/>
       <div className="content-spacing">
         <div className="row" >
           <div className="col-xs-12  col-lg-5 col-xl-4 d-flex justify-content-center " style={{display:"table"}}>
