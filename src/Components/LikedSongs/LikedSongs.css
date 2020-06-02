@@ -77,11 +77,6 @@
 .liked-songs-page .songs:hover{
   background-color: rgba(70, 66, 69,0.4);
 }
-.table td, .table th {
-  padding: 3px;
-  vertical-align: top;
-  border-top: 1px solid #dee2e6;
-}
 
 .liked-songs-page .Menu{
   cursor: pointer;
