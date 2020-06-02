@@ -4,7 +4,7 @@ import LikedSongs from '../LikedSongs/LikedSongs';
 import DeletePlaylist from './DeletePlaylist';
 import CreatePlaylist from './CreatePlaylist';
 
-class AddToPlaylist extends Component{
+export class AddToPlaylist extends Component{
   state= 
 { 
     plalistInfo: [
@@ -38,7 +38,7 @@ return (
               
                  
               <div className="d-flex justify-content-center my-4">
-                  <a data-dismiss="modal" data-target="#create-new-playlist" className=" btn btn-success rounded-pill text-center px-5 py-2 font-weight-bold"> New Playlist</a>
+                  <a data-dismiss="modal" data-target="#create-new-playist" className=" btn btn-success rounded-pill text-center px-5 py-2 font-weight-bold"> New Playlist</a>
               </div>
             </div>     
            

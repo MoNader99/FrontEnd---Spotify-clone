@@ -6,13 +6,14 @@ import { BASEURL } from '../../Constants/BaseURL';
 import { HomePageNavbar } from '../HomePage/HomePageNavbar';
 
 
-class RecentActivities extends Component{
+export class RecentActivities extends Component{
+
     state={
         loveTextArtist:" liked your Album ",
         loveTextUser:" liked your playlist ",
         notifications:[],
     }
-
+    
     componentDidMount(){
         
         var url = BASEURL+ "/get-notification-user"; 
