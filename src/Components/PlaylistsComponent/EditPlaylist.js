@@ -1,11 +1,13 @@
 import React ,{ Component} from 'react';
 import'./EditPlaylist.css';
-// import {BASEURL} from "../../Constants/baseURL";
 import {connect} from 'react-redux';
 import {withRouter} from "react-router-dom";
 
 
-
+/** Class EditPlaylist 
+ * @category EditPlaylist
+ * @extends Component
+ */
 class EditPlaylist extends Component{
   constructor(props){
     super(props);
@@ -48,6 +50,11 @@ render(){
   )
 }
 }
+
+/**A function connecting component to redux store
+ * @memberof EditPlaylist
+ * @func mapStateToProps
+ */
 const mapStateToProps = state =>{
   return{
     userToken: state.userToken

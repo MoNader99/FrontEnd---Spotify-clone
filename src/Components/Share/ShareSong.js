@@ -21,14 +21,22 @@ import {
     WhatsappIcon,
 
   } from "react-share";
+//------------------------------------------------------------------------------------------------------------------//
 
+/** Class ShareSong 
+ * @category ShareSong
+ * @extends Component
+ */
 export class ShareSong extends Component{
   constructor(props){
     super(props);
   }
 
 render(){
-
+  /** A variable that contains URL of the selected song 
+   * @memberof ShareSong
+   * @type {string}
+   */
     var song={songURL:this.props.share.songURL}
 
   return(
@@ -109,7 +117,6 @@ render(){
         </div>
         </div>
         </div>    
-
   )
 }
 }
