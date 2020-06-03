@@ -5,6 +5,8 @@ import {NavLink, Link} from "react-router-dom";
 import { render } from "@testing-library/react";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Store/actions";
+import { BASEURL } from '../../Constants/BaseURL';
+
 
 
  
@@ -30,17 +32,43 @@ export class HomePageNavbar extends Component{
    * @memberof HomePageNavbar
    * @type {string}
    */
-      accountType:""
-     
+      accountType:"",
+      
     }
+    
+  }
+  
+  state={
+    notifications:[],
   }
 
-  // handleBackButton = () => {
-  //   // let history = useHistory()
-  //   // history.goBack();
-  // };
+  componentDidMount(){    
+    var url = BASEURL+ "/get-notification-user"; 
+    const requestOptions = {
+        method: 'GET',
+      };
+      fetch(url,requestOptions)
+        .then((response) => { return response.json()})
+        .then((data) => {
+          this.setState({ 
+           notifications:data.Notifications
+          });
+          console.log(this.state.notifications)
+        })
+        .catch((error)=>{console.log(error);
+      
+        })
+  }
   
   render(){
+    var unread=0;
+    if(this.state.notifications!=null){
+    for (var i =0;i<this.state.notifications.length;i++){
+      if(this.state.notifications[i].status=="unread"){
+        unread++;
+      }
+    }
+  }
   return (
 
             <div className="home-nav"  style={{backgroundColor: this.props.color}}> 
@@ -85,8 +113,14 @@ export class HomePageNavbar extends Component{
                     <a href="/login" className="login btn btn-light rounded-pill text-center">LOG IN</a>
                 </div>
                 :
-                <div>
-                    <div id="profile">
+                <div className="row">
+                  <a href="/webplayer/notifications" className="col-2 d-flex align-items-center alert-notifi"> 
+                    <i class="far fa-bell"></i> 
+                    {unread !=0?
+                     <span class="badge badge-light">{unread}</span>
+                    :null}
+                  </a>
+                    <div className="col-4" id="profile">
                      <a className="nav-link dropdown-toggle" href="/account-overview" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img className="user-img" alt="." src={this.props.image} />
                          Profile
