@@ -50,7 +50,7 @@ class HomePageNavbar extends Component{
     * @memberof HomePageNavbar
     * @type {string}
     */
-    var url = BASEURL+ "/get-notification-user"; 
+    var url = BASEURL+ "/notifications"; 
     const requestOptions = {
         method: 'GET',
       };
@@ -79,15 +79,36 @@ class HomePageNavbar extends Component{
    * @param notification
    */
   pushNoitifications (notification){
-    addNotification({
-      title: "New "+notification.actionType,
-      message: "Check your notifications!!",
-      onClick: (e) =>{ window.open("http://localhost:3000/webplayer/notifications"); },
-      theme: 'light',
-      duration: 10000000,
-      icon:"https://image.flaticon.com/icons/png/512/49/49097.png",
-      native: true 
-  });
+    
+   /** A variable that contains URL 
+          * @memberof HomePageNavbar
+          * @type {string}
+          */
+         var url =  BASEURL+"/notifications/pushed";    
+         const requestOptions = {
+           method: 'POST', 
+           // headers: {'Content-Type': 'application/json' }, 
+           body: JSON.stringify({ Id:notification.id}) ,
+       
+         };    
+            fetch(url,requestOptions)
+             .then((res) => {
+               if(res.status===200){
+                  console.log("response is ok")
+                  addNotification({
+                    title: "New "+notification.actionType,
+                    message: "Check your notifications!!",
+                    onClick: (e) =>{ window.open("http://localhost:3000/webplayer/notifications"); },
+                    theme: 'light',
+                    duration: 10000000,
+                    icon:"https://image.flaticon.com/icons/png/512/49/49097.png",
+                    native: true 
+                });
+               }
+          })
+     
+             .then((data) =>{})
+             .catch((err)=>console.log(err))
   }
 
   render(){
