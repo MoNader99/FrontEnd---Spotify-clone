@@ -125,9 +125,15 @@ export class Login extends Component{
         { 
             var id=this.state.checkEmail.indexOf(this.state.EmailText)
             var user=this.state.users[id]
-            this.props.onSignIn(user);
             this.setState({checkedCorrect:false})
+            if(user.type=="user"){
             window.location.replace("/account-overview");
+            this.props.onSignIn(user);
+            }
+            else if (user.type=="artist"){
+            window.location.replace("/account-overview-artist");
+            this.props.onSignInArtist(user);
+            }
         }
         else
         {
