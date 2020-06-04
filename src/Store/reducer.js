@@ -1,7 +1,6 @@
 import * as actionTypes from "./actions";
 
-const initialState = {
-
+const State = {
   selectedArtistID: null,
   selectedAlbumID: null,
   selectedPlaylistID: null,
@@ -9,14 +8,15 @@ const initialState = {
   userID: null,
   userToken: null,
 
-  ArtistLogin:true,
+  ArtistLogin:false,
 
   selectedSong: {_id : "1", SongName :"Perfect", Artist: "Ed Sheeran",AlbumName:"Perfect",Duration : "3:52", imgURL:"https://i.ytimg.com/vi/0R6YO0IAN48/maxresdefault.jpg", songURL:"https://www.mboxdrive.com/Perfect - Ed Sheeran (Lyrics).mp3"},
   loggenIn: false,
-  user:{ID:"1",Email:"mnader93@yahoo.com",Password:"123456789",Username:"MohammedNader",Date:"28 july 1999",ImgUrl:"https://www.somagnews.com/wp-content/uploads/2020/01/a7-12-e1579117751843.jpg"},
+  user:{ID:"1",type:"user",Email:"mnader93@yahoo.com",Password:"123456789",Username:"MohammedNader",Date:"28 july 1999",ImgUrl:"https://www.somagnews.com/wp-content/uploads/2020/01/a7-12-e1579117751843.jpg"},
 }
 
-const reducer = (state = initialState, action) => {
+
+const reducer = (state = State, action) => {
   switch (action.type) {
     case actionTypes.SELECT_ARTIST:
       return {
@@ -58,7 +58,6 @@ const reducer = (state = initialState, action) => {
       break;
 
     case actionTypes.ON_SIGNUP:
-      console.log(action.payload.id);
       return {
         ...state,
         userID: action.payload.id,
@@ -68,11 +67,19 @@ const reducer = (state = initialState, action) => {
       break;
       
     case actionTypes.ON_SIGNIN:
-      console.log(action.payload)
       return {
         ...state,
         user:action.payload.user,
         loggenIn: true
+      };
+      break;
+    
+    case actionTypes.ON_SIGNIN:
+      return {
+        ...state,
+        user:action.payload.user,
+        loggenIn: true,
+        ArtistLogin:true,
       };
       break;
 
@@ -80,6 +87,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loggenIn: false,
+        ArtistLogin:false,
         userID: null,
         userToken: null
         };
