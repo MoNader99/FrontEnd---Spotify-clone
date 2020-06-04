@@ -41,7 +41,7 @@ export class RecentActivities extends Component{
          * @memberof RecentActivities
          * @type {string}
          */
-        var url = BASEURL+ "/get-notification-user"; 
+        var url = BASEURL+ "/notifications"; 
         const requestOptions = {
             method: 'GET',
           };
@@ -75,7 +75,29 @@ export class RecentActivities extends Component{
    * @param index
    */
     hide = (index) =>{
-        this.state.notifications[index]=""
+          /** A variable that contains URL 
+          * @memberof EditPlaylist
+          * @type {string}
+          */
+          var url =  BASEURL+"/notifications/delete";    
+          const requestOptions = {
+            method: 'DELETE', 
+            // headers: {'Content-Type': 'application/json' }, 
+            body: JSON.stringify({ Id:this.state.notifications[index].id}) ,
+        
+          };    
+             fetch(url,requestOptions)
+              .then((res) => {
+                if(res.status===200){
+                   console.log("response is ok")
+                   this.state.notifications[index]=""
+                }
+           })
+      
+              .then((data) =>{})
+              .catch((err)=>console.log(err))
+        
+        
     }
 
     /**Function to mark unread notifications as read  
@@ -83,10 +105,33 @@ export class RecentActivities extends Component{
    * @func MarkRead
    * @param index
    */
-    MarkRead = (index) =>{
-        this.state.notifications[index].status="read"
+    MarkRead = (index) =>{       
+         /** A variable that contains URL 
+          * @memberof EditPlaylist
+          * @type {string}
+          */
+         var url =  BASEURL+"/notifications/read";    
+         const requestOptions = {
+           method: 'POST', 
+           // headers: {'Content-Type': 'application/json' }, 
+           body: JSON.stringify({ Id:this.state.notifications[index].id}) ,
+       
+         };    
+            fetch(url,requestOptions)
+             .then((res) => {
+               if(res.status===200){
+                  console.log("response is ok")
+                this.state.notifications[index].status="read"
+               }
+          })
+         
+     
+        .then((data) =>{})
+        .catch((err)=>console.log(err))
+             
     }
-    
+
+
     render(){
     return(
         <div>
@@ -98,8 +143,8 @@ export class RecentActivities extends Component{
                     
                 { this.state.notifications.map((Card,index)=>(
                   <span>{Card!=""?
-                <div key={index} className={Card.status=="unread" ? "row notifications unread":"row notifications read"  }>
-
+                <div key={index} className={Card.status=="read" ? "row notifications read":"row notifications unread" }>
+                
                 <div className="col-2 d-flex justify-content-center">
                 {Card.actionType == "follow" ? <i class="fas fa-user-plus follow"></i>:null}
                 {Card.actionType == "Like" ? <i class="fas fa-heart love"></i>:null}
@@ -136,11 +181,11 @@ export class RecentActivities extends Component{
 
             <div className="col-1">
                 <div className="dropdown d-flex align-items-center ">
-                    <a className="song-menu Menu mt-4" href="/account" id="Dropdown" data-toggle="dropdown" > ••• </a>
+                    <a className="song-menu Menu mt-4" id="Dropdown" data-toggle="dropdown" > ••• </a>
                     <div className="dropdown-menu notifi-dropdown-content dropdown-menu-right ">
-                        <a onClick={()=>this.hide(index)} className="dropdown-item drop-class" href="#">Remove</a>
+                        <a onClick={()=>this.hide(index)} className="dropdown-item drop-class">Remove</a>
                         {Card.status=="unread" ? 
-                        <a onClick={()=>this.MarkRead(index)} className="dropdown-item drop-class" href="#">Mark as read</a>
+                        <a onClick={()=>this.MarkRead(index)} className="dropdown-item drop-class">Mark as read</a>
                         :null}
                     </div>
                 </div>

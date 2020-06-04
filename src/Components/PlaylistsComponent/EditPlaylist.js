@@ -34,9 +34,8 @@ EditPlaylistName = (e) =>
     * @type {string}
     */
     var url =  BASEURL+"/edit-playlist";    
-    console.log(url);
     const requestOptions = {
-      method: 'POST', 
+      method: 'PUT', 
       headers: {'Content-Type': 'application/json' }, 
       body: JSON.stringify({ playlistName: NewPlaylistName}) ,
   
