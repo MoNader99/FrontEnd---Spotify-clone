@@ -1,0 +1,36 @@
+.about-us-page
+{
+    margin-top: 80px;
+    padding-top: 60px;
+    font-size: 16px;
+}
+.about-us-page h1{
+    font-weight: bolder;
+    font-size: 60px;
+}
+.about-us-page .inline-linking
+{
+color: #1DB954 ;
+text-decoration: underline;
+font-weight: bold;
+}
+.about-us-page .inline-linking:hover
+{
+    color: rgb(36, 216, 99) ;
+}
+
+.about-us-page .inline-address
+{
+    margin-bottom: 20px;
+
+}
+
+.about-us-page .inline-address-adapt
+{
+    margin-bottom: 95px;
+}
+
+.about-us-page h2{
+    font-weight: bolder;
+}
+

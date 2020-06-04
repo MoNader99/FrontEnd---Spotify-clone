@@ -1,0 +1,46 @@
+.privacy-policy
+{
+    font-size: 16px;
+}
+.header-privacy
+{
+    margin-top: 150px;
+}
+.header-privacy h1
+{
+    font-size: 40px;
+    font-weight: bolder;
+}
+.privacy-policy h2
+{
+    font-size: 22px;
+    font-weight: bold;
+}
+.privacy-policy .linking a:link
+{
+    color:#1DB954;
+    cursor: pointer;
+    font-weight: bold;
+}
+.privacy-policy .linking a:visited
+{
+    color: rgb(39, 199, 95);
+}
+.privacy-policy .table-heading
+{
+    background-color: rgb(29, 185, 84);;
+}
+.privacy-policy .margin-adapt
+{
+    margin-bottom: 100px;
+
+}
+.privacy-policy .col-1,.col-2,.col-3,.col-6,.col-9,.col-10,.col-11
+{ 
+    padding: 1px;
+
+}
+.privacy-policy .table-border
+{
+    border:1px solid rgba(214, 214, 214, 0.445);
+}
