@@ -2,13 +2,25 @@ import React from "react";
 import {shallow, configure} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
-import {ShareSong} from "../../Components/Share/ShareSong"
+import ShareSong from "../../Components/Share/ShareSong"
+import {mount} from 'enzyme';
+import configureMockStore from "redux-mock-store";
+import reducer from "../../Store/reducer";
+import { Provider } from "react-redux";
 
+
+const mockStore = configureMockStore();
+const store = mockStore({});
+const mockCallBack = jest.fn(); 
+
+// const ShareSong = shallow((<Provider store={store}><ShareSong /></Provider>));
 describe("Share Song test", ()=>{
   let wrapper;
   beforeEach(() => {
-   wrapper = shallow(<ShareSong/>); 
-  });
+    const wrapper = mount( // enzyme
+    <Provider store={store}><ShareSong /></Provider>)
+  })
+
   
   describe("Component rendering", () => {    
 
@@ -20,7 +32,6 @@ describe("Share Song test", ()=>{
     it('Share Song', () => {
       expect(wrapper.find("h2").text()).toContain("Share Song URL With: ")    
     })
+
   })
-
-
 });

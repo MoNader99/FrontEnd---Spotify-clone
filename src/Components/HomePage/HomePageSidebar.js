@@ -115,6 +115,12 @@ render() {
 );
 }
 } 
+
+/** A function connecting component to redux store
+ * @memberof HomePageSidebar
+ * @func mapStateToProps
+ * @param {*} state 
+ */
 const mapStateToProps = state => {
 
   return {
@@ -123,6 +129,11 @@ const mapStateToProps = state => {
 
 };
 
+/** A function connecting component to redux store
+ * @memberof HomePageSidebar
+ * @func mapDispatchToProps
+ * @param {*} dispatch 
+ */
 const mapDispatchToProps = dispatch => {
 
   return {

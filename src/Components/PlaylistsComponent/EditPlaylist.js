@@ -2,6 +2,7 @@ import React ,{ Component} from 'react';
 import'./EditPlaylist.css';
 import {connect} from 'react-redux';
 import {withRouter} from "react-router-dom";
+import { BASEURL } from '../../Constants/BaseURL';
 
 
 /** Class EditPlaylist 
@@ -13,6 +14,43 @@ export class EditPlaylist extends Component{
     super(props);
   }
   
+   /**Function to Edit playlist name
+   * @memberof EditPlaylist
+   * @func EditPlaylistName
+   * @param e
+   */
+EditPlaylistName = (e) =>
+{
+    e.preventDefault();
+    
+  /** variable that the new playlist name 
+    * @memberof EditPlaylist
+    * @type {string}
+    */
+    var NewPlaylistName = document.getElementById('new-playlist-name').value; 
+
+    /** A variable that contains URL 
+    * @memberof EditPlaylist
+    * @type {string}
+    */
+    var url =  BASEURL+"/edit-playlist";    
+    console.log(url);
+    const requestOptions = {
+      method: 'POST', 
+      headers: {'Content-Type': 'application/json' }, 
+      body: JSON.stringify({ playlistName: NewPlaylistName}) ,
+  
+    };    
+       fetch(url,requestOptions)
+        .then((res) => {
+          if(res.status===200){
+             console.log("response is ok")
+          }
+     })
+
+        .then((data) =>{})
+        .catch((err)=>console.log(err))  
+  }
 
 render(){
   return(
@@ -38,7 +76,7 @@ render(){
                 <button className="btn btn-dark border border-light rounded-pill text-center px-5 py-2 mt-3 font-weight-bold" data-dismiss="modal"> Cancel</button>
                 </div>
                 <div className="col-6 d-flex justify-content-start">
-                <a className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold" data-dismiss="modal" > Edit</a>
+                <a onClick={this.EditPlaylistName} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold" data-dismiss="modal" > Edit</a>
           
             </div>
         </div>
@@ -54,6 +92,7 @@ render(){
 /**A function connecting component to redux store
  * @memberof EditPlaylist
  * @func mapStateToProps
+ * @param {*} state
  */
 const mapStateToProps = state =>{
   return{

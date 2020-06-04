@@ -21,13 +21,14 @@ import {
     WhatsappIcon,
 
   } from "react-share";
+import { connect } from 'react-redux';
 //------------------------------------------------------------------------------------------------------------------//
 
 /** Class ShareSong 
  * @category ShareSong
  * @extends Component
  */
-export class ShareSong extends Component{
+class ShareSong extends Component{
   constructor(props){
     super(props);
   }
@@ -37,14 +38,7 @@ render(){
    * @memberof ShareSong
    * @type {string}
    */
-  if(this.props.share !=null){
-  
-    var song={songURL:this.props.share.songURL}
-  }
-  else{
-    var song={songURL:""}
-  }
-
+      var song={songURL:this.props.songURL.songURL}
   return(
 <div className="share-song ">
 <div id="share-song" className="modal fade" role="dialog">
@@ -127,4 +121,15 @@ render(){
 }
 }
 
-export default (ShareSong);
+/**A function connecting component to redux store
+ * @memberof ShareSong
+ * @func mapStateToProps
+ * @param {*} state
+ */
+const mapStateToProps = state =>{
+  return{
+    songURL: state.selectedSong
+  };
+};
+
+export default connect(mapStateToProps) (ShareSong);

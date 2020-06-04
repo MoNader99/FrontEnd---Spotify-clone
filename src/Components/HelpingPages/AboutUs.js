@@ -1,8 +1,5 @@
 import React ,{ Component} from 'react';
 import './AboutUs.css'
-import {connect} from "react-redux";
-import * as actionTypes from "../../Store/actions";
-import { BASEURL } from '../../Constants/BaseURL';
 import { MainNavbar } from '../WelcomeRelated/MainNavbar';
 import { Link } from 'react-router-dom';
 import Bottom from '../WelcomeRelated/Bottom';
