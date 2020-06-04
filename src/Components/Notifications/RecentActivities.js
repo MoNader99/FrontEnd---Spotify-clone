@@ -13,7 +13,7 @@ export class RecentActivities extends Component{
         loveTextUser:" liked your playlist ",
         notifications:[],
     }
-    
+
     componentDidMount(){
         
         var url = BASEURL+ "/get-notification-user"; 
@@ -42,6 +42,10 @@ export class RecentActivities extends Component{
     hide = (index) =>{
         this.state.notifications[index]=""
     }
+
+    MarkRead = (index) =>{
+        this.state.notifications[index].status="read"
+    }
     render(){
     return(
         <div>
@@ -53,7 +57,7 @@ export class RecentActivities extends Component{
                     
                 { this.state.notifications.map((Card,index)=>(
                   <span>{Card!=""?
-                <div key={index} className="row notifications ">
+                <div key={index} className={Card.status=="unread" ? "row notifications unread":"row notifications read"  }>
 
                 <div className="col-2 d-flex justify-content-center">
                 {Card.actionType == "follow" ? <i class="fas fa-user-plus follow"></i>:null}
@@ -94,6 +98,9 @@ export class RecentActivities extends Component{
                     <a className="song-menu Menu mt-4" href="/account" id="Dropdown" data-toggle="dropdown" > ••• </a>
                     <div className="dropdown-menu notifi-dropdown-content dropdown-menu-right ">
                         <a onClick={()=>this.hide(index)} className="dropdown-item drop-class" href="#">Remove</a>
+                        {Card.status=="unread" ? 
+                        <a onClick={()=>this.MarkRead(index)} className="dropdown-item drop-class" href="#">Mark as read</a>
+                        :null}
                     </div>
                 </div>
             </div>
