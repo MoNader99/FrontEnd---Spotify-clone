@@ -6,7 +6,7 @@ import { render } from "@testing-library/react";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Store/actions";
 import { BASEURL } from '../../Constants/BaseURL';
-
+import addNotification from 'react-push-notification';
 
 
  
@@ -53,10 +53,24 @@ export class HomePageNavbar extends Component{
           this.setState({ 
            notifications:data.Notifications
           });
-          console.log(this.state.notifications)
+          for (var i =0;i<this.state.notifications.length;i++){
+            if(this.state.notifications[i].pushed==false){
+              addNotification({
+                title: "New "+this.state.notifications[i].actionType,
+                message: "Check your notifications!!",
+                onClick: (e) =>{ window.open("http://localhost:3000/webplayer/notifications"); },
+                theme: 'light',
+                duration: 10000000,
+                icon:"https://image.flaticon.com/icons/png/512/49/49097.png",
+                native: true 
+            });
+ 
+            // call request that changes the pushed status to true
+
+            }
+          }
         })
         .catch((error)=>{console.log(error);
-      
         })
   }
   
