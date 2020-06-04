@@ -9,7 +9,6 @@ import { BASEURL } from '../../Constants/BaseURL';
 import addNotification from 'react-push-notification';
 
 
- 
 /** Class HomepageSidebar 
  * @category HomePage
  * @extends Component
@@ -28,21 +27,29 @@ class HomePageNavbar extends Component{
    * @type {string}
    */
       name:"",
-   /**Account type to indicate whether the upgrade button should show or not.
-   * @memberof HomePageNavbar
-   * @type {string}
-   */
-      accountType:"",
       
     }
     
   }
   
   state={
+    /**Array of notifications
+   * @memberof HomePageNavbar
+   * @type {Array<notifications>}
+   */
     notifications:[],
   }
 
-  componentDidMount(){    
+  /**Function that is called when the component renders
+   * @memberof HomePageNavbar
+   * @func componentDidMount
+   */
+  componentDidMount(){   
+    
+    /** A variable that contains URL 
+    * @memberof HomePageNavbar
+    * @type {string}
+    */
     var url = BASEURL+ "/get-notification-user"; 
     const requestOptions = {
         method: 'GET',
@@ -55,16 +62,8 @@ class HomePageNavbar extends Component{
           });
           for (var i =0;i<this.state.notifications.length;i++){
             if(this.state.notifications[i].pushed==false){
-              addNotification({
-                title: "New "+this.state.notifications[i].actionType,
-                message: "Check your notifications!!",
-                onClick: (e) =>{ window.open("http://localhost:3000/webplayer/notifications"); },
-                theme: 'light',
-                duration: 10000000,
-                icon:"https://image.flaticon.com/icons/png/512/49/49097.png",
-                native: true 
-            });
- 
+              
+              this.pushNoitifications(this.state.notifications[i])
             // call request that changes the pushed status to true
 
             }
@@ -73,7 +72,24 @@ class HomePageNavbar extends Component{
         .catch((error)=>{console.log(error);
         })
   }
-  
+
+    /**Function that pushes notifications to User's OS 
+   * @memberof HomePageNavbar
+   * @func pushNoitifications
+   * @param notification
+   */
+  pushNoitifications (notification){
+    addNotification({
+      title: "New "+notification.actionType,
+      message: "Check your notifications!!",
+      onClick: (e) =>{ window.open("http://localhost:3000/webplayer/notifications"); },
+      theme: 'light',
+      duration: 10000000,
+      icon:"https://image.flaticon.com/icons/png/512/49/49097.png",
+      native: true 
+  });
+  }
+
   render(){
     var unread=0;
     if(this.state.notifications!=null){
@@ -156,12 +172,23 @@ class HomePageNavbar extends Component{
   }
 }
 
+/** A function connecting component to redux store
+ * @memberof HomePageNavbar
+ * @func mapStateToProps
+ * @param {*} state 
+ */
 const mapStateToProps = state =>{
     return{
       logged: state.loggenIn,
       image: state.user.ImgUrl,
     };
   };
+
+/** A function connecting component to redux store
+ * @memberof HomePageNavbar
+ * @func mapDispatchToProps
+ * @param {*} dispatch 
+ */
 const mapDispatchToProps = dispatch => {
     return {
       onSignOut : () => dispatch ({type: actionTypes.ON_SIGNOUT}),

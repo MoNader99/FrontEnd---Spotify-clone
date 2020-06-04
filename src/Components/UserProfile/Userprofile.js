@@ -3,17 +3,45 @@ import "./Userprofile.css";
 import  HomePageNavbar  from '../HomePage/HomePageNavbar';
 import {BASEURL} from '../../Constants/BaseURL'
 
+/** Class Userprofile 
+ * @category Userprofile
+ * @extends Component
+ */
 class Userprofile extends Component {
   constructor(props){
     super(props);
     this.state = 
     {
+        /**username in user profile
+        * @memberof Userprofile
+        * @type {string}
+        */
         username:"Mohammed_Nader",
+
+        /**Number of playlists that the user create
+        * @memberof Userprofile
+        * @type {number}
+        */
         playlists:15,
+
+        /**Text on follow button
+        * @memberof Userprofile
+        * @type {string}
+        */
         ButtonText:"Follow",
+
+        /**Array of playlists
+        * @memberof Userprofile
+        * @type {Array<playlists>}
+        */
         playlistTargets:[]
     }
   }
+
+  /**Function to Handle follow button
+   * @memberof Userprofile
+   * @func FollowButton
+   */
   FollowButton = () => {
    if ( this.state.ButtonText === "Follow" ) {
      this.setState({ButtonText: "UnFollow"});
@@ -22,14 +50,29 @@ class Userprofile extends Component {
      this.setState({ButtonText: "Follow"});
    }
  }
+
+ /**Function to Handle Like ad unlike
+   * @memberof Userprofile
+   * @func Like
+   * @param e
+   */
  Like = e => {
     const {id} = e.target;
+
+    /** heart icon
+   * @memberof Userprofile
+   * @type {string}
+   */
     var heart=document.getElementById(id);
     heart.classList.toggle("far");
     heart.classList.toggle("fas");
     heart.classList.toggle("red");
  }
 
+ /**Function that is called when the component renders
+   * @memberof Userprofile
+   * @func componentDidMount
+   */
  componentDidMount(){
     const url=BASEURL + "/get-playlists"
     const requestOptions = {
