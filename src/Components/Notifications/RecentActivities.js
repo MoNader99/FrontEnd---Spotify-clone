@@ -5,17 +5,42 @@ import * as actionTypes from "../../Store/actions";
 import { BASEURL } from '../../Constants/BaseURL';
 import  HomePageNavbar  from '../HomePage/HomePageNavbar';
 
-
+/** Class RecentActivities 
+ * @category RecentActivities
+ * @extends Component
+ */
 export class RecentActivities extends Component{
 
     state={
+         /**Text that shown when someone liked artist album
+         * @memberof RecentActivities
+         * @type {sring}
+         */
         loveTextArtist:" liked your Album ",
+
+        /**Text that shown when someone liked your playlist
+         * @memberof RecentActivities
+         * @type {sring}
+         */
         loveTextUser:" liked your playlist ",
+
+        /**Array of notifications
+         * @memberof RecentActivities
+         * @type {Array<notifications>}
+         */
         notifications:[],
     }
 
+    /**Function that is called when the component renders
+   * @memberof RecentActivities
+   * @func componentDidMount
+   */
     componentDidMount(){
         
+        /** A variable that contains URL 
+         * @memberof RecentActivities
+         * @type {string}
+         */
         var url = BASEURL+ "/get-notification-user"; 
         const requestOptions = {
             method: 'GET',
@@ -34,18 +59,34 @@ export class RecentActivities extends Component{
             })
     }
 
+     /**Function to open the current notification linked page
+   * @memberof RecentActivities
+   * @func openPage
+   * @param pageLink
+   */
     openPage = (pageLink) =>
     {
         window.location.replace(pageLink);
     }
 
+    /**Function to hide notification  
+   * @memberof RecentActivities
+   * @func hide
+   * @param index
+   */
     hide = (index) =>{
         this.state.notifications[index]=""
     }
 
+    /**Function to mark unread notifications as read  
+   * @memberof RecentActivities
+   * @func MarkRead
+   * @param index
+   */
     MarkRead = (index) =>{
         this.state.notifications[index].status="read"
     }
+    
     render(){
     return(
         <div>

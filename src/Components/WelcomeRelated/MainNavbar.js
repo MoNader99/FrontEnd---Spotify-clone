@@ -90,6 +90,7 @@ console.log(this.props.user)
 
 /** A function connecting component to redux store
  * @memberof MainNavbar
+ * @func mapStateToProps
  * @param {*} state 
  */
 const mapStateToProps = state =>{
@@ -102,6 +103,7 @@ const mapStateToProps = state =>{
 
 /** A function connecting component to redux store
  * @memberof MainNavbar
+ * @func mapDispatchToProps
  * @param {*} dispatch 
  */
 const mapDispatchToProps = dispatch => {
