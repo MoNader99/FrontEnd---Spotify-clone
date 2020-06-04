@@ -17,6 +17,7 @@ import {BrowserRouter as Router,
    } from "react-router-dom";
 import { HomePageSidebar } from '../../Components/HomePage/HomePageSidebar';
 import RecentActivities from '../../Components/Notifications/RecentActivities';
+import Userprofile from '../../Components/UserProfile/Userprofile';
 
 
 
@@ -46,7 +47,7 @@ class WebPlayerPage extends Component {
                 <Route exact path="/webplayer/yourlibrary-artists"  component={ArtistsLibrary} />
                 <Route exact path="/webplayer/yourlibrary-albums"  component={AlbumsLibrary} />
                 <Route exact path="/webplayer/notifications"  component={RecentActivities} />
-
+                <Route exact path="/webplayer/userprofile"  component={Userprofile} />
           </Switch>
 
           </div>
