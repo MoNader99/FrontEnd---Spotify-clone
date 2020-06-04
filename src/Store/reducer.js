@@ -9,9 +9,11 @@ const initialState = {
   userID: null,
   userToken: null,
 
-  selectedSong: null,
+  selectedSong: {songURL:""},
   loggenIn: false,
-  user:null,
+  user:{ImgUrl:""},
+
+  ProfileImgUrl:""
 }
 
 const reducer = (state = initialState, action) => {
@@ -82,7 +84,14 @@ const reducer = (state = initialState, action) => {
         userToken: null
         };
       break;
-      
+      case actionTypes.SELECT_PHOTO:
+        console.log(action.value)
+      return {
+        ...state,
+        ProfileImgUrl: action.value
+
+      };
+      break;
     default:
       return state;
       break;

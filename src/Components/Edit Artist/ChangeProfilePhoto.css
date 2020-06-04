@@ -1,0 +1,16 @@
+.header{
+    background-image: none;
+    background-color:transparent;
+    color: yellowgreen;
+}
+.custom-file{
+
+    text-align: center;
+    position: relative;
+    margin-top: 93%;
+}
+
+.SetPasswordContent{
+
+    min-height: 200%;
+}

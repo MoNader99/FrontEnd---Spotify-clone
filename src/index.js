@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import {BrowserRouter as Router,
+  Switch, 
+  Route, 
+ } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import {Provider} from "react-redux";
@@ -17,5 +21,7 @@ store.subscribe( () =>{
   saveState(store.getState());
 });
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><Router>
+  <Route component={App} />
+</Router></Provider>, document.getElementById('root'));
 serviceWorker.unregister();

@@ -37,7 +37,13 @@ render(){
    * @memberof ShareSong
    * @type {string}
    */
+  if(this.props.share !=null){
+  
     var song={songURL:this.props.share.songURL}
+  }
+  else{
+    var song={songURL:""}
+  }
 
   return(
 <div className="share-song ">

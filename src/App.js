@@ -18,13 +18,16 @@ import Audience from './Components/Artist/ArtistProfile/Audience'
 import AddAlbum from './Components/Artist/ArtistProfile/AddAlbum'
 import WebPlayerPage from './Containers/WebPlayer/WebPlayer';
 import AddSong from './Components/Artist/ArtistProfile/AddSong';
+import AccountLayout from './Containers/AccountLayout';
+
 import HelpPage from './Components/Help/HelpPage'
+;
 
 function App() {
   return (
-    <div className="App">
+    
       <Router>
-
+<div className="App">
         <Switch>
           <Route exact path="/" component={welcomePage}/>
           <Route path="/account-overview" component={AccountSettings}/>
@@ -38,11 +41,16 @@ function App() {
           <Route  exact path="/artist/audience" component={Audience}/>
           <Route  exact path="/artist/addalbum" component={AddAlbum}/>
           <Route  exact path="/artist/addsong" component={AddSong}/>
-          <Route exact path="/help/" component={HelpPage}/>
-          {/* TODO: add routes to the other pages */}
-        </Switch>
+          <Route exact path="/help/" component={HelpPage}/>  
+          <Route  path ="/account" component={AccountLayout}/>
+        
+
+                </Switch>    
+               
+          {/* TODO: add routes to the other pages */}  
+          </div>
       </Router>
-    </div>
+    
   );
 }
 
