@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
 import * as actionTypes from "../../Store/actions";
 import { ShareSong } from '../Share/ShareSong';
-import { HomePageNavbar } from '../HomePage/HomePageNavbar';
+import HomePageNavbar from '../HomePage/HomePageNavbar';
 import {BASEURL} from '../../Constants/BaseURL'
 import { CreatePlaylist } from '../PlaylistsComponent/CreatePlaylist';
 

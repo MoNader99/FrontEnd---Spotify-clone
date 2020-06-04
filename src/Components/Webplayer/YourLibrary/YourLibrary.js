@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
 import {Link} from 'react-router-dom';
 import './YourLibrary.css';
-import { HomePageNavbar } from '../../HomePage/HomePageNavbar';
+import  HomePageNavbar  from '../../HomePage/HomePageNavbar';
 
 class YourLibrary extends Component {
     constructor() {

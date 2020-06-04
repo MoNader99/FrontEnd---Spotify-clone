@@ -3,7 +3,7 @@ import './RecentActivities.css'
 import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
 import { BASEURL } from '../../Constants/BaseURL';
-import { HomePageNavbar } from '../HomePage/HomePageNavbar';
+import  HomePageNavbar  from '../HomePage/HomePageNavbar';
 
 
 export class RecentActivities extends Component{

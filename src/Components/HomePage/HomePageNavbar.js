@@ -14,7 +14,7 @@ import addNotification from 'react-push-notification';
  * @category HomePage
  * @extends Component
  */
-export class HomePageNavbar extends Component{
+class HomePageNavbar extends Component{
   constructor(props){
     super(props); 
     this.props={
@@ -136,11 +136,11 @@ export class HomePageNavbar extends Component{
                   </a>
                     <div className="col-4" id="profile">
                      <a className="nav-link dropdown-toggle" href="/account-overview" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img className="user-img" alt="." src={this.props.image} />
+                        <img className="user-img" alt="" src={this.props.image} />
                          Profile
                         </a>
                     
-                        <div className="dropdown-menu dropdown-menu-right " aria-labelledby="navbar-dropdown">
+                        <div className="dropdown-menu dropdown-menu-left " aria-labelledby="navbar-dropdown">
                             <a className="dropdown-item drop-class" href="/account-overview">Account</a>
                             <a onClick={this.props.onSignOut} className="dropdown-item drop-class" href="/">Sign out</a>
                         </div>
@@ -159,7 +159,7 @@ export class HomePageNavbar extends Component{
 const mapStateToProps = state =>{
     return{
       logged: state.loggenIn,
-      image: state.userImg
+      image: state.user.ImgUrl,
     };
   };
 const mapDispatchToProps = dispatch => {

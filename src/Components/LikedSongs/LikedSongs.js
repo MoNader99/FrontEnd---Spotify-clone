@@ -7,7 +7,7 @@ import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
 import * as actionTypes from "../../Store/actions";
 import { ShareSong } from '../Share/ShareSong';
 import { BASEURL } from '../../Constants/BaseURL';
-import { HomePageNavbar } from '../HomePage/HomePageNavbar';
+import  HomePageNavbar  from '../HomePage/HomePageNavbar';
   
 export class LikedSongs extends Component
 {
