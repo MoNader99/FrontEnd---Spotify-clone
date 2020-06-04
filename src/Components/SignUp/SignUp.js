@@ -278,7 +278,7 @@ handleSingUp=(event)=>{
 
                 <div className="terms-and-conditions mt-3 ">
                   <p className="mb-3">By clicking on Sign up, you agree to Spotify's<a className="green" href="/"> Terms and Conditions of Use</a>.</p>
-                  <p className="mb-3">To learn more about how Spotify collects, uses, shares and protects your personal data please read Spotify's<a className="green" href=""> Privacy Policy</a>.</p>
+                  <p className="mb-3">To learn more about how Spotify collects, uses, shares and protects your personal data please read Spotify's<a className="green" href="/privacypolicy"> Privacy Policy</a>.</p>
                 </div>
 
                 <div className="d-flex justify-content-center"><a onClick={this.handleSingUp} type="submit" className="submit btn rounded-pill text-center  mb-3">SIGN UP</a></div>

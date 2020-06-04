@@ -19,6 +19,8 @@ import AddAlbum from './Components/Artist/ArtistProfile/AddAlbum'
 import WebPlayerPage from './Containers/WebPlayer/WebPlayer';
 import AddSong from './Components/Artist/ArtistProfile/AddSong';
 import HelpPage from './Components/Help/HelpPage'
+import AboutUs from './Components/HelpingPages/AboutUs';
+import PrivacyPolicy from './Components/HelpingPages/PrivacyPolicy';
 
 function App() {
   return (
@@ -39,6 +41,10 @@ function App() {
           <Route  exact path="/artist/addalbum" component={AddAlbum}/>
           <Route  exact path="/artist/addsong" component={AddSong}/>
           <Route exact path="/help/" component={HelpPage}/>
+          <Route exact path="/aboutus/" component={AboutUs}/>
+          <Route exact path="/privacypolicy/" component={PrivacyPolicy}/>
+
+
           {/* TODO: add routes to the other pages */}
         </Switch>
       </Router>
