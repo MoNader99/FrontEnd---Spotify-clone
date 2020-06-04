@@ -5,6 +5,7 @@ import "./Search.css";
 import {connect} from 'react-redux';
 import * as actionTypes from "../../Store/actions";
 import {BASEURL} from '../../Constants/BaseURL'
+import {NavLink, Link} from "react-router-dom";
 
 class Search extends Component {
     constructor( props ) {
@@ -146,8 +147,24 @@ class Search extends Component {
             <nav class="navbar mb-4 ">
             
                 <div className="d-flex">
-                    <a className="previous" href="#" > &#60; </a>
-                    <a className="next" href="#"> &#62; </a>
+                <div className="collapse-drop">
+                <div className="Collapse-drop-down">
+                  <div className="home-drop">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <Link className="no-underline" to="/webplayer/home/"><a class="dropdown-item" href="#"><i className="fas fa-home"></i> Home</a></Link>
+                          <Link to="/webplayer/search/"><a class="dropdown-item" href="#"><i className="fas fa-search" aria-hidden="true"></i> Search</a></Link>
+                          <NavLink to="/webplayer/yourlibrary/"><a class="dropdown-item" href="#"><i className="fas fa-bookmark" aria-hidden="true"></i> Your library</a></NavLink>
+                          <Link to="#"><a data-toggle="modal" data-target="#create-new-playist" class="dropdown-item" href="#"><i className="fas fa-plus-square" aria-hidden="true"></i> Create playlist</a></Link>
+                          <Link to="/webplayer/likedsongs"><a class="dropdown-item" href="#"><i className="fas fa-heart " aria-hidden="true"></i> Liked songs</a></Link>
+                          <Link to="/premium"><a class="dropdown-item" href="#">  <i class="fa fa-usd" aria-hidden="true"></i>  Upgrade</a></Link>
+
+                          </div>
+                    </div>        
+                  </div>
+                </div>
                     <div className="Search-content">
                         <span className="search-search-icon" ><i className="fas fa-search"></i></span>
                         <input onChange={this.handleOnInputChange} autocomplete="off" name="search" className="Search-bar form-control" placeholder="Search for Artists, Songs, or products" aria-label="Search" ></input>
@@ -229,7 +246,7 @@ class Search extends Component {
                             {this.state.SongsTargets.map((song,index)=>(
                             <div className="songs">
                                 <div className="row">
-                                <div className="col-xl-1 col-md-1 col-1 col-2">
+                                <div style={{padding: "0"}} className="col-xl-1 col-md-1 col-1 col-2">
                                     <a>
                                         <img src={song.imgURL} className="p-1 image"></img>
                                     </a>
@@ -310,7 +327,7 @@ class Search extends Component {
                             <div className="row">
                             {this.state.usersTargets.map((user,index)=>(
                             <div className="col-xl-1 col-lg-3 col-md-2 col-sm-1 col-1 mt-3 artist-card ">
-                                <a class="artist-card"  >
+                                <a href="/webplayer/userprofile" class="artist-card"  >
                                     <div className="image-padding"><img src={user.ImgUrl} class="img-style" alt=""></img></div>
                                     <h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">{user.Username}</h3>
                                 </a>
@@ -331,7 +348,8 @@ class Search extends Component {
 const mapStateToProps = state =>{
     return{
       logged: state.loggenIn,
-      image: state.userImg
+      image: state.user.ImgUrl,
+
     };
   };
 const mapDispatchToProps = dispatch => {
