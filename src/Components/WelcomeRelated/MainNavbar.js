@@ -57,7 +57,7 @@ console.log(this.props.user)
                   <ul id="profile" className={this.props.logging == true ? 'list-unstyled' : ' d-none'}>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="/account-overview" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img className="user-img" alt="." src="" />
+                        <img className="user-img" alt="" src="" />
                          Profile
                         </a>
                     
