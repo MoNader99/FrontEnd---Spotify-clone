@@ -24,7 +24,7 @@ import HelpPage from './Components/Help/HelpPage'
 ;
 import AboutUs from './Components/HelpingPages/AboutUs';
 import PrivacyPolicy from './Components/HelpingPages/PrivacyPolicy';
-
+import Search from './Components/Show by Genres/ShowByGenres'
 function App() {
   return (
     
@@ -45,6 +45,7 @@ function App() {
           <Route  exact path="/artist/addsong" component={AddSong}/>
           <Route exact path="/help/" component={HelpPage}/>  
           <Route  path ="/account" component={AccountLayout}/>
+         
         
 
                  

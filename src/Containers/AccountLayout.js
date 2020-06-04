@@ -18,7 +18,7 @@ class AccountLayout extends Component {
             <Router>
             <div className="content-wrapper d-flex justify-content-center">
 
-                    <div className="row no-gutters container ">
+                    <div className="row no-gutters container " id="the_container">
                         <div className="col-sm-3 hidden-xs">
 
                             <SideNavSet image="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2617592195136976&height=300&width=300&ext=1586597311&hash=AeT69G6iOgUxz6VW"/>

@@ -33,7 +33,7 @@ class OverviewContent extends Component{
     
     }
     componentDidMount(){
-      fetch('http://spotify-clone.mocklab.io/artist-data').then(response=>{
+      fetch('http://spotify-clone1.mocklab.io/artist-data').then(response=>{
         return response.json();
       }).then(({artists})=>{
         this.setState({data:artists});

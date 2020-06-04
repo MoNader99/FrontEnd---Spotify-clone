@@ -18,6 +18,7 @@ import {BrowserRouter as Router,
 import { HomePageSidebar } from '../../Components/HomePage/HomePageSidebar';
 import RecentActivities from '../../Components/Notifications/RecentActivities';
 import Userprofile from '../../Components/UserProfile/Userprofile';
+import ShowByGenres from '../../Components/Show by Genres/ShowByGenres';
 
 
 
@@ -48,6 +49,7 @@ class WebPlayerPage extends Component {
                 <Route exact path="/webplayer/yourlibrary-albums"  component={AlbumsLibrary} />
                 <Route exact path="/webplayer/notifications"  component={RecentActivities} />
                 <Route exact path="/webplayer/userprofile"  component={Userprofile} />
+                <Route path ="/webplayer/showbygenres" component ={ShowByGenres}/>
           </Switch>
 
           </div>
