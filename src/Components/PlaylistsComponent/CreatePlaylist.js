@@ -6,7 +6,7 @@ import {withRouter} from "react-router-dom";
 
 
 
-class CreatePlaylist extends Component{
+export class CreatePlaylist extends Component{
   constructor(props){
     super(props);
   }

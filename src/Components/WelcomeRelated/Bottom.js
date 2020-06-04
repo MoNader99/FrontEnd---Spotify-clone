@@ -11,11 +11,22 @@ class Bottom extends Component {
 			<footer className="bottom-bar page-footer pt-4 ">
 			  <div className=" container text-center text-md-left">
 				<div className="row">
-				  	<div className="col-md-5 mt-md-0 mt-3">
+				  	<div className="col-md-4 mt-md-0 mt-3">
 					  <a href="/" className="logo"> <i className="fab fa-spotify"></i> Spotify </a>
 				  	</div>
+
+
+				<div className="col-md-3 mb-md-0 mb-3">
+					<h5 className="titleBottom">Company</h5>
+					<ul className="list-unstyled">
+					  <li>
+						<a href="/aboutus" className="links-hover"> About Us </a>
+					  </li>
+					</ul>
+				</div>	  
+
 				   <hr className="clearfix w-100 d-md-none pb-3"/> 
-				<div className="col-md-6 mb-md-0 mb-3">
+				<div className="col-md-3 mb-md-0 mb-3">
 					<h5 className="titleBottom">Useful Links</h5>
 					<ul className="list-unstyled">
 					  <li>

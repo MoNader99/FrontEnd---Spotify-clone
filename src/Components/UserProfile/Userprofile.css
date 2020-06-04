@@ -1,0 +1,185 @@
+.user{
+    padding-right:18px;
+    min-height: 100vh;
+    padding-bottom: 110px;
+    padding-top:60px;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+}
+
+.user .user-profile{
+    background: linear-gradient(0deg, rgb(20, 20, 20) 40%, rgba(66,66,66,1) 100%);
+    color:white;
+    height: 300px;
+    /* border-radius: 25px; */
+}
+
+.user .user-profile .user-image{
+    max-width: 250px;
+    min-height: 225px;
+    border-radius: 50%;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,.5);
+}
+
+.user .user-profile .profile{
+    font-size: 15px;
+    font-weight: 700;
+}
+.user .user-profile .username{
+    font-size: 96px;
+    font-weight: 700;
+}
+.user .user-profile .playlists{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.user h3 {
+    color:white;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.user .card {
+    padding: 20px;
+    text-align: center;
+    width: 150px;
+    height: 250px;
+    background-color: rgb(40, 40, 40);
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.user .card-group{
+    padding: 20px;
+}
+.user .card-body {
+   padding: 10px 0;
+   text-align: left;
+}
+.user .rounded-circle{
+    height: 110px;
+    width: 110px;
+}
+.user .card-title {
+    color:white;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+}
+.user #playlists-cards .card-text {
+    font-size: 12px;
+    line-height: 18px;
+    height: 70px;
+    color: #b3b3b3;
+    padding: 0;
+    margin-top: 4px;
+    overflow: hidden;
+}
+
+.user .card-text {
+    font-size: 12px;
+    line-height: 18px;
+    height: 70px;
+    color: #b3b3b3;
+    padding: 0;
+    margin-top: 4px;
+    overflow: hidden;
+}
+
+.user .card-img-top{
+    box-shadow: 0 2px 3px black;
+}
+
+.user .play-btn{
+    position: absolute;
+    outline: none;
+    text-align: center;
+    top:190px;
+    right:20px;
+    height: 40px;
+    width: 40px;
+    background-color:transparent!important;
+    border-color: transparent !important;
+}
+.user .play-btn:focus{
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+.user  .fa-heart {
+    color: white;
+    font-size: 25px;
+    margin: 5px -3px;
+}
+
+.user .red {
+    color: red;
+}
+
+.user .card-footer {
+    padding: 0; 
+    background-color: inherit;
+    border-top: 0;
+}
+
+.user .public{
+    margin-top:2.5rem;
+}
+
+@media only screen and (max-width: 1700px){
+    .user .user-profile .list {
+        margin-left: 45px;
+    }
+}
+@media only screen and (max-width: 1560px){
+    .user .user-profile .follow {
+        margin-left: 45px;
+    }
+    .user .user-profile .list {
+        margin-left: 75px;
+    }
+    .user .user-profile .username{
+        font-size: 80px;
+        font-weight: 700;
+    }
+}
+
+@media only screen and (max-width:1200px){
+    .user .user-profile .user-image{
+        margin-bottom: 20px;
+    }
+    .user .public{
+        margin-top:14.5rem;
+    }
+    .user .user-profile .list {
+        margin-left: 30px;
+    }
+} 
+
+@media only screen and (max-width:900px){
+    .user .user-profile .username{
+        font-size: 60px;
+    }
+}
+
+@media only screen and (max-width:750px){
+    .user .user-profile .username{
+        font-size: 40px;
+    }
+    .user .card{
+        margin-left: 45px;
+    }
+}
+
+@media only screen and (max-width:400px){
+    .user .card{
+        margin-left: 0px;
+    }
+    .user{
+        padding-right:10px;
+    }
+    .user .user-profile .username{
+        font-size: 30px;
+    }
+}

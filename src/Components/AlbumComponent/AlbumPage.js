@@ -6,14 +6,15 @@ import {connect} from 'react-redux';
 import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
 import * as actionTypes from "../../Store/actions";
 import { ShareSong } from '../Share/ShareSong';
-import { HomePageNavbar } from '../HomePage/HomePageNavbar';
+import HomePageNavbar from '../HomePage/HomePageNavbar';
 import {BASEURL} from '../../Constants/BaseURL'
+import { CreatePlaylist } from '../PlaylistsComponent/CreatePlaylist';
 
 /** Class AlbumPage 
  * @category AlbumPage
  * @extends Component
  */
-class AlbumPage extends Component
+export class AlbumPage extends Component
 {
   state= 
 { 
@@ -92,6 +93,8 @@ class AlbumPage extends Component
    * @type {Array<songs>}
    */
     AblumSongs: [],
+
+    Artist:false,
     
 }
 //  /**Function that is called when the component renders
@@ -118,22 +121,6 @@ componentDidMount(){
 
     })
   }
-
-  toggle_add_to_playlist()
- {
-    /** variable blur add to playlist
-   * @memberof AlbumPage
-   * @type {string}
-   */
-   var blur_add_to_playlist=document.getElementById ('blur-add-to-playlist');
-   blur_add_to_playlist.classList.toggle('activate')
-    /**variable popup add to playlist
-   * @memberof AlbumPage
-   * @type {string}
-   */
-   var popup_add_to_playlist=document.getElementById('popup-add-to-playlist');
-   popup_add_to_playlist.classList.toggle('activate')
- }
   
    /**Function to like playlist
    * @memberof AlbumPage
@@ -223,6 +210,7 @@ stream=(song)=>{
 
   render(){
     {document.title ="Spotify - Album"}
+    console.log(this.props.artist)
   return(
   <div className="album-page">
      <HomePageNavbar />
@@ -237,15 +225,18 @@ stream=(song)=>{
 
 					  <li> <h3> {this.state.AlbumInfo.albumName} </h3> </li>
 					  <li> <h5> {this.state.Artist} </h5> </li>
-            
-            <li> <button id="play-button" href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playAlbum}</button> </li>
+
+            <li> <button id="play-button" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playAlbum}</button> </li>
+            {this.state.Artist==true ?
+            <li> <a href="/artist/addsong" className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> Add New Song </a> </li>
+            : null }
             <li >
               <button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> </button>
               <div className="dropdown ">
               <a className="card-menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
               <div className="dropdown-menu card-dropdown-content ">
               <a className="dropdown-item drop-class" href="#" id="SAVE" value="ShowSave" onClick={this.show}>Save To Your Library</a>
-              <a className="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Add To Playlist</a>
+              <a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist" href="">Add To Playlist</a>
               </div>
               </div>
             </li>
@@ -277,6 +268,15 @@ stream=(song)=>{
                   <a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist" href="#">Add to playlist</a>
                   <a className="dropdown-item drop-class" href="#" id="SAVE" value="ShowSave" onClick={this.show}>Save To Your Library</a>
                   <a className="dropdown-item drop-class" data-toggle="modal" data-target="#share-song">Share Song</a>
+                  
+                  {this.state.Artist==true ?
+                  <a className="dropdown-item drop-class" href="/artist/addsong" >Edit</a>
+                  : null }
+
+                  {this.state.Artist==true ?
+                  <a className="dropdown-item drop-class" href="/artist/addsong" >Delete</a>
+                  : null }
+
                   </div>
                 </div>
               </div>
@@ -311,8 +311,9 @@ stream=(song)=>{
  */
 const mapStateToProps = state =>{
   return{
+    artist:state.ArtistLogin,
     userToken: state.userToken,
-    songURL: state.selectedSong
+    songURL: state.selectedSong,
   };
 };
 const mapDispatchToProps = dispatch => {

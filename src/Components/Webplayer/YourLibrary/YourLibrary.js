@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
 import {Link} from 'react-router-dom';
 import './YourLibrary.css';
+import  HomePageNavbar  from '../../HomePage/HomePageNavbar';
 
 class YourLibrary extends Component {
     constructor() {
@@ -246,6 +247,7 @@ class YourLibrary extends Component {
 
     return(
         <div id="webplayer-library" className="container col-lg-12">
+          <HomePageNavbar page="library"/>
             <div className="library-playlists-section">
                 <h2 className="section-title popular-playlists">Playlists</h2>
                     <div className="card-group">

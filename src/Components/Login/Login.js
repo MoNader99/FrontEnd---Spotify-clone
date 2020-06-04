@@ -2,24 +2,81 @@ import React ,{ Component} from 'react';
 import './Login.css'
 import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
+import { BASEURL } from '../../Constants/BaseURL';
 
-
-class Login extends Component{
+/** Class Login 
+ * @category Login
+ * @extends Component
+ */
+export class Login extends Component{
 
     state = {
-        emailStyle:{} ,
-        passwordStyle:{} ,
+        /**Object of email style
+        * @memberof Login
+        * @type {object}
+        */
+        emailStyle:{},
+
+        /**Object of password style
+        * @memberof Login
+        * @type {object}
+        */
+        passwordStyle:{},
+
+        /**Email text
+        * @memberof Login
+        * @type {string}
+        */
         EmailText: "",
+
+        /**Password text
+        * @memberof Login
+        * @type {string}
+        */
         PasswordText:"",
+
+        /**Email error validation
+        * @memberof Login
+        * @type {string}
+        */
         emailError: "",
+
+        /**Password error validation
+        * @memberof Login
+        * @type {string}
+        */
         passwordError: "",
+
+        /**Array to check emails with the given ones
+        * @memberof Login
+        * @type {Array<emails>}
+        */
         checkEmail:[],
+
+        /**Array to check passwords with the given ones
+        * @memberof Login
+        * @type {Array<passwords>}
+        */
         checkPassword:[],
+
+        /**Check if correct or not
+        * @memberof Login
+        * @type {boolean}
+        */
         checkedCorrect: false,
+
+        /**Array includes data of users
+        * @memberof Login
+        * @type {Array<users>}
+        */
         users:[]
     }
-    
 
+    /**Function to Validate email
+   * @memberof Login
+   * @func validateEmail
+   * @param event
+   */
     validateEmail = (event) => {
         let EmailText = event.target.value;
         if (EmailText=="")
@@ -34,6 +91,12 @@ class Login extends Component{
             this.setState({EmailText:EmailText})
         }
     }
+
+    /**Function to Validate Password
+   * @memberof Login
+   * @func validatePassword
+   * @param event
+   */
     validatePassword = (event) => {
         let PasswordText = event.target.value;
         if (PasswordText=="")
@@ -50,6 +113,11 @@ class Login extends Component{
         
     }
 
+    /**Function to Handle Login
+   * @memberof Login
+   * @func handleLogIn
+   * @param event
+   */
     handleLogIn = event => 
     {
 
@@ -57,9 +125,15 @@ class Login extends Component{
         { 
             var id=this.state.checkEmail.indexOf(this.state.EmailText)
             var user=this.state.users[id]
-            this.props.onSignIn(user);
             this.setState({checkedCorrect:false})
+            if(user.type=="user"){
             window.location.replace("/account-overview");
+            this.props.onSignIn(user);
+            }
+            else if (user.type=="artist"){
+            window.location.replace("/account-overview-artist");
+            this.props.onSignInArtist(user);
+            }
         }
         else
         {
@@ -69,9 +143,16 @@ class Login extends Component{
         
     }
 
+    /**Function that is called when the component renders
+    * @memberof Login
+    * @func componentDidMount
+    */
     componentDidMount(){
-        
-        var url = "http://spotify-clone1.mocklab.io/get-users-login"; 
+        /** URL path to get the users data 
+        * @memberof Login
+        * @type {string}
+        */
+        var url = BASEURL+ "/get-users-login"; 
         const requestOptions = {
             method: 'GET',
           };
@@ -95,6 +176,7 @@ class Login extends Component{
     }
    
     render(){
+        {document.title ="Spotify - Login"}
     return(
         <div className="login-page">
             <div className="login-logo">
@@ -140,6 +222,11 @@ class Login extends Component{
     )
 }
 }
+
+/** A function connecting component to redux store
+ * @memberof Login
+ * @param {*} dispatch 
+ */
 const mapDispatchToProps = dispatch => {
     return {
       onSignIn : (user) => dispatch ({type: actionTypes.ON_SIGNIN, payload: {user:user} }),

@@ -4,6 +4,8 @@ import SideBar from '../SideBar/ArtistSidebar';
 import './ArtistProfile.css'
 import axios from 'axios'
 import $ from 'jquery';
+import { MainNavbar } from '../../WelcomeRelated/MainNavbar';
+import Bottom from '../../WelcomeRelated/Bottom';
 
 var ctxLOne;
 var ctxLTwo;
@@ -280,7 +282,10 @@ class Audience extends Component {
         {document.title ="Audience - Spotify"}
 
         return(  
+            <div className="artist-page">
+                <MainNavbar color="black"/>
             <div className="background-color">
+
                 <div id="artist-audience" className="container"> 
                     <div className="row">
                         <SideBar/>
@@ -317,7 +322,9 @@ class Audience extends Component {
                         </div>  
                     </div> 
                 </div>  
-            </div>                                        
+            </div> 
+            <Bottom/>
+            </div>                                       
         )
     }
 }

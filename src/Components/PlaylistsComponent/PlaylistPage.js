@@ -12,7 +12,7 @@ import EditPlaylist from './EditPlaylist';
 import { ShareSong } from '../Share/ShareSong';
 import { BASEURL } from '../../Constants/BaseURL';
 
-class PlaylistPage extends Component
+export class PlaylistPage extends Component
 {
   state= 
   { 
@@ -119,7 +119,7 @@ stream=(song)=>{
 					  <li> <h3> {this.state.playlistInfo.playlistName} </h3> </li>
 					  <li> <h5> {this.state.playlistInfo.userId} </h5></li>
             <li >
-               <a href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playplaylist}</a>
+               <a id="play-button" href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playplaylist}</a>
             </li>
             <li  className="d-flex justify-content-around">
             <button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> </button>

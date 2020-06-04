@@ -4,7 +4,6 @@
 
 #webplayer-library{
     isolation: isolate;
-    padding-top: 90px;
 }
 #webplayer-library .section-title{
     font-size: 28px;
@@ -128,3 +127,4 @@
 #webplayer-library .artist-albums-page{
     height: auto;
 }
+

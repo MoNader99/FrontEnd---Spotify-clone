@@ -8,7 +8,7 @@ import {withRouter} from "react-router-dom";
  * @category EditPlaylist
  * @extends Component
  */
-class EditPlaylist extends Component{
+export class EditPlaylist extends Component{
   constructor(props){
     super(props);
   }

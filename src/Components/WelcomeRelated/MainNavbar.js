@@ -27,7 +27,7 @@ export class MainNavbar extends Component {
   
   render()
   {
-
+console.log(this.props.user)
     return(
 <section className="main-nav-bar" style={{position:this.props.position}}>
 
@@ -57,7 +57,7 @@ export class MainNavbar extends Component {
                   <ul id="profile" className={this.props.logging == true ? 'list-unstyled' : ' d-none'}>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="/account-overview" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img className="user-img" alt="." src={this.props.user.ImgUrl} />
+                        <img className="user-img" alt="." src="" />
                          Profile
                         </a>
                     

@@ -24,7 +24,7 @@ class SideBar extends Component {
                 <head>	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
                 </head>
                 <div>
-                        <img  src={this.props.user.ImgUrl} className="rounded-circle" alt="Profile" ></img>
+                        <img  src="" className="rounded-circle" alt="Profile" ></img>
                         <ul className="sidelist">
                             <Link to="/account-overview"><li className="list first"><span className="fa fa-home icon"></span> Account overview </li></Link>
                             <Link to="/edit-profile" ><li className="list"><i className="fa fa-pencil icon"></i>  Edit profile</li></Link>
@@ -36,9 +36,5 @@ class SideBar extends Component {
         )
     }
 }
-const mapStateToProps = state =>{
-    return{
-      user:state.user,
-    };
-  };
-export default connect(mapStateToProps)(SideBar);
+
+export default (SideBar);

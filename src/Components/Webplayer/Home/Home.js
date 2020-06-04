@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import './WebplayerHome.css'
 import axios from 'axios'
 import {Link} from 'react-router-dom';
-import { HomePageNavbar } from '../../HomePage/HomePageNavbar';
+import  HomePageNavbar  from '../../HomePage/HomePageNavbar';
 //import  './PlaylistContextMenu.css';
 //import { theme, animation } from 'react-contexify';
 //import { Menu, Item} from 'react-contexify';
