@@ -216,8 +216,8 @@ class Search extends Component {
                             <div className="row">
                             <div className="col-xl-3 p-0">
                                 <div class="top-result-card">
-[                                    <img src={playlistshit[0].playlistImg} className="image d-flex align-items-start" ></img>
-]                                    <h3 className="text-white d-flex align-items-start mt-3 font-weight-bold">{playlistshit[0].playlistName}</h3>
+                                    <img src={playlistshit[0].playlistImg} className="image d-flex align-items-start" ></img>
+                                   <h3 className="text-white d-flex align-items-start mt-3 font-weight-bold">{playlistshit[0].playlistName}</h3>
                                     <div>
                                         <p className="text-white d-flex align-items-start mt-1 font-weight-bold">By {playlistshit[0].creatorName}</p>
                                     </div>
