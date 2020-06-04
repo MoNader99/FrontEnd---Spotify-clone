@@ -1,6 +1,8 @@
 .user{
     padding-right:18px;
-    /* margin-top: 50px; */
+    min-height: 100vh;
+    padding-bottom: 110px;
+    padding-top:60px;
     font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
 }
 
@@ -15,7 +17,6 @@
     max-width: 250px;
     min-height: 225px;
     border-radius: 50%;
-    margin: 25px;
     box-shadow: 0 4px 4px 0 rgba(0,0,0,.5);
 }
 
@@ -86,6 +87,10 @@
     overflow: hidden;
 }
 
+.user .card-img-top{
+    box-shadow: 0 2px 3px black;
+}
+
 .user .play-btn{
     position: absolute;
     outline: none;
@@ -116,4 +121,65 @@
     padding: 0; 
     background-color: inherit;
     border-top: 0;
+}
+
+.user .public{
+    margin-top:2.5rem;
+}
+
+@media only screen and (max-width: 1700px){
+    .user .user-profile .list {
+        margin-left: 45px;
+    }
+}
+@media only screen and (max-width: 1560px){
+    .user .user-profile .follow {
+        margin-left: 45px;
+    }
+    .user .user-profile .list {
+        margin-left: 75px;
+    }
+    .user .user-profile .username{
+        font-size: 80px;
+        font-weight: 700;
+    }
+}
+
+@media only screen and (max-width:1200px){
+    .user .user-profile .user-image{
+        margin-bottom: 20px;
+    }
+    .user .public{
+        margin-top:14.5rem;
+    }
+    .user .user-profile .list {
+        margin-left: 30px;
+    }
+} 
+
+@media only screen and (max-width:900px){
+    .user .user-profile .username{
+        font-size: 60px;
+    }
+}
+
+@media only screen and (max-width:750px){
+    .user .user-profile .username{
+        font-size: 40px;
+    }
+    .user .card{
+        margin-left: 45px;
+    }
+}
+
+@media only screen and (max-width:400px){
+    .user .card{
+        margin-left: 0px;
+    }
+    .user{
+        padding-right:10px;
+    }
+    .user .user-profile .username{
+        font-size: 30px;
+    }
 }

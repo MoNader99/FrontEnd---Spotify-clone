@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./Userprofile.css";
-import { HomePageNavbar } from '../HomePage/HomePageNavbar';
+import  HomePageNavbar  from '../HomePage/HomePageNavbar';
 import {BASEURL} from '../../Constants/BaseURL'
 
 class Userprofile extends Component {
@@ -47,24 +47,26 @@ class Userprofile extends Component {
  }
   render(){
     return (
-        <div className="user">
+        <div>
+            <HomePageNavbar/>
+        <div className="user ">
           <div className="user-profile row">
-            <div className="col-2">
+            <div className="col-xl-2 col-lg-12 d-flex align-items-center justify-content-center">
                 <img className="user-image" src="https://lh3.googleusercontent.com/proxy/YpDlkQvZglL3Na-bCuo9fNsR5r1HgFKie4ScZgnCnJIoJswU1kCmmXngcsubki5UFGxED6TDqOVhAqFNGkc3WrlaSmlPi22LAUC_UCRTIjdTGg" />
             </div>
-            <div className="col-8 d-flex align-items-center">
-                <ul className="list-unstyled">
+            <div className="col-xl-8 col-lg-12 d-flex align-items-center">
+                <ul className="list-unstyled list">
                     <li className="profile">PROFILE</li>
                     <li className="username">{this.state.username}</li>
                     <li className="playlists">{this.state.playlists} Playlist</li>
                 </ul>
             </div>
-            <div className="col-2 d-flex align-items-center">
-            <button onClick={this.FollowButton} className="btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold">{this.state.ButtonText}</button>
+            <div className="col-xl-2 col-lg-12 d-flex align-items-center justify-content-center">
+            <button onClick={this.FollowButton} className="follow btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold">{this.state.ButtonText}</button>
             </div>
           </div>
-
-          <div className="row mt-4 pl-5">
+        
+          <div className="public row pl-5">
             <h3>Public Playlists</h3>
           </div>
 
@@ -82,7 +84,7 @@ class Userprofile extends Component {
             </div>
           ))}
           </div>
-
+          </div>
         </div> 
     );
   }
