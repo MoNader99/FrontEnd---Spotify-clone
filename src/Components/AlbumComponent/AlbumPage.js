@@ -8,7 +8,6 @@ import * as actionTypes from "../../Store/actions";
 import ShareSong from '../Share/ShareSong';
 import HomePageNavbar from '../HomePage/HomePageNavbar';
 import {BASEURL} from '../../Constants/BaseURL'
-import { CreatePlaylist } from '../PlaylistsComponent/CreatePlaylist';
 
 /** Class AlbumPage 
  * @category AlbumPage
@@ -205,7 +204,7 @@ stream=(song)=>{
 
   render(){
     {document.title ="Spotify - Album"}
-    console.log(this.props.artist)
+    // console.log(this.props.artist)
   return(
   <div className="album-page">
      <HomePageNavbar />
@@ -307,7 +306,6 @@ stream=(song)=>{
  */
 const mapStateToProps = state =>{
   return{
-    artist:state.ArtistLogin,
     userToken: state.userToken,
     songURL: state.selectedSong,
   };

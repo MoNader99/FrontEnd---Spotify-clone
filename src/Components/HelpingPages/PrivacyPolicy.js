@@ -11,35 +11,37 @@ import Bottom from '../WelcomeRelated/Bottom';
 export class PrivacyPolicy extends Component
 {
     render(){
+        {document.title ="Spotify - PrivacyPolicy"}
         return(
             <div className="privacy-policy">
+                <MainNavbar color="black"/>
             <div className="header-privacy"> 
-            <MainNavbar color="black"/>
+            
                 <div className="container">
                <h1> Spotify Privacy Policy</h1>
                <p>Effective as of January 20, 2020</p>
                 <div className="linking mb-5">
-                <a href="#part1">1 Introduction</a>
+                <a href="/privacypolicy#part1">1 Introduction</a>
                 <br/>
-                <a href="#part2">2 About this Policy</a>
+                <a href="/privacypolicy#part2">2 About this Policy</a>
                 <br/>
-                <a href="#part3">3 Your rights and your preferences: Giving you choice and control</a>
+                <a href="/privacypolicy#part3">3 Your rights and your preferences: Giving you choice and control</a>
                 <br/>
-                <a href="#part4">4 Personal data we collect from you</a>
+                <a href="/privacypolicy#part4">4 Personal data we collect from you</a>
                 <br/>
-                <a href="#part5">5 Data retention and deletion</a>
+                <a href="/privacypolicy#part5">5 Data retention and deletion</a>
                 <br/>
-                <a href="#part6">6 Transfer to other countries</a>
+                <a href="/privacypolicy#part6">6 Transfer to other countries</a>
                 <br/>
-                <a href="#part7">7 Links</a>
+                <a href="/privacypolicy#part7">7 Links</a>
                 <br/>
-                <a href="#part8">8 Keeping your personal data safe</a>
+                <a href="/privacypolicy#part8">8 Keeping your personal data safe</a>
                 <br/>
-                <a href="#part9">9 Children</a>
+                <a href="/privacypolicy#part9">9 Children</a>
                 <br/>
-                <a href="#part10">10 Changes to this Policy</a>
+                <a href="/privacypolicy#part10">10 Changes to this Policy</a>
                 <br/>
-                <a href="#part11">11 How to contact us</a>
+                <a href="/privacypolicy#part11">11 How to contact us</a>
                 </div>
 
             <div className="mb-5">
@@ -194,7 +196,7 @@ export class PrivacyPolicy extends Component
 
         <p>Personal data collected within the European Union and Switzerland may, for example, be transferred to and processed by third parties located in a country outside of the European Union and Switzerland. In such instances Spotify shall ensure that the transfer of your personal data is carried out in accordance with applicable privacy laws and, in particular, that appropriate contractual, technical, and organisational measures are in place such as the Standard Contractual Clauses approved by the EU Commission.</p>
 
-        <p className="linking">For further details of the security measures we use to protect your personal data, please see <a href="#part8">Section 8 ‘Keeping your personal data safe’</a> of this Policy.</p>
+        <p className="linking">For further details of the security measures we use to protect your personal data, please see <a href="/privacypolicy#part8">Section 8 ‘Keeping your personal data safe’</a> of this Policy.</p>
         </div>
 
         <div className="mb-5">
