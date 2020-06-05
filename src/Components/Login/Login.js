@@ -143,6 +143,18 @@ export class Login extends Component{
 
     // handleLogIn =event =>
     // {
+    //      /** A variable that contains email input from the user
+    //       * @memberof Login
+    //       * @type {string}
+    //       */
+    //     var inputEmail = document.getElementById('input-email').value;
+
+    //     /** A variable that contains password input from the user
+    //       * @memberof Login
+    //       * @type {string}
+    //       */
+    //     var inputPassword = document.getElementById('input-password').value;
+        
     //      /** A variable that contains URL 
     //       * @memberof Login
     //       * @type {string}
@@ -150,8 +162,8 @@ export class Login extends Component{
     //      var url =  BASEURL+"/login";    
     //      const requestOptions = {
     //        method: 'POST', 
-    //        // headers: {'Content-Type': 'application/json' }, 
-    //        body: JSON.stringify({ email:this.state.EmailText,password:this.state.PasswordText}) ,
+    //        headers: {'Content-Type': 'application/json' }, 
+    //        body: JSON.stringify({ email:inputEmail, password:inputPassword}) ,
        
     //      };    
     //         fetch(url,requestOptions)
@@ -236,7 +248,7 @@ export class Login extends Component{
                                 <a onClick={this.handleLogIn} className="btn rounded-pill text-center login-button">Log In</a>
                             </div>
                         <div className="forget-pass d-flex justify-content-center">
-                        <a className="col-xs-12 "> Forget Your Password? </a>
+                        <a href="/forget-password" className="col-xs-12 "> Forget Your Password? </a>
                         </div>  
                     </div>
                     </form>

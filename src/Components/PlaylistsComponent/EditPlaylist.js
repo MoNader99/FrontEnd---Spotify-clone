@@ -65,7 +65,7 @@ render(){
           <form >
           <div className="form-group container-fluid ">
           <label for="new-playlist-name">Playlist Name</label>
-          <input autoComplete="off" onfocus="this.value=''" placeholder="Enter New Name" type="text" className="form-control form-control-lg "  id="new-playlist-name"/>
+          <input autoComplete="off" onfocus="this.value=''" placeholder={this.props.playlistname} type="text" className="form-control form-control-lg "  id="new-playlist-name"/>
           </div>
       
           </form>

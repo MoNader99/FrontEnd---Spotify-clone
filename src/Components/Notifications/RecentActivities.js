@@ -91,6 +91,7 @@ export class RecentActivities extends Component{
                 if(res.status===200){
                    console.log("response is ok")
                    this.state.notifications[index]=""
+                   this.forceUpdate()
                 }
            })
       
@@ -122,6 +123,7 @@ export class RecentActivities extends Component{
                if(res.status===200){
                   console.log("response is ok")
                 this.state.notifications[index].status="read"
+                this.forceUpdate()
                }
           })
          
@@ -133,6 +135,7 @@ export class RecentActivities extends Component{
 
 
     render(){
+      {document.title ="Spotify - Recent Notificaations"}
     return(
         <div>
             <HomePageNavbar/>
@@ -145,14 +148,14 @@ export class RecentActivities extends Component{
                   <span>{Card!=""?
                 <div key={index} className={Card.status=="read" ? "row notifications read":"row notifications unread" }>
                 
-                <div className="col-2 d-flex justify-content-center">
+                <div className="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 d-flex align-items-center justify-content-center">
                 {Card.actionType == "follow" ? <i class="fas fa-user-plus follow"></i>:null}
                 {Card.actionType == "Like" ? <i class="fas fa-heart love"></i>:null}
                 {Card.actionType == "recommend" ? <i class="fas fa-compact-disc recommend"></i>:null}
                 {Card.actionType == "upload" ? <i class="fas fa-upload upload"></i>:null}
                 </div>
 
-                <div className="col-9 list-unstyled">
+                <div className="col-xl-9 col-lg-9 col-md-9 col-sm-8 col-8 list-unstyled">
                 {Card.actionType == "follow" ?
                 <div> 
                     <li className="notification-main-content">{Card.actionMaker} started following you.</li>
@@ -179,7 +182,7 @@ export class RecentActivities extends Component{
                 :null}
                 </div>
 
-            <div className="col-1">
+            <div className="col-xl-1 col-lg-1 col-md-1 col-sm-2 col-2">
                 <div className="dropdown d-flex align-items-center ">
                     <a className="song-menu Menu mt-4" id="Dropdown" data-toggle="dropdown" > ••• </a>
                     <div className="dropdown-menu notifi-dropdown-content dropdown-menu-right ">
