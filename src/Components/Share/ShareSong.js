@@ -28,7 +28,7 @@ import { connect } from 'react-redux';
  * @category ShareSong
  * @extends Component
  */
-class ShareSong extends Component{
+export class ShareSong extends Component{
   constructor(props){
     super(props);
   }
@@ -38,7 +38,14 @@ render(){
    * @memberof ShareSong
    * @type {string}
    */
+  if(this.props.songURL != null)
+  {
       var song={songURL:this.props.songURL.songURL}
+  }
+  else
+  {
+    var song={songURL:""}
+  }
   return(
 <div className="share-song ">
 <div id="share-song" className="modal fade" role="dialog">

@@ -27,7 +27,6 @@ export class MainNavbar extends Component {
   
   render()
   {
-console.log(this.props.user)
     return(
 <section className="main-nav-bar" style={{position:this.props.position}}>
 
