@@ -1,4 +1,5 @@
 import React ,{ Component} from 'react';
+import {BASEURL} from '../../Constants/BaseURL'
 import './SignUp.css';
 
 /** Class SignUp 
@@ -327,12 +328,35 @@ handleSingUp=(event)=>{
     this.state.CorrectUsername==true && 
     this.state.Correctyears==true && 
     this.state.CorrectDays==true)
-    
     {
-    this.setState({checkedCorrect:false})
-    window.location.replace("/account-overview");
-    }
+        var url =  BASEURL+"/signup";    
+           const requestOptions = {
+             method: 'POST', 
+             body: JSON.stringify({ 
+               email:this.state.EmailText,
+               password:this.state.PasswordText,
+               username:this.state.UsernameText,
+               birthdate:this.state.birthdate,
+               gender: this.state.gender
+              }) ,
+         
+           };    
+              fetch(url,requestOptions)
+               .then((res) => {
+                 if(res.status===200){
+                    console.log("response is ok")
+                    this.setState({checkedCorrect:false})
+                    // window.location.replace("/account-overview");
+                 }
+                 else{
+                  this.setState({checkedCorrect:true})
+                 }
+            })
+       
+               .then((data) =>{})
+               .catch((err)=>console.log(err))
     
+    }
   else{
     this.setState({checkedCorrect:true})
   }

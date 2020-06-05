@@ -44,10 +44,44 @@ class Userprofile extends Component {
    */
   FollowButton = () => {
    if ( this.state.ButtonText === "Follow" ) {
-     this.setState({ButtonText: "UnFollow"});
+    var url =  BASEURL+"/user/follow";    
+    const requestOptions = {
+      method: 'POST', 
+      headers: {'Content-Type': 'application/json' }, 
+      body: JSON.stringify({
+         playlistName: this.state.userid
+        }) ,
+  
+    };    
+       fetch(url,requestOptions)
+        .then((res) => {
+          if(res.status===200){
+            console.log("response is ok")
+            this.setState({ButtonText: "UnFollow"});
+          }
+     })
+        .then((data) =>{})
+        .catch((err)=>console.log(err))
    }
    else if ( this.state.ButtonText === "UnFollow" ) {
-     this.setState({ButtonText: "Follow"});
+    var url =  BASEURL+"/user/unfollow";    
+    const requestOptions = {
+      method: 'POST', 
+      headers: {'Content-Type': 'application/json' }, 
+      body: JSON.stringify({
+         playlistName: this.state.userid
+        }) ,
+  
+    };    
+       fetch(url,requestOptions)
+        .then((res) => {
+          if(res.status===200){
+            console.log("response is ok")
+            this.setState({ButtonText: "Follow"});
+          }
+     })
+        .then((data) =>{})
+        .catch((err)=>console.log(err))
    }
  }
 
@@ -58,15 +92,34 @@ class Userprofile extends Component {
    */
  Like = e => {
     const {id} = e.target;
-
-    /** heart icon
+  /** heart icon
    * @memberof Userprofile
    * @type {string}
    */
     var heart=document.getElementById(id);
-    heart.classList.toggle("far");
-    heart.classList.toggle("fas");
-    heart.classList.toggle("red");
+  
+  var url =  BASEURL+"/playlist/like";    
+  const requestOptions = {
+    method: 'POST', 
+    headers: {'Content-Type': 'application/json' }, 
+    body: JSON.stringify({
+       playlistName: this.state.playlistTargets[id].id
+      }) ,
+
+  };    
+     fetch(url,requestOptions)
+      .then((res) => {
+        if(res.status===200){
+          console.log("response is ok")
+          heart.classList.toggle("far");
+          heart.classList.toggle("fas");
+          heart.classList.toggle("red");
+        }
+   })
+
+      .then((data) =>{})
+      .catch((err)=>console.log(err))
+    
  }
 
  /**Function that is called when the component renders
@@ -95,7 +148,7 @@ class Userprofile extends Component {
         <div className="user ">
           <div className="user-profile row">
             <div className="col-xl-2 col-lg-12 d-flex align-items-center justify-content-center">
-                <img className="user-image" src="https://lh3.googleusercontent.com/proxy/YpDlkQvZglL3Na-bCuo9fNsR5r1HgFKie4ScZgnCnJIoJswU1kCmmXngcsubki5UFGxED6TDqOVhAqFNGkc3WrlaSmlPi22LAUC_UCRTIjdTGg" />
+                <img className="user-image" src="https://www.designhub.today/wp-content/uploads/2019/06/tumblr_m6hi9o09m31rve3tbo1_1280.gif" />
             </div>
             <div className="col-xl-8 col-lg-12 d-flex align-items-center">
                 <ul className="list-unstyled list">
