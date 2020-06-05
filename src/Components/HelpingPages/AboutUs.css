@@ -3,6 +3,7 @@
     margin-top: 80px;
     padding-top: 60px;
     font-size: 16px;
+    overflow-x: hidden;
 }
 .about-us-page h1{
     font-weight: bolder;

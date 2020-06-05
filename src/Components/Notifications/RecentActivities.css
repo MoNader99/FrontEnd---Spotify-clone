@@ -84,6 +84,7 @@
     margin-left: 30px;
     color:white;
     text-decoration: none;
+    cursor: pointer;
   }
   
   .recent-activities-page .dropdown a{
@@ -119,3 +120,26 @@
   .recent-activities-page .show {
     display: block;
   }
+
+  @media only screen and (max-width:768px){
+    
+    .recent-activities-page .follow
+{
+    font-size: 35px;
+}
+.recent-activities-page .love
+{
+    font-size: 35px;
+}
+
+.recent-activities-page .upload
+{
+    font-size: 35px;
+}
+.recent-activities-page .recommend
+{
+    
+    font-size: 35px;
+    
+}
+}
