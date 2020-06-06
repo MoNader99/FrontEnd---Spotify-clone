@@ -6,8 +6,10 @@ import {connect} from 'react-redux';
 import * as actionTypes from "../../Store/actions";
 import {BASEURL} from '../../Constants/BaseURL'
 import {NavLink, Link} from "react-router-dom";
+import HomePageNavbar from '../HomePage/HomePageNavbar'
+import HomePageSidebar from '../HomePage/HomePageSidebar'
 
-class Search extends Component {
+class ShowByGenres extends Component {
     constructor( props ) {
 		super( props );
 
@@ -49,10 +51,10 @@ class Search extends Component {
                 {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
                 {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
             ],
-            geners:[
-                {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
-                {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
-                {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+            Genres:[
+                    // {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+                    // {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
+                    // {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
             ],
             SongInfo:[],
             SongsTargets:[],
@@ -60,6 +62,8 @@ class Search extends Component {
             usersTargets:[],
             artistTargets:[],
             albumTargets:[],
+            allgenres:[]
+            
 		};
     }
 
@@ -78,6 +82,33 @@ class Search extends Component {
                   })
                   .catch((error)=>{console.log(error);
         })
+        var url = BASEURL + "/showbygenres"; 
+  
+                
+                fetch(url,requestOptions)
+                  .then((response) => { return response.json()})
+                  .then((data) => {
+                    this.setState({ 
+                      Genres:data.top_genres,
+                    });
+                  })
+                  .catch((error)=>{console.log(error);
+        })
+        var url = BASEURL + "/allgenres"; 
+  
+                
+                fetch(url,requestOptions)
+                  .then((response) => { return response.json()})
+                  .then((data) => {
+                    this.setState({ 
+                        allgenres:data.all_genres,
+                    });
+                  })
+                  .catch((error)=>{console.log(error);
+        })
+        
+
+        
 
         url=BASEURL + "/get-playlists"
         fetch(url,requestOptions)
@@ -143,6 +174,8 @@ class Search extends Component {
   render(){
       var playlistshit=this.state.playlistTargets.sort(() => Math.random() - Math.random()).slice(0, 3)
 		return(
+           
+            
         <div className="Search">
             <nav class="navbar mb-4 ">
             
@@ -197,11 +230,11 @@ class Search extends Component {
             {this.state.display == true ?
             <div className="display-true">
                 <div className="component-content ">
-                        <p className=" browse">Your Top Geners</p>
+                        <p className=" browse">Your Top Genres</p>
                         <div className="row">
-                            { this.state.geners.map((Card,index)=>(
+                            { this.state.Genres.map((Card,index)=>(
                                 <div className="col-xl-3 col-lg-5 col-md-6" key={index}>
-                                <a href="/webplayer/playlist" class="top-geners" style={Card.style} >
+                                <a href={"/webplayer/playlist/"+ Card.Card_name} class="top-geners" style={Card.style} >
                                     <h3 class="head-style">{Card.Card_name}</h3>
                                     <img src={Card.image_URL} class="img-style" alt=""></img>
                                 </a>
@@ -212,9 +245,9 @@ class Search extends Component {
                 <div className="component-content ">
                     <h2 className=" browse" >Browse All</h2>
                         <div className="row">
-                            { this.state.playlists.map((Card,index)=>(
+                            { this.state.allgenres.map((Card,index)=>(
                                 <div className="col-xs-6" key={index}>
-                                <a href="/webplayer/playlist" class="BrowseItem" style={Card.style}>
+                                <a href={"/webplayer/playlist/"+ Card.Card_name} class="BrowseItem" style={Card.style}>
                                     <h3 class="head-style">{Card.Card_name}</h3>
                                     <img src={Card.image_URL} class="img-style" alt=""></img>
                                 </a>
@@ -342,6 +375,7 @@ class Search extends Component {
             }
             
         </div>
+       
 		)	
     }
 }
@@ -357,4 +391,4 @@ const mapDispatchToProps = dispatch => {
       onSignOut : () => dispatch ({type: actionTypes.ON_SIGNOUT}),
     };
   };
-export default connect(mapStateToProps,mapDispatchToProps) (Search);
+export default connect(mapStateToProps,mapDispatchToProps) (ShowByGenres);
