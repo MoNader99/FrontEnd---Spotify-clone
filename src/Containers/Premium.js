@@ -5,7 +5,7 @@ import './Premium.css'
 import CardList from '../Components//Premium/PrCardList'
 import GoPremium from '../Components//Premium/GoPremium'
 import Footer from '../Components//Premium/Footer'
-import { MainNavbar } from '../Components/WelcomeRelated/MainNavbar'
+import MainNavbar from '../Components/WelcomeRelated/MainNavbar'
 import Bottom from '../Components/WelcomeRelated/Bottom'
 
 /**

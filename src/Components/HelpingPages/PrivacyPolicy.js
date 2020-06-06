@@ -1,6 +1,6 @@
 import React ,{ Component} from 'react';
 import './PrivacyPolicy.css'
-import { MainNavbar } from '../WelcomeRelated/MainNavbar';
+import MainNavbar from '../WelcomeRelated/MainNavbar';
 import { Link } from 'react-router-dom';
 import Bottom from '../WelcomeRelated/Bottom';
 
@@ -14,7 +14,7 @@ export class PrivacyPolicy extends Component
         {document.title ="Spotify - PrivacyPolicy"}
         return(
             <div className="privacy-policy">
-                <MainNavbar color="black"/>
+                <MainNavbar color="black" IsLoggedIn="false"/>
             <div className="header-privacy"> 
             
                 <div className="container">

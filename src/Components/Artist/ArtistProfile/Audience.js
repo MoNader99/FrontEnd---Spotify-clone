@@ -4,7 +4,7 @@ import SideBar from '../SideBar/ArtistSidebar';
 import './ArtistProfile.css'
 import axios from 'axios'
 import $ from 'jquery';
-import { MainNavbar } from '../../WelcomeRelated/MainNavbar';
+import MainNavbar from '../../WelcomeRelated/MainNavbar';
 import Bottom from '../../WelcomeRelated/Bottom';
 
 var ctxLOne;

@@ -4,7 +4,7 @@ import SideBar from '../SideBar/ArtistSidebar';
 import './ArtistProfile.css'
 import $ from 'jquery';
 import 'bootstrap';
-import { MainNavbar } from '../../WelcomeRelated/MainNavbar';
+import MainNavbar from '../../WelcomeRelated/MainNavbar';
 import Bottom from '../../WelcomeRelated/Bottom';
 import axios from 'axios';
 import {BASEURL} from '../../../Constants/BaseURL';
