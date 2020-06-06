@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 import AddToPlaylist from './AddToPlaylist';
 import * as actionTypes from "../../Store/actions";
 import EditPlaylist from './EditPlaylist';
-import { ShareSong } from '../Share/ShareSong';
+import  ShareSong  from '../Share/ShareSong';
 import { BASEURL } from '../../Constants/BaseURL';
 
 export class PlaylistPage extends Component
@@ -235,7 +235,7 @@ stream=(song)=>{
       <DeletePlaylist delete={this.state.playlistInfo.playlistName} />
       <EditPlaylist/>
       <AddToPlaylist/>
-      <ShareSong share={this.props.songURL} />
+      <ShareSong  />
     </div>
     
     </div>
