@@ -72,8 +72,8 @@ export class HomePageNavbar extends Component{
               {this.props.page == "library" ? 
               <div>
                   <Link to="/webplayer/yourlibrary" ><button id="upgradebtn">yourlibrary</button></Link>
-                  <Link to="/webplayer/yourlibrary/artists" ><button id="upgradebtn">Artists</button></Link>
-                  <Link to="/webplayer/yourlibrary/albums" ><button id="upgradebtn">Albums</button></Link>
+                  <Link to="/webplayer/yourlibrary-artists" ><button id="upgradebtn">Artists</button></Link>
+                  <Link to="/webplayer/yourlibrary-albums" ><button id="upgradebtn">Albums</button></Link>
               </div>
               :
               null}

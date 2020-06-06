@@ -9,6 +9,10 @@ import { ShareSong } from '../Share/ShareSong';
 import { HomePageNavbar } from '../HomePage/HomePageNavbar';
 import {BASEURL} from '../../Constants/BaseURL'
 import { CreatePlaylist } from '../PlaylistsComponent/CreatePlaylist';
+import $ from 'jquery';
+import {Link} from "react-router-dom";
+import axios from 'axios';
+
 
 /** Class AlbumPage 
  * @category AlbumPage
@@ -16,6 +20,11 @@ import { CreatePlaylist } from '../PlaylistsComponent/CreatePlaylist';
  */
 export class AlbumPage extends Component
 {
+  constructor() {
+    super();
+    this.deleteSong=this.deleteSong.bind(this)
+    this.deleteSongModal=this.deleteSongModal.bind(this)
+  }
   state= 
 { 
   /**Array of Song Info
@@ -93,10 +102,11 @@ export class AlbumPage extends Component
    * @type {Array<songs>}
    */
     AblumSongs: [],
-
-    Artist:false,
+    songToDelete: -1,
+    Artist:true,
     
 }
+
 //  /**Function that is called when the component renders
 //    * @memberof AlbumPage
 //    * @func componentDidMount
@@ -204,6 +214,23 @@ else if (check=="SAVE"){
 }
 }
 
+deleteSongModal(songId) {
+  $('#delete-modal').modal('show');
+  this.setState({songToDelete: songId})
+}
+
+deleteSong() {
+  $('#delete-modal').modal('hide');
+  const deletedSong = document.getElementById(this.state.songToDelete);
+  deletedSong.classList.add('hide');
+  axios.delete("http://spotify-clone1.mocklab.io"+"/artist/song",{
+      headers: {
+          'authorization': "Bearer "
+      },
+  })
+  this.setState({songToDelete: -1});
+}
+
 stream=(song)=>{
   this.props.SELECT_SONG(song);
 }
@@ -249,7 +276,7 @@ stream=(song)=>{
           <div className="col-xs-12  col-lg-7 col-xl-8 ">
                                             {/* display songs */}
           {this.state.SongInfo.map((song,index)=>(
-            <div key={index} onClick={() =>this.stream(song)} className="songs">
+            <div key={index} onClick={() =>this.stream(song)} className="songs" id={song._id}>
             <div className="row">
               <div className="col-xl-1 col-md-1 col-1 col-2">
                <div className="music-sign mt-2 mx-4 "> </div>
@@ -270,11 +297,18 @@ stream=(song)=>{
                   <a className="dropdown-item drop-class" data-toggle="modal" data-target="#share-song">Share Song</a>
                   
                   {this.state.Artist==true ?
-                  <a className="dropdown-item drop-class" href="/artist/addsong" >Edit</a>
+                  <Link to={{
+                    pathname:"/artist/addsong",
+                    state:{
+                      addSong: false,
+                      songName: song.SongName    
+                    }
+                  }}
+                   className="dropdown-item drop-class" >Edit</Link>
                   : null }
 
                   {this.state.Artist==true ?
-                  <a className="dropdown-item drop-class" href="/artist/addsong" >Delete</a>
+                  <a className="dropdown-item drop-class" onClick={()=>this.deleteSongModal(song._id)}>Delete</a>
                   : null }
 
                   </div>
@@ -300,6 +334,24 @@ stream=(song)=>{
       </div>
       <AddToPlaylist/>
       <ShareSong share={this.props.songURL}/>
+      <div className="modal" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  Are you sure you want to delete this song?
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-dark" data-dismiss="modal" onClick={this.resetDeleteAlbumState}>No</button>
+                  <button type="button" class="btn btn-dark" onClick={this.deleteSong}>Yes</button>
+              </div>
+              </div>
+          </div>
+      </div>
     </div>
   )
 }

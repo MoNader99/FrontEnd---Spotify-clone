@@ -23,35 +23,24 @@ class AddAlbum extends Component {
         this.editAlbum=this.editAlbum.bind(this)
     }
     componentDidMount(){
-        axios.get("http://spotify.mocklab.io"+"/albums/top",{
+        axios.get("http://spotify-clone1.mocklab.io"+"/artist/1234567/albums",{
             headers: {
                 'authorization': "Bearer "
             },
-            params: {
-                limit: 9,
-                sort: "-popularity"
-            }
         })
             .then(res => {
                 if(res.status === 200)
                 {
                     this.setState({
-                        popularAlbums: res.data.data.albums.map( album => ({
+                        popularAlbums: res.data.data.map( album => ({
                             id:album._id,
                             title:album.name,
                             albumGenre:album.genre,
                             albumType:album.type,
                             imageUrl:album.image,
-                            artist:album.label
+                            artist:album.artists[0].name
                         }))
                     })
-                }
-                else if(res.status === 401)
-                {
-                    /*localStorage.removeItem("loginType");
-                    localStorage.removeItem("isLoggedIn");
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("userID");*/
                 }
             }) 
     }
@@ -78,7 +67,19 @@ class AddAlbum extends Component {
         const addDiv = document.querySelector('.add-new-album');
         addDiv.classList.remove("show");
         $('#delete-modal').modal('hide');
-        //delete request
+        axios.delete("http://spotify-clone1.mocklab.io"+"/artist/album",{
+            headers: {
+                'authorization': "Bearer "
+            },
+        })
+            .then(res => {
+                if(res.status === 200)
+                {
+                    
+                }
+        }) 
+        const deletedAlbum = document.getElementById(this.state.albumToDelete);
+        deletedAlbum.classList.add('hide');
         this.setState({albumToDelete: -1})
     }
 
@@ -93,8 +94,40 @@ class AddAlbum extends Component {
         formData.append("albumType", document.getElementById("album-type").value);
         formData.append("genre", document.getElementById("album-genre").value);
         formData.append("image", document.getElementById("custom-file").files[0]);
-        //add request
-        $('#done-modal').modal('show');
+        if(this.state.addAlbum) {
+            axios.post("http://spotify-clone1.mocklab.io"+"/artist/album", 
+            {
+                "newAlbum": formData
+            },
+            {
+                headers: {
+                    'authorization': "Bearer ",
+                }
+            })
+            .then(res => {
+                if(res.status === 200)
+                {
+                    $('#done-modal').modal('show');
+                }
+        })
+        }
+        else {
+            axios.put("http://spotify-clone1.mocklab.io"+"/artist/album/1234567", 
+            {
+                "album": formData
+            },
+            {
+                headers: {
+                    'authorization': "Bearer ",
+                }
+            })
+            .then(res => {
+                if(res.status === 200)
+                {
+                    $('#done-modal').modal('show');
+                }
+        })
+        }
         const addDiv = document.querySelector('.add-new-album');
         addDiv.classList.remove("show");
     }
@@ -106,7 +139,6 @@ class AddAlbum extends Component {
         var album = this.state.popularAlbums.find(obj => {
             return obj.id === albumId
         })
-        console.log(album)
         document.getElementById("album-name").value = album.title;
         document.getElementById("album-type").value = album.albumType;
         document.getElementById("album-genre").value = album.albumGenre;

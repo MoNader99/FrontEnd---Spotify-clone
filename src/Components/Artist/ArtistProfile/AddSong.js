@@ -17,6 +17,13 @@ class AddSong extends Component {
         }
     }
     componentDidMount(){
+        try{
+        const {addSong} = this.props.location.state;
+        const {songName} = this.props.location.state;
+        this.state.addSong=addSong;
+        this.state.songName=songName;
+        this.setState({})}
+        catch {}
         if(this.state.addSong===false) {
             document.getElementById("song-name").value = this.state.songName;
         }

@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
 import {Link} from 'react-router-dom';
 import './YourLibrary.css';
+import  HomePageNavbar  from '../../HomePage/HomePageNavbar';
 
 class ArtistsLibrary extends Component {
     constructor() {
@@ -13,7 +14,7 @@ class ArtistsLibrary extends Component {
         }
     }
     componentDidMount(){
-        axios.get("http://spotify.mocklab.io"+"/artists", {
+        axios.get("http://spotify-clone1.mocklab.io"+"/webplayer/yourlibrary/artists", {
             headers: {
                 'authorization': "Bearer "+localStorage.getItem("token"),
             }
@@ -80,6 +81,7 @@ class ArtistsLibrary extends Component {
 
     return(
         <div id="webplayer-library" className="container col-lg-12">
+            <HomePageNavbar page="library"/>
             <div className="popular-artists-section">
                 <h2 className="section-title popular-artists">Artists</h2>
                 <div className="card-group">
