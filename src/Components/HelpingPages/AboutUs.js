@@ -1,27 +1,24 @@
 import React ,{ Component} from 'react';
 import './AboutUs.css'
-import {connect} from "react-redux";
-import * as actionTypes from "../../Store/actions";
-import { BASEURL } from '../../Constants/BaseURL';
 import { MainNavbar } from '../WelcomeRelated/MainNavbar';
-import { Link } from 'react-router-dom';
 import Bottom from '../WelcomeRelated/Bottom';
 
 /** Class AboutUs 
  * @category AboutUs
  * @extends Component
  */
-export class AboutUs extends Component
+ class AboutUs extends Component
 {
     render(){
+        {document.title ="Spotify - About Us"}
         return(
             <div className="about-us-page">
-                <MainNavbar color="black"/>
+                <MainNavbar position="fixed" color="black"/>
                 <div className="container">
                 <h1>About Us</h1> 
                     <div className="row"> 
                    
-                    <div className="col-7">  
+                    <div className="col-xl-7 col-lg-7 col-md-6 col-sm-6 col-5">  
                             <p>With Spotify, it’s easy to find the right music or podcast for every moment – on your phone, your computer, your tablet and more.</p>
                             <p>There are millions of tracks and episodes on Spotify. So whether you’re behind the wheel, working out, partying or relaxing, the right music or podcast is always at your fingertips. Choose what you want to listen to, or let Spotify surprise you.</p>
                             <p>You can also browse through the collections of friends, artists, and celebrities, or create a radio station and just sit back.</p>
@@ -30,7 +27,7 @@ export class AboutUs extends Component
                         <h2>Customer Service and Support</h2>
                     
                             <li>
-                            <Link To="/help" className="inline-linking">Help site</Link> .Check out our help site for answers to your questions and to learn how to get the most out of Spotify and your music.
+                            <a href="/help" className="inline-linking">Help site</a> .Check out our help site for answers to your questions and to learn how to get the most out of Spotify and your music.
                             </li>
                             <br/>
                             <p>
@@ -40,7 +37,7 @@ export class AboutUs extends Component
 
 
 
-                    <div className="col-5">
+                    <div className="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-7">
                         <div>
                         <h2>Spotify HQ</h2>
                         <div className="inline-address" >
@@ -59,7 +56,7 @@ export class AboutUs extends Component
                         </div>
                         <h2>Spotify around the world</h2>
                         <div className="row">
-                            <div className="col-6">
+                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
                                 <div className="inline-address">
                                     <strong>Spotify Belgium</strong>
                                     <br/>
@@ -169,7 +166,7 @@ export class AboutUs extends Component
 
 
                             </div>
-                            <div className="col-6">
+                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 
                             <div className="inline-address">
                                 <strong>Spotify GmbH</strong>

@@ -131,17 +131,58 @@ export class Login extends Component{
             this.props.onSignIn(user);
             }
             else if (user.type=="artist"){
-            window.location.replace("/account-overview-artist");
+            window.location.replace("/account");
             this.props.onSignInArtist(user);
             }
         }
         else
         {
            this.setState({checkedCorrect:true})
-        }
-      
-        
+        }  
     }
+
+    // handleLogIn =event =>
+    // {
+    //      /** A variable that contains email input from the user
+    //       * @memberof Login
+    //       * @type {string}
+    //       */
+    //     var inputEmail = document.getElementById('input-email').value;
+
+    //     /** A variable that contains password input from the user
+    //       * @memberof Login
+    //       * @type {string}
+    //       */
+    //     var inputPassword = document.getElementById('input-password').value;
+        
+    //      /** A variable that contains URL 
+    //       * @memberof Login
+    //       * @type {string}
+    //       */
+    //      var url =  BASEURL+"/login";    
+    //      const requestOptions = {
+    //        method: 'POST', 
+    //        headers: {'Content-Type': 'application/json' }, 
+    //        body: JSON.stringify({ email:inputEmail, password:inputPassword}) ,
+       
+    //      };    
+    //         fetch(url,requestOptions)
+    //          .then((res) => {
+    //            if(res.status===200){
+    //               console.log("response is ok")
+    //               this.setState({checkedCorrect:false})
+    //            }
+    //            else{
+    //             this.setState({checkedCorrect:true})
+    //            }
+    //       })
+     
+    //          .then((data) =>{})
+    //          .catch((err)=>console.log(err))
+
+    // }
+
+
 
     /**Function that is called when the component renders
     * @memberof Login
@@ -206,8 +247,8 @@ export class Login extends Component{
                                 <label className="form-check-label" for="exampleCheck1">Remember Me</label>
                                 <a onClick={this.handleLogIn} className="btn rounded-pill text-center login-button">Log In</a>
                             </div>
-                        <div className="forget-pass">
-                        <a className="col-xs-12 text-center"> Forget Your Password? </a>
+                        <div className="forget-pass d-flex justify-content-center">
+                        <a href="/forget-password" className="col-xs-12 "> Forget Your Password? </a>
                         </div>  
                     </div>
                     </form>

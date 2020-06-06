@@ -4,28 +4,39 @@ import'./CreatePlaylist.css';
 import {connect} from 'react-redux';
 import {withRouter} from "react-router-dom";
 
-
-
+/** Class CreatePlaylist 
+ * @category CreatePlaylist
+ * @extends Component
+ */
 export class CreatePlaylist extends Component{
   constructor(props){
     super(props);
   }
   
+  // /**Function to create new playlist
+  //  * @memberof CreatePlaylist
+  //  * @func createNewPlaylist
+  //  * @param e
+  //  */
   // createNewPlaylist = (e) =>{
   //   e.preventDefault();
     
+  //    /** A variable that contains URL 
+  //    * @memberof CreatePlaylist
+  //    * @type {string}
+  //    */
   //   var NewPlaylistName = document.getElementById('new-playlist-name').value; 
-  //   var Privacy=false;
-  //   const url =  "http://spotify-clone.mocklab.io/playlists?playlistName="+NewPlaylistName;    
+  //   const url =  'http://localhost:3000/playlists?playlistName' +NewPlaylistName;    
   //   console.log(url);
   //   const requestOptions = {
   //     method: 'POST', 
-  //     headers: {'Content-Type': 'application/json' }, 
-  //     body: JSON.stringify({ playlistName: NewPlaylistName}) ,
+  //     // mode:'no-cors',
+  //     headers: {'Content-Type': 'application/json'}, 
+  //     body: JSON.stringify({ playlistName:NewPlaylistName}) ,
   
   //   };    
   //      fetch(url,requestOptions)
-  //       .then((res) => res.text())
+  //       .then((res) => res.json())
   //       .then((data) =>{
   //         console.log(data)
   //         // this.toggle()
@@ -71,6 +82,12 @@ render(){
   )
 }
 }
+
+/**A function connecting component to redux store
+ * @memberof CreatePlaylist
+ * @func mapStateToProps
+ * @param {*} state
+ */
 const mapStateToProps = state =>{
   return{
     userToken: state.userToken

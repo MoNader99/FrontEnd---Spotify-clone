@@ -19,7 +19,7 @@ describe("Bottom test", ()=>{
     })
    
     it('Display Bottom bar', () => {
-      expect(wrapper.find("h5").text()).toContain("Useful Links")    
+      expect(wrapper.find("h5")).toHaveLength(2);  
     })
   })
 

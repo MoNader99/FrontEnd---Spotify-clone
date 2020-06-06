@@ -25,6 +25,7 @@ import HelpPage from './Components/Help/HelpPage'
 import AboutUs from './Components/HelpingPages/AboutUs';
 import PrivacyPolicy from './Components/HelpingPages/PrivacyPolicy';
 import Search from './Components/Show by Genres/ShowByGenres'
+import ForgetPassword from './Components/Login/ForgetPassword';
 function App() {
   return (
     
@@ -38,6 +39,7 @@ function App() {
           <Route path="/change-password" component={ChangePasswrod}/>
           <Route  exact path="/signup/" component={SignUp}/>
           <Route  exact path="/login/" component={Login}/>
+          <Route  exact path="/forget-password/" component={ForgetPassword}/>
           <Route exact path="/premium/" component={Premium}/>
           <Route  path="/webplayer/" component={WebPlayerPage}/>
           <Route  exact path="/artist/audience" component={Audience}/>

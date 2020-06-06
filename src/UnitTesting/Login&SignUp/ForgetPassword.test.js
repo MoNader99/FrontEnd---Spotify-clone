@@ -2,28 +2,29 @@ import React from "react";
 import {shallow, configure} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
-import {ShareSong} from "../../Components/Share/ShareSong"
+import ForgetPassword from "../../Components/Login/ForgetPassword"
 
-describe("Share Song test", ()=>{
+
+describe("Forget Password Page test", ()=>{
   let wrapper;
-  const props={
-    songURL:{songURL:""}
-  }
   beforeEach(() => {
-  
-   wrapper = shallow(<ShareSong {...props}/>); 
+   wrapper = shallow(<ForgetPassword/> ); 
   });
-  
+
+
   describe("Component rendering", () => {    
+   
 
     it("Should render the wrpper div correctly", ()=>{
-      const wrapperdiv= wrapper.find("div.share-song");
+      const wrapperdiv= wrapper.find("div.forget-password");
       expect(wrapperdiv).toHaveLength(1);
     })
-   
-    it('Share Song', () => {
-      expect(wrapper.find("h2").text()).toContain("Share Song URL With: ")    
+
+    it('Display Login page', () => {
+      expect(wrapper.find("h1").text()).toContain(" Password Reset")    
     })
+
   })
+
 
 });

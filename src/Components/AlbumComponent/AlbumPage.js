@@ -5,10 +5,9 @@ import ReactSnackBar from "react-js-snackbar";
 import {connect} from 'react-redux';
 import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
 import * as actionTypes from "../../Store/actions";
-import { ShareSong } from '../Share/ShareSong';
+import ShareSong from '../Share/ShareSong';
 import HomePageNavbar from '../HomePage/HomePageNavbar';
 import {BASEURL} from '../../Constants/BaseURL'
-import { CreatePlaylist } from '../PlaylistsComponent/CreatePlaylist';
 
 /** Class AlbumPage 
  * @category AlbumPage
@@ -33,76 +32,90 @@ export class AlbumPage extends Component
       {id : 8, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
       {id : 9, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
     ],
+
   /** Album image
    * @memberof AlbumPage
    * @type {sring}
    */
     AlbumImage: "https://i.ibb.co/Q89hfcW/single-bar-note.jpg",
-    /**Array of playlists in the bottom
+
+    /**Album name
    * @memberof AlbumPage
    * @type {sring}
    */
     AlbumName: "Perfect",
-    /**Array of playlists in the bottom
+
+    /**Artist Name that own the album
    * @memberof AlbumPage
    * @type {sring}
    */
     Artist: "Ed sheran",
-    /**Array of playlists in the bottom
+
+    /**Number of songs in the album
    * @memberof AlbumPage
    * @type {sring}
    */
     songsNumber: "",
-    /**Array of playlists in the bottom
-   * @memberof AlbumPage
-   * @type {sring}
-   */
-    dropContentClass: "dropdown-content",
-    /**Array of playlists in the bottom
+
+    /**Show snakbar of add songs to liked songs
    * @memberof AlbumPage
    * @type {boolean}
    */
     ShowAdd: false,
-    /**Array of playlists in the bottom
+
+    /**Show snakbar of add songs to liked songs
    * @memberof AlbumPage
    * @type {boolean}
    */
     ShowingAdd: false,
-    /**Array of playlists in the bottom
+
+    /**Show snak bar of save to library
    * @memberof AlbumPage
    * @type {boolean}
    */
     ShowSave: false,
-    /**Array of playlists in the bottom
+    
+    /**Show snak bar of save to library
    * @memberof AlbumPage
    * @type {boolean}
    */
     ShowingSave: false,
-    /**Array of playlists in the bottom
+
+    /**text changing on the play button
    * @memberof AlbumPage
    * @type {string}
    */
     playAlbum: "Play",
-    /**Array of playlists in the bottom
+
+    /**object of album info
    * @memberof AlbumPage
    * @type {object}
    */
     AlbumInfo: {},
-    /**Array of playlists in the bottom
+
+    /**Array of songs in album
    * @memberof AlbumPage
    * @type {Array<songs>}
    */
     AblumSongs: [],
 
+    /**check whether the user is normal user or artist
+   * @memberof AlbumPage
+   * @type {boolean}
+   */
     Artist:false,
     
 }
-//  /**Function that is called when the component renders
-//    * @memberof AlbumPage
-//    * @func componentDidMount
-//    */
+ /**Function that is called when the component renders
+   * @memberof AlbumPage
+   * @func componentDidMount
+   */
 componentDidMount(){
   
+  /** A variable that contains URL 
+  * @memberof AlbumPage
+  * @type {string}
+  */
   var url = BASEURL +"/get-tracks"; 
 
   const requestOptions = {
@@ -135,30 +148,8 @@ componentDidMount(){
    * @type {string}
    */
     var heart=document.getElementById(id);
-
-    /** variable url
-   * @memberof AlbumPage
-   * @type {string}
-   */
-    // var url=""
-    // if( heart.classList.contains("far")){
-    // //url = BASEURL+"album/like/id="+this.props.AlbumID;
-    // }
-    // else if(heart.classList.contains("fas")){
-    // //url = BASEURL+"album/unlike/id="+ this.props.AlbumID;
-    // }
     heart.classList.toggle("far");
     heart.classList.toggle("fas");
-    
-    // console.log(url);
-    // const requestOptions = {
-    //   method: 'POST',  
-    //   headers: {'x-auth': this.props.userToken }, 
-    // };
-    // fetch(url, requestOptions)
-    //     .then(response => response.json())
-    //     .then(data => console.log(data))
-    //     .catch((error)=> {console.log(error)});
   }
 
  /**Function to toggle play and pause button
@@ -166,10 +157,6 @@ componentDidMount(){
    * @func playButton
    */
 playButton = () => {
-   /**Function to get tracks
-   * @memberof AlbumPage
-   * @type {string}
-   */
   if ( this.state.playAlbum === "Play" ) {
     this.setState({playAlbum: "Pause"});
   }
@@ -177,12 +164,14 @@ playButton = () => {
     this.setState({playAlbum: "Play"});
   }
 }
+
  /**Function to show snack bar
    * @memberof AlbumPage
    * @func show
    * @param e
    */
 show = e => {
+
    /** variable to check which snack bar is called
    * @memberof AlbumPage
    * @type {string}
@@ -204,13 +193,18 @@ else if (check=="SAVE"){
 }
 }
 
+ /**Function to stream tracks
+   * @memberof AlbumPage
+   * @func stream
+   * @param song
+   */
 stream=(song)=>{
   this.props.SELECT_SONG(song);
 }
 
   render(){
     {document.title ="Spotify - Album"}
-    console.log(this.props.artist)
+    // console.log(this.props.artist)
   return(
   <div className="album-page">
      <HomePageNavbar />
@@ -299,7 +293,7 @@ stream=(song)=>{
           </div>
       </div>
       <AddToPlaylist/>
-      <ShareSong share={this.props.songURL}/>
+      <ShareSong/>
     </div>
   )
 }
@@ -308,14 +302,19 @@ stream=(song)=>{
 /**A function connecting component to redux store
  * @memberof AlbumPage
  * @func mapStateToProps
+ *  @param {*} state 
  */
 const mapStateToProps = state =>{
   return{
-    artist:state.ArtistLogin,
     userToken: state.userToken,
     songURL: state.selectedSong,
   };
 };
+ /** A function connecting component to redux store
+ * @memberof AlbumPage
+ * @func mapDispatchToProps
+ * @param {*} dispatch 
+ */
 const mapDispatchToProps = dispatch => {
 
   return {

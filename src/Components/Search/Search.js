@@ -9,15 +9,31 @@ import {NavLink, Link} from "react-router-dom";
 import HomePageNavbar from '../HomePage/HomePageNavbar'
 import HomePageSidebar from '../HomePage/HomePageSidebar'
 
-class ShowByGenres extends Component {
+/** Class Search 
+ * @category Search
+ * @extends Component
+ */
+export class Search extends Component {
     constructor( props ) {
 		super( props );
 
 		this.state = {
+            /**input text to search 
+            * @memberof Search
+            * @type {string}
+            */
             searchedText:'',
-            results: {},
-            loading: false,
+
+            /**used to change between genres and search result layouts 
+            * @memberof Search
+            * @type {boolean}
+            */
             display:true,
+
+            /**Array of playlists
+            * @memberof Search
+            * @type {Array<playlists>}
+            */
             playlists: [
                 {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
                 {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
@@ -51,23 +67,74 @@ class ShowByGenres extends Component {
                 {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
                 {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
             ],
+            /**Array of Genres
+            * @memberof Search
+            * @type {Array<genres>}
+            */
             Genres:[
                     // {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
                     // {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
                     // {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+
             ],
+
+            /**Array of top tracks
+            * @memberof Search
+            * @type {Array<tracks>}
+            */
             SongInfo:[],
+
+            /**Array of songs results
+            * @memberof Search
+            * @type {Array<tracks>}
+            */
             SongsTargets:[],
+
+            /**Array of playlists results
+            * @memberof Search
+            * @type {Array<playlists>}
+            */
             playlistTargets:[],
+
+            /**Array of users results
+            * @memberof Search
+            * @type {Array<users>}
+            */
             usersTargets:[],
+
+            /**Array of artist results
+            * @memberof Search
+            * @type {Array<artists>}
+            */
             artistTargets:[],
+
+            /**Array of album results
+            * @memberof Search
+            * @type {Array<albums>}
+            */
             albumTargets:[],
-            allgenres:[]
+            allgenres:[],
             
+
+            /**Array of top playlists resluts
+            * @memberof Search
+            * @type {Array<albums>}
+            */
+            TopPlaylists:[
+                {playlistImg:""},
+            ],
 		};
     }
 
+    /**Function that is called when the component renders
+   * @memberof Search
+   * @func componentDidMount
+   */
     componentDidMount(){
+        /** A variable that contains URL 
+        * @memberof Search
+        * @type {string}
+        */
         var url = BASEURL + "/get-tracks"; 
   
                 const requestOptions = {
@@ -117,6 +184,9 @@ class ShowByGenres extends Component {
                     this.setState({ 
                       playlistTargets:data.playlists,
                     });
+                    this.setState({
+                        TopPlaylists:this.state.playlistTargets.sort(() => Math.random() - Math.random()).slice(0, 3)
+                    })
                   })
                   .catch((error)=>{console.log(error);
         })
@@ -153,14 +223,28 @@ class ShowByGenres extends Component {
         })
     }
 
+
+    /**Function to Handle changes in search bar
+   * @memberof Search
+   * @func handleOnInputChange
+   * @param event
+   */
     handleOnInputChange = (event) => {
         const Text = event.target.value;
         setTimeout(() => {
             if(Text!=""){
+
+                /** A variable that contains top 3 songs
+                * @memberof Search
+                * @type {Array<songs>}
+                */
                 var songs=this.state.SongInfo.sort(() => Math.random() - Math.random()).slice(0, 3)
                 this.setState({
                     searchedText:Text, display:false,
                     SongsTargets:songs
+                })
+                this.setState({
+                    TopPlaylists:this.state.playlistTargets.sort(() => Math.random() - Math.random()).slice(0, 3)
                 })  
             }
             else{
@@ -172,7 +256,11 @@ class ShowByGenres extends Component {
     };
 
   render(){
-      var playlistshit=this.state.playlistTargets.sort(() => Math.random() - Math.random()).slice(0, 3)
+
+      /** A variable that contains top playlists 
+        * @memberof Search
+        * @type {Array<playlists>}
+        */
 		return(
            
             
@@ -266,10 +354,10 @@ class ShowByGenres extends Component {
                             <div className="row">
                             <div className="col-xl-3 p-0">
                                 <div class="top-result-card">
-                                    <img src={playlistshit[0].playlistImg} className="image d-flex align-items-start" ></img>
-                                   <h3 className="text-white d-flex align-items-start mt-3 font-weight-bold">{playlistshit[0].playlistName}</h3>
+                                    <img src={this.state.TopPlaylists[0].playlistImg} className="image d-flex align-items-start" ></img>
+                                   <h3 className="text-white d-flex align-items-start mt-3 font-weight-bold">{this.state.TopPlaylists[0].playlistName}</h3>
                                     <div>
-                                        <p className="text-white d-flex align-items-start mt-1 font-weight-bold">By {playlistshit[0].creatorName}</p>
+                                        <p className="text-white d-flex align-items-start mt-1 font-weight-bold">By {this.state.TopPlaylists[0].creatorName}</p>
                                     </div>
                                 </div>
 
@@ -379,6 +467,11 @@ class ShowByGenres extends Component {
 		)	
     }
 }
+/**A function connecting component to redux store
+ * @memberof Search
+ * @func mapStateToProps
+ * @param {*} state
+ */
 const mapStateToProps = state =>{
     return{
       logged: state.loggenIn,
@@ -386,9 +479,15 @@ const mapStateToProps = state =>{
 
     };
   };
+
+  /** A function connecting component to redux store
+ * @memberof Search
+ * @func mapDispatchToProps
+ * @param {*} dispatch 
+ */
 const mapDispatchToProps = dispatch => {
     return {
       onSignOut : () => dispatch ({type: actionTypes.ON_SIGNOUT}),
     };
   };
-export default connect(mapStateToProps,mapDispatchToProps) (ShowByGenres);
+export default connect(mapStateToProps,mapDispatchToProps) (Search);
