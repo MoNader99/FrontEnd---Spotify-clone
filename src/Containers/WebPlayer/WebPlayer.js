@@ -44,7 +44,7 @@ class WebPlayerPage extends Component {
                 <Route  exact path="/webplayer/album/" component={AlbumPage}/>
                 <Route  exact path="/webplayer/likedsongs/" component={LikedSongs}/>
                 <Route path="/webplayer/home" component={Home} />
-                <Route path="/webplayer/yourlibrary"  component={YourLibrary} />
+                <Route exact path="/webplayer/yourlibrary"  component={YourLibrary} />
                 <Route exact path="/webplayer/yourlibrary-artists"  component={ArtistsLibrary} />
                 <Route exact path="/webplayer/yourlibrary-albums"  component={AlbumsLibrary} />
                 <Route exact path="/webplayer/notifications"  component={RecentActivities} />

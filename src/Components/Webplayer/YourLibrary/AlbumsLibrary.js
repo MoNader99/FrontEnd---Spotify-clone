@@ -1,8 +1,9 @@
 import React ,{ Component }from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
-import {Link} from 'react-router-dom';
+import {BASEURL} from '../../../Constants/BaseURL';
 import './YourLibrary.css';
+import  HomePageNavbar  from '../../HomePage/HomePageNavbar';
 
 class AlbumsLibrary extends Component {
     constructor() {
@@ -13,14 +14,10 @@ class AlbumsLibrary extends Component {
         }
     }
     componentDidMount(){
-        axios.get("http://spotify.mocklab.io"+"/albums/top",{
+        axios.get(BASEURL+"/webplayer/yourlibrary/albums",{
             headers: {
-                'authorization': "Bearer "+localStorage.getItem("token"),
+                'authorization': "Bearer ",
             },
-            params: {
-                limit: 9,
-                sort: "-popularity"
-            }
         })
             .then(res => {
                 if(res.status === 200)
@@ -33,13 +30,6 @@ class AlbumsLibrary extends Component {
                             artist:album.artists[0].name
                         }))
                     })
-                }
-                else if(res.status === 401)
-                {
-                    localStorage.removeItem("loginType");
-                    localStorage.removeItem("isLoggedIn");
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("userID");
                 }
             }) 
     }
@@ -85,6 +75,7 @@ class AlbumsLibrary extends Component {
 
     return(
         <div id="webplayer-library" className="container col-lg-12">
+            <HomePageNavbar page="library"/>
             <div className="popular-albums-section">
                     <h2 className="section-title popular-albums">Albums</h2>
                     <div className="card-group">

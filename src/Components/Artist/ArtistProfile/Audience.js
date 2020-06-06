@@ -153,7 +153,7 @@ class Audience extends Component {
     }
 
     componentDidMount(){
-        axios.get("http://spotify.mocklab.io"+"/meArtist/numberOfLikesAndFollowers",{
+        axios.get("http://spotify-clone1.mocklab.io"+"/artist/statistics",{
             headers: {
                 'authorization': "Bearer "
             },
