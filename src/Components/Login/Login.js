@@ -240,14 +240,14 @@ export class Login extends Component{
                     <form >
                     <div className="form-group">
                         <div style={{marginBottom: "15px"}}>
-                            <input style={this.state.emailStyle} autocomplete="off" onChange={this.validateEmail} type="email" className="form-control" id="input-email" aria-describedby="emailHelp" placeholder="Email address" />
+                            <input style={this.state.emailStyle} autoComplete="off" onChange={this.validateEmail} type="email" className="form-control" id="input-email" aria-describedby="emailHelp" placeholder="Email address" />
                             <div className="error-validate">{this.state.emailError}</div>
                         </div>
                         <input style={this.state.passwordStyle} onChange={this.validatePassword} type="password" className="form-control" id="input-password" placeholder="Password" />
                             <div  className="error-validate">{this.state.passwordError}</div>
                             <div className="form-check check-log">
                                 <input  type="checkbox" className="form-check-input" id="checkbox"/>
-                                <label className="form-check-label" for="exampleCheck1">Remember Me</label>
+                                <label className="form-check-label" htmlFor="exampleCheck1">Remember Me</label>
                                 <a onClick={this.handleLogIn} className="btn rounded-pill text-center login-button">Log In</a>
                             </div>
                         <div className="forget-pass d-flex justify-content-center">
@@ -258,7 +258,7 @@ export class Login extends Component{
                     <div className="border-divider"></div>
                     <div>
                         <h5>Don't have an account?</h5>
-                        <a href="/signup"><button className="btn rounded-pill text-center signup-button">Sign up for spotify</button></a>
+                        <button className="btn rounded-pill text-center signup-button">Sign up for spotify</button>
                     </div>
                     <div className="border-divider"></div>
                 </div>
