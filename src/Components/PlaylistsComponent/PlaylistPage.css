@@ -1,7 +1,9 @@
 .playlist-page
 {
-  background: rgb(0,0,0);
-  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 100%);
+
+  background: rgb(2,20,59);
+background: linear-gradient(90deg, rgba(2,20,59,1) 1%, rgba(121,31,205,1) 100%);
+  
   color:white;
   overflow:hidden;
   min-height: 100vh;
@@ -237,5 +239,1219 @@
     height: 45px;   
   }
   .playlist-page .add-button:hover{
+    padding: 0.6rem 1.6rem !important;
+  }
+  .oud
+{
+
+  background: rgb(2,20,59);
+  background: linear-gradient(90deg, rgba(2,20,59,1) 1%, rgba(83,14,148,1) 100%);
+  
+  color:white;
+  overflow:hidden;
+  min-height: 100vh;
+
+}
+
+.oud .content-spacing {
+  padding: 0 32px;
+  margin: 0;
+  width: 100%;
+  margin-top: 70px;
+  margin-bottom: 90px;
+  padding-top: 2em;
+}
+
+.oud h3,h5{
+  cursor: default;
+}
+
+
+.oud .centered-content li{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.oud #like-song
+{
+  font-size: 30px;
+  margin-right: 55px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #b3b3b3;
+  float: left;
+  outline: none;
+}
+.oud #like-song:hover{
+  color:white;
+}
+
+.oud .music-sign:after
+{
+  content: "\266A" ; 
+  font-size: 25px;
+  color:#b3b3b3;
+  cursor: default;
+}
+.oud  .songs:hover .music-sign:after{
+  content: "\25B8" ; 
+  font-size: 30px;
+  color:white;
+  cursor: default;
+  
+}
+.oud .song-content
+{
+  width:800px;
+  padding: 3px;
+}
+
+
+.oud .song-info a
+{
+  color:#b3b3b3;
+  font-size:12px;
+  text-decoration: none;
+}
+.oud .song-info a:hover
+{
+  color:white;
+  
+  text-decoration: underline;
+}
+.oud .songs:hover{
+  background-color: rgba(70, 66, 69,0.4);
+}
+
+.oud .Menu{
+  cursor: pointer;
+  visibility: hidden;
+  vertical-align: middle;
+}
+
+.oud  .songs:hover .Menu{
+  visibility: visible;
+  vertical-align: middle;
+}
+
+
+/* ////////////////// DropDpwn //////////////////////// */
+
+.oud .dropdown  {
+  position: absolute;
+  display: inline-flex;
+  margin-left: 30px;
+  color:white;
+  text-decoration: none;
+}
+.oud .dropdown a{
+  color:white;
+  text-decoration: none;
+}
+/*//////////////// DropMenuCard ///////////////////*/
+
+.oud .card-menu{
+  
+  font-size: 26px;
+  cursor: pointer;
+}
+.oud .card-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+  
+}
+
+.oud .card-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.oud .card-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(53, 53, 53);
+  cursor:default;
+}
+.oud .dropdown-menu.card-dropdown-content.show {
+  padding: 0;
+}
+
+/*//////////////// DropMenuSong ///////////////////*/
+
+.oud .dropdown-menu.song-dropdown-content.show {
+  padding: 0;
+}
+
+.oud .song-dropdown-content {
+  display: none;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+}
+
+.oud .song-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.oud .song-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(53, 53, 53);
+  cursor:default;
+}
+
+.oud .show {
+  display: block;
+}
+
+/* //////////////////////// Page responsive ////////////////////////////////*/
+@media (max-width: 768px) {
+  .oud .song-content{
+  width:280px;
+ }
+  }
+  
+  @media (min-width: 768px) and (max-width: 992px){
+    .oud .song-content{
+      width:400px;
+   }
+  }
+
+  @media (min-width: 992px) and (max-width: 1200px){
+    .oud .song-content{
+      width:580px;
+   }
+  }
+  
+  @media (min-width: 1200px) and (max-width: 1500px){
+    .oud .song-content{
+      width:600px;
+   }
+  }
+   @media (min-width: 1500px){
+    .oud .song-content{
+      width:800px;
+   }
+  }
+
+  .oud .snack
+  {
+    background-color: blue;
+  }
+
+  .oud .fa-headphones:before {
+    content: "\f025";
+    font-size: 50px;
+  }
+
+  .oud .Suggested{
+    
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    margin-left: 13px;
+  }
+
+  .oud .Suggested-text{
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    font-size: 13px;
+    margin-left: 15px;
+    color: #b3b3b3;
+  }
+
+  .oud .btn-outline-dark:hover{
+    background-color: black !important ;
+    padding: 0.6rem 3.2rem !important;
+  }
+  .oud .add-button{
+    height: 45px;   
+  }
+  .oud .add-button:hover{
+    padding: 0.6rem 1.6rem !important;
+  }
+  .arabic
+{
+
+ 
+background: rgb(2,20,59);
+background: linear-gradient(90deg, rgba(2,20,59,1) 1%, rgba(148,128,14,1) 100%);
+  
+  color:white;
+  overflow:hidden;
+  min-height: 100vh;
+
+}
+
+.arabic .content-spacing {
+  padding: 0 32px;
+  margin: 0;
+  width: 100%;
+  margin-top: 70px;
+  margin-bottom: 90px;
+  padding-top: 2em;
+}
+
+.arabic h3,h5{
+  cursor: default;
+}
+
+
+.arabic .centered-content li{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.arabic #like-song
+{
+  font-size: 30px;
+  margin-right: 55px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #b3b3b3;
+  float: left;
+  outline: none;
+}
+.arabic #like-song:hover{
+  color:white;
+}
+
+.arabic .music-sign:after
+{
+  content: "\266A" ; 
+  font-size: 25px;
+  color:#b3b3b3;
+  cursor: default;
+}
+.arabic  .songs:hover .music-sign:after{
+  content: "\25B8" ; 
+  font-size: 30px;
+  color:white;
+  cursor: default;
+  
+}
+.arabic .song-content
+{
+  width:800px;
+  padding: 3px;
+}
+
+
+.arabic .song-info a
+{
+  color:#b3b3b3;
+  font-size:12px;
+  text-decoration: none;
+}
+.arabic .song-info a:hover
+{
+  color:white;
+  
+  text-decoration: underline;
+}
+.arabic .songs:hover{
+  background-color: rgba(70, 66, 69,0.4);
+}
+
+.arabic .Menu{
+  cursor: pointer;
+  visibility: hidden;
+  vertical-align: middle;
+}
+
+.arabic  .songs:hover .Menu{
+  visibility: visible;
+  vertical-align: middle;
+}
+
+
+/* ////////////////// DropDpwn //////////////////////// */
+
+.arabic .dropdown  {
+  position: absolute;
+  display: inline-flex;
+  margin-left: 30px;
+  color:white;
+  text-decoration: none;
+}
+.arabic .dropdown a{
+  color:white;
+  text-decoration: none;
+}
+/*//////////////// DropMenuCard ///////////////////*/
+
+.arabic .card-menu{
+  
+  font-size: 26px;
+  cursor: pointer;
+}
+.arabic .card-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+  
+}
+
+.arabic .card-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.arabic .card-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(53, 53, 53);
+  cursor:default;
+}
+.arabic .dropdown-menu.card-dropdown-content.show {
+  padding: 0;
+}
+
+/*//////////////// DropMenuSong ///////////////////*/
+
+.arabic .dropdown-menu.song-dropdown-content.show {
+  padding: 0;
+}
+
+.arabic .song-dropdown-content {
+  display: none;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+}
+
+.arabic .song-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.arabic .song-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(53, 53, 53);
+  cursor:default;
+}
+
+.arabic .show {
+  display: block;
+}
+
+/* //////////////////////// Page responsive ////////////////////////////////*/
+@media (max-width: 768px) {
+  .arabic .song-content{
+  width:280px;
+ }
+  }
+  
+  @media (min-width: 768px) and (max-width: 992px){
+    .arabic .song-content{
+      width:400px;
+   }
+  }
+
+  @media (min-width: 992px) and (max-width: 1200px){
+    .arabic .song-content{
+      width:580px;
+   }
+  }
+  
+  @media (min-width: 1200px) and (max-width: 1500px){
+    .arabic .song-content{
+      width:600px;
+   }
+  }
+   @media (min-width: 1500px){
+    .arabic .song-content{
+      width:800px;
+   }
+  }
+
+  .arabic .snack
+  {
+    background-color: blue;
+  }
+
+  .arabic .fa-headphones:before {
+    content: "\f025";
+    font-size: 50px;
+  }
+
+  .arabic .Suggested{
+    
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    margin-left: 13px;
+  }
+
+  .arabic .Suggested-text{
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    font-size: 13px;
+    margin-left: 15px;
+    color: #b3b3b3;
+  }
+
+  .arabic .btn-outline-dark:hover{
+    background-color: black !important ;
+    padding: 0.6rem 3.2rem !important;
+  }
+  .arabic .add-button{
+    height: 45px;   
+  }
+  .arabic .add-button:hover{
+    padding: 0.6rem 1.6rem !important;
+  }
+  .rap
+{
+
+  background: rgb(59,2,52);
+background: linear-gradient(90deg, rgba(59,2,52,1) 1%, rgba(123,99,106,1) 100%);
+  color:white;
+  overflow:hidden;
+  min-height: 100vh;
+
+}
+
+.rap .content-spacing {
+  padding: 0 32px;
+  margin: 0;
+  width: 100%;
+  margin-top: 70px;
+  margin-bottom: 90px;
+  padding-top: 2em;
+}
+
+.rap h3,h5{
+  cursor: default;
+}
+
+
+.rap .centered-content li{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.rap #like-song
+{
+  font-size: 30px;
+  margin-right: 55px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #b3b3b3;
+  float: left;
+  outline: none;
+}
+.rap #like-song:hover{
+  color:white;
+}
+
+.rap .music-sign:after
+{
+  content: "\266A" ; 
+  font-size: 25px;
+  color:#b3b3b3;
+  cursor: default;
+}
+.rap  .songs:hover .music-sign:after{
+  content: "\25B8" ; 
+  font-size: 30px;
+  color:white;
+  cursor: default;
+  
+}
+.rap .song-content
+{
+  width:800px;
+  padding: 3px;
+}
+
+
+.rap .song-info a
+{
+  color:#b3b3b3;
+  font-size:12px;
+  text-decoration: none;
+}
+.rap .song-info a:hover
+{
+  color:white;
+  
+  text-decoration: underline;
+}
+.rap .songs:hover{
+  background-color: rgba(70, 66, 69,0.4);
+}
+
+.rap .Menu{
+  cursor: pointer;
+  visibility: hidden;
+  vertical-align: middle;
+}
+
+.rap  .songs:hover .Menu{
+  visibility: visible;
+  vertical-align: middle;
+}
+
+
+/* ////////////////// DropDpwn //////////////////////// */
+
+.rap .dropdown  {
+  position: absolute;
+  display: inline-flex;
+  margin-left: 30px;
+  color:white;
+  text-decoration: none;
+}
+.rap .dropdown a{
+  color:white;
+  text-decoration: none;
+}
+/*//////////////// DropMenuCard ///////////////////*/
+
+.rap .card-menu{
+  
+  font-size: 26px;
+  cursor: pointer;
+}
+.rap .card-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+  
+}
+
+.rap .card-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.rap .card-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(53, 53, 53);
+  cursor:default;
+}
+.rap .dropdown-menu.card-dropdown-content.show {
+  padding: 0;
+}
+
+/*//////////////// DropMenuSong ///////////////////*/
+
+.rap .dropdown-menu.song-dropdown-content.show {
+  padding: 0;
+}
+
+.rap .song-dropdown-content {
+  display: none;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+}
+
+.rap .song-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.rap .song-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(53, 53, 53);
+  cursor:default;
+}
+
+.rap .show {
+  display: block;
+}
+
+/* //////////////////////// Page responsive ////////////////////////////////*/
+@media (max-width: 768px) {
+  .rap .song-content{
+  width:280px;
+ }
+  }
+  
+  @media (min-width: 768px) and (max-width: 992px){
+    .rap .song-content{
+      width:400px;
+   }
+  }
+
+  @media (min-width: 992px) and (max-width: 1200px){
+    .rap .song-content{
+      width:580px;
+   }
+  }
+  
+  @media (min-width: 1200px) and (max-width: 1500px){
+    .rap .song-content{
+      width:600px;
+   }
+  }
+   @media (min-width: 1500px){
+    .rap .song-content{
+      width:800px;
+   }
+  }
+
+  .rap .snack
+  {
+    background-color: blue;
+  }
+
+  .rap .fa-headphones:before {
+    content: "\f025";
+    font-size: 50px;
+  }
+
+  .rap .Suggested{
+    
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    margin-left: 13px;
+  }
+
+  .rap .Suggested-text{
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    font-size: 13px;
+    margin-left: 15px;
+    color: #b3b3b3;
+  }
+
+  .rap .btn-outline-dark:hover{
+    background-color: black !important ;
+    padding: 0.6rem 3.2rem !important;
+  }
+  .rap .add-button{
+    height: 45px;   
+  }
+  .rap .add-button:hover{
+    padding: 0.6rem 1.6rem !important;
+  }
+  .hiphop
+{
+  background: rgb(245,70,12);
+  background: linear-gradient(90deg, rgba(245,70,12,1) 1%, rgba(0,0,0,1) 100%);
+  
+  color:white;
+  overflow:hidden;
+  min-height: 100vh;
+
+}
+
+.hiphop .content-spacing {
+  padding: 0 32px;
+  margin: 0;
+  width: 100%;
+  margin-top: 70px;
+  margin-bottom: 90px;
+  padding-top: 2em;
+}
+
+.hiphop h3,h5{
+  cursor: default;
+}
+
+
+.hiphop .centered-content li{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.hiphop #like-song
+{
+  font-size: 30px;
+  margin-right: 55px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #b3b3b3;
+  float: left;
+  outline: none;
+}
+.hiphop #like-song:hover{
+  color:white;
+}
+
+.hiphop .music-sign:after
+{
+  content: "\266A" ; 
+  font-size: 25px;
+  color:#b3b3b3;
+  cursor: default;
+}
+.hiphop  .songs:hover .music-sign:after{
+  content: "\25B8" ; 
+  font-size: 30px;
+  color:white;
+  cursor: default;
+  
+}
+.hiphop .song-content
+{
+  width:800px;
+  padding: 3px;
+}
+
+
+.hiphop .song-info a
+{
+  color:#b3b3b3;
+  font-size:12px;
+  text-decoration: none;
+}
+.hiphop .song-info a:hover
+{
+  color:white;
+  
+  text-decoration: underline;
+}
+.hiphop .songs:hover{
+  background-color: rgba(70, 66, 69,0.4);
+}
+
+.hiphop .Menu{
+  cursor: pointer;
+  visibility: hidden;
+  vertical-align: middle;
+}
+
+.hiphop  .songs:hover .Menu{
+  visibility: visible;
+  vertical-align: middle;
+}
+
+
+/* ////////////////// DropDpwn //////////////////////// */
+
+.hiphop .dropdown  {
+  position: absolute;
+  display: inline-flex;
+  margin-left: 30px;
+  color:white;
+  text-decoration: none;
+}
+.hiphop .dropdown a{
+  color:white;
+  text-decoration: none;
+}
+/*//////////////// DropMenuCard ///////////////////*/
+
+.hiphop .card-menu{
+  
+  font-size: 26px;
+  cursor: pointer;
+}
+.hiphop .card-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+  
+}
+
+.hiphop .card-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.hiphop .card-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(53, 53, 53);
+  cursor:default;
+}
+.hiphop .dropdown-menu.card-dropdown-content.show {
+  padding: 0;
+}
+
+/*//////////////// DropMenuSong ///////////////////*/
+
+.hiphop .dropdown-menu.song-dropdown-content.show {
+  padding: 0;
+}
+
+.hiphop .song-dropdown-content {
+  display: none;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+}
+
+.hiphop .song-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.hiphop .song-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(53, 53, 53);
+  cursor:default;
+}
+
+.hiphop .show {
+  display: block;
+}
+
+/* //////////////////////// Page responsive ////////////////////////////////*/
+@media (max-width: 768px) {
+  .hiphop .song-content{
+  width:280px;
+ }
+  }
+  
+  @media (min-width: 768px) and (max-width: 992px){
+    .hiphop .song-content{
+      width:400px;
+   }
+  }
+
+  @media (min-width: 992px) and (max-width: 1200px){
+    .hiphop .song-content{
+      width:580px;
+   }
+  }
+  
+  @media (min-width: 1200px) and (max-width: 1500px){
+    .hiphop .song-content{
+      width:600px;
+   }
+  }
+   @media (min-width: 1500px){
+    .hiphop .song-content{
+      width:800px;
+   }
+  }
+
+  .hiphop .snack
+  {
+    background-color: blue;
+  }
+
+  .hiphop .fa-headphones:before {
+    content: "\f025";
+    font-size: 50px;
+  }
+
+  .hiphop .Suggested{
+    
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    margin-left: 13px;
+  }
+
+  .hiphop .Suggested-text{
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    font-size: 13px;
+    margin-left: 15px;
+    color: #b3b3b3;
+  }
+
+  .hiphop .btn-outline-dark:hover{
+    background-color: black !important ;
+    padding: 0.6rem 3.2rem !important;
+  }
+  .hiphop .add-button{
+    height: 45px;   
+  }
+  .hiphop .add-button:hover{
+    padding: 0.6rem 1.6rem !important;
+  }
+  .pop
+{
+
+  background: rgb(31,146,182);
+  background: linear-gradient(90deg, rgba(31,146,182,1) 1%, rgba(73,187,255,1) 100%);
+  
+  color:white;
+  overflow:hidden;
+  min-height: 100vh;
+
+}
+
+.pop .content-spacing {
+  padding: 0 32px;
+  margin: 0;
+  width: 100%;
+  margin-top: 70px;
+  margin-bottom: 90px;
+  padding-top: 2em;
+}
+
+.pop h3,h5{
+  cursor: default;
+}
+
+
+.pop .centered-content li{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.pop #like-song
+{
+  font-size: 30px;
+  margin-right: 55px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #b3b3b3;
+  float: left;
+  outline: none;
+}
+.pop #like-song:hover{
+  color:white;
+}
+
+.pop .music-sign:after
+{
+  content: "\266A" ; 
+  font-size: 25px;
+  color:#b3b3b3;
+  cursor: default;
+}
+.pop  .songs:hover .music-sign:after{
+  content: "\25B8" ; 
+  font-size: 30px;
+  color:white;
+  cursor: default;
+  
+}
+.pop .song-content
+{
+  width:800px;
+  padding: 3px;
+}
+
+
+.pop .song-info a
+{
+  color:#b3b3b3;
+  font-size:12px;
+  text-decoration: none;
+}
+.pop .song-info a:hover
+{
+  color:white;
+  
+  text-decoration: underline;
+}
+.pop .songs:hover{
+  background-color: rgba(70, 66, 69,0.4);
+}
+
+.pop .Menu{
+  cursor: pointer;
+  visibility: hidden;
+  vertical-align: middle;
+}
+
+.pop  .songs:hover .Menu{
+  visibility: visible;
+  vertical-align: middle;
+}
+
+
+/* ////////////////// DropDpwn //////////////////////// */
+
+.pop .dropdown  {
+  position: absolute;
+  display: inline-flex;
+  margin-left: 30px;
+  color:white;
+  text-decoration: none;
+}
+.pop .dropdown a{
+  color:white;
+  text-decoration: none;
+}
+/*//////////////// DropMenuCard ///////////////////*/
+
+.pop .card-menu{
+  
+  font-size: 26px;
+  cursor: pointer;
+}
+.pop .card-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+  
+}
+
+.pop .card-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.pop .card-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(53, 53, 53);
+  cursor:default;
+}
+.pop .dropdown-menu.card-dropdown-content.show {
+  padding: 0;
+}
+
+/*//////////////// DropMenuSong ///////////////////*/
+
+.pop .dropdown-menu.song-dropdown-content.show {
+  padding: 0;
+}
+
+.pop .song-dropdown-content {
+  display: none;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+}
+
+.pop .song-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.pop .song-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(53, 53, 53);
+  cursor:default;
+}
+
+.pop .show {
+  display: block;
+}
+
+/* //////////////////////// Page responsive ////////////////////////////////*/
+@media (max-width: 768px) {
+  .pop .song-content{
+  width:280px;
+ }
+  }
+  
+  @media (min-width: 768px) and (max-width: 992px){
+    .pop .song-content{
+      width:400px;
+   }
+  }
+
+  @media (min-width: 992px) and (max-width: 1200px){
+    .pop .song-content{
+      width:580px;
+   }
+  }
+  
+  @media (min-width: 1200px) and (max-width: 1500px){
+    .pop .song-content{
+      width:600px;
+   }
+  }
+   @media (min-width: 1500px){
+    .pop .song-content{
+      width:800px;
+   }
+  }
+
+  .pop .snack
+  {
+    background-color: blue;
+  }
+
+  .pop .fa-headphones:before {
+    content: "\f025";
+    font-size: 50px;
+  }
+
+  .pop .Suggested{
+    
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    margin-left: 13px;
+  }
+
+  .pop .Suggested-text{
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    font-size: 13px;
+    margin-left: 15px;
+    color: #b3b3b3;
+  }
+
+  .pop .btn-outline-dark:hover{
+    background-color: black !important ;
+    padding: 0.6rem 3.2rem !important;
+  }
+  .pop .add-button{
+    height: 45px;   
+  }
+  .pop .add-button:hover{
     padding: 0.6rem 1.6rem !important;
   }
