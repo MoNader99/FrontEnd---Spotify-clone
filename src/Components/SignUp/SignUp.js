@@ -1,35 +1,143 @@
 import React ,{ Component} from 'react';
+import {BASEURL} from '../../Constants/BaseURL'
+import LoginFacebook from '../Login/FacebookLogin'
 import './SignUp.css';
 
-
+/** Class SignUp 
+ * @category SignUp
+ * @extends Component
+ */
 export class SignUp extends Component{
   state = {
+
+    /**email error text 
+    * @memberof SignUp
+    * @type {string}
+    */
     emailError:"",
+
+    /**confirm email error text
+    * @memberof SignUp
+    * @type {string}
+    */
     comfirmEmailError:"",
+
+    /**password error text
+    * @memberof SignUp
+    * @type {string}
+    */
     passwordError:"",
+
+    /**username error text 
+    * @memberof SignUp
+    * @type {string}
+    */
     usernameError:"",
+
+    /**year error  
+    * @memberof SignUp
+    * @type {string}
+    */
     yearError:"",
+
+    /**days error
+    * @memberof SignUp
+    * @type {string}
+    */
     daysError:"",
 
+
+    /**chech whether user inputs are correct or not 
+    * @memberof SignUp
+    * @type {boolean}
+    */
     checkedCorrect: false,
 
+    /**wrong style of email 
+    * @memberof SignUp
+    * @type {object}
+    */
     wrongStyleEmail:{},
+
+    /**wrong style of confirmation email 
+    * @memberof SignUp
+    * @type {object}
+    */
     wrongStyleConfirmEmail:{},
+
+    /**wrong style of password 
+    * @memberof SignUp
+    * @type {object}
+    */
     wrongStylePassword:{},
+
+    /**wrong style of username 
+    * @memberof SignUp
+    * @type {object}
+    */
     wrongStyleUsername:{},
+
+    /**wrong style of years
+    * @memberof SignUp
+    * @type {object}
+    */
     wrongStyleYear:{},
+
+    /**wrong style of days
+    * @memberof SignUp
+    * @type {object}
+    */
     wrongStyleDay:{},
 
+    /**Email text 
+    * @memberof SignUp
+    * @type {string}
+    */
     EmailText:"",
+
+    /**check email validation
+    * @memberof SignUp
+    * @type {boolean}
+    */
     CorrectEmail:false,
+
+    /**check confirm email validation 
+    * @memberof SignUp
+    * @type {boolean}
+    */
     CorrectConfirmEmail:false,
+
+    /**check password validation 
+    * @memberof SignUp
+    * @type {boolean}
+    */
     CorrectPassword:false,
+
+    /**check username validation  
+    * @memberof SignUp
+    * @type {boolean}
+    */
     CorrectUsername:false,
+
+    /**check days validation  
+    * @memberof SignUp
+    * @type {boolean}
+    */
     CorrectDays:false,
+
+    /**check years validation  
+    * @memberof SignUp
+    * @type {boolean}
+    */
     Correctyears:false,
     
 }
 
+ /**Function to Validate email
+ * @memberof SignUp
+ * @func validateEmail
+ * @param event
+ */
 validateEmail = (event) => {
   let EmailText = event.target.value;
 
@@ -71,7 +179,11 @@ validateEmail = (event) => {
   }
 }
 
-
+/**Function to Validate confirmation email
+ * @memberof SignUp
+ * @func validateConfirmEmail
+ * @param event
+ */
 validateConfirmEmail = (event) => {
   let ConfirmEmailText = event.target.value;
   if(this.state.CorrectEmail){
@@ -102,6 +214,11 @@ validateConfirmEmail = (event) => {
   }
 }
 
+/**Function to Validate Password
+ * @memberof SignUp
+ * @func validatePassword
+ * @param event
+ */
 validatePassword = (event) => {
   let PasswordText = event.target.value;
 
@@ -128,6 +245,11 @@ validatePassword = (event) => {
   }
 }
 
+/**Function to Validate Username
+ * @memberof SignUp
+ * @func validateUsername
+ * @param event
+ */
 validateUsername=(event)=>{
   let UsernameText = event.target.value;
 
@@ -147,6 +269,11 @@ validateUsername=(event)=>{
   }
 }
 
+/**Function to Validate days number
+ * @memberof SignUp
+ * @func validateDays
+ * @param event
+ */
 validateDays=(event)=>{
   let days= event.target.value;
   days=Number(days)
@@ -166,6 +293,11 @@ validateDays=(event)=>{
   }
 }
 
+/**Function to Validate years number
+ * @memberof SignUp
+ * @func validateYears
+ * @param event
+ */
 validateYears=(event)=>{
   let years= event.target.value;
   years=Number(years)
@@ -185,6 +317,11 @@ validateYears=(event)=>{
   }
 }
 
+/**Function to handle signup button
+ * @memberof SignUp
+ * @func handleSingUp
+ * @param event
+ */
 handleSingUp=(event)=>{
   if(this.state.CorrectEmail==true && 
     this.state.CorrectConfirmEmail==true && 
@@ -192,12 +329,35 @@ handleSingUp=(event)=>{
     this.state.CorrectUsername==true && 
     this.state.Correctyears==true && 
     this.state.CorrectDays==true)
-    
     {
-    this.setState({checkedCorrect:false})
-    window.location.replace("/account-overview");
-    }
+        var url =  BASEURL+"/signup";    
+           const requestOptions = {
+             method: 'POST', 
+             body: JSON.stringify({ 
+               email:this.state.EmailText,
+               password:this.state.PasswordText,
+               username:this.state.UsernameText,
+               birthdate:this.state.birthdate,
+               gender: this.state.gender
+              }) ,
+         
+           };    
+              fetch(url,requestOptions)
+               .then((res) => {
+                 if(res.status===200){
+                    console.log("response is ok")
+                    this.setState({checkedCorrect:false})
+                    // window.location.replace("/account-overview");
+                 }
+                 else{
+                  this.setState({checkedCorrect:true})
+                 }
+            })
+       
+               .then((data) =>{})
+               .catch((err)=>console.log(err))
     
+    }
   else{
     this.setState({checkedCorrect:true})
   }
@@ -216,8 +376,9 @@ handleSingUp=(event)=>{
         
           <div className="container ">
           <div className="mb-3 d-flex justify-content-center">
-          <button id="login-facebook-button" className="btn rounded-pill text-center " >
-                    <i className="fab fa-facebook"></i> continue with facebook </button> 
+          {/* <button id="login-facebook-button" className="btn rounded-pill text-center " >
+                    <i className="fab fa-facebook"></i> continue with facebook </button>  */}
+                    <LoginFacebook/>
           </div>
 
           <div className="d-flex justify-content-center"><p className="or">or</p></div>
@@ -278,7 +439,7 @@ handleSingUp=(event)=>{
 
                 <div className="terms-and-conditions mt-3 ">
                   <p className="mb-3">By clicking on Sign up, you agree to Spotify's<a className="green" href="/"> Terms and Conditions of Use</a>.</p>
-                  <p className="mb-3">To learn more about how Spotify collects, uses, shares and protects your personal data please read Spotify's<a className="green" href=""> Privacy Policy</a>.</p>
+                  <p className="mb-3">To learn more about how Spotify collects, uses, shares and protects your personal data please read Spotify's<a className="green" href="/privacypolicy"> Privacy Policy</a>.</p>
                 </div>
 
                 <div className="d-flex justify-content-center"><a onClick={this.handleSingUp} type="submit" className="submit btn rounded-pill text-center  mb-3">SIGN UP</a></div>

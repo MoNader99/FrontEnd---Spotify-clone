@@ -1,9 +1,10 @@
 import React ,{ Component }from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
-import {Link} from 'react-router-dom';
+import {BASEURL} from '../../../Constants/BaseURL';
 import './YourLibrary.css';
 import  HomePageNavbar  from '../../HomePage/HomePageNavbar';
+import {Link} from "react-router-dom";
 
 class YourLibrary extends Component {
     constructor() {
@@ -16,7 +17,7 @@ class YourLibrary extends Component {
         }
     }
     componentDidMount(){
-      axios.get("http://spotify-clone1.mocklab.io"+"/webplayer/yourlibrary", {
+      axios.get(BASEURL+"/webplayer/yourlibrary", {
           headers: {
               'authorization': "Bearer "
           },
@@ -33,12 +34,8 @@ class YourLibrary extends Component {
                       }))
                   })
               }
-              else if(res.status === 401)
-              {
-
-              }
           })
-      axios.get("http://spotify-clone1.mocklab.io"+"/webplayer/yourlibrary/likes", {
+      axios.get(BASEURL+"/webplayer/yourlibrary/likes", {
       headers: {
           'authorization': "Bearer "
       },
@@ -53,10 +50,6 @@ class YourLibrary extends Component {
                         artistName: track.artists[0].name,
                     }))
                 })
-            }
-            else if(res.status === 401)
-            {
-
             }
         })
     }
@@ -106,22 +99,24 @@ class YourLibrary extends Component {
             <div className="library-playlists-section">
                 <h2 className="section-title popular-playlists">Playlists</h2>
                     <div className="card-group">
-                    <div class="card likes">
-                        <div class="card-body" id="likes-card">
+                      <div class="card likes">
+                          <div class="card-body" id="likes-card">
+                          <Link to="/webplayer/likedsongs/">
                             <p class="card-text">{this.state.likedTracks.map( track => (
-                                <div className="track-name">{track.name}<strong>{ track.artistName}</strong> • </div>
-                            )
-                            )}</p>
-                            <div id={this.state.likes.id}>
-                                <button id={this.state.likes.id} className="btn btn-primary play-btn active-play" onClick={()=> this.togglePlayPause(this.state.likes.id)}><i className="fa fa-play"></i></button>
-                                <button id={this.state.likes.id} className="btn btn-primary pause-btn" onClick={()=> this.togglePlayPause(this.state.likes.id)}><i className="fa fa-pause"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <h3>Likes</h3>
-                            <h6>{this.state.likedTracks.length} Likes</h6>
-                        </div>
-                    </div>
+                                  <div className="track-name">{track.name}<strong>{ track.artistName}</strong> • </div>
+                              )
+                              )}</p>
+                          </Link>
+                              <div id={this.state.likes.id}>
+                                  <button id={this.state.likes.id} className="btn btn-primary play-btn active-play" onClick={()=> this.togglePlayPause(this.state.likes.id)}><i className="fa fa-play"></i></button>
+                                  <button id={this.state.likes.id} className="btn btn-primary pause-btn" onClick={()=> this.togglePlayPause(this.state.likes.id)}><i className="fa fa-pause"></i></button>
+                              </div>
+                          </div>
+                          <div class="card-footer">
+                              <h3>Likes</h3>
+                              <h6>{this.state.likedTracks.length} Likes</h6>
+                          </div>
+                      </div>
                     {this.state.yourLibrary.map( playList => (
                         <div>
                             <div className="card" id={playList.id}>

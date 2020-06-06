@@ -68,9 +68,7 @@ export class HomePageSidebar extends Component{
           
         const list = data.playlists.map(item => {
           return (
-            <li onClick={()=>{
-              window.location.replace("/webplayer/playlist");
-            }} className="List2">{item.playlistName}</li>
+            <li className="List2"><a href="/webplayer/playlist" >{item.playlistName}</a></li>
           )
         }
         
@@ -115,6 +113,12 @@ render() {
 );
 }
 } 
+
+/** A function connecting component to redux store
+ * @memberof HomePageSidebar
+ * @func mapStateToProps
+ * @param {*} state 
+ */
 const mapStateToProps = state => {
 
   return {
@@ -123,6 +127,11 @@ const mapStateToProps = state => {
 
 };
 
+/** A function connecting component to redux store
+ * @memberof HomePageSidebar
+ * @func mapDispatchToProps
+ * @param {*} dispatch 
+ */
 const mapDispatchToProps = dispatch => {
 
   return {

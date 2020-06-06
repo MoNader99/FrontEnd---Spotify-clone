@@ -5,14 +5,15 @@ import {NavLink, Link} from "react-router-dom";
 import { render } from "@testing-library/react";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Store/actions";
+import { BASEURL } from '../../Constants/BaseURL';
+import addNotification from 'react-push-notification';
 
 
- 
 /** Class HomepageSidebar 
  * @category HomePage
  * @extends Component
  */
-export class HomePageNavbar extends Component{
+class HomePageNavbar extends Component{
   constructor(props){
     super(props); 
     this.props={
@@ -26,21 +27,99 @@ export class HomePageNavbar extends Component{
    * @type {string}
    */
       name:"",
-   /**Account type to indicate whether the upgrade button should show or not.
-   * @memberof HomePageNavbar
-   * @type {string}
-   */
-      accountType:""
-     
+      
     }
+    
+  }
+  
+  state={
+    /**Array of notifications
+   * @memberof HomePageNavbar
+   * @type {Array<notifications>}
+   */
+    notifications:[],
   }
 
-  // handleBackButton = () => {
-  //   // let history = useHistory()
-  //   // history.goBack();
-  // };
-  
+  /**Function that is called when the component renders
+   * @memberof HomePageNavbar
+   * @func componentDidMount
+   */
+  componentDidMount(){   
+    
+    /** A variable that contains URL 
+    * @memberof HomePageNavbar
+    * @type {string}
+    */
+    var url = BASEURL+ "/notifications"; 
+    const requestOptions = {
+        method: 'GET',
+      };
+      fetch(url,requestOptions)
+        .then((response) => { return response.json()})
+        .then((data) => {
+          this.setState({ 
+           notifications:data.Notifications
+          });
+          for (var i =0;i<this.state.notifications.length;i++){
+            if(this.state.notifications[i].pushed==false){
+              
+              this.pushNoitifications(this.state.notifications[i])
+            // call request that changes the pushed status to true
+
+            }
+          }
+        })
+        .catch((error)=>{console.log(error);
+        })
+  }
+
+    /**Function that pushes notifications to User's OS 
+   * @memberof HomePageNavbar
+   * @func pushNoitifications
+   * @param notification
+   */
+  pushNoitifications (notification){
+    
+   /** A variable that contains URL 
+          * @memberof HomePageNavbar
+          * @type {string}
+          */
+         var url =  BASEURL+"/notifications/pushed";    
+         const requestOptions = {
+           method: 'POST', 
+           // headers: {'Content-Type': 'application/json' }, 
+           body: JSON.stringify({ Id:notification.id}) ,
+       
+         };    
+            fetch(url,requestOptions)
+             .then((res) => {
+               if(res.status===200){
+                  console.log("response is ok")
+                  addNotification({
+                    title: "New "+notification.actionType,
+                    message: "Check your notifications!!",
+                    onClick: (e) =>{ window.open("http://localhost:3000/webplayer/notifications"); },
+                    theme: 'light',
+                    duration: 10000000,
+                    icon:"https://image.flaticon.com/icons/png/512/49/49097.png",
+                    native: true 
+                });
+               }
+          })
+     
+             .then((data) =>{})
+             .catch((err)=>console.log(err))
+  }
+
   render(){
+    var unread=0;
+    if(this.state.notifications!=null){
+    for (var i =0;i<this.state.notifications.length;i++){
+      if(this.state.notifications[i].status=="unread"){
+        unread++;
+      }
+    }
+  }
   return (
 
             <div className="home-nav"  style={{backgroundColor: this.props.color}}> 
@@ -85,14 +164,20 @@ export class HomePageNavbar extends Component{
                     <a href="/login" className="login btn btn-light rounded-pill text-center">LOG IN</a>
                 </div>
                 :
-                <div>
-                    <div id="profile">
+                <div className="row">
+                  <a href="/webplayer/notifications" className="col-2 d-flex align-items-center alert-notifi"> 
+                    <i class="far fa-bell"></i> 
+                    {unread !=0?
+                     <span class="badge badge-light">{unread}</span>
+                    :null}
+                  </a>
+                    <div className="col-4" id="profile">
                      <a className="nav-link dropdown-toggle" href="/account-overview" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img className="user-img" alt="." src={this.props.image} />
+                        <img className="user-img" alt="" src={this.props.image} />
                          Profile
                         </a>
                     
-                        <div className="dropdown-menu dropdown-menu-right " aria-labelledby="navbar-dropdown">
+                        <div className="dropdown-menu dropdown-menu-left " aria-labelledby="navbar-dropdown">
                             <a className="dropdown-item drop-class" href="/account-overview">Account</a>
                             <a onClick={this.props.onSignOut} className="dropdown-item drop-class" href="/">Sign out</a>
                         </div>
@@ -108,12 +193,23 @@ export class HomePageNavbar extends Component{
   }
 }
 
+/** A function connecting component to redux store
+ * @memberof HomePageNavbar
+ * @func mapStateToProps
+ * @param {*} state 
+ */
 const mapStateToProps = state =>{
     return{
       logged: state.loggenIn,
-      image: state.userImg
+      image: state.user.ImgUrl,
     };
   };
+
+/** A function connecting component to redux store
+ * @memberof HomePageNavbar
+ * @func mapDispatchToProps
+ * @param {*} dispatch 
+ */
 const mapDispatchToProps = dispatch => {
     return {
       onSignOut : () => dispatch ({type: actionTypes.ON_SIGNOUT}),

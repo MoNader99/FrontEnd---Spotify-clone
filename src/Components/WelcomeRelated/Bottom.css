@@ -9,9 +9,6 @@
 	position: relative;
 	
 }
-
-
-
 .bottom-bar .logo 
 {
 	color:white;
@@ -48,5 +45,10 @@
 	font-size:25px;
 	text-decoration: none;
 	
+}
+.bottom-bar .titleBottom
+{
+	color: rgb(141, 141, 141);
+	font-size: 16px;
 }
 

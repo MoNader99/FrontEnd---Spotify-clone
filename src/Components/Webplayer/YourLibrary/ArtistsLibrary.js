@@ -1,7 +1,7 @@
 import React ,{ Component }from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
-import {Link} from 'react-router-dom';
+import {BASEURL} from '../../../Constants/BaseURL';
 import './YourLibrary.css';
 import  HomePageNavbar  from '../../HomePage/HomePageNavbar';
 
@@ -14,9 +14,9 @@ class ArtistsLibrary extends Component {
         }
     }
     componentDidMount(){
-        axios.get("http://spotify-clone1.mocklab.io"+"/webplayer/yourlibrary/artists", {
+        axios.get(BASEURL+"/webplayer/yourlibrary/artists", {
             headers: {
-                'authorization': "Bearer "+localStorage.getItem("token"),
+                'authorization': "Bearer ",
             }
         })
             .then(res => {
@@ -29,13 +29,6 @@ class ArtistsLibrary extends Component {
                             imageUrl:artist.images[0],
                         }))
                     })
-                }
-                else if(res.status === 401)
-                {
-                    localStorage.removeItem("loginType");
-                    localStorage.removeItem("isLoggedIn");
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("userID");
                 }
             })
     }

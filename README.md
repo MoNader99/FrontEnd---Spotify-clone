@@ -1,68 +1,195 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Prerequisite installation:
 
-In the project directory, you can run:
+* Install Node.js from (https://nodejs.org/en/download/)
+* Install visual studio code
+```sh
+# [To create a new react app]
+# Type in terminal:
+npm install -g create-react-app
+```
 
-### `npm start`
+## Dependencies
+* node v 12.16.1   
+* npx v 6.13.4
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# add to your environment variables
+C:\Program Files\nodejs
+C:\Users\moham\AppData\Roaming\npm
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+[To use our app]
+# Get the Code (Type in the command in Git Bash):
+```
+git clone (https://github.com/FatemaFawzy/Frontend-Team.git)
+```
 
-### `npm test`
+# Install Packages:
+## to get all the pachages we used in the app:
+* you can run these commands:
+```sh
+npm install														# Install dependencies
+```
+# to install each package independently:
+* you can run these commands:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh 
+npm install -- save react-router-dom
+npm install -- save bootstrap
+npm install -- save react-bootstrap 
+npm install -- save prop-types
+npm install -- save redux react-redux
+npm install -- save react-js-snackbar
+npm install -- save react-click-away-listener@0.4.0
+```
 
-### `npm run build`
+For testing:
+* unit
+```sh 
+npm install -- save enzyme react-test-renderer enzyme-adapter-react-16
+```
+* E2E
+```sh
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+npm install --save-dev cypress
+# [--save] is optional to save it in your packages file.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+For deployment:
+npm install -g firebase-tools
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# How to run tests
+## Running unit tests
 
-### `npm run eject`
+```sh
+npm run test
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Generating the coverage report
+* Open jest.config.json and add the following content:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+__Note__ : We have alredy included this part in our repo
+``` js
+{
+ "setupFiles": ["<rootDir>/src/setupTests.js"],
+ "testRegex": "/*.test.js$",
+ "collectCoverage": true,
+ "coverageReporters": ["lcov"],
+ "coverageDirectory": "test-coverage",
+ "coverageThreshold": {
+  "global": {
+  "branches": 0,
+  "functions": 0,
+  "lines": 0,
+  "statements": 0
+  }
+ },
+ "moduleDirectories": ["node_modules", "src"]
+}
+```
+* Here we are telling jest to generate coverage reports for all files ending with .test.js as shown in testRegex property.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Now to generate coverage report, execute following command from terminal:
+```sh
+npm run test -- --coverage --watchAll=false
+```
+* Once executed, we will see the total coverage for each test file
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Running E2E tests
 
-## Learn More
+```sh
+npm run test:cypress
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+__Note :__ our repo doesn't include any unit tests
+if you wanna make a unit test follow the following instructions:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+create a folder for E2E tests as follow
 
-### Code Splitting
+*[theDefault]*
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```sh
+mkdir cypress
+cd cypress
+mkdir integration
+cd integration
+```
+* running Cypress for the first time
+npm run test:cypress
 
-### Analyzing the Bundle Size
+* Now, for your new Cypress cypress/integration/ folder, create a end-to-end testing file for your component
+touch cypress/integration/componentName.e2e.js
+where [componentName] is the component you wanna run the test for
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+* Next, add your test script to it 
+* now you can run cypress to check your test script
+```sh
+npm run test:cypress
+```
 
-### Making a Progressive Web App
+# How to run for developers.
+## Before running:
+  ----
+## Production (default)
+1.Go to the constants folder and open baseURL.js
+2.Make sure the BASEURL is (http://52.14.190.202:8000/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Mock server
+1.Go to the constants folder and open baseURL.js
+2.Change the BASEURL to be (https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/)
 
-### Advanced Configuration
+## Development server
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Navigate to http://localhost:3000/. The app will automatically reload 
 
-### Deployment
+# Running:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+```sh
+npm start
+```
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+# How to run How to run / build for production.
+
+* build the app
+npm run build	
+* after running this command a new folder will be created named [build]
+* this folder contains all the neccessary files for deployment.
+* pick any static host of your choice
+The example illustrated is for [firebase] 
+If you wanna deploy in any other static host just check out their documentation
+
+* run the following
+firebase login [for_your_account]
+firebase init [Answer_the_questions_given_after_running_this_command]
+
+* now you will find [firebase], [firebase.json] files created in your root directory
+* now run:
+firebase deploy
+* Now the application is running on the server 
+* you can visit the website by the link provided from the last command
+
+
+
+
+# Functional documentation
+
+* To install the jsdoc as a devDependency
+```sh
+npm i -D jsdoc
+```
+* Now create a jsdoc.json file as a config file to specify the following
+1. where the jsdoc will look for the folders [source]
+2. what files will it include [includePattern]
+3. what files will it exclude [excludePattern]
+4. certain authentications that have to do with recursing into folders, using markdowns, ...etc
+
+* Add the following to the scripts in the package.json file 
+
+```js
+"doc" : "jsdoc -C jsdoc.json" 
+```
+
+* To run the documentation
+```sh
+npm run doc
+```

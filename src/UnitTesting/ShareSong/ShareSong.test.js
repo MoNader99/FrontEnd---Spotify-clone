@@ -6,8 +6,12 @@ import {ShareSong} from "../../Components/Share/ShareSong"
 
 describe("Share Song test", ()=>{
   let wrapper;
+  const props={
+    songURL:{songURL:""}
+  }
   beforeEach(() => {
-   wrapper = shallow(<ShareSong/>); 
+  
+   wrapper = shallow(<ShareSong {...props}/>); 
   });
   
   describe("Component rendering", () => {    
@@ -21,6 +25,5 @@ describe("Share Song test", ()=>{
       expect(wrapper.find("h2").text()).toContain("Share Song URL With: ")    
     })
   })
-
 
 });

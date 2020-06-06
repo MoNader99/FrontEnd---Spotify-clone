@@ -18,13 +18,19 @@ import Audience from './Components/Artist/ArtistProfile/Audience'
 import AddAlbum from './Components/Artist/ArtistProfile/AddAlbum'
 import WebPlayerPage from './Containers/WebPlayer/WebPlayer';
 import AddSong from './Components/Artist/ArtistProfile/AddSong';
-import HelpPage from './Components/Help/HelpPage'
+import AccountLayout from './Containers/AccountLayout';
 
+import HelpPage from './Components/Help/HelpPage'
+;
+import AboutUs from './Components/HelpingPages/AboutUs';
+import PrivacyPolicy from './Components/HelpingPages/PrivacyPolicy';
+import Search from './Components/Show by Genres/ShowByGenres'
+import ForgetPassword from './Components/Login/ForgetPassword';
 function App() {
   return (
-    <div className="App">
+    
       <Router>
-
+<div className="App">
         <Switch>
           <Route exact path="/" component={welcomePage}/>
           <Route path="/account-overview" component={AccountSettings}/>
@@ -33,16 +39,30 @@ function App() {
           <Route path="/change-password" component={ChangePasswrod}/>
           <Route  exact path="/signup/" component={SignUp}/>
           <Route  exact path="/login/" component={Login}/>
+          <Route  exact path="/forget-password/" component={ForgetPassword}/>
           <Route exact path="/premium/" component={Premium}/>
           <Route  path="/webplayer/" component={WebPlayerPage}/>
           <Route  exact path="/artist/audience" component={Audience}/>
           <Route  exact path="/artist/addalbum" component={AddAlbum}/>
           <Route  exact path="/artist/addsong" component={AddSong}/>
+          <Route exact path="/help/" component={HelpPage}/>  
+          <Route  path ="/account" component={AccountLayout}/>
+         
+        
+
+                 
+               
+          {/* TODO: add routes to the other pages */}  
+          
           <Route exact path="/help/" component={HelpPage}/>
+          <Route exact path="/aboutus/" component={AboutUs}/>
+          <Route exact path="/privacypolicy/" component={PrivacyPolicy}/>
+</Switch>
+               </div>
           {/* TODO: add routes to the other pages */}
-        </Switch>
+        
       </Router>
-    </div>
+    
   );
 }
 

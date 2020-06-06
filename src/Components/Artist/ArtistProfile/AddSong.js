@@ -6,7 +6,8 @@ import $ from 'jquery';
 import 'bootstrap';
 import { MainNavbar } from '../../WelcomeRelated/MainNavbar';
 import Bottom from '../../WelcomeRelated/Bottom';
- 
+import axios from 'axios';
+import {BASEURL} from '../../../Constants/BaseURL';
 
 class AddSong extends Component {
     constructor() {
@@ -15,6 +16,7 @@ class AddSong extends Component {
             addSong: true,
             songName: ""
         }
+        this.formSubmit=this.formSubmit.bind(this)
     }
     componentDidMount(){
         try{
@@ -35,8 +37,40 @@ class AddSong extends Component {
         const formData = new FormData();
         formData.append("name", document.getElementById("song-name").value);
         formData.append("song", document.getElementById("custom-file").files[0]);
-        //add request
-        $('#done-modal').modal('show');
+        if(this.state.addSong) {
+            axios.post(BASEURL+"/artist/song", 
+            {
+                "newSong": formData
+            },
+            {
+                headers: {
+                    'authorization': "Bearer ",
+                }
+            })
+            .then(res => {
+                if(res.status === 200)
+                {
+                    $('#done-modal').modal('show');
+                }
+        })
+        }
+        else {
+            axios.put(BASEURL+"/artist/song/1234567", 
+            {
+                "song": formData
+            },
+            {
+                headers: {
+                    'authorization': "Bearer ",
+                }
+            })
+            .then(res => {
+                if(res.status === 200)
+                {
+                    $('#done-modal').modal('show');
+                }
+        })
+        }
     }
     
 

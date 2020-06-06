@@ -7,6 +7,7 @@ import $ from 'jquery';
 import 'bootstrap';
 import MainNavbar from '../../WelcomeRelated/MainNavbar'
 import Bottom from '../../WelcomeRelated/Bottom';
+import {BASEURL} from '../../../Constants/BaseURL';
 
 class AddAlbum extends Component {
     constructor() {
@@ -23,7 +24,7 @@ class AddAlbum extends Component {
         this.editAlbum=this.editAlbum.bind(this)
     }
     componentDidMount(){
-        axios.get("http://spotify-clone1.mocklab.io"+"/artist/1234567/albums",{
+        axios.get(BASEURL+"/artist/1234567/albums",{
             headers: {
                 'authorization': "Bearer "
             },
@@ -67,17 +68,11 @@ class AddAlbum extends Component {
         const addDiv = document.querySelector('.add-new-album');
         addDiv.classList.remove("show");
         $('#delete-modal').modal('hide');
-        axios.delete("http://spotify-clone1.mocklab.io"+"/artist/album",{
+        axios.delete(BASEURL+"/artist/album",{
             headers: {
                 'authorization': "Bearer "
             },
         })
-            .then(res => {
-                if(res.status === 200)
-                {
-                    
-                }
-        }) 
         const deletedAlbum = document.getElementById(this.state.albumToDelete);
         deletedAlbum.classList.add('hide');
         this.setState({albumToDelete: -1})
@@ -95,7 +90,7 @@ class AddAlbum extends Component {
         formData.append("genre", document.getElementById("album-genre").value);
         formData.append("image", document.getElementById("custom-file").files[0]);
         if(this.state.addAlbum) {
-            axios.post("http://spotify-clone1.mocklab.io"+"/artist/album", 
+            axios.post(BASEURL+"/artist/album", 
             {
                 "newAlbum": formData
             },
@@ -112,7 +107,7 @@ class AddAlbum extends Component {
         })
         }
         else {
-            axios.put("http://spotify-clone1.mocklab.io"+"/artist/album/1234567", 
+            axios.put(BASEURL+"/artist/album/1234567", 
             {
                 "album": formData
             },

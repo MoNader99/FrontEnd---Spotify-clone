@@ -5,14 +5,23 @@ import CardMedia from '../Media/CardMedia';
 import {connect} from 'react-redux';
 import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
 import * as actionTypes from "../../Store/actions";
-import { ShareSong } from '../Share/ShareSong';
+import ShareSong from '../Share/ShareSong';
 import { BASEURL } from '../../Constants/BaseURL';
-import { HomePageNavbar } from '../HomePage/HomePageNavbar';
+import  HomePageNavbar  from '../HomePage/HomePageNavbar';
   
+
+/** Class LikedSongs 
+ * @category LikedSongs
+ * @extends Component
+ */
 export class LikedSongs extends Component
 {
   state= 
   { 
+    /**Array of Song Info
+   * @memberof LikedSongs
+   * @type {Array<SongInfo>}
+   */
       SongInfo: [
         {id : 1, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
         {id : 2, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
@@ -28,17 +37,49 @@ export class LikedSongs extends Component
         {id : 12, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
         
       ],
+
+      /**Image of liked songs card
+     * @memberof LikedSongs
+     * @type {string}
+     */
       LikedSongsImage: "https://uploads-ssl.webflow.com/5e36e6f21212670638c0d63c/5e39d85cee05be53d238681a_likedSongs.png",
-      songsNumber: 2,   
+      
+      /**Number of songs
+     * @memberof LikedSongs
+     * @type {number}
+     */
+      songsNumber: 2, 
+      
+      /**Show snakbar of remove songs from liked songs
+     * @memberof LikedSongs
+     * @type {boolean}
+     */
       ShowRemove: false,
+
+      /**Show snakbar of remove songs from liked songs
+     * @memberof LikedSongs
+     * @type {boolean}
+     */
       ShowingRemove: false,
+
+      /**text on play button
+     * @memberof LikedSongs
+     * @type {string}
+     */
       playLikedSongs: "Play",
-      TracksID: [],
-      LikedTracks:[]
+
   }
 
+   /**Function that is called when the component renders
+   * @memberof LikedSongs
+   * @func componentDidMount
+   */
   componentDidMount(){
   
+    /** A variable that contains URL 
+    * @memberof LikedSongs
+    * @type {string}
+    */
     var url = BASEURL+ "/get-tracks"; 
   
     const requestOptions = {
@@ -58,6 +99,10 @@ export class LikedSongs extends Component
       })
     }
   
+    /**Function to toggle play and pause button
+   * @memberof LikedSongs
+   * @func playButton
+   */
   playButton = () => {
     if ( this.state.playLikedSongs === "Play" ) {
       this.setState({playLikedSongs: "Pause"});
@@ -67,7 +112,18 @@ export class LikedSongs extends Component
     }
   }
   
+
+  /**Function to show snack bar
+   * @memberof LikedSongs
+   * @func show
+   * @param e
+   */
 show = e => {
+
+   /** variable to check which snack bar is called
+   * @memberof LikedSongs
+   * @type {string}
+   */
   var check = e.target.id;
   if (check=="REMOVE"){
   this.setState({ ShowRemove: true, ShowingRemove: true });
@@ -77,6 +133,12 @@ show = e => {
   return; 
   }
 };
+
+ /**Function to stream tracks
+   * @memberof LikedSongs
+   * @func stream
+   * @param song
+   */
 stream=(song)=>{
   this.props.SELECT_SONG(song);
 }
@@ -155,17 +217,29 @@ stream=(song)=>{
       </div>
       </div>
       <AddToPlaylist/>
-      <ShareSong share={this.props.songURL}/>
+      <ShareSong/>
     </div>
   )
 }
 }
+
+/** A function connecting component to redux store
+ * @memberof LikedSongs
+ * @func mapStateToProps
+ * @param {*} state 
+ */
 const mapStateToProps = state =>{
   return{
     userToken: state.userToken,
     songURL: state.selectedSong
   };
 };
+
+/** A function connecting component to redux store
+ * @memberof LikedSongs
+ * @func mapDispatchToProps
+ * @param {*} dispatch 
+ */
 const mapDispatchToProps = dispatch => {
 
   return {

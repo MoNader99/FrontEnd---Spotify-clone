@@ -5,16 +5,35 @@ import "./Search.css";
 import {connect} from 'react-redux';
 import * as actionTypes from "../../Store/actions";
 import {BASEURL} from '../../Constants/BaseURL'
+import {NavLink, Link} from "react-router-dom";
+import HomePageNavbar from '../HomePage/HomePageNavbar'
+import HomePageSidebar from '../HomePage/HomePageSidebar'
 
-class Search extends Component {
+/** Class Search 
+ * @category Search
+ * @extends Component
+ */
+export class Search extends Component {
     constructor( props ) {
 		super( props );
 
 		this.state = {
+            /**input text to search 
+            * @memberof Search
+            * @type {string}
+            */
             searchedText:'',
-            results: {},
-            loading: false,
+
+            /**used to change between genres and search result layouts 
+            * @memberof Search
+            * @type {boolean}
+            */
             display:true,
+
+            /**Array of playlists
+            * @memberof Search
+            * @type {Array<playlists>}
+            */
             playlists: [
                 {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
                 {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
@@ -48,21 +67,74 @@ class Search extends Component {
                 {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
                 {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
             ],
-            geners:[
-                {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
-                {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
-                {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+            /**Array of Genres
+            * @memberof Search
+            * @type {Array<genres>}
+            */
+            Genres:[
+                    // {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+                    // {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
+                    // {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+
             ],
+
+            /**Array of top tracks
+            * @memberof Search
+            * @type {Array<tracks>}
+            */
             SongInfo:[],
+
+            /**Array of songs results
+            * @memberof Search
+            * @type {Array<tracks>}
+            */
             SongsTargets:[],
+
+            /**Array of playlists results
+            * @memberof Search
+            * @type {Array<playlists>}
+            */
             playlistTargets:[],
+
+            /**Array of users results
+            * @memberof Search
+            * @type {Array<users>}
+            */
             usersTargets:[],
+
+            /**Array of artist results
+            * @memberof Search
+            * @type {Array<artists>}
+            */
             artistTargets:[],
+
+            /**Array of album results
+            * @memberof Search
+            * @type {Array<albums>}
+            */
             albumTargets:[],
+            allgenres:[],
+            
+
+            /**Array of top playlists resluts
+            * @memberof Search
+            * @type {Array<albums>}
+            */
+            TopPlaylists:[
+                {playlistImg:""},
+            ],
 		};
     }
 
+    /**Function that is called when the component renders
+   * @memberof Search
+   * @func componentDidMount
+   */
     componentDidMount(){
+        /** A variable that contains URL 
+        * @memberof Search
+        * @type {string}
+        */
         var url = BASEURL + "/get-tracks"; 
   
                 const requestOptions = {
@@ -77,6 +149,33 @@ class Search extends Component {
                   })
                   .catch((error)=>{console.log(error);
         })
+        var url = BASEURL + "/showbygenres"; 
+  
+                
+                fetch(url,requestOptions)
+                  .then((response) => { return response.json()})
+                  .then((data) => {
+                    this.setState({ 
+                      Genres:data.top_genres,
+                    });
+                  })
+                  .catch((error)=>{console.log(error);
+        })
+        var url = BASEURL + "/allgenres"; 
+  
+                
+                fetch(url,requestOptions)
+                  .then((response) => { return response.json()})
+                  .then((data) => {
+                    this.setState({ 
+                        allgenres:data.all_genres,
+                    });
+                  })
+                  .catch((error)=>{console.log(error);
+        })
+        
+
+        
 
         url=BASEURL + "/get-playlists"
         fetch(url,requestOptions)
@@ -85,6 +184,9 @@ class Search extends Component {
                     this.setState({ 
                       playlistTargets:data.playlists,
                     });
+                    this.setState({
+                        TopPlaylists:this.state.playlistTargets.sort(() => Math.random() - Math.random()).slice(0, 3)
+                    })
                   })
                   .catch((error)=>{console.log(error);
         })
@@ -121,14 +223,28 @@ class Search extends Component {
         })
     }
 
+
+    /**Function to Handle changes in search bar
+   * @memberof Search
+   * @func handleOnInputChange
+   * @param event
+   */
     handleOnInputChange = (event) => {
         const Text = event.target.value;
         setTimeout(() => {
             if(Text!=""){
+
+                /** A variable that contains top 3 songs
+                * @memberof Search
+                * @type {Array<songs>}
+                */
                 var songs=this.state.SongInfo.sort(() => Math.random() - Math.random()).slice(0, 3)
                 this.setState({
                     searchedText:Text, display:false,
                     SongsTargets:songs
+                })
+                this.setState({
+                    TopPlaylists:this.state.playlistTargets.sort(() => Math.random() - Math.random()).slice(0, 3)
                 })  
             }
             else{
@@ -140,14 +256,36 @@ class Search extends Component {
     };
 
   render(){
-      var playlistshit=this.state.playlistTargets.sort(() => Math.random() - Math.random()).slice(0, 3)
+
+      /** A variable that contains top playlists 
+        * @memberof Search
+        * @type {Array<playlists>}
+        */
 		return(
+           
+            
         <div className="Search">
             <nav class="navbar mb-4 ">
             
                 <div className="d-flex">
-                    <a className="previous" href="#" > &#60; </a>
-                    <a className="next" href="#"> &#62; </a>
+                <div className="collapse-drop">
+                <div className="Collapse-drop-down">
+                  <div className="home-drop">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <Link className="no-underline" to="/webplayer/home/"><a class="dropdown-item" href="#"><i className="fas fa-home"></i> Home</a></Link>
+                          <Link to="/webplayer/search/"><a class="dropdown-item" href="#"><i className="fas fa-search" aria-hidden="true"></i> Search</a></Link>
+                          <NavLink to="/webplayer/yourlibrary/"><a class="dropdown-item" href="#"><i className="fas fa-bookmark" aria-hidden="true"></i> Your library</a></NavLink>
+                          <Link to="#"><a data-toggle="modal" data-target="#create-new-playist" class="dropdown-item" href="#"><i className="fas fa-plus-square" aria-hidden="true"></i> Create playlist</a></Link>
+                          <Link to="/webplayer/likedsongs"><a class="dropdown-item" href="#"><i className="fas fa-heart " aria-hidden="true"></i> Liked songs</a></Link>
+                          <Link to="/premium"><a class="dropdown-item" href="#">  <i class="fa fa-usd" aria-hidden="true"></i>  Upgrade</a></Link>
+
+                          </div>
+                    </div>        
+                  </div>
+                </div>
                     <div className="Search-content">
                         <span className="search-search-icon" ><i className="fas fa-search"></i></span>
                         <input onChange={this.handleOnInputChange} autocomplete="off" name="search" className="Search-bar form-control" placeholder="Search for Artists, Songs, or products" aria-label="Search" ></input>
@@ -180,11 +318,11 @@ class Search extends Component {
             {this.state.display == true ?
             <div className="display-true">
                 <div className="component-content ">
-                        <p className=" browse">Your Top Geners</p>
+                        <p className=" browse">Your Top Genres</p>
                         <div className="row">
-                            { this.state.geners.map((Card,index)=>(
+                            { this.state.Genres.map((Card,index)=>(
                                 <div className="col-xl-3 col-lg-5 col-md-6" key={index}>
-                                <a href="/webplayer/playlist" class="top-geners" style={Card.style} >
+                                <a href={"/webplayer/playlist/"+ Card.Card_name} class="top-geners" style={Card.style} >
                                     <h3 class="head-style">{Card.Card_name}</h3>
                                     <img src={Card.image_URL} class="img-style" alt=""></img>
                                 </a>
@@ -195,9 +333,9 @@ class Search extends Component {
                 <div className="component-content ">
                     <h2 className=" browse" >Browse All</h2>
                         <div className="row">
-                            { this.state.playlists.map((Card,index)=>(
+                            { this.state.allgenres.map((Card,index)=>(
                                 <div className="col-xs-6" key={index}>
-                                <a href="/webplayer/playlist" class="BrowseItem" style={Card.style}>
+                                <a href={"/webplayer/playlist/"+ Card.Card_name} class="BrowseItem" style={Card.style}>
                                     <h3 class="head-style">{Card.Card_name}</h3>
                                     <img src={Card.image_URL} class="img-style" alt=""></img>
                                 </a>
@@ -216,10 +354,10 @@ class Search extends Component {
                             <div className="row">
                             <div className="col-xl-3 p-0">
                                 <div class="top-result-card">
-[                                    <img src={playlistshit[0].playlistImg} className="image d-flex align-items-start" ></img>
-]                                    <h3 className="text-white d-flex align-items-start mt-3 font-weight-bold">{playlistshit[0].playlistName}</h3>
+                                    <img src={this.state.TopPlaylists[0].playlistImg} className="image d-flex align-items-start" ></img>
+                                   <h3 className="text-white d-flex align-items-start mt-3 font-weight-bold">{this.state.TopPlaylists[0].playlistName}</h3>
                                     <div>
-                                        <p className="text-white d-flex align-items-start mt-1 font-weight-bold">By {playlistshit[0].creatorName}</p>
+                                        <p className="text-white d-flex align-items-start mt-1 font-weight-bold">By {this.state.TopPlaylists[0].creatorName}</p>
                                     </div>
                                 </div>
 
@@ -229,7 +367,7 @@ class Search extends Component {
                             {this.state.SongsTargets.map((song,index)=>(
                             <div className="songs">
                                 <div className="row">
-                                <div className="col-xl-1 col-md-1 col-1 col-2">
+                                <div style={{padding: "0"}} className="col-xl-1 col-md-1 col-1 col-2">
                                     <a>
                                         <img src={song.imgURL} className="p-1 image"></img>
                                     </a>
@@ -310,7 +448,7 @@ class Search extends Component {
                             <div className="row">
                             {this.state.usersTargets.map((user,index)=>(
                             <div className="col-xl-1 col-lg-3 col-md-2 col-sm-1 col-1 mt-3 artist-card ">
-                                <a class="artist-card"  >
+                                <a href="/webplayer/userprofile" class="artist-card"  >
                                     <div className="image-padding"><img src={user.ImgUrl} class="img-style" alt=""></img></div>
                                     <h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">{user.Username}</h3>
                                 </a>
@@ -325,15 +463,28 @@ class Search extends Component {
             }
             
         </div>
+       
 		)	
     }
 }
+/**A function connecting component to redux store
+ * @memberof Search
+ * @func mapStateToProps
+ * @param {*} state
+ */
 const mapStateToProps = state =>{
     return{
       logged: state.loggenIn,
-      image: state.userImg
+      image: state.user.ImgUrl,
+
     };
   };
+
+  /** A function connecting component to redux store
+ * @memberof Search
+ * @func mapDispatchToProps
+ * @param {*} dispatch 
+ */
 const mapDispatchToProps = dispatch => {
     return {
       onSignOut : () => dispatch ({type: actionTypes.ON_SIGNOUT}),

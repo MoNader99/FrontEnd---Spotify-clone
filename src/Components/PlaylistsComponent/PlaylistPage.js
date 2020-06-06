@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 import AddToPlaylist from './AddToPlaylist';
 import * as actionTypes from "../../Store/actions";
 import EditPlaylist from './EditPlaylist';
-import { ShareSong } from '../Share/ShareSong';
+import ShareSong from '../Share/ShareSong';
 import { BASEURL } from '../../Constants/BaseURL';
 
 export class PlaylistPage extends Component
@@ -17,21 +17,85 @@ export class PlaylistPage extends Component
   state= 
   { 
     
+    /** image of the playlist
+     * @memberof PlaylistPage
+     * @type {string}
+     */
       playlistImage: "https://i.ibb.co/Q89hfcW/single-bar-note.jpg",
+
+      /** number of songs in playlist
+     * @memberof PlaylistPage
+     * @type {number}
+     */
       songsNumber: 0,
-      SongInfo:[],  
+
+      /** Array of song info
+     * @memberof PlaylistPage
+     * @type {Array<SongInfo>}
+     */
+      SongInfo:[], 
+
+    /** Show snak bar of add to liked songs
+     * @memberof PlaylistPage
+     * @type {boolean}
+     */
       ShowAdd: false,
+
+      /** Show snak bar of add to liked songs
+     * @memberof PlaylistPage
+     * @type {boolean}
+     */
       ShowingAdd: false,
+      
+    /** Show snak bar of remove from this playlist
+     * @memberof PlaylistPage
+     * @type {boolean}
+     */
       ShowRemove: false,
+
+    /** Show snak bar of remove from this playlist
+     * @memberof PlaylistPage
+     * @type {boolean}
+     */
       ShowingRemove: false,
+
+    /** text on the play button
+     * @memberof PlaylistPage
+     * @type {string}
+     */
       playplaylist: "Play",
+
+    /** object tha contains playlist info
+     * @memberof PlaylistPage
+     * @type {object}
+     */
       playlistInfo:{},
+
+      /**artist names
+     * @memberof PlaylistPage
+     * @type {Array<tracks>}
+     */
       ArtistNames:[],
-      playlistTracks:[]
+
+    /**playlists tracks
+     * @memberof PlaylistPage
+     * @type {Array<tracks>}
+     */
+      playlistTracks:[],
+
+      playlistName:"Playlist-1"
   }
   
+  /**Function that is called when the component renders
+   * @memberof PlaylistPage
+   * @func componentDidMount
+   */
   componentDidMount(){
   
+    /** A variable that contains URL 
+  * @memberof PlaylistPage
+  * @type {string}
+  */
     var url = BASEURL+ "/get-tracks"; 
   
     const requestOptions = {
@@ -51,28 +115,29 @@ export class PlaylistPage extends Component
       })
     }
     
+    /**Function to like playlist
+   * @memberof PlaylistPage
+   * @func likeSong
+   * @param e
+   */
   likeSong = e => {
      const {id} = e.target;
+
+    /** heart icon
+   * @memberof PlaylistPage
+   * @type {string}
+   */
      var heart=document.getElementById(id);
 
      heart.classList.toggle("far");
      heart.classList.toggle("fas");
   }
 
-  toggle_add_to_playlist()
-{
-  var blur_add_to_playlist=document.getElementById('blur-add-to-playlist');
-  if (blur_add_to_playlist!=null){
-  blur_add_to_playlist.classList.toggle('activate')
-  }
-  var popup_add_to_playlist=document.getElementById('popup-add-to-playlist');
-  if (popup_add_to_playlist!=null){
-  popup_add_to_playlist.classList.toggle('activate')
-}
-}
-
-playButton = e => {
-  const {id} = e.target;
+ /**Function to toggle play and pause button
+   * @memberof PlaylistPage
+   * @func playButton
+   */
+playButton = () => {
   if ( this.state.playplaylist === "Play" ) {
     this.setState({playplaylist: "Pause"});
   }
@@ -81,7 +146,17 @@ playButton = e => {
   }
 }
 
+/**Function to show snack bar
+   * @memberof PlaylistPage
+   * @func show
+   * @param e
+   */
 show = e => {
+
+   /** variable to check which snack bar is called
+   * @memberof PlaylistPage
+   * @type {string}
+   */
   var check = e.target.id;
   if (check=="ADD"){
   this.setState({ ShowAdd: true, ShowingAdd: true });
@@ -99,12 +174,18 @@ else if (check=="REMOVE"){
 }
 };
 
+/**Function to stream tracks
+   * @memberof PlaylistPage
+   * @func stream
+   * @param song
+   */
 stream=(song)=>{
   this.props.SELECT_SONG(song);
 }
 
   render()
   {
+    {document.title ="Spotify - Playlist"}
   return(
     <div>
   <div className="playlist-page">
@@ -223,9 +304,9 @@ stream=(song)=>{
       </div>
       </div>
       <DeletePlaylist delete={this.state.playlistInfo.playlistName} />
-      <EditPlaylist/>
+      <EditPlaylist playlistname={this.state.playlistName}/>
       <AddToPlaylist/>
-      <ShareSong share={this.props.songURL} />
+      <ShareSong />
     </div>
     
     </div>
@@ -233,6 +314,12 @@ stream=(song)=>{
   )
 }
 }
+
+/** A function connecting component to redux store
+ * @memberof PlaylistPage
+ * @func mapStateToProps
+ * @param {*} state 
+ */
 const mapStateToProps = state =>{
   return{
     userToken: state.userToken,
@@ -241,6 +328,11 @@ const mapStateToProps = state =>{
   };
 };
 
+/** A function connecting component to redux store
+ * @memberof PlaylistPage
+ * @func mapDispatchToProps
+ * @param {*} dispatch 
+ */
 const mapDispatchToProps = dispatch => {
 
   return {

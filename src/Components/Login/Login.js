@@ -3,6 +3,7 @@ import './Login.css'
 import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
 import { BASEURL } from '../../Constants/BaseURL';
+import LoginFacebook from '../Login/FacebookLogin'
 
 /** Class Login 
  * @category Login
@@ -125,17 +126,64 @@ export class Login extends Component{
         { 
             var id=this.state.checkEmail.indexOf(this.state.EmailText)
             var user=this.state.users[id]
-            this.props.onSignIn(user);
             this.setState({checkedCorrect:false})
+            if(user.type=="user"){
             window.location.replace("/account-overview");
+            this.props.onSignIn(user);
+            }
+            else if (user.type=="artist"){
+            window.location.replace("/account");
+            this.props.onSignInArtist(user);
+            }
         }
         else
         {
            this.setState({checkedCorrect:true})
-        }
-      
-        
+        }  
     }
+
+    // handleLogIn =event =>
+    // {
+    //      /** A variable that contains email input from the user
+    //       * @memberof Login
+    //       * @type {string}
+    //       */
+    //     var inputEmail = document.getElementById('input-email').value;
+
+    //     /** A variable that contains password input from the user
+    //       * @memberof Login
+    //       * @type {string}
+    //       */
+    //     var inputPassword = document.getElementById('input-password').value;
+        
+    //      /** A variable that contains URL 
+    //       * @memberof Login
+    //       * @type {string}
+    //       */
+    //      var url =  BASEURL+"/login";    
+    //      const requestOptions = {
+    //        method: 'POST', 
+    //        headers: {'Content-Type': 'application/json' }, 
+    //        body: JSON.stringify({ email:inputEmail, password:inputPassword}) ,
+       
+    //      };    
+    //         fetch(url,requestOptions)
+    //          .then((res) => {
+    //            if(res.status===200){
+    //               console.log("response is ok")
+    //               this.setState({checkedCorrect:false})
+    //            }
+    //            else{
+    //             this.setState({checkedCorrect:true})
+    //            }
+    //       })
+     
+    //          .then((data) =>{})
+    //          .catch((err)=>console.log(err))
+
+    // }
+
+
 
     /**Function that is called when the component renders
     * @memberof Login
@@ -182,8 +230,10 @@ export class Login extends Component{
                     <p> <strong> To continue, log in to Spotify.</strong> </p>
                     {this.state.checkedCorrect == true ? <div className="incorrect align-items-center">Incorrect email or password.</div>:<div></div>}
                    
-                    <button id="login-facebook-button" className="btn rounded-pill text-center " >
-                    <i className="fab fa-facebook"></i> continue with facebook </button> 
+                    {/* <button id="login-facebook-button" className="btn rounded-pill text-center " >
+                    <i className="fab fa-facebook"></i> continue with facebook </button>  */}
+                    <div className=" d-flex align-items-center justify-content-center"> <LoginFacebook/> </div>
+                    
                     <div className="border-divider">
                         <strong className="or-login">or</strong>
                     </div>
@@ -200,15 +250,15 @@ export class Login extends Component{
                                 <label className="form-check-label" for="exampleCheck1">Remember Me</label>
                                 <a onClick={this.handleLogIn} className="btn rounded-pill text-center login-button">Log In</a>
                             </div>
-                        <div className="forget-pass">
-                        <a className="col-xs-12 text-center"> Forget Your Password? </a>
+                        <div className="forget-pass d-flex justify-content-center">
+                        <a href="/forget-password" className="col-xs-12 "> Forget Your Password? </a>
                         </div>  
                     </div>
                     </form>
                     <div className="border-divider"></div>
                     <div>
                         <h5>Don't have an account?</h5>
-                        <button className="btn rounded-pill text-center signup-button">Sign up for spotify</button>
+                        <a href="/signup"><button className="btn rounded-pill text-center signup-button">Sign up for spotify</button></a>
                     </div>
                     <div className="border-divider"></div>
                 </div>
