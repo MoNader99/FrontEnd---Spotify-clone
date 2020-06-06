@@ -40,7 +40,7 @@ class WebPlayerPage extends Component {
 
           <Switch>
                 <Route  exact path="/webplayer/search/" component={Search}/>
-                <Route  exact path="/webplayer/playlist/" component={PlaylistPage}/>
+                <Route   path="/webplayer/playlist/" component={PlaylistPage}/>
                 <Route  exact path="/webplayer/album/" component={AlbumPage}/>
                 <Route  exact path="/webplayer/likedsongs/" component={LikedSongs}/>
                 <Route path="/webplayer/home" component={Home} />
