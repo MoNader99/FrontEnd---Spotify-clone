@@ -3,6 +3,7 @@ import './Login.css'
 import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
 import { BASEURL } from '../../Constants/BaseURL';
+import LoginFacebook from '../Login/FacebookLogin'
 
 /** Class Login 
  * @category Login
@@ -229,8 +230,10 @@ export class Login extends Component{
                     <p> <strong> To continue, log in to Spotify.</strong> </p>
                     {this.state.checkedCorrect == true ? <div className="incorrect align-items-center">Incorrect email or password.</div>:<div></div>}
                    
-                    <button id="login-facebook-button" className="btn rounded-pill text-center " >
-                    <i className="fab fa-facebook"></i> continue with facebook </button> 
+                    {/* <button id="login-facebook-button" className="btn rounded-pill text-center " >
+                    <i className="fab fa-facebook"></i> continue with facebook </button>  */}
+                    <div className=" d-flex align-items-center justify-content-center"> <LoginFacebook/> </div>
+                    
                     <div className="border-divider">
                         <strong className="or-login">or</strong>
                     </div>

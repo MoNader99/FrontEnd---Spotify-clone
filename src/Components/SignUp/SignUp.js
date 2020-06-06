@@ -1,5 +1,6 @@
 import React ,{ Component} from 'react';
 import {BASEURL} from '../../Constants/BaseURL'
+import LoginFacebook from '../Login/FacebookLogin'
 import './SignUp.css';
 
 /** Class SignUp 
@@ -375,8 +376,9 @@ handleSingUp=(event)=>{
         
           <div className="container ">
           <div className="mb-3 d-flex justify-content-center">
-          <button id="login-facebook-button" className="btn rounded-pill text-center " >
-                    <i className="fab fa-facebook"></i> continue with facebook </button> 
+          {/* <button id="login-facebook-button" className="btn rounded-pill text-center " >
+                    <i className="fab fa-facebook"></i> continue with facebook </button>  */}
+                    <LoginFacebook/>
           </div>
 
           <div className="d-flex justify-content-center"><p className="or">or</p></div>
