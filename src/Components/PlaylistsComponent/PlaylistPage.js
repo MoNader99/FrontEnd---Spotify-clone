@@ -81,7 +81,9 @@ export class PlaylistPage extends Component
      * @memberof PlaylistPage
      * @type {Array<tracks>}
      */
-      playlistTracks:[]
+      playlistTracks:[],
+
+      playlistName:"Playlist-1"
   }
   
   /**Function that is called when the component renders
@@ -183,6 +185,7 @@ stream=(song)=>{
 
   render()
   {
+    {document.title ="Spotify - Playlist"}
   return(
     <div>
   <div className="playlist-page">
@@ -301,7 +304,7 @@ stream=(song)=>{
       </div>
       </div>
       <DeletePlaylist delete={this.state.playlistInfo.playlistName} />
-      <EditPlaylist/>
+      <EditPlaylist playlistname={this.state.playlistName}/>
       <AddToPlaylist/>
       <ShareSong />
     </div>

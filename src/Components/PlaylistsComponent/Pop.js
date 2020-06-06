@@ -126,8 +126,8 @@ stream=(song)=>{
             <Card /> 
               
 
-					  <li> <h3> {this.state.playlistInfo.playlistName} </h3> </li>
-					  <li> <h5> {this.state.playlistInfo.userId} </h5></li>
+					  <li> <h3> POP </h3> </li>
+					  <li> <h5> Spotify </h5></li>
             <li >
                <a id="play-button" href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playplaylist}</a>
             </li>

@@ -68,9 +68,7 @@ export class HomePageSidebar extends Component{
           
         const list = data.playlists.map(item => {
           return (
-            <li onClick={()=>{
-              window.location.replace("/webplayer/playlist");
-            }} className="List2">{item.playlistName}</li>
+            <li className="List2"><a href="/webplayer/playlist" >{item.playlistName}</a></li>
           )
         }
         

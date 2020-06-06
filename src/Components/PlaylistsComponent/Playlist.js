@@ -18,7 +18,7 @@ import Pop from './Pop';
 import HipHop from './HipHop';
 import Oud from './Oud';
 import Jazz from './Jazz';
-import { PlaylistPage } from './PlaylistPage';
+import  PlaylistPage  from './PlaylistPage';
 
 
 export class Playlist extends Component
