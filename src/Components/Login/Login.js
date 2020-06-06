@@ -258,7 +258,7 @@ export class Login extends Component{
                     <div className="border-divider"></div>
                     <div>
                         <h5>Don't have an account?</h5>
-                        <button className="btn rounded-pill text-center signup-button">Sign up for spotify</button>
+                        <a href="/signup"><button className="btn rounded-pill text-center signup-button">Sign up for spotify</button></a>
                     </div>
                     <div className="border-divider"></div>
                 </div>
