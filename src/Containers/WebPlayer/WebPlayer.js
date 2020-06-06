@@ -6,7 +6,7 @@ import ArtistsLibrary from '../../Components/Webplayer/YourLibrary/ArtistsLibrar
 import AlbumsLibrary from '../../Components/Webplayer/YourLibrary/AlbumsLibrary'
 import Home from '../../Components/Webplayer/Home/Home'
 import YourLibrary from '../../Components/Webplayer/YourLibrary/YourLibrary'
-import PlaylistPage from '../../Components/PlaylistsComponent/PlaylistPage'
+import Playlist from '../../Components/PlaylistsComponent/Playlist'
 import AlbumPage from '../../Components/AlbumComponent/AlbumPage';
 import LikedSongs from '../../Components/LikedSongs/LikedSongs';
 import Search from '../../Components/Search/Search';
@@ -40,7 +40,7 @@ class WebPlayerPage extends Component {
 
           <Switch>
                 <Route  exact path="/webplayer/search/" component={Search}/>
-                <Route   path="/webplayer/playlist/" component={PlaylistPage}/>
+                <Route   path="/webplayer/playlist/" component={Playlist}/>
                 <Route  exact path="/webplayer/album/" component={AlbumPage}/>
                 <Route  exact path="/webplayer/likedsongs/" component={LikedSongs}/>
                 <Route path="/webplayer/home" component={Home} />
