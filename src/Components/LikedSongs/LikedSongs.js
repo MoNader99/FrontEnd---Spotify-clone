@@ -196,7 +196,7 @@ stream=(song)=>{
                  <a className="song-menu Menu mt-4" href="/account" id="Dropdown" data-toggle="dropdown"> ••• </a>
                    <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
                      <a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Remove from your liked songs</a>
-                     <a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist" href="#">Add to playlist</a>
+                     <a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist">Add to playlist</a>
                      <a className="dropdown-item drop-class" data-toggle="modal" data-target="#share-song">Share Song</a>
                    </div>
                  </div>
