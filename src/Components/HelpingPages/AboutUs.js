@@ -1,6 +1,6 @@
 import React ,{ Component} from 'react';
 import './AboutUs.css'
-import { MainNavbar } from '../WelcomeRelated/MainNavbar';
+import MainNavbar from '../WelcomeRelated/MainNavbar';
 import Bottom from '../WelcomeRelated/Bottom';
 
 /** Class AboutUs 

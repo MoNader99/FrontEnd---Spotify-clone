@@ -3,6 +3,7 @@ import './Login.css'
 import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
 import { BASEURL } from '../../Constants/BaseURL';
+import LoginFacebook from '../Login/FacebookLogin'
 
 /** Class Login 
  * @category Login
@@ -131,7 +132,7 @@ export class Login extends Component{
             this.props.onSignIn(user);
             }
             else if (user.type=="artist"){
-            window.location.replace("/account");
+            window.location.replace("/account/overview/");
             this.props.onSignInArtist(user);
             }
         }
@@ -229,22 +230,24 @@ export class Login extends Component{
                     <p> <strong> To continue, log in to Spotify.</strong> </p>
                     {this.state.checkedCorrect == true ? <div className="incorrect align-items-center">Incorrect email or password.</div>:<div></div>}
                    
-                    <button id="login-facebook-button" className="btn rounded-pill text-center " >
-                    <i className="fab fa-facebook"></i> continue with facebook </button> 
+                    {/* <button id="login-facebook-button" className="btn rounded-pill text-center " >
+                    <i className="fab fa-facebook"></i> continue with facebook </button>  */}
+                    <div className=" d-flex align-items-center justify-content-center"> <LoginFacebook/> </div>
+                    
                     <div className="border-divider">
                         <strong className="or-login">or</strong>
                     </div>
                     <form >
                     <div className="form-group">
                         <div style={{marginBottom: "15px"}}>
-                            <input style={this.state.emailStyle} autocomplete="off" onChange={this.validateEmail} type="email" className="form-control" id="input-email" aria-describedby="emailHelp" placeholder="Email address" />
+                            <input style={this.state.emailStyle} autoComplete="off" onChange={this.validateEmail} type="email" className="form-control" id="input-email" aria-describedby="emailHelp" placeholder="Email address" />
                             <div className="error-validate">{this.state.emailError}</div>
                         </div>
                         <input style={this.state.passwordStyle} onChange={this.validatePassword} type="password" className="form-control" id="input-password" placeholder="Password" />
                             <div  className="error-validate">{this.state.passwordError}</div>
                             <div className="form-check check-log">
                                 <input  type="checkbox" className="form-check-input" id="checkbox"/>
-                                <label className="form-check-label" for="exampleCheck1">Remember Me</label>
+                                <label className="form-check-label" htmlFor="exampleCheck1">Remember Me</label>
                                 <a onClick={this.handleLogIn} className="btn rounded-pill text-center login-button">Log In</a>
                             </div>
                         <div className="forget-pass d-flex justify-content-center">

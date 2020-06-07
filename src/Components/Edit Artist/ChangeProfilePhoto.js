@@ -48,7 +48,7 @@ render (){
    
         <h1 className="header">Change Your Profile Picture</h1>
 <div id= "cont">
-        <div className="custom-file  ">
+        <div className="custom-file-artist-photo  ">
                                             <input type="file" onChange={this.onImageChange} className="custom-file-input" id="group_image" accept="image/*" />
                                             <label className="custom-file-label" htmlFor="customFile"></label>
                                             <small className="form-text text-muted">Upload Your Profile Photo</small>

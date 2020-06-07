@@ -4,7 +4,7 @@ import axios from 'axios'
 import {Link} from 'react-router-dom';
 import './Profile.css';
 import Bottom from '../WelcomeRelated/Bottom';
-import { MainNavbar } from '../WelcomeRelated/MainNavbar';
+import  MainNavbar  from '../WelcomeRelated/MainNavbar';
 
 
 class NotificationsSettings extends Component {

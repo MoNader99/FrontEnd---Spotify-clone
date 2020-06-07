@@ -1,8 +1,9 @@
 import React ,{ Component }from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
-import {Link} from 'react-router-dom';
+import {BASEURL} from '../../../Constants/BaseURL';
 import './YourLibrary.css';
+import  HomePageNavbar  from '../../HomePage/HomePageNavbar';
 
 class ArtistsLibrary extends Component {
     constructor() {
@@ -13,9 +14,9 @@ class ArtistsLibrary extends Component {
         }
     }
     componentDidMount(){
-        axios.get("http://spotify.mocklab.io"+"/artists", {
+        axios.get(BASEURL+"/webplayer/yourlibrary/artists", {
             headers: {
-                'authorization': "Bearer "+localStorage.getItem("token"),
+                'authorization': "Bearer ",
             }
         })
             .then(res => {
@@ -28,13 +29,6 @@ class ArtistsLibrary extends Component {
                             imageUrl:artist.images[0],
                         }))
                     })
-                }
-                else if(res.status === 401)
-                {
-                    localStorage.removeItem("loginType");
-                    localStorage.removeItem("isLoggedIn");
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("userID");
                 }
             })
     }
@@ -80,6 +74,7 @@ class ArtistsLibrary extends Component {
 
     return(
         <div id="webplayer-library" className="container col-lg-12">
+            <HomePageNavbar page="library"/>
             <div className="popular-artists-section">
                 <h2 className="section-title popular-artists">Artists</h2>
                 <div className="card-group">

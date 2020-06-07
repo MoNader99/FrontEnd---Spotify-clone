@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 import AddToPlaylist from './AddToPlaylist';
 import * as actionTypes from "../../Store/actions";
 import EditPlaylist from './EditPlaylist';
-import { ShareSong } from '../Share/ShareSong';
+import  ShareSong  from '../Share/ShareSong';
 import { BASEURL } from '../../Constants/BaseURL';
 
 export class PlaylistPage extends Component
@@ -126,8 +126,8 @@ stream=(song)=>{
             <Card /> 
               
 
-					  <li> <h3> {this.state.playlistInfo.playlistName} </h3> </li>
-					  <li> <h5> {this.state.playlistInfo.userId} </h5></li>
+					  <li> <h3> POP </h3> </li>
+					  <li> <h5> Spotify </h5></li>
             <li >
                <a id="play-button" href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playplaylist}</a>
             </li>
@@ -138,8 +138,8 @@ stream=(song)=>{
           <div className="dropdown ">
               <a className="card-menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
               <div className="dropdown-menu card-dropdown-content ">
-              <a className="dropdown-item drop-class" data-toggle="modal" data-target="#edit"  href="#">Edit Playlist</a>
-              <a className="dropdown-item drop-class" data-toggle="modal" data-target="#delete" href="#">Delete</a>
+              <a className="dropdown-item drop-class" data-toggle="modal" data-target="#edit" >Edit Playlist</a>
+              <a className="dropdown-item drop-class" data-toggle="modal" data-target="#delete">Delete</a>
               
           </div>
 
@@ -168,7 +168,7 @@ stream=(song)=>{
               </ul>
               </div>
               <div className="col-xl-2 col-md-2 col-2 col-2">
-                <a className=" btn btn-outline-dark text-light rounded-pill text-center px-5 py-2 mt-3 font-weight-bold " href="#" >update</a>
+                <a className=" btn btn-outline-dark text-light rounded-pill text-center px-5 py-2 mt-3 font-weight-bold " >update</a>
               </div>
           </div>
 
@@ -209,8 +209,8 @@ stream=(song)=>{
               <div className="dropdown d-flex align-items-center ">
                 <a className="song-menu Menu mt-4" href="/account" id="Dropdown" data-toggle="dropdown" > ••• </a>
                   <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
-                  <a className="dropdown-item drop-class" href="#" id="ADD" value="ShowAdd" onClick={(e) => {this.show(e);}}  >Add to your liked songs</a>
-                  <a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist" href="#">Add to playlist</a>
+                  <a className="dropdown-item drop-class" id="ADD" value="ShowAdd" onClick={(e) => {this.show(e);}}  >Add to your liked songs</a>
+                  <a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist">Add to playlist</a>
                 <a className="dropdown-item drop-class" data-toggle="modal" data-target="#share-song">Share Song</a>
 
                   </div>
@@ -235,7 +235,7 @@ stream=(song)=>{
       <DeletePlaylist delete={this.state.playlistInfo.playlistName} />
       <EditPlaylist/>
       <AddToPlaylist/>
-      <ShareSong share={this.props.songURL} />
+      <ShareSong  />
     </div>
     
     </div>

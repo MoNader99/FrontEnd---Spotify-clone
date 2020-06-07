@@ -1214,8 +1214,7 @@ background: linear-gradient(90deg, rgba(59,2,52,1) 1%, rgba(123,99,106,1) 100%);
   .pop
 {
 
-  background: rgb(31,146,182);
-  background: linear-gradient(90deg, rgba(31,146,182,1) 1%, rgba(73,187,255,1) 100%);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,142,255,1) 100%);
   
   color:white;
   overflow:hidden;

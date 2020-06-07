@@ -79,36 +79,33 @@ class HomePageNavbar extends Component{
    * @param notification
    */
   pushNoitifications (notification){
+         addNotification({
+          title: "New "+notification.actionType,
+          message: "Check your notifications!!",
+          onClick: (e) =>{ window.open("http://localhost:3000/webplayer/notifications"); },
+          theme: 'light',
+          duration: 10000000,
+          icon:"https://image.flaticon.com/icons/png/512/49/49097.png",
+          native: true 
+          });
     
-   /** A variable that contains URL 
+        /** A variable that contains URL 
           * @memberof HomePageNavbar
           * @type {string}
           */
-         var url =  BASEURL+"/notifications/pushed";    
+         var url =  BASEURL+"/notifications/pushed";
          const requestOptions = {
            method: 'POST', 
-           // headers: {'Content-Type': 'application/json' }, 
-           body: JSON.stringify({ Id:notification.id}) ,
-       
+           body: JSON.stringify({ Id:notification.id}), 
          };    
-            fetch(url,requestOptions)
-             .then((res) => {
-               if(res.status===200){
-                  console.log("response is ok")
-                  addNotification({
-                    title: "New "+notification.actionType,
-                    message: "Check your notifications!!",
-                    onClick: (e) =>{ window.open("http://localhost:3000/webplayer/notifications"); },
-                    theme: 'light',
-                    duration: 10000000,
-                    icon:"https://image.flaticon.com/icons/png/512/49/49097.png",
-                    native: true 
-                });
-               }
+          fetch(url,requestOptions)
+          .then((res) => {
+            if(res.status===200){
+              console.log("response is ok")
+            }
           })
-     
-             .then((data) =>{})
-             .catch((err)=>console.log(err))
+          .then((data) =>{})
+          .catch((err)=>console.log(err))
   }
 
   render(){
@@ -151,8 +148,8 @@ class HomePageNavbar extends Component{
               {this.props.page == "library" ? 
               <div>
                   <Link to="/webplayer/yourlibrary" ><button id="upgradebtn">yourlibrary</button></Link>
-                  <Link to="/webplayer/yourlibrary/artists" ><button id="upgradebtn">Artists</button></Link>
-                  <Link to="/webplayer/yourlibrary/albums" ><button id="upgradebtn">Albums</button></Link>
+                  <Link to="/webplayer/yourlibrary-artists" ><button id="upgradebtn">Artists</button></Link>
+                  <Link to="/webplayer/yourlibrary-albums" ><button id="upgradebtn">Albums</button></Link>
               </div>
               :
               null}

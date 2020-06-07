@@ -5,7 +5,7 @@ import axios from 'axios'
 import {Link} from 'react-router-dom';
 import './Profile.css';
 import Bottom from '../WelcomeRelated/Bottom';
-import { MainNavbar } from '../WelcomeRelated/MainNavbar';
+import  MainNavbar  from '../WelcomeRelated/MainNavbar';
 //import { ConfigContext } from '../../Context/ConfigContext'
 /** Class of ChangePassword page in account settings.
  * @extends Component

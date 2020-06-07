@@ -4,7 +4,7 @@ import SideBar from '../SideBar/ArtistSidebar';
 import './ArtistProfile.css'
 import axios from 'axios'
 import $ from 'jquery';
-import { MainNavbar } from '../../WelcomeRelated/MainNavbar';
+import MainNavbar from '../../WelcomeRelated/MainNavbar';
 import Bottom from '../../WelcomeRelated/Bottom';
 
 var ctxLOne;
@@ -153,7 +153,7 @@ class Audience extends Component {
     }
 
     componentDidMount(){
-        axios.get("http://spotify.mocklab.io"+"/meArtist/numberOfLikesAndFollowers",{
+        axios.get("http://spotify-clone1.mocklab.io"+"/artist/statistics",{
             headers: {
                 'authorization': "Bearer "
             },

@@ -14,7 +14,7 @@ const LoginFacebook = ()=>{
     return(
         <FacebookLogin
             appId="284237482611651"
-            autoLoad={true}
+            autoLoad={false}
             fields="name,email,picture"
             onClick={componentclicked}
             callback={responseFacebook} />
