@@ -11,13 +11,7 @@ margin-right: 5px;
     background-color: #000;
     background-repeat: no-repeat;
 }
-.icon {
-    position: absolute;
-    top: 35%;
-    bottom: 35%;
-    left: 35%;
-    right: 35%;
-}
+
 .user{
     padding-right:18px;
     min-height: 100vh;
