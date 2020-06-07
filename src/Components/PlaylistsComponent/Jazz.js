@@ -138,8 +138,8 @@ stream=(song)=>{
           <div className="dropdown ">
               <a className="card-menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
               <div className="dropdown-menu card-dropdown-content ">
-              <a className="dropdown-item drop-class" data-toggle="modal" data-target="#edit"  href="#">Edit Playlist</a>
-              <a className="dropdown-item drop-class" data-toggle="modal" data-target="#delete" href="#">Delete</a>
+              <a className="dropdown-item drop-class" data-toggle="modal" data-target="#edit">Edit Playlist</a>
+              <a className="dropdown-item drop-class" data-toggle="modal" data-target="#delete">Delete</a>
               
           </div>
 
@@ -209,8 +209,8 @@ stream=(song)=>{
               <div className="dropdown d-flex align-items-center ">
                 <a className="song-menu Menu mt-4" href="/account" id="Dropdown" data-toggle="dropdown" > ••• </a>
                   <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
-                  <a className="dropdown-item drop-class" href="#" id="ADD" value="ShowAdd" onClick={(e) => {this.show(e);}}  >Add to your liked songs</a>
-                  <a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist" href="#">Add to playlist</a>
+                  <a className="dropdown-item drop-class" id="ADD" value="ShowAdd" onClick={(e) => {this.show(e);}}  >Add to your liked songs</a>
+                  <a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist">Add to playlist</a>
                 <a className="dropdown-item drop-class" data-toggle="modal" data-target="#share-song">Share Song</a>
 
                   </div>

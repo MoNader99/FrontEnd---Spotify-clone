@@ -9,7 +9,7 @@ import * as actionTypes from "../../Store/actions";
  * @category MainNavbar
  * @extends Component
  */
-export class MainNavbar extends Component {
+class MainNavbar extends Component {
   constructor(props){
     super(props); 
     this.state=
