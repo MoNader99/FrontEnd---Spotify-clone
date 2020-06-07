@@ -47,8 +47,13 @@ return(
             <i className="fas fa-image"> <span className="fa-icon-innter-text">&nbsp;Change Profile Photo</span> </i>
         </NavLink>
 
+        <a href="/artist/audience" >
+            <i className="fa fa-users icon"> <span className="fa-icon-innter-text">&nbsp;Audience</span> </i>
+        </a>
 
-        
+        <a href="/artist/addalbum" >
+            <i className="fa fa-music icon"> <span className="fa-icon-innter-text">&nbsp;My Albums</span> </i>
+        </a>
 
         </div>
 
