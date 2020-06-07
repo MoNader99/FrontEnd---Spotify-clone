@@ -51,10 +51,10 @@ class ShowByGenres extends Component {
                 {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
                 {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
             ],
-            geners:[
-                {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
-                {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
-                {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+            Genres:[
+                    // {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+                    // {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
+                    // {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
             ],
             SongInfo:[],
             SongsTargets:[],
@@ -62,6 +62,7 @@ class ShowByGenres extends Component {
             usersTargets:[],
             artistTargets:[],
             albumTargets:[],
+            
 		};
     }
 
@@ -80,6 +81,33 @@ class ShowByGenres extends Component {
                   })
                   .catch((error)=>{console.log(error);
         })
+        var url = BASEURL + "/showbygenres"; 
+  
+                
+                fetch(url,requestOptions)
+                  .then((response) => { return response.json()})
+                  .then((data) => {
+                    this.setState({ 
+                      Genres:data.top_genres,
+                    });
+                  })
+                  .catch((error)=>{console.log(error);
+        })
+        var url = BASEURL + "/showbygenres"; 
+  
+                
+                fetch(url,requestOptions)
+                  .then((response) => { return response.json()})
+                  .then((data) => {
+                    this.setState({ 
+                      Genres:data.top_genres,
+                    });
+                  })
+                  .catch((error)=>{console.log(error);
+        })
+        
+
+        
 
         url=BASEURL + "/get-playlists"
         fetch(url,requestOptions)
@@ -203,7 +231,7 @@ class ShowByGenres extends Component {
                 <div className="component-content ">
                         <p className=" browse">Your Top Geners</p>
                         <div className="row">
-                            { this.state.geners.map((Card,index)=>(
+                            { this.state.Genres.map((Card,index)=>(
                                 <div className="col-xl-3 col-lg-5 col-md-6" key={index}>
                                 <a href="/webplayer/playlist" class="top-geners" style={Card.style} >
                                     <h3 class="head-style">{Card.Card_name}</h3>

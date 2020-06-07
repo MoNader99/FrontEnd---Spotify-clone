@@ -5,7 +5,8 @@ import AccountContent from '../Components/Edit Artist/AccountContent';
 
 import {BrowserRouter as Router } from "react-router-dom";
 
-
+import MainNavbar from '../../src/Components/WelcomeRelated/MainNavbar';
+import Bottom from '../../src/Components/WelcomeRelated/Bottom'
 
 class AccountLayout extends Component {
 
@@ -14,9 +15,9 @@ class AccountLayout extends Component {
         return (
         <div>
           
-            
+          <MainNavbar color="black"/>
             <Router>
-            <div className="content-wrapper d-flex justify-content-center">
+            <div className="content-wrapper d-flex justify-content-center ">
 
                     <div className="row no-gutters container " id="the_container">
                         <div className="col-sm-3 hidden-xs">
@@ -34,7 +35,7 @@ class AccountLayout extends Component {
  
             </Router>
 
-           
+            <Bottom/>
         </div>
         
         )

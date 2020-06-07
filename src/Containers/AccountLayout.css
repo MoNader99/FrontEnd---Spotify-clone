@@ -3,6 +3,8 @@
     background-color: rgb(27,38,59);
     color: black;
     padding: 0 15px;
+    padding-top: 80px;
+    min-height: 90vh;
 }
 .account-content{
     background: #F8F8F8;
