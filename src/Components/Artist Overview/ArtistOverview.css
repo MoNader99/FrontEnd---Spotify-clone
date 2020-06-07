@@ -20,7 +20,7 @@ margin-right: 5px;
     font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
 }
 
-.user .user-profile{
+.user .artist-profile{
     background-image: url("https://i.scdn.co/image/c73a348fd3e94f15db1f5269804d25bba848b6e1");
     background-position: center; 
 
@@ -32,22 +32,22 @@ margin-right: 5px;
 
     text-align: left;
 }
-.user .user-profile .user-image{
+.user .artist-profile .user-image{
     max-width: 250px;
     min-height: 225px;
     border-radius: 50%;
     box-shadow: 0 4px 4px 0 rgba(0,0,0,.5);
 }
 
-.user .user-profile .profile{
+.user .artist-profile .profile{
     font-size: 15px;
     font-weight: 700;
 }
-.user .user-profile .username{
+.user .artist-profile .username{
     font-size: 96px;
     font-weight: 700;
 }
-.user .user-profile .playlists{
+.user .artist-profile .playlists{
     font-size: 20px;
     font-weight: 500;
 }
@@ -152,43 +152,43 @@ margin-right: 5px;
 }
 
 @media only screen and (max-width: 1700px){
-    .user .user-profile .list {
+    .user .artist-profile .list {
         margin-left: 45px;
     }
 }
 @media only screen and (max-width: 1560px){
-    .user .user-profile .follow {
+    .user .artist-profile .follow {
         margin-left: 45px;
     }
-    .user .user-profile .list {
+    .user .artist-profile .list {
         margin-left: 75px;
     }
-    .user .user-profile .username{
+    .user .artist-profile .username{
         font-size: 80px;
         font-weight: 700;
     }
 }
 
 @media only screen and (max-width:1200px){
-    .user .user-profile .user-image{
+    .user .artist-profile .user-image{
         margin-bottom: 20px;
     }
     .user .public{
         margin-top:14.5rem;
     }
-    .user .user-profile .list {
+    .user .artist-profile .list {
         margin-left: 30px;
     }
 } 
 
 @media only screen and (max-width:900px){
-    .user .user-profile .username{
+    .user .artist-profile .username{
         font-size: 60px;
     }
 }
 
 @media only screen and (max-width:750px){
-    .user .user-profile .username{
+    .user .artist-profile .username{
         font-size: 40px;
     }
     .user .card{
@@ -204,7 +204,7 @@ margin-right: 5px;
     .user{
         padding-right:10px;
     }
-    .user .user-profile .username{
+    .user .artist-profile .username{
         font-size: 30px;
     }
 }

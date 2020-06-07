@@ -161,10 +161,9 @@ class ArtistOverview extends Component {
         <div>
             <HomePageNavbar/>
         <div className="user ">
-          <div className="user-profile row">
-            <div className="col-xl-2 col-lg-12 d-flex align-items-center justify-content-center">
-            </div>
-            <div className="col-xl-8 col-lg-12 d-flex align-items-center">
+          <div className="artist-profile row">
+           
+            <div className="col-xl-10 col-lg-12 d-flex align-items-center">
                 <Card></Card>
             </div>
             <div className="col-xl-2 col-lg-12 d-flex align-items-center justify-content-center">
