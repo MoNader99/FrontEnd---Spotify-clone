@@ -20,7 +20,7 @@ function ArtistSidebar(props) {
 
                         <a href="/account/overview"><li className="list"><i className="fas fa-home icon"></i> Edit Bio </li></a>
                         <a href="/account/profile"><li className="list"><i className="fas fa-pencil-alt icon"></i> Edit Profile </li></a>
-                        <a href="/account/change-cover-photo"><li className="list"><i className="fas fa-camera icon"></i> Change Cover Phohref </li></a>
+                        <a href="/account/change-cover-photo"><li className="list"><i className="fas fa-camera icon"></i> Change Cover Photo </li></a>
                         <a href="/account/change-photo"><li className="list"><i className="fas fa-image icon"></i> Change Profile Photo </li></a>
 
                         <Link to="/artist/audience"><li className="list first"><i className="fa fa-users icon"></i> Audience </li></Link>
