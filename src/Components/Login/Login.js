@@ -132,7 +132,7 @@ export class Login extends Component{
             this.props.onSignIn(user);
             }
             else if (user.type=="artist"){
-            window.location.replace("/account");
+            window.location.replace("/account/overview/");
             this.props.onSignInArtist(user);
             }
         }
