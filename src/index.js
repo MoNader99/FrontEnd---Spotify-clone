@@ -12,6 +12,7 @@ import {Provider} from "react-redux";
 import {createStore} from "redux";
 import reducer from "./Store/reducer";
 import {loadState , saveState } from "./Store/localStorage";
+import Login from './Components/Login/FacebookLogin'
 import 'tachyons'
 
 
