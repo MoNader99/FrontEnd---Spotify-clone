@@ -20,7 +20,11 @@ import Oud from './Oud';
 import Jazz from './Jazz';
 import  PlaylistPage  from './PlaylistPage';
 
-
+/** Class PlayList Page 
+ * @category Genres
+ * the class that routes all the genres
+ * @extends Component
+ */
 export class Playlist extends Component
 {
 

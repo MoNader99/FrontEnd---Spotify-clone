@@ -7,7 +7,11 @@ import {BrowserRouter as Router } from "react-router-dom";
 
 import MainNavbar from '../../src/Components/WelcomeRelated/MainNavbar';
 import Bottom from '../../src/Components/WelcomeRelated/Bottom'
-
+/** Account Layout
+ * @category ArtistOverview
+ * routes for all the other components
+ * @extends Component
+ */
 class AccountLayout extends Component {
 
     render()
