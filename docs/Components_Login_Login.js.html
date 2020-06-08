@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/Login/Login.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/Login/Login.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import './Login.css'
+import {connect} from "react-redux";
+import * as actionTypes from "../../Store/actions";
+import { BASEURL } from '../../Constants/BaseURL';
+import LoginFacebook from '../Login/FacebookLogin'
+
+/** Class Login 
+ * @category Login
+ * @extends Component
+ */
+export class Login extends Component{
+
+    state = {
+        /**Object of email style
+        * @memberof Login
+        * @type {object}
+        */
+        emailStyle:{},
+
+        /**Object of password style
+        * @memberof Login
+        * @type {object}
+        */
+        passwordStyle:{},
+
+        /**Email text
+        * @memberof Login
+        * @type {string}
+        */
+        EmailText: "",
+
+        /**Password text
+        * @memberof Login
+        * @type {string}
+        */
+        PasswordText:"",
+
+        /**Email error validation
+        * @memberof Login
+        * @type {string}
+        */
+        emailError: "",
+
+        /**Password error validation
+        * @memberof Login
+        * @type {string}
+        */
+        passwordError: "",
+
+        /**Array to check emails with the given ones
+        * @memberof Login
+        * @type {Array&lt;emails>}
+        */
+        checkEmail:[],
+
+        /**Array to check passwords with the given ones
+        * @memberof Login
+        * @type {Array&lt;passwords>}
+        */
+        checkPassword:[],
+
+        /**Check if correct or not
+        * @memberof Login
+        * @type {boolean}
+        */
+        checkedCorrect: false,
+
+        /**Array includes data of users
+        * @memberof Login
+        * @type {Array&lt;users>}
+        */
+        users:[]
+    }
+
+    /**Function to Validate email
+   * @memberof Login
+   * @func validateEmail
+   * @param event
+   */
+    validateEmail = (event) => {
+        let EmailText = event.target.value;
+        if (EmailText=="")
+        {
+            this.setState({emailError: "Please enter a valid email"})
+            this.setState({emailStyle:{'border': '1px solid red'}})
+        }
+        else
+        {
+            this.setState({emailStyle:{}})
+            this.setState({emailError:null})
+            this.setState({EmailText:EmailText})
+        }
+    }
+
+    /**Function to Validate Password
+   * @memberof Login
+   * @func validatePassword
+   * @param event
+   */
+    validatePassword = (event) => {
+        let PasswordText = event.target.value;
+        if (PasswordText=="")
+        {
+            this.setState({passwordError: "Please enter your password."})
+            this.setState({passwordStyle:{'border': '1px solid red'}})
+        }
+        else
+        {
+            this.setState({passwordError:null})
+            this.setState({passwordStyle:{}})
+            this.setState({PasswordText:PasswordText})
+        }
+        
+    }
+
+    /**Function to Handle Login
+   * @memberof Login
+   * @func handleLogIn
+   * @param event
+   */
+    handleLogIn = event => 
+    {
+
+        if(this.state.checkPassword.includes(this.state.PasswordText) &amp;&amp; this.state.checkEmail.includes(this.state.EmailText)) 
+        { 
+            var id=this.state.checkEmail.indexOf(this.state.EmailText)
+            var user=this.state.users[id]
+            this.setState({checkedCorrect:false})
+            if(user.type=="user"){
+            window.location.replace("/account-overview");
+            this.props.onSignIn(user);
+            }
+            else if (user.type=="artist"){
+            window.location.replace("/account/overview/");
+            this.props.onSignInArtist(user);
+            }
+        }
+        else
+        {
+           this.setState({checkedCorrect:true})
+        }  
+    }
+
+    // handleLogIn =event =>
+    // {
+    //      /** A variable that contains email input from the user
+    //       * @memberof Login
+    //       * @type {string}
+    //       */
+    //     var inputEmail = document.getElementById('input-email').value;
+
+    //     /** A variable that contains password input from the user
+    //       * @memberof Login
+    //       * @type {string}
+    //       */
+    //     var inputPassword = document.getElementById('input-password').value;
+        
+    //      /** A variable that contains URL 
+    //       * @memberof Login
+    //       * @type {string}
+    //       */
+    //      var url =  BASEURL+"/login";    
+    //      const requestOptions = {
+    //        method: 'POST', 
+    //        headers: {'Content-Type': 'application/json' }, 
+    //        body: JSON.stringify({ email:inputEmail, password:inputPassword}) ,
+       
+    //      };    
+    //         fetch(url,requestOptions)
+    //          .then((res) => {
+    //            if(res.status===200){
+    //               console.log("response is ok")
+    //               this.setState({checkedCorrect:false})
+    //            }
+    //            else{
+    //             this.setState({checkedCorrect:true})
+    //            }
+    //       })
+     
+    //          .then((data) =>{})
+    //          .catch((err)=>console.log(err))
+
+    // }
+
+
+
+    /**Function that is called when the component renders
+    * @memberof Login
+    * @func componentDidMount
+    */
+    componentDidMount(){
+        /** URL path to get the users data 
+        * @memberof Login
+        * @type {string}
+        */
+        var url = BASEURL+ "/get-users-login"; 
+        const requestOptions = {
+            method: 'GET',
+          };
+          fetch(url,requestOptions)
+            .then((response) => { return response.json()})
+            .then((data) => {
+              this.setState({ 
+                users:data.users,
+              });
+          
+              for (var x=0;x&lt;this.state.users.length;x++){
+                  this.state.checkEmail.push(this.state.users[x].Email)
+                  this.state.checkPassword.push(this.state.users[x].Password)
+              }
+
+            })
+            
+            .catch((error)=>{console.log(error);
+          
+            })
+    }
+   
+    render(){
+        {document.title ="Spotify - Login"}
+    return(
+        &lt;div className="login-page">
+            &lt;div className="login-logo">
+                &lt;a className="spotify-login image" title="Spotify" href="/">&lt;/a>
+                &lt;div className="border-bottom mt-4">&lt;/div>
+            &lt;/div>
+                &lt;div className="container login-content">
+           
+                    &lt;p> &lt;strong> To continue, log in to Spotify.&lt;/strong> &lt;/p>
+                    {this.state.checkedCorrect == true ? &lt;div className="incorrect align-items-center">Incorrect email or password.&lt;/div>:&lt;div>&lt;/div>}
+                   
+                    {/* &lt;button id="login-facebook-button" className="btn rounded-pill text-center " >
+                    &lt;i className="fab fa-facebook">&lt;/i> continue with facebook &lt;/button>  */}
+                    &lt;div className=" d-flex align-items-center justify-content-center"> &lt;LoginFacebook/> &lt;/div>
+                    
+                    &lt;div className="border-divider">
+                        &lt;strong className="or-login">or&lt;/strong>
+                    &lt;/div>
+                    &lt;form >
+                    &lt;div className="form-group">
+                        &lt;div style={{marginBottom: "15px"}}>
+                            &lt;input style={this.state.emailStyle} autoComplete="off" onChange={this.validateEmail} type="email" className="form-control" id="input-email" aria-describedby="emailHelp" placeholder="Email address" />
+                            &lt;div className="error-validate">{this.state.emailError}&lt;/div>
+                        &lt;/div>
+                        &lt;input style={this.state.passwordStyle} onChange={this.validatePassword} type="password" className="form-control" id="input-password" placeholder="Password" />
+                            &lt;div  className="error-validate">{this.state.passwordError}&lt;/div>
+                            &lt;div className="form-check check-log">
+                                &lt;input  type="checkbox" className="form-check-input" id="checkbox"/>
+                                &lt;label className="form-check-label" htmlFor="exampleCheck1">Remember Me&lt;/label>
+                                &lt;a onClick={this.handleLogIn} className="btn rounded-pill text-center login-button">Log In&lt;/a>
+                            &lt;/div>
+                        &lt;div className="forget-pass d-flex justify-content-center">
+                        &lt;a href="/forget-password" className="col-xs-12 "> Forget Your Password? &lt;/a>
+                        &lt;/div>  
+                    &lt;/div>
+                    &lt;/form>
+                    &lt;div className="border-divider">&lt;/div>
+                    &lt;div>
+                        &lt;h5>Don't have an account?&lt;/h5>
+                        &lt;button className="btn rounded-pill text-center signup-button">Sign up for spotify&lt;/button>
+                    &lt;/div>
+                    &lt;div className="border-divider">&lt;/div>
+                &lt;/div>
+        &lt;/div>
+    )
+}
+}
+
+/** A function connecting component to redux store
+ * @memberof Login
+ * @param {*} dispatch 
+ */
+const mapDispatchToProps = dispatch => {
+    return {
+      onSignIn : (user) => dispatch ({type: actionTypes.ON_SIGNIN, payload: {user:user} }),
+    };
+  };
+  
+export default connect(null, mapDispatchToProps)(Login);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AboutUs.html">AboutUs</a></li><li><a href="AccountHeading.html">AccountHeading</a></li><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="AccountSettings.html">AccountSettings</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistOverview.html">ArtistOverview</a></li><li><a href="ArtistSidebar.html">ArtistSidebar</a></li><li><a href="Audio_Player.html">Audio_Player</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="ChangePassword.html">ChangePassword</a></li><li><a href="ChangeProfilePhoto.html">ChangeProfilePhoto</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="EditPlaylist.html">EditPlaylist</a></li><li><a href="global.html#EditProfile">EditProfile</a></li><li><a href="ForgetPassword.html">ForgetPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="Login.html">Login</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="OverviewContent.html">OverviewContent</a></li><li><a href="Player.html">Player</a></li><li><a href="Playlist.html">Playlist</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PrivacyPolicy.html">PrivacyPolicy</a></li><li><a href="RecentActivities.html">RecentActivities</a></li><li><a href="Search.html">Search</a></li><li><a href="ShareSong.html">ShareSong</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="Userprofile.html">Userprofile</a></li><li><a href="welcomePage.html">welcomePage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li><li><a href="global.html#CardList">CardList</a></li><li><a href="global.html#day">day</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#GoPremium">GoPremium</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#month">month</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#year">year</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Jun 08 2020 20:19:35 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

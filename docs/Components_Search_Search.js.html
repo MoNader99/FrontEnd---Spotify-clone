@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/Search/Search.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/Search/Search.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
+import Loader from 'react-loader-spinner'
+import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
+import "./Search.css";
+import {connect} from 'react-redux';
+import * as actionTypes from "../../Store/actions";
+import {BASEURL} from '../../Constants/BaseURL'
+import {NavLink, Link} from "react-router-dom";
+import HomePageNavbar from '../HomePage/HomePageNavbar'
+import HomePageSidebar from '../HomePage/HomePageSidebar'
+
+/** Class Search 
+ * @category Search
+ * @extends Component
+ */
+export class Search extends Component {
+    constructor( props ) {
+		super( props );
+
+		this.state = {
+            /**input text to search 
+            * @memberof Search
+            * @type {string}
+            */
+            searchedText:'',
+
+            /**used to change between genres and search result layouts 
+            * @memberof Search
+            * @type {boolean}
+            */
+            display:true,
+
+            /**Array of playlists
+            * @memberof Search
+            * @type {Array&lt;playlists>}
+            */
+            playlists: [
+                {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+                {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
+                {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+                {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+                {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
+                {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+                {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+                {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
+                {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+                {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+                {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
+                {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+                {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+                {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
+                {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+                {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+                {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
+                {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+                {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+                {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
+                {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+                {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+                {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
+                {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+                {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+                {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
+                {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+                {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+                {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
+                {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+                {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+            ],
+            /**Array of Genres
+            * @memberof Search
+            * @type {Array&lt;genres>}
+            */
+            Genres:[
+                    // {image_URL: "https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" , Card_name:"Podcast",style:{'background': 'rgb(242,232,118)' , 'background' : 'linear-gradient(0deg, rgba(242,232,118,1) 0%, rgba(213,167,29,1) 19%)'}},
+                    // {image_URL: "https://ph-files.imgix.net/cbbf111b-fccf-48a7-8505-bedc7b5d5272?auto=format" , Card_name:"Made For You", style:{'background': 'rgb(180,32,112)' , 'background' : 'linear-gradient(0deg, rgba(180,32,112,1) 0%, rgba(237,54,95,1) 72%)'}},
+                    // {image_URL: "https://raw.githubusercontent.com/yboyer/realreleaseradar/master/.github/cover.jpg" , Card_name:"New Release", style:{'background': 'rgb(32,65,180)' , 'background' : 'linear-gradient(0deg, rgba(32,65,180,1) 0%, rgba(54,150,237,1) 72%)'} },
+
+            ],
+
+            /**Array of top tracks
+            * @memberof Search
+            * @type {Array&lt;tracks>}
+            */
+            SongInfo:[],
+
+            /**Array of songs results
+            * @memberof Search
+            * @type {Array&lt;tracks>}
+            */
+            SongsTargets:[],
+
+            /**Array of playlists results
+            * @memberof Search
+            * @type {Array&lt;playlists>}
+            */
+            playlistTargets:[],
+
+            /**Array of users results
+            * @memberof Search
+            * @type {Array&lt;users>}
+            */
+            usersTargets:[],
+
+            /**Array of artist results
+            * @memberof Search
+            * @type {Array&lt;artists>}
+            */
+            artistTargets:[],
+
+            /**Array of album results
+            * @memberof Search
+            * @type {Array&lt;albums>}
+            */
+            albumTargets:[],
+            allgenres:[],
+            
+
+            /**Array of top playlists resluts
+            * @memberof Search
+            * @type {Array&lt;albums>}
+            */
+            TopPlaylists:[
+                {playlistImg:""},
+            ],
+		};
+    }
+
+    /**Function that is called when the component renders
+   * @memberof Search
+   * @func componentDidMount
+   */
+    componentDidMount(){
+        /** A variable that contains URL 
+        * @memberof Search
+        * @type {string}
+        */
+        var url = BASEURL + "/get-tracks"; 
+  
+                const requestOptions = {
+                  method: 'GET',
+                };
+                fetch(url,requestOptions)
+                  .then((response) => { return response.json()})
+                  .then((data) => {
+                    this.setState({ 
+                      SongInfo:data.tracks,
+                    });
+                  })
+                  .catch((error)=>{console.log(error);
+        })
+        var url = BASEURL + "/showbygenres"; 
+  
+                
+                fetch(url,requestOptions)
+                  .then((response) => { return response.json()})
+                  .then((data) => {
+                    this.setState({ 
+                      Genres:data.top_genres,
+                    });
+                  })
+                  .catch((error)=>{console.log(error);
+        })
+        var url = BASEURL + "/allgenres"; 
+  
+                
+                fetch(url,requestOptions)
+                  .then((response) => { return response.json()})
+                  .then((data) => {
+                    this.setState({ 
+                        allgenres:data.all_genres,
+                    });
+                  })
+                  .catch((error)=>{console.log(error);
+        })
+        
+
+        
+
+        url=BASEURL + "/get-playlists"
+        fetch(url,requestOptions)
+                  .then((response) => { return response.json()})
+                  .then((data) => {
+                    this.setState({ 
+                      playlistTargets:data.playlists,
+                    });
+                    this.setState({
+                        TopPlaylists:this.state.playlistTargets.sort(() => Math.random() - Math.random()).slice(0, 3)
+                    })
+                  })
+                  .catch((error)=>{console.log(error);
+        })
+
+        url = BASEURL+ "/get-users-login"; 
+          fetch(url,requestOptions)
+            .then((response) => { return response.json()})
+            .then((data) => {
+              this.setState({ 
+                usersTargets:data.users,
+              });
+            })
+            .catch((error)=>{console.log(error);
+        })
+        url=BASEURL+ "/get-albums"
+        fetch(url,requestOptions)
+            .then((response) => { return response.json()})
+            .then((data) => {
+              this.setState({ 
+                albumTargets:data.albums,
+              });
+            })
+            .catch((error)=>{console.log(error);
+        })
+        url=BASEURL + "/get-artists"
+        fetch(url,requestOptions)
+            .then((response) => { return response.json()})
+            .then((data) => {
+              this.setState({ 
+                artistTargets:data.artists,
+              });
+            })
+            .catch((error)=>{console.log(error);
+        })
+    }
+
+
+    /**Function to Handle changes in search bar
+   * @memberof Search
+   * @func handleOnInputChange
+   * @param event
+   */
+    handleOnInputChange = (event) => {
+        const Text = event.target.value;
+        setTimeout(() => {
+            if(Text!=""){
+
+                /** A variable that contains top 3 songs
+                * @memberof Search
+                * @type {Array&lt;songs>}
+                */
+                var songs=this.state.SongInfo.sort(() => Math.random() - Math.random()).slice(0, 3)
+                this.setState({
+                    searchedText:Text, display:false,
+                    SongsTargets:songs
+                })
+                this.setState({
+                    TopPlaylists:this.state.playlistTargets.sort(() => Math.random() - Math.random()).slice(0, 3)
+                })  
+            }
+            else{
+                this.setState({searchedText:Text, display:true})
+            } 
+            this.setState({loading:true})
+        }, 500);
+        this.setState({loading:false})
+    };
+
+  render(){
+
+      /** A variable that contains top playlists 
+        * @memberof Search
+        * @type {Array&lt;playlists>}
+        */
+		return(
+           
+            
+        &lt;div className="Search">
+            &lt;nav class="navbar mb-4 ">
+            
+                &lt;div className="d-flex">
+                &lt;div className="collapse-drop">
+                &lt;div className="Collapse-drop-down">
+                  &lt;div className="home-drop">
+                        &lt;button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        &lt;i class="fa fa-home" aria-hidden="true">&lt;/i>
+                        &lt;/button>
+                        &lt;div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          &lt;Link className="no-underline" to="/webplayer/home/">&lt;a class="dropdown-item" href="#">&lt;i className="fas fa-home">&lt;/i> Home&lt;/a>&lt;/Link>
+                          &lt;Link to="/webplayer/search/">&lt;a class="dropdown-item" href="#">&lt;i className="fas fa-search" aria-hidden="true">&lt;/i> Search&lt;/a>&lt;/Link>
+                          &lt;NavLink to="/webplayer/yourlibrary/">&lt;a class="dropdown-item" href="#">&lt;i className="fas fa-bookmark" aria-hidden="true">&lt;/i> Your library&lt;/a>&lt;/NavLink>
+                          &lt;Link to="#">&lt;a data-toggle="modal" data-target="#create-new-playist" class="dropdown-item" href="#">&lt;i className="fas fa-plus-square" aria-hidden="true">&lt;/i> Create playlist&lt;/a>&lt;/Link>
+                          &lt;Link to="/webplayer/likedsongs">&lt;a class="dropdown-item" href="#">&lt;i className="fas fa-heart " aria-hidden="true">&lt;/i> Liked songs&lt;/a>&lt;/Link>
+                          &lt;Link to="/premium">&lt;a class="dropdown-item" href="#">  &lt;i class="fa fa-usd" aria-hidden="true">&lt;/i>  Upgrade&lt;/a>&lt;/Link>
+
+                          &lt;/div>
+                    &lt;/div>        
+                  &lt;/div>
+                &lt;/div>
+                    &lt;div className="Search-content">
+                        &lt;span className="search-search-icon" >&lt;i className="fas fa-search">&lt;/i>&lt;/span>
+                        &lt;input onChange={this.handleOnInputChange} autocomplete="off" name="search" className="Search-bar form-control" placeholder="Search for Artists, Songs, or products" aria-label="Search" >&lt;/input>
+                    &lt;/div>
+                &lt;/div>
+                
+                { this.props.logged==false ?
+                &lt;div>
+                    &lt;a href="/signup" className="signup btn rounded-pill text-center">SIGN UP&lt;/a>
+                    &lt;a href="/login" className="login btn btn-light rounded-pill text-center">LOG IN&lt;/a>
+                &lt;/div>
+                :
+                &lt;div>
+                    &lt;div id="profile">
+                     &lt;a className="nav-link dropdown-toggle" href="/account" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        &lt;img className="user-img" alt="." src={this.props.image} />
+                         Profile
+                        &lt;/a>
+                    
+                        &lt;div className="dropdown-menu dropdown-menu-right " aria-labelledby="navbar-dropdown">
+                            &lt;a className="dropdown-item drop-class" href="/account-overview">Account&lt;/a>
+                            &lt;a onClick={this.props.onSignOut} className="dropdown-item drop-class" href="/">Sign out&lt;/a>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+                }
+            &lt;/nav>
+
+
+            {this.state.display == true ?
+            &lt;div className="display-true">
+                &lt;div className="component-content ">
+                        &lt;p className=" browse">Your Top Genres&lt;/p>
+                        &lt;div className="row">
+                            { this.state.Genres.map((Card,index)=>(
+                                &lt;div className="col-xl-3 col-lg-5 col-md-6" key={index}>
+                                &lt;a href={"/webplayer/playlist/"+ Card.Card_name} class="top-geners" style={Card.style} >
+                                    &lt;h3 class="head-style">{Card.Card_name}&lt;/h3>
+                                    &lt;img src={Card.image_URL} class="img-style" alt="">&lt;/img>
+                                &lt;/a>
+                                &lt;/div>
+                            ))}
+                        &lt;/div>     
+                &lt;/div>
+                &lt;div className="component-content ">
+                    &lt;h2 className=" browse" >Browse All&lt;/h2>
+                        &lt;div className="row">
+                            { this.state.allgenres.map((Card,index)=>(
+                                &lt;div className="col-xs-6" key={index}>
+                                &lt;a href={"/webplayer/playlist/"+ Card.Card_name} class="BrowseItem" style={Card.style}>
+                                    &lt;h3 class="head-style">{Card.Card_name}&lt;/h3>
+                                    &lt;img src={Card.image_URL} class="img-style" alt="">&lt;/img>
+                                &lt;/a>
+                                &lt;/div>
+                            ))}
+                        &lt;/div>     
+                &lt;/div>
+            &lt;/div>
+            :
+
+            &lt;div className="display-false">
+                {/* &lt;Loader type="Circles" color="#00BFFF" height={200} width={200} timeout={490} /> */}
+                &lt;div>
+                    &lt;div className="component-content ">
+                            &lt;p className=" browse">Top results&lt;/p>
+                            &lt;div className="row">
+                            &lt;div className="col-xl-3 p-0">
+                                &lt;div class="top-result-card">
+                                    &lt;img src={this.state.TopPlaylists[0].playlistImg} className="image d-flex align-items-start" >&lt;/img>
+                                   &lt;h3 className="text-white d-flex align-items-start mt-3 font-weight-bold">{this.state.TopPlaylists[0].playlistName}&lt;/h3>
+                                    &lt;div>
+                                        &lt;p className="text-white d-flex align-items-start mt-1 font-weight-bold">By {this.state.TopPlaylists[0].creatorName}&lt;/p>
+                                    &lt;/div>
+                                &lt;/div>
+
+                            &lt;/div>
+                            &lt;div className="col-xl-9 ">
+
+                            {this.state.SongsTargets.map((song,index)=>(
+                            &lt;div className="songs">
+                                &lt;div className="row">
+                                &lt;div style={{padding: "0"}} className="col-xl-1 col-md-1 col-1 col-2">
+                                    &lt;a>
+                                        &lt;img src={song.imgURL} className="p-1 image">&lt;/img>
+                                    &lt;/a>
+                                &lt;/div>
+                                &lt;div className="col-xl-8 col-md-6 col-sm-6 col-6 mt-3 d-flex align-items-start">
+                                &lt;ul className="list-unstyled ">
+                                    &lt;li className="d-flex align-items-start">{song.SongName}&lt;/li>
+                                    &lt;li className="song-info">&lt;a href='/webplayer/artistprofile/'>{song.Artist}&lt;/a> &lt;span className="font-weight-bold">.&lt;/span> &lt;a href='/webplayer/album'>{song.AlbumName}&lt;/a>&lt;/li>
+                                &lt;/ul>
+                                &lt;/div>
+                                &lt;div className="col-xl-2 col-md-4 col-sm-4 col-4 d-flex justify-content-end">
+                                    &lt;div className="dropdown d-flex align-items-center ">
+                                    &lt;a className="song-menu Menu mt-4" href="/account" id="Dropdown" data-toggle="dropdown"> ••• &lt;/a>
+                                    &lt;div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
+                                        &lt;a className="dropdown-item drop-class" id="ADD" value="ShowAdd" onClick={this.show}>Add to your liked songs&lt;/a>
+                                        &lt;a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist" href="#">Add to playlist&lt;/a>
+                                    &lt;/div>
+                                    &lt;/div>
+                                &lt;/div>
+                                &lt;/div>
+                            &lt;/div>
+                            ))}
+                            &lt;/div>
+                            &lt;/div>     
+                    &lt;/div>
+
+
+                    &lt;div className="component-content ">
+                        &lt;h2 className=" browse" >Artists&lt;/h2>
+                            &lt;div className="row">
+                            {this.state.artistTargets.map((artist,index)=>(
+                            &lt;div className="col-xl-1 col-lg-3 col-md-2 col-sm-1 col-1 mt-3 artist-card ">
+                                &lt;a href="webplayer/artistprofile" class="artist-card"  >
+                                    &lt;div className="image-padding"> &lt;img src={artist.artistImg} class="img-style" alt="">&lt;/img>&lt;/div>
+                                    &lt;h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">{artist.artistName}&lt;/h3>
+                                    &lt;h5 className=" text-white d-flex align-items-start" >Artist&lt;/h5>
+                                &lt;/a>
+                            &lt;/div>
+                            ))}
+                            &lt;/div>     
+                    &lt;/div>
+
+
+                    &lt;div className="component-content ">
+                        &lt;h2 className=" browse" >Albums&lt;/h2>
+                            &lt;div className="row">
+                            {this.state.albumTargets.map((album,index)=>(
+                            &lt;div className="col-xl-1 col-lg-3 col-md-2 col-sm-1 col-1 mt-3 artist-card ">
+                                &lt;a href="/webplayer/album" class="albums-playlists-card"  >
+                                    &lt;img src={album.albumImg} class="img-style" alt="">&lt;/img>
+                                    &lt;h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">{album.albumName}&lt;/h3>
+                                    &lt;h5 className=" text-white d-flex align-items-start" >{album.Artist}&lt;/h5>
+                                &lt;/a>
+                            &lt;/div> 
+                            ))}                          
+                            &lt;/div>     
+                    &lt;/div>
+
+
+                    &lt;div className="component-content ">
+                        &lt;h2 className=" browse" >playlists&lt;/h2>
+                            &lt;div className="row">
+                            {this.state.playlistTargets.map((playlist,index)=>(
+                            &lt;div className="col-xl-1 col-lg-3 col-md-2 col-sm-1 col-1 mt-3 artist-card ">
+                                &lt;a href="/webplayer/playlist" class="albums-playlists-card"  >
+                                    &lt;img src={playlist.playlistImg} class="img-style" alt="">&lt;/img>
+                                    &lt;h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">{playlist.playlistName}&lt;/h3>
+                                    &lt;h5 className=" text-white d-flex align-items-start" >By {playlist.creatorName}&lt;/h5>
+                                &lt;/a>
+                            &lt;/div>
+                            ))}
+                            &lt;/div>     
+                    &lt;/div>
+
+
+                    &lt;div className="component-content ">
+                        &lt;h2 className=" browse" >Profiles&lt;/h2>
+                            &lt;div className="row">
+                            {this.state.usersTargets.map((user,index)=>(
+                            &lt;div className="col-xl-1 col-lg-3 col-md-2 col-sm-1 col-1 mt-3 artist-card ">
+                                &lt;a href="/webplayer/userprofile" class="artist-card"  >
+                                    &lt;div className="image-padding">&lt;img src={user.ImgUrl} class="img-style" alt="">&lt;/img>&lt;/div>
+                                    &lt;h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">{user.Username}&lt;/h3>
+                                &lt;/a>
+                            &lt;/div>
+                            ))}        
+                        &lt;AddToPlaylist/>
+
+                            &lt;/div>     
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+            }
+            
+        &lt;/div>
+       
+		)	
+    }
+}
+/**A function connecting component to redux store
+ * @memberof Search
+ * @func mapStateToProps
+ * @param {*} state
+ */
+const mapStateToProps = state =>{
+    return{
+      logged: state.loggenIn,
+      image: state.user.ImgUrl,
+
+    };
+  };
+
+  /** A function connecting component to redux store
+ * @memberof Search
+ * @func mapDispatchToProps
+ * @param {*} dispatch 
+ */
+const mapDispatchToProps = dispatch => {
+    return {
+      onSignOut : () => dispatch ({type: actionTypes.ON_SIGNOUT}),
+    };
+  };
+export default connect(mapStateToProps,mapDispatchToProps) (Search);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AboutUs.html">AboutUs</a></li><li><a href="AccountHeading.html">AccountHeading</a></li><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="AccountSettings.html">AccountSettings</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistOverview.html">ArtistOverview</a></li><li><a href="ArtistSidebar.html">ArtistSidebar</a></li><li><a href="Audio_Player.html">Audio_Player</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="ChangePassword.html">ChangePassword</a></li><li><a href="ChangeProfilePhoto.html">ChangeProfilePhoto</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="EditPlaylist.html">EditPlaylist</a></li><li><a href="global.html#EditProfile">EditProfile</a></li><li><a href="ForgetPassword.html">ForgetPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="Login.html">Login</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="OverviewContent.html">OverviewContent</a></li><li><a href="Player.html">Player</a></li><li><a href="Playlist.html">Playlist</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PrivacyPolicy.html">PrivacyPolicy</a></li><li><a href="RecentActivities.html">RecentActivities</a></li><li><a href="Search.html">Search</a></li><li><a href="ShareSong.html">ShareSong</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="Userprofile.html">Userprofile</a></li><li><a href="welcomePage.html">welcomePage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li><li><a href="global.html#CardList">CardList</a></li><li><a href="global.html#day">day</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#GoPremium">GoPremium</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#month">month</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#year">year</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Jun 08 2020 20:19:35 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

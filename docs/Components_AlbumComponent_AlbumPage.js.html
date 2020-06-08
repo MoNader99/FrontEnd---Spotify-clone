@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/AlbumComponent/AlbumPage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/AlbumComponent/AlbumPage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import './AlbumPage.css';
+import CardMedia from '../Media/CardMedia';
+import ReactSnackBar from "react-js-snackbar";
+import {connect} from 'react-redux';
+import AddToPlaylist from '../PlaylistsComponent/AddToPlaylist';
+import * as actionTypes from "../../Store/actions";
+import ShareSong from '../Share/ShareSong';
+import HomePageNavbar from '../HomePage/HomePageNavbar';
+import {BASEURL} from '../../Constants/BaseURL'
+import { CreatePlaylist } from '../PlaylistsComponent/CreatePlaylist';
+import $ from 'jquery';
+import {Link} from "react-router-dom";
+import axios from 'axios';
+
+/** Class AlbumPage 
+ * @category AlbumPage
+ * @extends Component
+ */
+export class AlbumPage extends Component
+{
+  constructor() {
+    super();
+    this.deleteSong=this.deleteSong.bind(this)
+    this.deleteSongModal=this.deleteSongModal.bind(this)
+  }
+  state= 
+{ 
+  /**Array of Song Info
+   * @memberof AlbumPage
+   * @type {Array&lt;songs>}
+   */
+    SongInfo: [
+      {id : 1, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      {id : 2, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      {id : 3, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
+      {id : 4, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      {id : 5, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      {id : 6, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
+      {id : 7, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      {id : 8, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      {id : 9, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
+    ],
+
+  /** Album image
+   * @memberof AlbumPage
+   * @type {sring}
+   */
+    AlbumImage: "https://i.ibb.co/Q89hfcW/single-bar-note.jpg",
+
+    /**Album name
+   * @memberof AlbumPage
+   * @type {sring}
+   */
+    AlbumName: "Perfect",
+
+    /**Artist Name that own the album
+   * @memberof AlbumPage
+   * @type {sring}
+   */
+    Artist: "Ed sheran",
+
+    /**Number of songs in the album
+   * @memberof AlbumPage
+   * @type {sring}
+   */
+    songsNumber: "",
+
+    /**Show snakbar of add songs to liked songs
+   * @memberof AlbumPage
+   * @type {boolean}
+   */
+    ShowAdd: false,
+
+    /**Show snakbar of add songs to liked songs
+   * @memberof AlbumPage
+   * @type {boolean}
+   */
+    ShowingAdd: false,
+
+    /**Show snak bar of save to library
+   * @memberof AlbumPage
+   * @type {boolean}
+   */
+    ShowSave: false,
+    
+    /**Show snak bar of save to library
+   * @memberof AlbumPage
+   * @type {boolean}
+   */
+    ShowingSave: false,
+
+    /**text changing on the play button
+   * @memberof AlbumPage
+   * @type {string}
+   */
+    playAlbum: "Play",
+
+    /**object of album info
+   * @memberof AlbumPage
+   * @type {object}
+   */
+    AlbumInfo: {},
+
+    /**Array of songs in album
+   * @memberof AlbumPage
+   * @type {Array&lt;songs>}
+   */
+    AblumSongs: [],
+    songToDelete: -1,
+    Artist:true,
+    
+}
+
+//  /**Function that is called when the component renders
+//    * @memberof AlbumPage
+//    * @func componentDidMount
+//    */
+componentDidMount(){
+  
+  /** A variable that contains URL 
+  * @memberof AlbumPage
+  * @type {string}
+  */
+  var url = BASEURL +"/get-tracks"; 
+
+  const requestOptions = {
+    method: 'GET',
+  };
+  fetch(url,requestOptions)
+    .then((response) => { return response.json()})
+    .then((data) => {
+      // console.log(data)
+      this.setState({ 
+        SongInfo:data.tracks
+      });
+
+    })
+    .catch((error)=>{console.log(error);
+
+    })
+  }
+  
+   /**Function to like playlist
+   * @memberof AlbumPage
+   * @func likeSong
+   * @param r
+   */
+  likeSong = r => {
+    const {id} = r.target;
+   
+    /** heart icon
+   * @memberof AlbumPage
+   * @type {string}
+   */
+    var heart=document.getElementById(id);
+    heart.classList.toggle("far");
+    heart.classList.toggle("fas");
+  }
+
+ /**Function to toggle play and pause button
+   * @memberof AlbumPage
+   * @func playButton
+   */
+playButton = () => {
+  if ( this.state.playAlbum === "Play" ) {
+    this.setState({playAlbum: "Pause"});
+  }
+  else if ( this.state.playAlbum === "Pause" ) {
+    this.setState({playAlbum: "Play"});
+  }
+}
+
+ /**Function to show snack bar
+   * @memberof AlbumPage
+   * @func show
+   * @param e
+   */
+show = e => {
+
+   /** variable to check which snack bar is called
+   * @memberof AlbumPage
+   * @type {string}
+   */
+  var check = e.target.id;
+  if (check=="ADD"){
+  this.setState({ ShowAdd: true, ShowingAdd: true });
+  setTimeout(() => {
+    this.setState({ ShowAdd: false, ShowingAdd: false });
+  }, 2000); 
+  return; 
+  }
+else if (check=="SAVE"){
+  this.setState({ ShowSave: true, ShowingSave: true });
+  setTimeout(() => {
+    this.setState({ ShowSave: false, ShowingSave: false });
+  }, 2000);
+  return;  
+}
+}
+
+deleteSongModal(songId) {
+  $('#delete-modal').modal('show');
+  this.setState({songToDelete: songId})
+}
+
+deleteSong() {
+  $('#delete-modal').modal('hide');
+  const deletedSong = document.getElementById(this.state.songToDelete);
+  deletedSong.classList.add('hide');
+  axios.delete(BASEURL+"/artist/song",{
+      headers: {
+          'authorization': "Bearer "
+      },
+  })
+  this.setState({songToDelete: -1});
+}
+
+ /**Function to stream tracks
+   * @memberof AlbumPage
+   * @func stream
+   * @param song
+   */
+stream=(song)=>{
+  this.props.SELECT_SONG(song);
+}
+
+  render(){
+    {document.title ="Spotify - Album"}
+    // console.log(this.props.artist)
+  return(
+  &lt;div className="album-page">
+     &lt;HomePageNavbar />
+      &lt;div className="content-spacing">
+        &lt;div className="row" >
+                                             {/* Crad Element */}
+
+          &lt;div className="col-xs-12  col-lg-5 col-xl-4 d-flex justify-content-center " style={{display:"table"}}>
+             &lt;ul className="list-unstyled centered-content">
+
+             &lt;li> &lt;CardMedia className="play-pause" image={this.state.AlbumImage} /> &lt;/li>
+
+					  &lt;li> &lt;h3> {this.state.AlbumInfo.albumName} &lt;/h3> &lt;/li>
+					  &lt;li> &lt;h5> {this.state.Artist} &lt;/h5> &lt;/li>
+
+            &lt;li> &lt;button id="play-button" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playAlbum}&lt;/button> &lt;/li>
+            {this.state.Artist==true ?
+            &lt;li> &lt;a href="/artist/addsong" className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> Add New Song &lt;/a> &lt;/li>
+            : null }
+            &lt;li >
+              &lt;button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> &lt;/button>
+              &lt;div className="dropdown ">
+              &lt;a className="card-menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• &lt;/a>
+              &lt;div className="dropdown-menu card-dropdown-content ">
+              &lt;a className="dropdown-item drop-class" href="#" id="SAVE" value="ShowSave" onClick={this.show}>Save To Your Library&lt;/a>
+              &lt;a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist">Add To Playlist&lt;/a>
+              &lt;/div>
+              &lt;/div>
+            &lt;/li>
+            &lt;li> &lt;div style={{color:"#b3b3b3"}}> {this.state.songsNumber} Songs &lt;/div>&lt;/li>
+					&lt;/ul>
+          &lt;/div>
+
+                                              {/* Song Info */}
+
+          &lt;div className="col-xs-12  col-lg-7 col-xl-8 ">
+                                            {/* display songs */}
+          {this.state.SongInfo.map((song,index)=>(
+            &lt;div key={index} onClick={() =>this.stream(song)} className="songs" id={song._id}>
+            &lt;div className="row">
+              &lt;div className="col-xl-1 col-md-1 col-1 col-2">
+               &lt;div className="music-sign mt-2 mx-4 "> &lt;/div>
+              &lt;/div>
+              &lt;div className="col-xl-8 col-md-6 col-sm-6 col-6 mt-3 d-flex align-items-start">
+              &lt;ul className="list-unstyled">
+                  &lt;li className="d-flex align-items-start">{song.SongName}&lt;/li>
+                  &lt;li className="d-flex align-items-start song-info">&lt;a href='/webplayer/artistprofile/'>{song.Artist}&lt;/a>&lt;/li>
+              &lt;/ul>
+              &lt;/div>
+              &lt;div className="col-xl-1 col-md-2 col-sm-2 col-2">
+              &lt;div className="dropdown d-flex align-items-center ">
+                &lt;a className="song-menu Menu mt-4" href="/account" id="Dropdown" data-toggle="dropdown" > ••• &lt;/a>
+                  &lt;div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
+                  &lt;a className="dropdown-item drop-class" id="ADD" value="ShowAdd" onClick={(e) => {this.show(e);}}  >Add to your liked songs&lt;/a>
+                  &lt;a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist">Add to playlist&lt;/a>
+                  &lt;a className="dropdown-item drop-class" id="SAVE" value="ShowSave" onClick={this.show}>Save To Your Library&lt;/a>
+                  &lt;a className="dropdown-item drop-class" data-toggle="modal" data-target="#share-song">Share Song&lt;/a>
+                  
+                  {this.state.Artist==true ?
+                  &lt;Link to={{
+                    pathname:"/artist/addsong",
+                    state:{
+                      addSong: false,
+                      songName: song.SongName    
+                    }
+                  }}
+                   className="dropdown-item drop-class" >Edit&lt;/Link>
+                  : null }
+
+                  {this.state.Artist==true ?
+                  &lt;a className="dropdown-item drop-class" onClick={()=>this.deleteSongModal(song._id)}>Delete&lt;/a>
+                  : null }
+
+                  &lt;/div>
+                &lt;/div>
+              &lt;/div>
+              &lt;div className="col-xl-1 col-md-2 col-sm-2 col-2">
+                &lt;div className="d-flex align-items-center duration mt-4">{song.Duration}&lt;/div>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+            ))} 
+                                         
+
+          &lt;ReactSnackBar Icon={&lt;span className="fab fa-spotify">&lt;/span>} Show={this.state.ShowAdd}>
+                      Added To Your Liked Songs
+          &lt;/ReactSnackBar>
+
+          &lt;ReactSnackBar Icon={&lt;span className="fab fa-spotify">&lt;/span>} Show={this.state.ShowSave}>
+                      Saved To Your Library
+          &lt;/ReactSnackBar>
+           &lt;/div> 
+          &lt;/div>
+      &lt;/div>
+      &lt;AddToPlaylist/>
+      &lt;ShareSong share={this.props.songURL}/>
+      &lt;div className="modal" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          &lt;div class="modal-dialog" role="document">
+              &lt;div class="modal-content">
+              &lt;div class="modal-header">
+                  &lt;button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  &lt;span aria-hidden="true">&amp;times;&lt;/span>
+                  &lt;/button>
+              &lt;/div>
+              &lt;div class="modal-body">
+                  Are you sure you want to delete this song?
+              &lt;/div>
+              &lt;div class="modal-footer">
+                  &lt;button type="button" class="btn btn-dark" data-dismiss="modal" onClick={this.resetDeleteAlbumState}>No&lt;/button>
+                  &lt;button type="button" class="btn btn-dark" onClick={this.deleteSong}>Yes&lt;/button>
+              &lt;/div>
+              &lt;/div>
+          &lt;/div>
+      &lt;/div>
+      &lt;ShareSong/>
+    &lt;/div>
+  )
+}
+}
+
+/**A function connecting component to redux store
+ * @memberof AlbumPage
+ * @func mapStateToProps
+ *  @param {*} state 
+ */
+const mapStateToProps = state =>{
+  return{
+    userToken: state.userToken,
+    songURL: state.selectedSong,
+  };
+};
+ /** A function connecting component to redux store
+ * @memberof AlbumPage
+ * @func mapDispatchToProps
+ * @param {*} dispatch 
+ */
+const mapDispatchToProps = dispatch => {
+
+  return {
+
+    SELECT_SONG : (song) => dispatch ({type: actionTypes.SELECT_SONG , value: song})
+  };
+};
+export default connect(mapStateToProps,mapDispatchToProps) (AlbumPage);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AboutUs.html">AboutUs</a></li><li><a href="AccountHeading.html">AccountHeading</a></li><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="AccountSettings.html">AccountSettings</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistOverview.html">ArtistOverview</a></li><li><a href="ArtistSidebar.html">ArtistSidebar</a></li><li><a href="Audio_Player.html">Audio_Player</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="ChangePassword.html">ChangePassword</a></li><li><a href="ChangeProfilePhoto.html">ChangeProfilePhoto</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="EditPlaylist.html">EditPlaylist</a></li><li><a href="global.html#EditProfile">EditProfile</a></li><li><a href="ForgetPassword.html">ForgetPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="Login.html">Login</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="OverviewContent.html">OverviewContent</a></li><li><a href="Player.html">Player</a></li><li><a href="Playlist.html">Playlist</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PrivacyPolicy.html">PrivacyPolicy</a></li><li><a href="RecentActivities.html">RecentActivities</a></li><li><a href="Search.html">Search</a></li><li><a href="ShareSong.html">ShareSong</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="Userprofile.html">Userprofile</a></li><li><a href="welcomePage.html">welcomePage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li><li><a href="global.html#CardList">CardList</a></li><li><a href="global.html#day">day</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#GoPremium">GoPremium</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#month">month</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#year">year</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Jun 08 2020 20:19:35 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

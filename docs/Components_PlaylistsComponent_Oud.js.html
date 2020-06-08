@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/PlaylistsComponent/Oud.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/PlaylistsComponent/Oud.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import './PlaylistPage.css';
+import DeletePlaylist from './DeletePlaylist';
+import CardMedia from '../Media/CardMedia';
+import ReactSnackBar from "react-js-snackbar";
+import './SnackBar.css';
+import HomePageNavbar from '../HomePage/HomePageNavbar';
+import {connect} from 'react-redux';
+import AddToPlaylist from './AddToPlaylist';
+import * as actionTypes from "../../Store/actions";
+import EditPlaylist from './EditPlaylist';
+import ShareSong  from '../Share/ShareSong';
+import { BASEURL } from '../../Constants/BaseURL';
+/** Class Oud 
+ * @category Genre
+ * type of genre
+ * @extends Component
+ */
+export class PlaylistPage extends Component
+{
+  /** image of the playlist
+     * @memberof PlaylistPage
+     * @type {string}
+     */
+  state= 
+  { 
+    
+      playlistImage: "https://i.ibb.co/Q89hfcW/single-bar-note.jpg",
+      songsNumber: 0,
+      SongInfo:[],  
+      ShowAdd: false,
+      ShowingAdd: false,
+      ShowRemove: false,
+      ShowingRemove: false,
+      playplaylist: "Play",
+      playlistInfo:{},
+      ArtistNames:[],
+      playlistTracks:[]
+  }
+  
+  componentDidMount(){
+  
+    var url = BASEURL+ "/oud"; 
+  
+    const requestOptions = {
+      method: 'GET',
+    };
+    fetch(url,requestOptions)
+      .then((response) => { return response.json()})
+      .then((data) => {
+        // console.log(data)
+        this.setState({ 
+          SongInfo:data.tracks,
+          songsNumber:data.tracks.length
+        });
+      })
+      .catch((error)=>{console.log(error);
+  
+      })
+    }
+    
+  likeSong = e => {
+     const {id} = e.target;
+     var heart=document.getElementById(id);
+
+     heart.classList.toggle("far");
+     heart.classList.toggle("fas");
+  }
+
+  toggle_add_to_playlist()
+{
+  var blur_add_to_playlist=document.getElementById('blur-add-to-playlist');
+  if (blur_add_to_playlist!=null){
+  blur_add_to_playlist.classList.toggle('activate')
+  }
+  var popup_add_to_playlist=document.getElementById('popup-add-to-playlist');
+  if (popup_add_to_playlist!=null){
+  popup_add_to_playlist.classList.toggle('activate')
+}
+}
+
+playButton = e => {
+  const {id} = e.target;
+  if ( this.state.playplaylist === "Play" ) {
+    this.setState({playplaylist: "Pause"});
+  }
+  else if ( this.state.playplaylist === "Pause" ) {
+    this.setState({playplaylist: "Play"});
+  }
+}
+
+show = e => {
+  var check = e.target.id;
+  if (check=="ADD"){
+  this.setState({ ShowAdd: true, ShowingAdd: true });
+  setTimeout(() => {
+    this.setState({ ShowAdd: false, ShowingAdd: false });
+  }, 2000); 
+  return; 
+  }
+else if (check=="REMOVE"){
+  this.setState({ ShowRemove: true, ShowingRemove: true });
+  setTimeout(() => {
+    this.setState({ ShowRemove: false, ShowingRemove: false });
+  }, 2000);
+  return;  
+}
+};
+
+stream=(song)=>{
+  this.props.SELECT_SONG(song);
+}
+
+  render()
+  {
+    const Card = () => {
+        
+        const datas = this.state.SongInfo.slice(0,1).map((user,i)=>{ 
+          return &lt;CardMedia image={this.state.SongInfo[i].imgURL} />})
+       return (
+           &lt;div>
+               {datas}
+           &lt;/div>
+       )
+      }
+  return(
+    &lt;div>
+  &lt;div className="oud">
+   &lt;HomePageNavbar/>
+      &lt;div className="content-spacing">
+        &lt;div className="row" >
+          &lt;div className="col-xs-12  col-lg-5 col-xl-4 d-flex justify-content-center " style={{display:"table"}}>
+             &lt;ul className="list-unstyled centered-content">
+            &lt;Card/> 
+              
+
+					  &lt;li> &lt;h3> OUD &lt;/h3> &lt;/li>
+					  &lt;li> &lt;h5> Spotify &lt;/h5>&lt;/li>
+            &lt;li >
+               &lt;a id="play-button" href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playplaylist}&lt;/a>
+            &lt;/li>
+            &lt;li  className="d-flex justify-content-around">
+            &lt;button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> &lt;/button>
+             
+            
+          &lt;div className="dropdown ">
+              &lt;a className="card-menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• &lt;/a>
+              &lt;div className="dropdown-menu card-dropdown-content ">
+              &lt;a className="dropdown-item drop-class" data-toggle="modal" data-target="#edit">Edit Playlist&lt;/a>
+              &lt;a className="dropdown-item drop-class" data-toggle="modal" data-target="#delete">Delete&lt;/a>
+              
+          &lt;/div>
+
+          &lt;/div>
+            &lt;/li>
+            &lt;li > &lt;div style={{color:"#b3b3b3"}}> {this.state.songsNumber} Songs&lt;/div> &lt;/li>
+					&lt;/ul>
+          &lt;/div>
+        &lt;div className="col-12 col-lg-7 col-xl-8">
+        {this.state.songsNumber == 0 ? 
+
+        &lt;div>
+          &lt;div className=" d-flex justify-content-center fas fa-headphones mb-3"> &lt;/div>
+          &lt;h1 className="d-flex justify-content-center font-weight-bolder">It's a bit empty here...&lt;/h1> 
+          &lt;h5 className="d-flex justify-content-center mt-3">Let's find some songs for your playlist.&lt;/h5>
+          &lt;div className="d-flex justify-content-center">
+            &lt;a className=" btn btn-light text-dark rounded-pill text-center px-5 py-2 px-4 mt-3 font-weight-bold " href="/webplayer/HomePage" >Discover&lt;/a>
+          &lt;/div>
+          
+          
+          &lt;div className="row mt-5 mb-2">
+              &lt;div className="col-xl-10 col-md-9 col-8 col-6">
+              &lt;ul className="list-unstyled">
+                &lt;li className="Suggested d-flex align-items-start" >Suggested Tracks&lt;/li>
+                &lt;li className="Suggested-text d-flex align-items-start" >Based on the songs in this song list&lt;/li>
+              &lt;/ul>
+              &lt;/div>
+              &lt;div className="col-xl-2 col-md-2 col-2 col-2">
+                &lt;a className=" btn btn-outline-dark text-light rounded-pill text-center px-5 py-2 mt-3 font-weight-bold " href="#" >update&lt;/a>
+              &lt;/div>
+          &lt;/div>
+
+          &lt;div className="songs">
+            &lt;div className="row">
+              &lt;div className="col-xl-1 col-md-1 col-1 col-2">
+               &lt;div className="music-sign mt-2 mx-4 "> &lt;/div>
+              &lt;/div>
+              &lt;div className="col-xl-8 col-md-6 col-sm-6 col-6 mt-3 d-flex align-items-start">
+              &lt;ul className="list-unstyled ">
+                  &lt;li className="d-flex align-items-start">Song name&lt;/li>
+                  &lt;li className="song-info">&lt;a href='/webplayer/artistprofile/'>Artist Name&lt;/a> &lt;span className="font-weight-bold">.&lt;/span> &lt;a href='/webplayer/album'> Album Name &lt;/a>&lt;/li>
+              &lt;/ul>
+              &lt;/div>
+              &lt;div className="col-xl-2 col-md-4 col-sm-4 col-4 d-flex justify-content-end">
+                &lt;a className=" add-button btn btn-outline-dark rounded-pill text-light  text-center px-4 py-2 mt-3 font-weight-bold " href="#" >ADD&lt;/a>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+
+        &lt;/div>
+          
+          : 
+          
+          this.state.SongInfo.map((song,index)=>(
+          &lt;div onClick={() =>this.stream(song)} key={index} className="songs">
+            &lt;div  className="row">
+              &lt;div className="col-xl-1 col-md-1 col-1 col-2">
+               &lt;div className="music-sign mt-2 mx-4 "> &lt;/div>
+              &lt;/div>
+              &lt;div className="col-xl-8 col-md-6 col-sm-6 col-6 mt-3 d-flex align-items-start">
+              &lt;ul className="list-unstyled">
+                  &lt;li className="d-flex align-items-start">{song.SongName}&lt;/li>
+                  &lt;li className="song-info">&lt;a href='/webplayer/artistprofile/'>{song.Artist} &lt;/a> &lt;span className="font-weight-bold"> . &lt;/span> &lt;a href='/webplayer/album'> {song.AlbumName} &lt;/a>&lt;/li>
+              &lt;/ul>
+              &lt;/div>
+              &lt;div className="col-xl-1 col-md-2 col-sm-2 col-2">
+              &lt;div className="dropdown d-flex align-items-center ">
+                &lt;a className="song-menu Menu mt-4" href="/account" id="Dropdown" data-toggle="dropdown" > ••• &lt;/a>
+                  &lt;div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
+                  &lt;a className="dropdown-item drop-class" id="ADD" value="ShowAdd" onClick={(e) => {this.show(e);}}  >Add to your liked songs&lt;/a>
+                  &lt;a className="dropdown-item drop-class" data-toggle="modal" data-target="#add-to-playlist">Add to playlist&lt;/a>
+                &lt;a className="dropdown-item drop-class" data-toggle="modal" data-target="#share-song">Share Song&lt;/a>
+
+                  &lt;/div>
+                &lt;/div>
+              &lt;/div>
+              &lt;div className="col-xl-1 col-md-2 col-sm-2 col-2">
+                &lt;div className="d-flex align-items-center duration mt-4">{song.Duration}&lt;/div>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        ))}
+    &lt;ReactSnackBar Icon={&lt;span className="fab fa-spotify">&lt;/span>} Show={this.state.ShowAdd}>
+                      Added To Your Liked Songs
+    &lt;/ReactSnackBar>
+
+    &lt;ReactSnackBar Icon={&lt;span className="fab fa-spotify">&lt;/span>} Show={this.state.ShowRemove}>
+                      Removed From This Playlist
+    &lt;/ReactSnackBar>
+      &lt;/div> 
+      &lt;/div>
+      &lt;/div>
+      &lt;DeletePlaylist delete={this.state.playlistInfo.playlistName} />
+      &lt;EditPlaylist/>
+      &lt;AddToPlaylist/>
+      &lt;ShareSong />
+    &lt;/div>
+    
+    &lt;/div>
+    
+  )
+}
+}
+const mapStateToProps = state =>{
+  return{
+    userToken: state.userToken,
+    PlaylistID: state.selectedPlaylistID,
+    songURL: state.selectedSong
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+
+  return {
+
+    SELECT_SONG : (song) => dispatch ({type: actionTypes.SELECT_SONG , value: song})
+  };
+};
+
+
+export default connect(mapStateToProps,mapDispatchToProps) (PlaylistPage);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AboutUs.html">AboutUs</a></li><li><a href="AccountHeading.html">AccountHeading</a></li><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="AccountSettings.html">AccountSettings</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistOverview.html">ArtistOverview</a></li><li><a href="ArtistSidebar.html">ArtistSidebar</a></li><li><a href="Audio_Player.html">Audio_Player</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="ChangePassword.html">ChangePassword</a></li><li><a href="ChangeProfilePhoto.html">ChangeProfilePhoto</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="EditPlaylist.html">EditPlaylist</a></li><li><a href="global.html#EditProfile">EditProfile</a></li><li><a href="ForgetPassword.html">ForgetPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="Login.html">Login</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="OverviewContent.html">OverviewContent</a></li><li><a href="Player.html">Player</a></li><li><a href="Playlist.html">Playlist</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PrivacyPolicy.html">PrivacyPolicy</a></li><li><a href="RecentActivities.html">RecentActivities</a></li><li><a href="Search.html">Search</a></li><li><a href="ShareSong.html">ShareSong</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="Userprofile.html">Userprofile</a></li><li><a href="welcomePage.html">welcomePage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li><li><a href="global.html#CardList">CardList</a></li><li><a href="global.html#day">day</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#GoPremium">GoPremium</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#month">month</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#year">year</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Jun 08 2020 20:19:35 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
