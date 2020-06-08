@@ -400,7 +400,7 @@ export class Search extends Component {
                             <div className="row">
                             {this.state.artistTargets.map((artist,index)=>(
                             <div className="col-xl-1 col-lg-3 col-md-2 col-sm-1 col-1 mt-3 artist-card ">
-                                <a href="/webplayer/playlist" class="artist-card"  >
+                                <a href="webplayer/artistprofile" class="artist-card"  >
                                     <div className="image-padding"> <img src={artist.artistImg} class="img-style" alt=""></img></div>
                                     <h3 class="artist-info-style text-white d-flex align-items-start mt-3 ">{artist.artistName}</h3>
                                     <h5 className=" text-white d-flex align-items-start" >Artist</h5>
