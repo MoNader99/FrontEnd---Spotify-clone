@@ -1,0 +1,54 @@
+.card-design{
+    display: inline-flex;
+    box-sizing: border-box;
+    background-color:rgb(66, 66, 66) ;
+    width:13rem;
+    height: 16rem;
+    border-radius: 0.7rem;
+    margin-right: 1rem;
+    position: relative;
+    cursor: pointer;
+}
+.card-img{
+    display: inline-block;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 500rem;
+    top: 1rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    position: absolute;
+}
+
+.card-h3{
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    bottom: 1rem;
+    left: 3.7rem;
+    position: absolute;
+}
+
+.unstyled-button {
+    background-color:#121212 ;
+    border:none;
+    display: inline-block;
+ }
+.clicked{
+    opacity: 0.4;
+}
+/* #unstyled-button:active{
+    opacity: 0.4;
+} */
+/* .unstyled-button:focus{
+    opacity: 0.4;
+} */
+
+@media (max-width:500){
+    .card-img{
+        width:5rem;
+        height: 5rem;
+    }
+}

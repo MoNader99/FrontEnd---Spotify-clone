@@ -19,7 +19,7 @@ import AddAlbum from './Components/Artist/ArtistProfile/AddAlbum'
 import WebPlayerPage from './Containers/WebPlayer/WebPlayer';
 import AddSong from './Components/Artist/ArtistProfile/AddSong';
 import AccountLayout from './Containers/AccountLayout';
-
+import Recommend from './Components/Choose Artist/RecommendArtists'
 import HelpPage from './Components/Help/HelpPage'
 ;
 import AboutUs from './Components/HelpingPages/AboutUs';
@@ -47,6 +47,7 @@ function App() {
           <Route  exact path="/artist/addsong" component={AddSong}/>
           <Route exact path="/help/" component={HelpPage}/>  
           <Route  path ="/account" component={AccountLayout}/>
+          <Route path= '/Recommend' component={Recommend}></Route>
          
         
 
