@@ -12,6 +12,10 @@
     font-weight: bold;
     text-align: center;
 }
+.rec{
+    background-color: orange;
+    border-radius: 20px;
+}
 .btn{
     width: 150px;
     margin-left: auto;

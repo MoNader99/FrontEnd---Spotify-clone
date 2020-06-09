@@ -13,7 +13,8 @@ class Recommend extends Component{
         console.log(this.state.list[7].name)
     }
     SubmitArtists(){
-        console.log('func called')
+        this.state.Submitted=true
+        window.location.replace("/account-overview");
     }
 
     render(){
@@ -21,7 +22,7 @@ class Recommend extends Component{
         return(
         <div className='first-home tc'> 
                 <h1 className='first-h1'> Choose 3 or more artists you like. </h1>
-                <button onClick={()=>this.SubmitArtists()} className='btn btn-succes mb4'>Submit</button>
+                <button onClick={()=>this.SubmitArtists()} className='btn rec btn-succes mb4 white'>Submit</button>
                 <CardList List={this.state.list}></CardList>
         </div>
         )

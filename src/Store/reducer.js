@@ -7,7 +7,7 @@ const State = {
   selectedProfileID: null,
   userID: null,
   userToken: null,
-
+  RecommendedArtists: [],
   selectedSong: {songURL:""},
   loggenIn: false,
   user:{ImgUrl:""},
@@ -30,7 +30,22 @@ const reducer = (state = State, action) => {
 
       };
       break;
-
+    case actionTypes.Recommend:
+      if (action.value[0]){
+        state.RecommendedArtists.push(action.value[1])
+          return{
+              ...state,
+              // artists: ()=>state.artists.push(Action.payload[1])
+          }
+      }
+      else{
+        const index=state.artists.indexOf(action.value[1])
+        console.log("removed item at",index)
+        artists:state.RecommendedArtists.splice(index,1)
+        return{
+            ...state,
+        }
+      }
     case actionTypes.SELECT_ALBUM:
       return {
         ...state,

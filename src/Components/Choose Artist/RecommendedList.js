@@ -1,6 +1,6 @@
 import React from 'react';
 import './List.css';
-import Card from './ArtistCard'
+import {ArtistCard} from './ArtistCard'
 import {ArtistsData} from './ArtistData'
 
 
@@ -11,12 +11,11 @@ const ArtistsRecommended = (List)=>{
             { 
                 ArtistsData.map((user,i) =>{
                     return (
-                        <Card 
-                            key={i} 
+                        <ArtistCard 
                             id={ArtistsData[i].id} 
                             image={ArtistsData[i].image}
                             name={ArtistsData[i].name}
-                        />
+                        ></ArtistCard>
                     );
                 })
             }

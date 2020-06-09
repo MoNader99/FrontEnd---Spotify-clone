@@ -8,3 +8,4 @@ export const ON_SIGNOUT = "ON_SIGNOUT";
 export const ON_SIGNIN = "ON_SIGNIN";
 export const SELECT_PHOTO="SELECT_PHOTO"
 export const ON_SIGNINARTIST = "ON_SIGNINARTIST";
+export const Recommend = 'Recommend';
