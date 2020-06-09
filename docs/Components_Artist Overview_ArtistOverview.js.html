@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/Artist Overview/ArtistOverview.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/Artist Overview/ArtistOverview.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import "./ArtistOverview.css";
+import  HomePageNavbar  from '../HomePage/HomePageNavbar';
+import {BASEURL} from '../../Constants/BaseURL'
+
+/** Class ArtistOverview 
+ * @category ArtistOverview
+ * @extends Component
+ */
+class ArtistOverview extends Component {
+  constructor(props){
+    super(props);
+    this.state = 
+    {
+        /**username in Artist Profile
+        * @memberof ArtistOverview
+        * @type {string}
+        */
+        username:"Massar Egbari",
+
+        /**Number of playlists that the user create
+        * @memberof ArtistOverview
+        * @type {number}
+        */
+        playlists:15,
+        songsNumber:3,
+        /**Text on follow button
+        * @memberof ArtistOverview
+        * @type {string}
+        */
+        ButtonText:"Follow",
+
+        /**Array of playlists
+        * @memberof ArtistOverview
+        * @type {Array&lt;playlists>}
+        */
+        playlistTargets:[]
+    }
+  }
+
+  /**Function to Handle follow button
+   * @memberof ArtistOverview
+   * @func FollowButton
+   */
+  FollowButton = () => {
+   if ( this.state.ButtonText === "Follow" ) {
+    var url =  BASEURL+"/user/follow";    
+    const requestOptions = {
+      method: 'POST', 
+      headers: {'Content-Type': 'application/json' }, 
+      body: JSON.stringify({
+         playlistName: this.state.userid
+        }) ,
+  
+    };    
+       fetch(url,requestOptions)
+        .then((res) => {
+          if(res.status===200){
+            console.log("response is ok")
+            this.setState({ButtonText: "UnFollow"});
+          }
+     })
+        .then((data) =>{})
+        .catch((err)=>console.log(err))
+   }
+   else if ( this.state.ButtonText === "UnFollow" ) {
+    var url =  BASEURL+"/user/unfollow";    
+    const requestOptions = {
+      method: 'POST', 
+      headers: {'Content-Type': 'application/json' }, 
+      body: JSON.stringify({
+         playlistName: this.state.userid
+        }) ,
+  
+    };    
+       fetch(url,requestOptions)
+        .then((res) => {
+          if(res.status===200){
+            console.log("response is ok")
+            this.setState({ButtonText: "Follow"});
+          }
+     })
+        .then((data) =>{})
+        .catch((err)=>console.log(err))
+   }
+ }
+
+
+ 
+  
+     
+  
+
+ /**Function that is called when the component renders
+   * @memberof ArtistOverview
+   * @func componentDidMount
+   */
+ componentDidMount(){
+    const url=BASEURL + "/artistoverview"
+    const requestOptions = {
+        method: 'GET',
+      };
+       /**Function that is fetches the artist data
+   * @memberof ArtistOverview
+   * @func fetch
+   */
+    fetch(url,requestOptions)
+              .then((response) => { return response.json()})
+              .then((data) => {
+                this.setState({ 
+                  playlistTargets:data.Artist,
+                  songsNumber:data.Artist.length
+                });
+              })
+              .catch((error)=>{console.log(error);
+    })
+ }
+  render(){
+    const Card = () => {
+        
+        const datas = this.state.playlistTargets.slice(0,1).map((user,i)=>{ 
+          return &lt;ul className="list-unstyled list">
+                    &lt;li className="profile">Artist&lt;/li>
+                    &lt;li className="username">{this.state.playlistTargets[i].Artist}&lt;/li>
+                    &lt;li className="playlists">{this.state.songsNumber} Songs&lt;/li>
+                &lt;/ul>})
+       return (
+           &lt;div>
+               {datas}
+           &lt;/div>
+       )
+      }
+    return (
+        &lt;div>
+            &lt;HomePageNavbar/>
+        &lt;div className="user ">
+          &lt;div className="artist-profile row">
+           
+            &lt;div className="col-xl-10 col-lg-12 d-flex align-items-center">
+                &lt;Card>&lt;/Card>
+            &lt;/div>
+            &lt;div className="col-xl-2 col-lg-12 d-flex align-items-center justify-content-center">
+            &lt;button onClick={this.FollowButton} className="follow btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold">{this.state.ButtonText}&lt;/button>
+            &lt;/div>
+          &lt;/div>
+        
+          &lt;div className="public row pl-5">
+            &lt;h3>Popular&lt;/h3>
+          &lt;/div>
+
+          &lt;div className=" mt-3 pl-5">
+          { this.state.playlistTargets.map((Card,index)=>(
+            &lt;div className="song">
+            
+                &lt;div className="row">
+               &lt;div className="col-xl-1 col-md-1 col-1 col-2">
+                &lt;div className="music-sign mt-2 mx-4 "> &lt;/div>
+               &lt;/div>
+               &lt;div className="col-xl-8 col-md-6 col-sm-6 col-6 mt-3 d-flex align-items-start">
+               &lt;img alt="jkl" src={Card.icon} className="cover">&lt;/img>
+               &lt;ul className="list-unstyled">
+               
+                   &lt;li className="d-flex align-items-start">{Card.SongName}&lt;/li>
+                   &lt;li className="song-info">&lt;a href='/webplayer/artistprofile/'>{Card.Artist} &lt;/a>  &lt;/li>
+                &lt;/ul>
+               &lt;/div>
+                    
+                    
+               &lt;div className="col-xl-1 col-md-2 col-sm-2 col-2">
+                 &lt;div className="d-flex align-items-center duration mt-4">{Card.Duaration}&lt;/div>
+               &lt;/div>
+                &lt;/div> 
+                
+            &lt;/div>
+           
+            
+          ))}
+          &lt;/div>
+          &lt;/div>
+        &lt;/div> 
+    );
+  }
+}
+export default ArtistOverview;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AboutUs.html">AboutUs</a></li><li><a href="AccountHeading.html">AccountHeading</a></li><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="AccountSettings.html">AccountSettings</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistOverview.html">ArtistOverview</a></li><li><a href="ArtistSidebar.html">ArtistSidebar</a></li><li><a href="Audio_Player.html">Audio_Player</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="ChangePassword.html">ChangePassword</a></li><li><a href="ChangeProfilePhoto.html">ChangeProfilePhoto</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="EditPlaylist.html">EditPlaylist</a></li><li><a href="global.html#EditProfile">EditProfile</a></li><li><a href="ForgetPassword.html">ForgetPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="Login.html">Login</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="OverviewContent.html">OverviewContent</a></li><li><a href="Player.html">Player</a></li><li><a href="Playlist.html">Playlist</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PrivacyPolicy.html">PrivacyPolicy</a></li><li><a href="RecentActivities.html">RecentActivities</a></li><li><a href="Search.html">Search</a></li><li><a href="ShareSong.html">ShareSong</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="Userprofile.html">Userprofile</a></li><li><a href="welcomePage.html">welcomePage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li><li><a href="global.html#CardList">CardList</a></li><li><a href="global.html#day">day</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#GoPremium">GoPremium</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#month">month</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#year">year</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Jun 08 2020 20:19:35 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

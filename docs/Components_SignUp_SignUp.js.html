@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/SignUp/SignUp.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/SignUp/SignUp.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import {BASEURL} from '../../Constants/BaseURL'
+import LoginFacebook from '../Login/FacebookLogin'
+import './SignUp.css';
+
+/** Class SignUp 
+ * @category SignUp
+ * @extends Component
+ */
+export class SignUp extends Component{
+  state = {
+
+    /**email error text 
+    * @memberof SignUp
+    * @type {string}
+    */
+    emailError:"",
+
+    /**confirm email error text
+    * @memberof SignUp
+    * @type {string}
+    */
+    comfirmEmailError:"",
+
+    /**password error text
+    * @memberof SignUp
+    * @type {string}
+    */
+    passwordError:"",
+
+    /**username error text 
+    * @memberof SignUp
+    * @type {string}
+    */
+    usernameError:"",
+
+    /**year error  
+    * @memberof SignUp
+    * @type {string}
+    */
+    yearError:"",
+
+    /**days error
+    * @memberof SignUp
+    * @type {string}
+    */
+    daysError:"",
+
+
+    /**chech whether user inputs are correct or not 
+    * @memberof SignUp
+    * @type {boolean}
+    */
+    checkedCorrect: false,
+
+    /**wrong style of email 
+    * @memberof SignUp
+    * @type {object}
+    */
+    wrongStyleEmail:{},
+
+    /**wrong style of confirmation email 
+    * @memberof SignUp
+    * @type {object}
+    */
+    wrongStyleConfirmEmail:{},
+
+    /**wrong style of password 
+    * @memberof SignUp
+    * @type {object}
+    */
+    wrongStylePassword:{},
+
+    /**wrong style of username 
+    * @memberof SignUp
+    * @type {object}
+    */
+    wrongStyleUsername:{},
+
+    /**wrong style of years
+    * @memberof SignUp
+    * @type {object}
+    */
+    wrongStyleYear:{},
+
+    /**wrong style of days
+    * @memberof SignUp
+    * @type {object}
+    */
+    wrongStyleDay:{},
+
+    /**Email text 
+    * @memberof SignUp
+    * @type {string}
+    */
+    EmailText:"",
+
+    /**check email validation
+    * @memberof SignUp
+    * @type {boolean}
+    */
+    CorrectEmail:false,
+
+    /**check confirm email validation 
+    * @memberof SignUp
+    * @type {boolean}
+    */
+    CorrectConfirmEmail:false,
+
+    /**check password validation 
+    * @memberof SignUp
+    * @type {boolean}
+    */
+    CorrectPassword:false,
+
+    /**check username validation  
+    * @memberof SignUp
+    * @type {boolean}
+    */
+    CorrectUsername:false,
+
+    /**check days validation  
+    * @memberof SignUp
+    * @type {boolean}
+    */
+    CorrectDays:false,
+
+    /**check years validation  
+    * @memberof SignUp
+    * @type {boolean}
+    */
+    Correctyears:false,
+    
+}
+
+ /**Function to Validate email
+ * @memberof SignUp
+ * @func validateEmail
+ * @param event
+ */
+validateEmail = (event) => {
+  let EmailText = event.target.value;
+
+  if (!EmailText.includes("@") || EmailText.includes(" "))
+  {
+    if (EmailText==""){
+      this.setState({
+        emailError: "You need to enter your email.",
+        wrongStyleEmail:{'border': '1px solid red'},
+        CorrectEmail:false,
+    })
+    }
+    else{
+      this.setState({
+        emailError: "This email is invalid. Make sure it's written like example@email.com",
+        wrongStyleEmail:{'border': '1px solid red'},
+        CorrectEmail:false,
+    })
+    }
+  }
+
+  else
+  {
+    if(EmailText=="@"){
+      this.setState({
+        emailError: "@ only is not enough",
+        wrongStyleEmail:{'border': '1px solid red'},
+        CorrectEmail:false,
+    })
+    }
+    else{
+      this.setState({
+        wrongStyleEmail:{},
+        emailError:null,
+        EmailText:EmailText,
+        CorrectEmail:true,
+      })
+    }
+  }
+}
+
+/**Function to Validate confirmation email
+ * @memberof SignUp
+ * @func validateConfirmEmail
+ * @param event
+ */
+validateConfirmEmail = (event) => {
+  let ConfirmEmailText = event.target.value;
+  if(this.state.CorrectEmail){
+    if(ConfirmEmailText!=this.state.EmailText){
+      if(ConfirmEmailText==""){
+        this.setState({
+          comfirmEmailError: "You need to confirm your email.",
+          wrongStyleConfirmEmail:{'border': '1px solid red'},
+          CorrectConfirmEmail:false,
+      })
+      }
+      else{
+      this.setState({
+        comfirmEmailError: "The email addresses don't match.",
+        wrongStyleConfirmEmail:{'border': '1px solid red'},
+        CorrectConfirmEmail:false,
+    })
+    }
+
+    }
+    else{
+      this.setState({
+        comfirmEmailError: "",
+        wrongStyleConfirmEmail:{},
+        CorrectConfirmEmail:true,
+    })
+    }
+  }
+}
+
+/**Function to Validate Password
+ * @memberof SignUp
+ * @func validatePassword
+ * @param event
+ */
+validatePassword = (event) => {
+  let PasswordText = event.target.value;
+
+  if(PasswordText.length&lt;=6 &amp;&amp; PasswordText.length>=1){
+    this.setState({
+      passwordError: "Your password is too short.",
+      wrongStylePassword:{'border': '1px solid red'},
+      CorrectPassword:false,
+  })
+  }
+  else if (PasswordText==""){
+    this.setState({
+      passwordError: "You need to enter a password.",
+      wrongStylePassword:{'border': '1px solid red'},
+      CorrectPassword:false,
+  })
+  }
+  else {
+    this.setState({
+      passwordError: "",
+      wrongStylePassword:{},
+      CorrectPassword:true,
+  })
+  }
+}
+
+/**Function to Validate Username
+ * @memberof SignUp
+ * @func validateUsername
+ * @param event
+ */
+validateUsername=(event)=>{
+  let UsernameText = event.target.value;
+
+  if (UsernameText==""){
+    this.setState({
+      usernameError: "Enter a name for your profile.",
+      wrongStyleUsername:{'border': '1px solid red'},
+      CorrectUsername:false,
+  })
+  }
+  else{
+    this.setState({
+      usernameError: "",
+      wrongStyleUsername:{},
+      CorrectUsername:true,
+  })
+  }
+}
+
+/**Function to Validate days number
+ * @memberof SignUp
+ * @func validateDays
+ * @param event
+ */
+validateDays=(event)=>{
+  let days= event.target.value;
+  days=Number(days)
+  if(days&lt;=0 || days>31 || isNaN(days)){
+    this.setState({
+      daysError: "Enter a valid day of the month.",
+      wrongStyleDay:{'border': '1px solid red'},
+      CorrectDays:false,
+  })
+  }
+  else{
+    this.setState({
+      daysError: "",
+      wrongStyleDay:{},
+      CorrectDays:true,
+  })
+  }
+}
+
+/**Function to Validate years number
+ * @memberof SignUp
+ * @func validateYears
+ * @param event
+ */
+validateYears=(event)=>{
+  let years= event.target.value;
+  years=Number(years)
+  if(years&lt;1990 || years>2002 || isNaN(years)){
+    this.setState({
+      yearError: "Enter a valid year.",
+      wrongStyleYear:{'border': '1px solid red'},
+      Correctyears:false,
+  })
+  }
+  else{
+    this.setState({
+      yearError: "",
+      wrongStyleYear:{},
+      Correctyears:true,
+  })
+  }
+}
+
+/**Function to handle signup button
+ * @memberof SignUp
+ * @func handleSingUp
+ * @param event
+ */
+handleSingUp=(event)=>{
+  if(this.state.CorrectEmail==true &amp;&amp; 
+    this.state.CorrectConfirmEmail==true &amp;&amp; 
+    this.state.CorrectPassword==true &amp;&amp; 
+    this.state.CorrectUsername==true &amp;&amp; 
+    this.state.Correctyears==true &amp;&amp; 
+    this.state.CorrectDays==true)
+    {
+        var url =  BASEURL+"/signup";    
+           const requestOptions = {
+             method: 'POST', 
+             body: JSON.stringify({ 
+               email:this.state.EmailText,
+               password:this.state.PasswordText,
+               username:this.state.UsernameText,
+               birthdate:this.state.birthdate,
+               gender: this.state.gender
+              }) ,
+         
+           };    
+              fetch(url,requestOptions)
+               .then((res) => {
+                 if(res.status===200){
+                    console.log("response is ok")
+                    this.setState({checkedCorrect:false})
+                    // window.location.replace("/account-overview");
+                 }
+                 else{
+                  this.setState({checkedCorrect:true})
+                 }
+            })
+       
+               .then((data) =>{})
+               .catch((err)=>console.log(err))
+    
+    }
+  else{
+    this.setState({checkedCorrect:true})
+  }
+}
+
+
+  render() 
+	{
+    return(
+      &lt;div className="Sign-Up">
+
+          &lt;div className="container-fluid border-bottom content mb-5">
+              &lt;a href="/" className="Image container">&lt;/a> 
+          &lt;/div>
+
+        
+          &lt;div className="container ">
+          &lt;div className="mb-3 d-flex justify-content-center">
+          {/* &lt;button id="login-facebook-button" className="btn rounded-pill text-center " >
+                    &lt;i className="fab fa-facebook">&lt;/i> continue with facebook &lt;/button>  */}
+                    &lt;LoginFacebook/>
+          &lt;/div>
+
+          &lt;div className="d-flex justify-content-center">&lt;p className="or">or&lt;/p>&lt;/div>
+          &lt;div className="d-flex justify-content-center">&lt;h2 >Sign up with your email address&lt;/h2>&lt;/div>
+
+          {this.state.checkedCorrect == true ? &lt;div className="d-flex justify-content-center" > &lt;div className="incorrect ">Please fill all inputs in the correct way.&lt;/div> &lt;/div>:&lt;div>&lt;/div>}
+            &lt;form class="needs-validation" novalidate>
+                &lt;div class="form-group d-flex justify-content-center">
+                  &lt;input type="email" style={this.state.wrongStyleEmail} className="form-control" onChange={this.validateEmail} placeholder="Email">&lt;/input>
+                &lt;/div>
+                &lt;div className="error-validate">{this.state.emailError}&lt;/div>
+
+                &lt;div class="form-group d-flex justify-content-center">
+                  &lt;input type="email" style={this.state.wrongStyleConfirmEmail} className="form-control" onBlur={this.validateConfirmEmail} placeholder="Confirm Email">&lt;/input>
+                &lt;/div>
+                &lt;div className="error-validate">{this.state.comfirmEmailError}&lt;/div>
+
+                &lt;div class="form-group d-flex justify-content-center">
+                  &lt;input type="password" style={this.state.wrongStylePassword} className="form-control" onChange={this.validatePassword} placeholder="Password">&lt;/input>
+                &lt;/div> 
+                &lt;div className="error-validate">{this.state.passwordError}&lt;/div>
+
+                &lt;div class="form-group d-flex justify-content-center">
+                  &lt;input type="text" style={this.state.wrongStyleUsername} className="form-control" onChange={this.validateUsername} placeholder="What should we call you ?">&lt;/input>
+                &lt;/div>
+                &lt;div className="error-validate">{this.state.usernameError}&lt;/div>
+
+
+                &lt;div className="mb-3 d-flex justify-content-center" >
+                &lt;select class="custom-select months " >
+                      &lt;option value=""> Month &lt;/option>
+                      &lt;option value="01"> January &lt;/option>
+                      &lt;option value="02"> February &lt;/option>
+                      &lt;option value="03"> March &lt;/option>
+                      &lt;option value="04"> April &lt;/option>
+                      &lt;option value="05"> May &lt;/option>
+                      &lt;option value="06"> June &lt;/option>
+                      &lt;option value="07"> July &lt;/option>
+                      &lt;option value="08"> August &lt;/option>
+                      &lt;option value="09"> September &lt;/option>
+                      &lt;option value="10"> October &lt;/option>
+                      &lt;option value="11"> November &lt;/option>
+                      &lt;option value="12"> December &lt;/option>
+                &lt;/select>
+                &lt;input type="text" style={this.state.wrongStyleDay} onChange={this.validateDays} className="form-control days" placeholder="Day">&lt;/input>
+                &lt;input type="text" style={this.state.wrongStyleYear} onChange={this.validateYears} className="form-control year" placeholder="year">&lt;/input>
+                &lt;/div>
+                &lt;div className="error-validate">{this.state.yearError}&lt;/div>
+                &lt;div className="error-validate">{this.state.daysError}&lt;/div>
+
+                &lt;div className="mt-3 d-flex justify-content-center">
+                &lt;select class="custom-select months " >
+                      &lt;option value="Male"> Male &lt;/option>
+                      &lt;option value="Female"> Female &lt;/option>
+                      &lt;option value="Non-Binary"> Non-binary &lt;/option>
+                &lt;/select>
+                &lt;/div>
+
+                &lt;div className="terms-and-conditions mt-3 ">
+                  &lt;p className="mb-3">By clicking on Sign up, you agree to Spotify's&lt;a className="green" href="/"> Terms and Conditions of Use&lt;/a>.&lt;/p>
+                  &lt;p className="mb-3">To learn more about how Spotify collects, uses, shares and protects your personal data please read Spotify's&lt;a className="green" href="/privacypolicy"> Privacy Policy&lt;/a>.&lt;/p>
+                &lt;/div>
+
+                &lt;div className="d-flex justify-content-center">&lt;a onClick={this.handleSingUp} type="submit" className="submit btn rounded-pill text-center  mb-3">SIGN UP&lt;/a>&lt;/div>
+                &lt;p  style={{'font-size' :'0.75em', 'font-weight': '400'}}>Already have an account? &lt;a className="green" href="/logIn">Log in&lt;/a>&lt;/p>
+            &lt;/form>
+          &lt;/div>
+
+      &lt;/div>
+    );
+  }
+};
+
+export default  SignUp;
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AboutUs.html">AboutUs</a></li><li><a href="AccountHeading.html">AccountHeading</a></li><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="AccountSettings.html">AccountSettings</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistOverview.html">ArtistOverview</a></li><li><a href="ArtistSidebar.html">ArtistSidebar</a></li><li><a href="Audio_Player.html">Audio_Player</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="ChangePassword.html">ChangePassword</a></li><li><a href="ChangeProfilePhoto.html">ChangeProfilePhoto</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="EditPlaylist.html">EditPlaylist</a></li><li><a href="global.html#EditProfile">EditProfile</a></li><li><a href="ForgetPassword.html">ForgetPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="Login.html">Login</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="OverviewContent.html">OverviewContent</a></li><li><a href="Player.html">Player</a></li><li><a href="Playlist.html">Playlist</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PrivacyPolicy.html">PrivacyPolicy</a></li><li><a href="RecentActivities.html">RecentActivities</a></li><li><a href="Search.html">Search</a></li><li><a href="ShareSong.html">ShareSong</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="Userprofile.html">Userprofile</a></li><li><a href="welcomePage.html">welcomePage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li><li><a href="global.html#CardList">CardList</a></li><li><a href="global.html#day">day</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#GoPremium">GoPremium</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#month">month</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#year">year</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Jun 08 2020 20:19:35 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

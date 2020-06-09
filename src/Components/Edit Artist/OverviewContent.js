@@ -17,7 +17,10 @@ const currentuser={
     "fname" : "John",
     "lname" : "Adams"
     }
-
+/** Class Overview Content
+ * @category Edit Artist
+ * @extends Component
+ */
 class OverviewContent extends Component{
 
 
@@ -32,6 +35,11 @@ class OverviewContent extends Component{
     
     
     }
+    
+ /**Function that is called when the component renders
+   * @memberof OverviewContent
+   * @func componentDidMount
+   */
     componentDidMount(){
       fetch('http://spotify-clone1.mocklab.io/artist-data').then(response=>{
         return response.json();

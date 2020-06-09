@@ -11,9 +11,17 @@ import * as actionTypes from "../../Store/actions";
 import EditPlaylist from './EditPlaylist';
 import ShareSong  from '../Share/ShareSong';
 import { BASEURL } from '../../Constants/BaseURL';
-
+/** Class Oud 
+ * @category Genre
+ * type of genre
+ * @extends Component
+ */
 export class PlaylistPage extends Component
 {
+  /** image of the playlist
+     * @memberof PlaylistPage
+     * @type {string}
+     */
   state= 
   { 
     

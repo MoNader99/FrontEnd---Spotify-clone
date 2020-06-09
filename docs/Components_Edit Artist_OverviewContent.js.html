@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/Edit Artist/OverviewContent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/Edit Artist/OverviewContent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
+import "./OverviewContent.css"
+import {Link} from "react-router-dom"
+import InfoLine from "./InfoLine"
+import Data from './Data'
+const currentuser={
+    "User":
+        {
+      "id" : "0OdUWJ0sBjDrqHygGUXeCF",
+      "email": "abc@gmail.com",
+      "totalfollowers" : 306565,
+      "isactive": true,
+      "ispremium":false,
+        },
+    
+    "username" : "Jadams",
+    "fname" : "John",
+    "lname" : "Adams"
+    }
+/** Class Overview Content
+ * @category Edit Artist
+ * @extends Component
+ */
+class OverviewContent extends Component{
+
+
+
+  constructor(props){
+
+    super(props)
+    this.state={
+    
+      data:[]
+    }
+    
+    
+    }
+    
+ /**Function that is called when the component renders
+   * @memberof OverviewContent
+   * @func componentDidMount
+   */
+    componentDidMount(){
+      fetch('http://spotify-clone1.mocklab.io/artist-data').then(response=>{
+        return response.json();
+      }).then(({artists})=>{
+        this.setState({data:artists});
+      });
+    
+    }
+
+    render(){
+      const Datas = () => {
+        
+        const datas = this.state.data.slice(0,1).map((user,i)=>{ 
+          return &lt;Data Country={this.state.data[i].country} email={this.state.data[i].Email} username={this.state.data[i].ArtistName} fname={this.state.data[i].Firstname} lname={this.state.data[i].Lastname}/>})
+       return (
+           &lt;div>
+               {datas}
+           &lt;/div>
+       )
+      }
+
+
+
+
+
+return(
+
+&lt;div className="ac-ov">
+        &lt;h1>&lt;strong>Edit Bio&lt;/strong>&lt;/h1>
+        &lt;h3 style={{marginTop:"5%"}}>&lt;strong>Bio&lt;/strong>&lt;/h3>
+         &lt;Datas>&lt;/Datas>
+        &lt;Link to="/account/profile" className="ep-bt">EDIT BIO&lt;/Link>
+
+        
+&lt;/div>
+)
+}
+};
+
+
+export default OverviewContent</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AboutUs.html">AboutUs</a></li><li><a href="AccountHeading.html">AccountHeading</a></li><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="AccountSettings.html">AccountSettings</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistOverview.html">ArtistOverview</a></li><li><a href="ArtistSidebar.html">ArtistSidebar</a></li><li><a href="Audio_Player.html">Audio_Player</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="ChangePassword.html">ChangePassword</a></li><li><a href="ChangeProfilePhoto.html">ChangeProfilePhoto</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="EditPlaylist.html">EditPlaylist</a></li><li><a href="global.html#EditProfile">EditProfile</a></li><li><a href="ForgetPassword.html">ForgetPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="Login.html">Login</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="OverviewContent.html">OverviewContent</a></li><li><a href="Player.html">Player</a></li><li><a href="Playlist.html">Playlist</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PrivacyPolicy.html">PrivacyPolicy</a></li><li><a href="RecentActivities.html">RecentActivities</a></li><li><a href="Search.html">Search</a></li><li><a href="ShareSong.html">ShareSong</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="Userprofile.html">Userprofile</a></li><li><a href="welcomePage.html">welcomePage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li><li><a href="global.html#CardList">CardList</a></li><li><a href="global.html#day">day</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#GoPremium">GoPremium</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#month">month</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#year">year</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Jun 08 2020 20:19:35 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

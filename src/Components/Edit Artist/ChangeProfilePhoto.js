@@ -5,20 +5,30 @@ import {connect} from 'react-redux';
 
 import { withRouter } from 'react-router-dom';
 import * as actionTypes from '../../Store/actions';
+/** Class ChangeProfilePhoto 
+ * @category Edit Artist
+ * @extends Component
+ */
 
 class ChangeProfilePhoto extends Component{
         constructor(props){
 
                 super(props)
                 this.state={
-                
+         /**data of the profile photo
+        * @memberof ChangeProfilePhoto
+        * @type {string}
+        */
                         selectedFile: null,
                         imagePreviewUrl: null
                         
                 }
                 this.onImageChange=this.onImageChange.bind(this)
         }
-                
+        /**Function the profile image change
+   * @memberof ChangeProfilePhoto
+   * @func onImageChange
+   */
         onImageChange= event=> {
         
                         let reader = new FileReader();

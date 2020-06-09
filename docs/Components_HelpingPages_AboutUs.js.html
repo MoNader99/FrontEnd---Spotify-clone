@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/HelpingPages/AboutUs.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/HelpingPages/AboutUs.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import './AboutUs.css'
+import MainNavbar from '../WelcomeRelated/MainNavbar';
+import Bottom from '../WelcomeRelated/Bottom';
+
+/** Class AboutUs 
+ * @category AboutUs
+ * @extends Component
+ */
+ class AboutUs extends Component
+{
+    render(){
+        {document.title ="Spotify - About Us"}
+        return(
+            &lt;div className="about-us-page">
+                &lt;MainNavbar position="fixed" color="black"/>
+                &lt;div className="container">
+                &lt;h1>About Us&lt;/h1> 
+                    &lt;div className="row"> 
+                   
+                    &lt;div className="col-xl-7 col-lg-7 col-md-6 col-sm-6 col-5">  
+                            &lt;p>With Spotify, it’s easy to find the right music or podcast for every moment – on your phone, your computer, your tablet and more.&lt;/p>
+                            &lt;p>There are millions of tracks and episodes on Spotify. So whether you’re behind the wheel, working out, partying or relaxing, the right music or podcast is always at your fingertips. Choose what you want to listen to, or let Spotify surprise you.&lt;/p>
+                            &lt;p>You can also browse through the collections of friends, artists, and celebrities, or create a radio station and just sit back.&lt;/p>
+                            &lt;p>Soundtrack your life with Spotify. Subscribe or listen for free.&lt;/p>
+                        
+                        &lt;h2>Customer Service and Support&lt;/h2>
+                    
+                            &lt;li>
+                            &lt;a href="/help" className="inline-linking">Help site&lt;/a> .Check out our help site for answers to your questions and to learn how to get the most out of Spotify and your music.
+                            &lt;/li>
+                            &lt;br/>
+                            &lt;p>
+                            Spotify USA, Inc. provides the Spotify service to users in the United States. Spotify AB provides the Spotify service to users in all other markets.
+                            &lt;/p>
+                    &lt;/div>
+
+
+
+                    &lt;div className="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-7">
+                        &lt;div>
+                        &lt;h2>Spotify HQ&lt;/h2>
+                        &lt;div className="inline-address" >
+                                &lt;strong>Spotify AB&lt;/strong>
+                                &lt;br/>
+                                Regeringsgatan 19
+                                &lt;br/>
+                                SE-111 53 Stockholm
+                                &lt;br/>
+                                Sweden
+                                &lt;br/>
+                                Reg no: 556703-7485
+                                &lt;br/>
+                                office@spotify.com
+                            &lt;/div>
+                        &lt;/div>
+                        &lt;h2>Spotify around the world&lt;/h2>
+                        &lt;div className="row">
+                            &lt;div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                                &lt;div className="inline-address">
+                                    &lt;strong>Spotify Belgium&lt;/strong>
+                                    &lt;br/>
+                                    Square de Meeus 37
+                                    &lt;br/>
+                                    4th floor
+                                    &lt;br/>
+                                    1000 Brussels
+                                    &lt;br/>
+                                    Belgium
+                                    &lt;br/>
+                                    office@spotify.com
+                                &lt;/div>
+
+                                &lt;div className="inline-address">
+                                &lt;strong>Spotify Canada Inc.&lt;/strong>
+                                &lt;br/>
+                                179 John St. Suite 403
+                                &lt;br/>
+                                M5T 1X4 Toronto
+                                &lt;br/>
+                                Canada
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;/div>
+
+                                &lt;div className="inline-address">
+                                &lt;strong>SPOTIFY SPAIN SL&lt;/strong>
+                                &lt;br/>
+                                Paseo de Recoletos, 7-9
+                                &lt;br/>
+                                28004 Madrid
+                                &lt;br/>
+                                Spain
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;/div>
+
+                                &lt;div className="inline-address-adapt">
+                                &lt;strong>Spotify France SAS&lt;/strong>
+                                &lt;br/>
+                                54 Rue de Londres, 75008
+                                &lt;br/>
+                                Paris
+                                &lt;br/>
+                                France
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;/div>
+
+                                &lt;div className="inline-address">
+                                &lt;strong>Spotify Italy S.r.l.&lt;/strong>
+                                &lt;br/>
+                                c/o Fintech District
+                                &lt;br/>
+                                Via Filippo Sassetti 32
+                                &lt;br/>
+                                20124 Milano
+                                &lt;br/>
+                                Italy
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;/div>
+
+
+                                &lt;div className="inline-address-adapt">
+                                &lt;strong>Spotify Norway AS&lt;/strong>
+                                &lt;br/>
+                                Tordenskioldsgate 2
+                                &lt;br/>
+                                0160 Oslo
+                                &lt;br/>
+                                Norway
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;/div>
+
+                                &lt;div className="inline-address mb-5">
+                                &lt;strong>Spotify Ltd&lt;/strong>
+                                &lt;br/>
+                                Adelphi Building
+                                &lt;br/>
+                                4 Savoy Place
+                                &lt;br/>
+                                London WC2N 6AT
+                                &lt;br/>
+                                United Kingdom
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;/div>
+
+                                &lt;div className="inline-address">
+                                &lt;strong>Spotify Mexico&lt;/strong>
+                                &lt;br/>
+                                Pedregal 24 Torre Virreyes Piso 8
+                                &lt;br/>
+                                Col. Molino del Rey
+                                &lt;br/>
+                                DF 11040
+                                &lt;br/>
+                                Mexico
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;/div>
+
+                               
+
+
+                            &lt;/div>
+                            &lt;div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+
+                            &lt;div className="inline-address">
+                                &lt;strong>Spotify GmbH&lt;/strong>
+                                &lt;br/>
+                                c/o Mindspace
+                                &lt;br/>
+                                Krausenstraße 9-10
+                                &lt;br/>
+                                10117 Berlin
+                                &lt;br/>
+                                Germany
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;/div>
+
+                                &lt;div className="inline-address">
+                                &lt;strong>Spotify Denmark ApS&lt;/strong>
+                                &lt;br/>
+                                Vestergade 27, 1 th
+                                &lt;br/>
+                                1456 København K
+                                &lt;br/>
+                                Denmark
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;/div>
+
+                                &lt;div className="inline-address">
+                                &lt;strong>Spotify Finland Oy&lt;/strong>
+                                &lt;br/>
+                                Merimiehenkatu 36 D
+                                &lt;br/>
+                                FI-00150 Helsinki
+                                &lt;br/>
+                                Finland
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;/div>
+
+                                &lt;div className="inline-address">
+                                &lt;strong>Spotify India LLP&lt;/strong>
+                                &lt;br/>
+                                Regus 5th &amp; 6th Floor Mafatlal House (“Building”) H.T.Parekh Marg, Backbay Reclamation
+                                &lt;br/>
+                                Mumbai 400020
+                                &lt;br/>
+                                India
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;/div>
+
+                                
+                                &lt;div className="inline-address mb-5">
+                                &lt;strong>Spotify Netherlands&lt;/strong>
+                                &lt;br/>
+                                Singel 540 3h
+                                &lt;br/>
+                                1017AZ, Amsterdam
+                                &lt;br/>
+                                Netherlands
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;/div>
+
+                                &lt;div className="inline-address">
+                                &lt;strong>Spotify Poland Sp. z o.o.&lt;/strong>
+                                &lt;br/>
+                                Warsaw Skylight Skylight Building, 14th floor
+                                &lt;br/>
+                                c/o Regus
+                                &lt;br/>
+                                Ul. Zlota 59
+                                &lt;br/>
+                                00-120 Warszawa
+                                &lt;br/>
+                                Poland
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;/div>
+
+                                &lt;div className="inline-address">
+                                &lt;strong>Spotify USA Inc&lt;/strong>
+                                &lt;br/>
+                                4 World Trade Center
+                                &lt;br/>
+                                150 Greenwich Street, 62nd Floor
+                                &lt;br/>
+                                New York, NY 10007
+                                &lt;br/>
+                                USA
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;/div>
+
+                                &lt;div className="inline-address">
+                                &lt;strong>Spotify Israel&lt;/strong>
+                                &lt;br/>
+                                office@spotify.com
+                                &lt;br/>
+                               
+                                &lt;/div>
+                                
+                            &lt;/div>
+
+                        &lt;/div>
+
+                    &lt;/div>
+
+
+
+                    &lt;/div>
+                &lt;/div>
+&lt;Bottom/>
+            &lt;/div>
+
+        )
+    }
+
+ }
+
+ export default AboutUs</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AboutUs.html">AboutUs</a></li><li><a href="AccountHeading.html">AccountHeading</a></li><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="AccountSettings.html">AccountSettings</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistOverview.html">ArtistOverview</a></li><li><a href="ArtistSidebar.html">ArtistSidebar</a></li><li><a href="Audio_Player.html">Audio_Player</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="ChangePassword.html">ChangePassword</a></li><li><a href="ChangeProfilePhoto.html">ChangeProfilePhoto</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="EditPlaylist.html">EditPlaylist</a></li><li><a href="global.html#EditProfile">EditProfile</a></li><li><a href="ForgetPassword.html">ForgetPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="Login.html">Login</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="OverviewContent.html">OverviewContent</a></li><li><a href="Player.html">Player</a></li><li><a href="Playlist.html">Playlist</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PrivacyPolicy.html">PrivacyPolicy</a></li><li><a href="RecentActivities.html">RecentActivities</a></li><li><a href="Search.html">Search</a></li><li><a href="ShareSong.html">ShareSong</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="Userprofile.html">Userprofile</a></li><li><a href="welcomePage.html">welcomePage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li><li><a href="global.html#CardList">CardList</a></li><li><a href="global.html#day">day</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#GoPremium">GoPremium</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#month">month</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#year">year</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Jun 08 2020 20:19:35 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

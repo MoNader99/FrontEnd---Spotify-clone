@@ -3,8 +3,8 @@ import "./ArtistOverview.css";
 import  HomePageNavbar  from '../HomePage/HomePageNavbar';
 import {BASEURL} from '../../Constants/BaseURL'
 
-/** Class Userprofile 
- * @category Userprofile
+/** Class ArtistOverview 
+ * @category ArtistOverview
  * @extends Component
  */
 class ArtistOverview extends Component {
@@ -12,26 +12,26 @@ class ArtistOverview extends Component {
     super(props);
     this.state = 
     {
-        /**username in user profile
-        * @memberof Userprofile
+        /**username in Artist Profile
+        * @memberof ArtistOverview
         * @type {string}
         */
         username:"Massar Egbari",
 
         /**Number of playlists that the user create
-        * @memberof Userprofile
+        * @memberof ArtistOverview
         * @type {number}
         */
         playlists:15,
         songsNumber:3,
         /**Text on follow button
-        * @memberof Userprofile
+        * @memberof ArtistOverview
         * @type {string}
         */
         ButtonText:"Follow",
 
         /**Array of playlists
-        * @memberof Userprofile
+        * @memberof ArtistOverview
         * @type {Array<playlists>}
         */
         playlistTargets:[]
@@ -39,7 +39,7 @@ class ArtistOverview extends Component {
   }
 
   /**Function to Handle follow button
-   * @memberof Userprofile
+   * @memberof ArtistOverview
    * @func FollowButton
    */
   FollowButton = () => {
@@ -85,45 +85,14 @@ class ArtistOverview extends Component {
    }
  }
 
- /**Function to Handle Like ad unlike
-   * @memberof Userprofile
-   * @func Like
-   * @param e
-   */
- Like = e => {
-    const {id} = e.target;
-  /** heart icon
-   * @memberof Userprofile
-   * @type {string}
-   */
-    var heart=document.getElementById(id);
+
+ 
   
-  var url =  BASEURL+"/playlist/like";    
-  const requestOptions = {
-    method: 'POST', 
-    headers: {'Content-Type': 'application/json' }, 
-    body: JSON.stringify({
-       playlistName: this.state.playlistTargets[id].id
-      }) ,
-
-  };    
-     fetch(url,requestOptions)
-      .then((res) => {
-        if(res.status===200){
-          console.log("response is ok")
-          heart.classList.toggle("far");
-          heart.classList.toggle("fas");
-          heart.classList.toggle("red");
-        }
-   })
-
-      .then((data) =>{})
-      .catch((err)=>console.log(err))
-    
- }
+     
+  
 
  /**Function that is called when the component renders
-   * @memberof Userprofile
+   * @memberof ArtistOverview
    * @func componentDidMount
    */
  componentDidMount(){
@@ -131,6 +100,10 @@ class ArtistOverview extends Component {
     const requestOptions = {
         method: 'GET',
       };
+       /**Function that is fetches the artist data
+   * @memberof ArtistOverview
+   * @func fetch
+   */
     fetch(url,requestOptions)
               .then((response) => { return response.json()})
               .then((data) => {

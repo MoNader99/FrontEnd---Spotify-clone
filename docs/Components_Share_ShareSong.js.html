@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/Share/ShareSong.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/Share/ShareSong.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import'./ShareSong.css';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+
+import {
+    EmailShareButton,
+    FacebookShareButton,
+    LinkedinShareButton,
+    TelegramShareButton,
+    TwitterShareButton,
+    WhatsappShareButton,
+    
+  } from "react-share";
+  
+  import {
+    EmailIcon,
+    FacebookIcon,
+    LinkedinIcon,
+    TelegramIcon,
+    TwitterIcon,
+    WhatsappIcon,
+
+  } from "react-share";
+import { connect } from 'react-redux';
+//------------------------------------------------------------------------------------------------------------------//
+
+/** Class ShareSong 
+ * @category ShareSong
+ * @extends Component
+ */
+export class ShareSong extends Component{
+  constructor(props){
+    super(props);
+  }
+
+render(){
+  /** A variable that contains URL of the selected song 
+   * @memberof ShareSong
+   * @type {string}
+   */
+  if(this.props.songURL != null)
+  {
+      var song={songURL:this.props.songURL.songURL}
+  }
+  else
+  {
+    var song={songURL:""}
+  }
+  return(
+&lt;div className="share-song ">
+&lt;div id="share-song" className="modal fade" role="dialog">
+&lt;div className="modal-dialog modal-xl  ">
+&lt;div className="modal-content">
+
+        &lt;button className="btn close-button" data-dismiss="modal"> &lt;i className="fas fa-times">&lt;/i> &lt;/button>
+        
+            &lt;h2 className="d-flex justify-content-center mb-5" >Share Song URL With: &lt;/h2>
+        
+            &lt;div className=" container d-flex justify-content-around mb-5">
+                &lt;FacebookShareButton
+                url={song.songURL}
+                quote="Listen to this Song :)"
+                className="social"
+                >
+                &lt;FacebookIcon size={50} round />
+                &lt;/FacebookShareButton>
+
+                &lt;TwitterShareButton
+                url={song.songURL}
+                quote="Listen to this Song :)"
+                className="social"
+                >
+                &lt;TwitterIcon size={50} round />
+                &lt;/TwitterShareButton>
+
+                &lt;LinkedinShareButton
+                url={song.songURL}
+                quote="Listen to this Song :)"
+                className="social"
+                >
+                &lt;LinkedinIcon size={50} round />
+                &lt;/LinkedinShareButton>
+
+                &lt;WhatsappShareButton
+                url={song.songURL}
+                quote="Listen to this Song :)"
+                className="social"
+                >
+                &lt;WhatsappIcon size={50} round />
+                &lt;/WhatsappShareButton>
+
+
+                &lt;EmailShareButton
+                url={song.songURL}
+                quote="Listen to this Song :)"
+                className="social"
+                >
+                &lt;EmailIcon size={50} round />
+                &lt;/EmailShareButton>
+
+                &lt;TelegramShareButton
+                url={song.songURL}
+                quote="Listen to this Song :)"
+                className="social"
+                >
+                &lt;TelegramIcon size={50} round />
+                &lt;/TelegramShareButton>
+
+            &lt;/div>
+
+       
+          &lt;div className="container ">
+            &lt;h6 className="ml-2"> OR Copy Link &lt;/h6>
+            &lt;/div>
+
+            &lt;div  className="container d-flex justify-content-center mb-4">
+                &lt;input type="text" value={song.songURL} class="field left" readonly disabled>&lt;/input>
+                &lt;CopyToClipboard text={song.songURL}>
+                    &lt;span  title="Copy link" className="copy-link">&lt;i class="far fa-copy">&lt;/i>&lt;/span>
+                &lt;/CopyToClipboard>
+            &lt;/div>
+            
+            &lt;/div>
+        &lt;/div>
+        &lt;/div>
+        &lt;/div>    
+  )
+}
+}
+
+/**A function connecting component to redux store
+ * @memberof ShareSong
+ * @func mapStateToProps
+ * @param {*} state
+ */
+const mapStateToProps = state =>{
+  return{
+    songURL: state.selectedSong
+  };
+};
+
+export default connect(mapStateToProps) (ShareSong);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AboutUs.html">AboutUs</a></li><li><a href="AccountHeading.html">AccountHeading</a></li><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="AccountSettings.html">AccountSettings</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistOverview.html">ArtistOverview</a></li><li><a href="ArtistSidebar.html">ArtistSidebar</a></li><li><a href="Audio_Player.html">Audio_Player</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="ChangePassword.html">ChangePassword</a></li><li><a href="ChangeProfilePhoto.html">ChangeProfilePhoto</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="EditPlaylist.html">EditPlaylist</a></li><li><a href="global.html#EditProfile">EditProfile</a></li><li><a href="ForgetPassword.html">ForgetPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="Login.html">Login</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="OverviewContent.html">OverviewContent</a></li><li><a href="Player.html">Player</a></li><li><a href="Playlist.html">Playlist</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PrivacyPolicy.html">PrivacyPolicy</a></li><li><a href="RecentActivities.html">RecentActivities</a></li><li><a href="Search.html">Search</a></li><li><a href="ShareSong.html">ShareSong</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="Userprofile.html">Userprofile</a></li><li><a href="welcomePage.html">welcomePage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li><li><a href="global.html#CardList">CardList</a></li><li><a href="global.html#day">day</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#GoPremium">GoPremium</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#month">month</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#year">year</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Jun 08 2020 20:19:35 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
