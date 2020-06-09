@@ -12,7 +12,7 @@ const ArtistsRecommended = (List)=>{
                 ArtistsData.map((user,i) =>{
                     return (
                         <Card 
-                            key={i}
+                            key={i} 
                             id={ArtistsData[i].id} 
                             image={ArtistsData[i].image}
                             name={ArtistsData[i].name}
