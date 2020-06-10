@@ -347,7 +347,7 @@ handleSingUp=(event)=>{
                  if(res.status===200){
                     console.log("response is ok")
                     this.setState({checkedCorrect:false})
-                    // window.location.replace("/Recommend");
+                    window.location.replace("/Recommend");
                  }
                  else{
                   this.setState({checkedCorrect:true})

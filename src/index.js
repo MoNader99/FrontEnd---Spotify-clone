@@ -14,7 +14,7 @@ import reducer from "./Store/reducer";
 import {loadState , saveState } from "./Store/localStorage";
 import Login from './Components/Login/FacebookLogin'
 import 'tachyons'
-
+import AdBar from './Components/WebFrame/AdBar'
 
 const persistedState = loadState();
 const store = createStore(reducer, persistedState );

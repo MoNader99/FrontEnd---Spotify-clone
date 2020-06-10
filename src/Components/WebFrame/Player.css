@@ -1,7 +1,7 @@
 .Player-Footer{
     background-color: #282828;
     display: grid;
-    grid-template-columns: 25% 50%;
+    grid-template-columns: 25% 50% 25%;
 }
 .Player-Footer .audio{
    margin-left: auto;
