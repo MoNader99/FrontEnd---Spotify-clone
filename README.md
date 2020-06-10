@@ -7,7 +7,7 @@ git clone (https://github.com/MohammedNader99/FrontEnd---Spotify-clone)
 ## to get all the pachages we used in the app:
 * you can run these commands:
 ```sh
-npm install														# Install dependencies
+npm install	 # Install dependencies
 ```
 # How to run tests
 ## Running unit tests
@@ -16,13 +16,10 @@ npm install														# Install dependencies
 npm run test
 ```
 # How to run for developers.
-## Production (default)
-1.Go to the constants folder and open baseURL.js
-2.Make sure the BASEURL is (http://52.14.190.202:8000/)
 
 ## Mock server
 1.Go to the constants folder and open baseURL.js
-2.Change the BASEURL to be (https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/)
+2.Change the BASEURL to be (http://spotify-clone1.mocklab.io)
 
 ## Development server
 
