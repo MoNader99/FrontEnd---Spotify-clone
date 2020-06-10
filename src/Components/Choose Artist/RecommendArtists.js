@@ -22,7 +22,9 @@ class Recommend extends Component{
         return(
         <div className='first-home tc'> 
                 <h1 className='first-h1'> Choose 3 or more artists you like. </h1>
-                <button onClick={()=>this.SubmitArtists()} className='btn rec btn-succes mb4 white'>Submit</button>
+                <div className="d-flex align-items-center justify-content-center">
+                <button onClick={()=>this.SubmitArtists()} className='btn rec btn-succes Recomend mb4 white'>Submit</button>
+                </div>
                 <CardList List={this.state.list}></CardList>
         </div>
         )
