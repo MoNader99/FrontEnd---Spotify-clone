@@ -1,1 +1,1 @@
-export const BASEURL = "http://spotify-clone1.mocklab.io";
+export const BASEURL = "http://8edw9.mocklab.io";
